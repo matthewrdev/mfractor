@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Keyboard">
+ 	<Description Locale="en" Content="Provides support for building custom keyboards using an XML description of a keyboard and its keys."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/reference/android/inputmethodservice/Keyboard.html"/>
+	<Node Name="Keyboard" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="An XML description of a keyboard and its keys. A keyboard consists of rows of keys."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:horizontalGap" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Default horizontal gap between keys."/>
+		</Parameter>
+		<Parameter Name="android:keyHeight" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Default height of a key, in pixels or percentage of display width."/>
+		</Parameter>
+		<Parameter Name="android:keyWidth" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Default width of a key, in pixels or percentage of display width."/>
+		</Parameter>
+		<Parameter Name="android:verticalGap" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Default vertical gap between rows of keys."/>
+		</Parameter>
+		<Node Name="Row" Abstract="false" Required="false">
+ 			<Description Locale="en" Content="Container for keys in the keyboard. All keys in a row are at the same Y-coordinate. Some of the key size defaults can be overridden per row from what the Keyboard defines."/>
+			<Parameter Name="android:horizontalGap" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Default horizontal gap between keys."/>
+			</Parameter>
+			<Parameter Name="android:keyHeight" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Default height of a key, in pixels or percentage of display width."/>
+			</Parameter>
+			<Parameter Name="android:keyWidth" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Default width of a key, in pixels or percentage of display width."/>
+			</Parameter>
+			<Parameter Name="android:verticalGap" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Default vertical gap between rows of keys."/>
+			</Parameter>
+			<Parameter Name="android:keyboardMode" TypesCSV="integer" Inputs="Reference">
+	 			<Description Locale="en" Content="Mode of the keyboard; a reference to a 0 based integer value. If the mode doesn't match the requested keyboard mode, the row will be skipped."/>
+			</Parameter>
+			<Parameter Name="android:rowEdgeFlags" TypesCSV="flag" Inputs="Value">
+	 			<Description Locale="en" Content="Row edge flags."/>
+				<ParameterValue Name="top">
+					<Description Locale="en"  Content="Row is anchored to the top of the keyboard."/>
+				</ParameterValue>
+				<ParameterValue Name="bottom">
+					<Description Locale="en"  Content="Row is anchored to the bottom of the keyboard."/>
+				</ParameterValue>
+			</Parameter>
+			<Node Name="Key" Abstract="false" Required="false">
+ 				<Description Locale="en" Content="Describes the position and characteristics of a single key in the keyboard."/>
+				<Parameter Name="android:codes" TypesCSV="string,integer" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="The unicode value or comma-separated values that this key outputs."/>
+				</Parameter>
+				<Parameter Name="android:horizontalGap" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Default horizontal gap between keys."/>
+				</Parameter>
+				<Parameter Name="android:iconPreview" TypesCSV="drawable" Inputs="Reference">
+		 			<Description Locale="en" Content="The icon to show in the popup preview."/>
+				</Parameter>
+				<Parameter Name="android:isModifier" TypesCSV="boolean" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Whether this is a modifier key such as Alt or Shift."/>
+				</Parameter>
+				<Parameter Name="android:isRepeatable" TypesCSV="boolean" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Whether long-pressing on this key will make it repeat."/>
+				</Parameter>
+				<Parameter Name="android:isSticky" TypesCSV="boolean" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Whether this is a toggle key."/>
+				</Parameter>
+				<Parameter Name="android:keyEdgeFlags" TypesCSV="flag" Inputs="Value">
+		 			<Description Locale="en" Content="Key edge flags."/>
+					<ParameterValue Name="left">
+						<Description Locale="en"  Content="Key is anchored to the left of the keyboard."/>
+					</ParameterValue>
+					<ParameterValue Name="right">
+						<Description Locale="en"  Content="Key is anchored to the right of the keyboard."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:keyHeight" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Default height of a key, in pixels or percentage of display width."/>
+				</Parameter>
+				<Parameter Name="android:keyIcon" TypesCSV="drawable" Inputs="Reference">
+		 			<Description Locale="en" Content="The icon to display on the key instead of the label."/>
+				</Parameter>
+				<Parameter Name="android:keyLabel" TypesCSV="string" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="The label to display on the key."/>
+				</Parameter>
+				<Parameter Name="android:keyOutputText" TypesCSV="string" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="The string of characters to output when this key is pressed."/>
+				</Parameter>
+				<Parameter Name="android:keyWidth" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="Default width of a key, in pixels or percentage of display width."/>
+				</Parameter>
+				<Parameter Name="android:popupCharacters" TypesCSV="string" Inputs="ValueOrReference">
+		 			<Description Locale="en" Content="The characters to display in the popup keyboard."/>
+				</Parameter>
+				<Parameter Name="android:popupKeyboard" TypesCSV="xml" Inputs="Reference">
+		 			<Description Locale="en" Content="The XML keyboard layout of any popup keyboard."/>
+				</Parameter>
+			</Node>
+		</Node>
+	</Node>
+</Module>

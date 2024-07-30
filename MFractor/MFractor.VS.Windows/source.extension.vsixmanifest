@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="MFractor.VSWindows.9e8ace0e-61dd-486f-bfeb-0c7ad1fc0b1c" Version="4.4.10" Language="en-US" Publisher="Matthew Robbins" />
+        <DisplayName>MFractor</DisplayName>
+        <Description xml:space="preserve">A powerful productivity tool for Xamarin developers.</Description>
+        <MoreInfo>https://www.mfractor.com</MoreInfo>
+        <License>Assets\end-user-license.txt</License>
+        <GettingStartedGuide>https://docs.mfractor.com</GettingStartedGuide>
+        <ReleaseNotes>http://docs.mfractor.com/release-notes/windows/current</ReleaseNotes>
+        <Icon>logo-200.png</Icon>
+        <PreviewImage>logo-200.png</PreviewImage>
+        <Tags>xamarin;xamarin.forms;android;ios;XAML;C#;.NET</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)" >
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor" Path="|MFractor|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.CSharp" Path="|MFractor.CSharp|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Fonts" Path="|MFractor.Fonts|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Maui" Path="|MFractor.Maui|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.iOS" Path="|MFractor.iOS|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Linker" Path="|MFractor.Linker|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Localisation" Path="|MFractor.Localisation|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Xml" Path="|MFractor.Xml|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Images" Path="|MFractor.Images|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Android" Path="|MFractor.Android|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.MSBuild" Path="|MFractor.MSBuild|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Code" Path="|MFractor.Code|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Ide" Path="|MFractor.Ide|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="MFractor.Workspace" Path="|MFractor.Workspace|" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="_libs\Newtonsoft.Json.dll" AssemblyName="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed" />
+    </Assets>
+</PackageManifest>

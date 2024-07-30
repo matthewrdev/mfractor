@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace $namespace$
+{
+    public partial class $name$ : $type$
+    {
+        public $name$()
+        {
+            InitializeComponent();
+        }
+    }
+}

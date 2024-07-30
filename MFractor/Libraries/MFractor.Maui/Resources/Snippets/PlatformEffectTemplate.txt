@@ -1,0 +1,21 @@
+﻿using $namespace$.Effects;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.$platform$;
+
+[assembly: ResolutionGroupName("$group_name$")]
+[assembly: ExportEffect(typeof($name$), "$name$")]
+namespace $namespace$.Effects
+{
+    public class $name$ : PlatformEffect
+    {
+        protected override void OnAttached()
+        {
+            // TODO: Apply your effect.
+        }
+
+        protected override void OnDetached()
+        {
+            // TODO: Remove your effect.
+        }
+    }
+}

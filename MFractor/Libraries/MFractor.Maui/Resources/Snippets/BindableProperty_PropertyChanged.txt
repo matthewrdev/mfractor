@@ -1,0 +1,14 @@
+﻿public static readonly $bindable_property$ $name$Property = $bindable_property$.Create(nameof($name$), typeof($type$), typeof($control_type$), default($type$), propertyChanged: On$name$Changed);
+public $type$ $name$
+{
+    get => ($type$)GetValue($name$Property);
+    set => SetValue($name$Property, value);
+}
+
+static void On$name$Changed($bindable_object$ bindable, object oldValue, object newValue)
+{
+    if (bindable is $control_type$ control)
+    {
+        var value = ($type$)newValue;
+    }
+}

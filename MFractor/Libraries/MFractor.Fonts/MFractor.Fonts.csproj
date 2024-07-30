@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+
+    <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Work Units\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Snippets\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Code Generation\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Typography.OpenFont\" />
+    <Folder Include="Typography.OpenFont\Tables.AdvancedLayout\" />
+    <Folder Include="Typography.OpenFont\TextLayout\" />
+    <Folder Include="Typography.OpenFont\Tables.BitmapAndSvgFonts\" />
+    <Folder Include="Typography.OpenFont\Tables.Variations\" />
+    <Folder Include="Rendering\" />
+    <Folder Include="Tooltips\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Snippets\FontCharacterCodeClass.txt" />
+    <None Remove="Resources\Snippets\FontCharacterCodeProperty.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Snippets\FontCharacterCodeClass.txt" />
+    <EmbeddedResource Include="Resources\Snippets\FontCharacterCodeProperty.txt" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{158F7544-798A-497C-BCF1-55DABACE1CCB}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MFractor.Views</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)About\AboutDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Activation\ActivationDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IImagePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicenseDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Deletion Tool\DeleteImagesDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\ImageImporterDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Optimiser\ImageOptimisationResultDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\MVVMWizardDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\MVVMWizardResultEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ColorChannelSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ColorEditorDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ColorPickerControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITextEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITextEditorFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Font Importer\FontImporterDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Font Importer\FontImportResultEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Localisation\FileLocalisationWizardDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Project Selection\MultiProjectSelectionDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Project Selection\ProjectSelectionEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text Input\TextInputDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AsyncMvvmCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IconImporterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MvvmCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ProjectItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TargetProjectViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XAML Style Editor\XamlStyleEditedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XAML Style Editor\XamlStyleEditorDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ImagePreviewControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPreviewControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Code Snippets\CodeArgumentControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Code Snippets\InsertCodeSnippetEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Code Snippets\InsertCodeSnippetDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generate Code Files\GenerateCodeFilesDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Value Converter Wizard\ValueConverterWizard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Branding\BrandingHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Branding\BrandedFooter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Localisation\LocaliseDocumentWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Activation\ActivationDialogWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XAML Style Editor\XamlStyleEditorWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IRootWindowService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Project Selection\ProjectSelectorWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generate Code Files\GenerateCodeFileWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\ImageImportTargetProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\ProjectSelection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\DownscaleResultEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text Input\TextInputWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Manager\ImageManagerControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Context Menu\ContextMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Context Menu\ContextMenuElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Context Menu\ContextMenuElementKind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Context Menu\IContextMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Progress\ProgressDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Manager\ImageManagerDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\SettingsWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\FormattingOptionsWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Progress\ProgressMonitorControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Context Menu\ContextMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Code Snippets\InsertCodeSnippetWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ColorInputWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generate Code Files\GenerateCodeFilesEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text Input\TextEntryCompleteEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\IOptionsWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Value Converter Wizard\ValueConverterWizardControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WorkUnitPreviewControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ConfigurablePropertyContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Value Converter Wizard\ValueConverterGenerationEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\AppIconImporterDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\AppIconImporterWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\Controls\ImageCollectionPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\Controls\ImageSelectionPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\Controls\ImagePreviewGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Value Converter Wizard\ValueConverterWizardWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\Settings\ProjectMvvmSettingsDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\Settings\ProjectMvvmSettingsSavedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\Settings\ProjectMvvmSettingsControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Deletion Tool\DeleteImageAssetWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Deletion Tool\ImagesDeletedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Font Importer\ImportFontWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)About\AboutDialogWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicenseDialogWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\MVVMWizardWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ImageSizeUtilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)File Preview\FilePreviewPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\CodeAnalysisWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Optimiser\OptimiseImageAssetWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Delete Output Folders\DeleteOutputFolderWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Delete Output Folders\DeleteOutputFoldersConfigurationDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\DeleteOutputFoldersOptionsWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\OnboardingDialogWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\OnboardingDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scaffolding\ScaffolderDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scaffolding\ScaffolderControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scaffolding\ScaffolderWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scaffolding\ScaffoldingResultEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Type Simplification Wizard\TypeSimpificationWizardControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Type Simplification Wizard\TypeSimplificationWizardDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Type Simplification Wizard\SimplifyFileWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Type Simplification Wizard\TypeSimplificationEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Delete Output Folders\MutableDeleteOutputFoldersOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Android Keytool\AndroidKeytoolControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Android Keytool\AndroidKeytoolDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\OnboardingControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\WelcomePanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\LicenseAgreementPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\ActivationPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\GettingStartedPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scaffolding\ScaffoldingResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\IOnboardingPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\Activation\ImportLicenseControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\Activation\ActivateLiteControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\Activation\ChooseActivationMethodControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Footer\OnboardingFooterElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Footer\OnboardingProgressFooter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Activation\ActivationControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onboarding\Panels\Activation\IActivationPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicenseWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\CollectionView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\ICollectionItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\CollectionViewItemSelectedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\CollectionViewOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SearchTextEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\CollectionViewItemInteractionEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Manager\ImageAssetCollectionItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\CollectionViewItemDragEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\ICollectionViewDragOperationHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Manager\ProjectFileCollectionItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Deletion Tool\DeleteImageAssetControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\IImageImportOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\Preview\ImageImportOperationPreviewControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\Preview\OutputImageSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image Importer\SourceImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Name Value Input\NameValueInputWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Name Value Input\NameValueInputControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Name Value Input\NameValueInputDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CollapsibleContentView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicenseWidgetOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\SerialKeyActivationWidget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\EmailEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\SerialKeyEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Class From Clipboard\CreateClassFromContentWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Class From Clipboard\CreateClassFromContentDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Project Selection\SingleProjectSelectionDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Picker\PickerWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Picker\PickerDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Picker\PickerSelectionEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\Settings\ConfigureProjectMvvmSettingsWorkUnitHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Collection\ProjectSelectionCollectionITem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\SelectTargetProjectsList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\AppIconImagePreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\IconSetPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\IconItemPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BoldCenteredLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CenteredLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App Icon Importer\IconIdiomPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TitleLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\LabelModifiers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\PreferencesDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\Commands\PreferencesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\Commands\CodeAnalysisPreferencesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\Commands\DeleteOutputOptionsPreferencesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\Commands\FormattingOptionsPreferencesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\Commands\SettingsPreferencesCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)About\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Activation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Licensing\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Branding\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Deletion Tool\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Optimiser\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MVVM Wizard\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Colors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Font Importer\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Localisation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Project Selection\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Text Input\" />
+    <Folder Include="$(MSBuildThisFileDirectory)XAML Style Editor\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Code Snippets\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Generate Code Files\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Value Converter Wizard\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Manager\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Context Menu\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Progress\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Settings\" />
+    <Folder Include="$(MSBuildThisFileDirectory)App Icon Importer\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Cleanup Tool\" />
+    <Folder Include="$(MSBuildThisFileDirectory)App Icon Importer\Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)File Preview\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Delete Output Folders\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Onboarding\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Scaffolding\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Migration Tool\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Type Simplification Wizard\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Android Keytool\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Onboarding\Panels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Onboarding\Panels\Activation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Onboarding\Footer\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\Onboarding\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\Onboarding\Mac\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\Onboarding\Windows\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\Collection\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Image Importer\Preview\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Name Value Input\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Class From Clipboard\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Picker\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Settings\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\exclamation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>exclamation.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\mfractor_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>mfractor_logo.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\feather-image-16.png">
+      <LogicalName>feather-image-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\image-placeholder.png">
+      <LogicalName>image-placeholder.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\exclamation-blue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>exclamation-blue.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\exclamation-yellow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>exclamation-yellow.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\wand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>wand.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\mfractor_logo_grayscale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>mfractor_logo_grayscale.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\cross.png">
+      <LogicalName>cross.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\end-user-license.txt">
+      <LogicalName>end-user-license.txt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\check-green.png">
+      <LogicalName>check-green.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\chevron-left.png">
+      <LogicalName>chevron-left.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\chevron-right.png">
+      <LogicalName>chevron-right.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\file-image.png">
+      <LogicalName>file-image.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Image Cleanup Tool\TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\mfractor_logo_32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <LogicalName>mfractor_logo_32.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

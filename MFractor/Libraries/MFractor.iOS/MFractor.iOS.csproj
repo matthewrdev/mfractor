@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Fonts\MFractor.Fonts.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Images\Usage Finders\" />
+  </ItemGroup>
+</Project>

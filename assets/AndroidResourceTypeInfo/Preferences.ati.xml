@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Preferences">
+	<Description Locale="en" Content="Provides support for building preferences screens via an xml configuration."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/ui/settings.html"/>
+	<Node Name="Preference" Abstract="true" Required="false">
+		<Description Locale="en" Content=""/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:defaultValue" TypesCSV="string,integer,boolean,float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The default value for the preference, which will be set either if persistence is off or persistence is on and the preference is not found in the persistent storage."/>
+		</Parameter>
+		<Parameter Name="android:dependency" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The key of another Preference that this Preference will depend on. If the other Preference is not set or is off, this Preference will be disabled."/>
+		</Parameter>
+		<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Whether the Preference is enabled."/>
+		</Parameter>
+		<Parameter Name="android:fragment" TypesCSV="class:android.app.Fragment" Inputs="Value">
+			<Description Locale="en" Content="When used inside of a modern PreferenceActivity, this declares a new PreferenceFragment to be shown when the user selects this item."/>
+		</Parameter>
+		<Parameter Name="android:icon" TypesCSV="drawable,mipmap" Inputs="Reference">
+			<Description Locale="en" Content="The optional icon for the preference"/>
+		</Parameter>
+		<Parameter Name="android:key" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The key to store the Preference value."/>
+		</Parameter>
+		<Parameter Name="android:layout" TypesCSV="layout" Inputs="Reference">
+			<Description Locale="en" Content="The layout for the Preference in a PreferenceActivity screen. This should rarely need to be changed, look at widgetLayout instead."/>
+		</Parameter>
+		<Parameter Name="android:order" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The order for the Preference (lower values are to be ordered first). If this is not specified, the default ordering will be alphabetic."/>
+		</Parameter>
+		<Parameter Name="android:persistent" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Whether the Preference stores its value to the shared preferences."/>
+		</Parameter>
+		<Parameter Name="android:selectable" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Whether the Preference is selectable."/>
+		</Parameter>
+		<Parameter Name="android:shouldDisplayView" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Whether the view of this Preference should be disabled when this Preference is disabled."/>
+		</Parameter>
+		<Parameter Name="android:summary" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen."/>
+		</Parameter>
+		<Parameter Name="android:title" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The title for the Preference in a PreferenceActivity screen."/>
+		</Parameter>
+		<Parameter Name="android:widgetLayout" TypesCSV="layout" Inputs="Reference">
+			<Description Locale="en" Content="The layout for the controllable widget portion of a Preference. This is inflated into the layout for a Preference and should be used more frequently than the layout attribute. For example, a checkbox preference would specify a custom layout (consisting of just the CheckBox) here."/>
+		</Parameter>
+		<Node Name="intent" Abstract="false" Required="false">
+			<Description Locale="en" Content="In some cases, you might want a preference item to open a different activity instead of a settings screen, such as a web browser to view a web page. To invoke an Intent when the user selects a preference item, add an 'intent' element as a child of the corresponding 'Preference' element."/>
+			<Parameter Name="android:action" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The action to assign, as per the setAction() method."/>
+			</Parameter>
+			<Parameter Name="android:data" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The data to assign, as per the setData() method."/>
+			</Parameter>
+			<Parameter Name="android:mimeType" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The MIME type to assign, as per the setType() method."/>
+			</Parameter>
+			<Parameter Name="android:targetClass" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The class part of the component name, as per the setComponent() method."/>
+			</Parameter>
+			<Parameter Name="android:targetPackage" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The package part of the component name, as per the setComponent() method."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="PreferenceScreen" Abstract="false" Required="false">
+		<Description Locale="en" Content="Represents a top-level Preference that is the root of a Preference hierarchy. A PreferenceActivity points to an instance of this class to show the preferences. To instantiate this class, use createPreferenceScreen(Context)."/>
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Preferences"/>
+			<ModifierArgument Name="RootOnly" Value="false"/>
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Preferences"/>
+			<ModifierArgument Name="Node" Value="PreferenceGroup"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="DialogPreference" Abstract="true" Required="false">	
+			<Description Locale="en" Content="A base class for Preference objects that are dialog-based. These preferences will, when clicked, open a dialog showing the actual preference controls."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="Preference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:dialogIcon" TypesCSV="drawable,mipmap" Inputs="Reference">
+				<Description Locale="en" Content="The icon for the dialog."/>
+			</Parameter>
+			<Parameter Name="android:dialogLayout" TypesCSV="layout" Inputs="Reference">
+				<Description Locale="en" Content="A layout to be used as the content View for the dialog. By default, this shouldn't be needed. If a custom DialogPreference is required, this should be set. For example, the EditTextPreference uses a layout with an EditText as this attribute."/>
+			</Parameter>
+			<Parameter Name="android:dialogMessage" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The message in the dialog. If a dialogLayout is provided and contains a TextView with ID android:id/message, this message will be placed in there."/>
+			</Parameter>
+			<Parameter Name="android:dialogTitle" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The title in the dialog."/>
+			</Parameter>
+			<Parameter Name="android:negativeButtonText" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The negative button text for the dialog. Set to @null to hide the negative button."/>
+			</Parameter>
+			<Parameter Name="android:positiveButtonText" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The positive button text for the dialog. Set to @null to hide the negative button."/>
+			</Parameter>
+		</Node>
+		<Node Name="PreferenceGroup" Abstract="true" Required="false">	
+			<Description Locale="en" Content="A container for multiple Preference objects. It is a base class for Preference objects that are parents, such as PreferenceCategory and PreferenceScreen."/>	
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Preferences"/>
+				<ModifierArgument Name="RootOnly" Value="false"/>
+			</Modifier>
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="Preference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:orderingFromXml" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Whether to order the Preference under this group as they appear in the XML file. If this is false, the ordering will follow the Preference order attribute and default to alphabetic for those without the order attribute."/>
+			</Parameter>
+		</Node>
+		<Node Name="PreferenceCategory" Abstract="false" Required="false">	
+			<Description Locale="en" Content="Used to group Preference objects and provide a disabled title above the group."/>	
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Preferences"/>
+				<ModifierArgument Name="RootOnly" Value="false"/>
+			</Modifier>
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="PreferenceGroup"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+		</Node>
+		<Node Name="RingtonePreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that allows the user to choose a ringtone from those on the device. The chosen ringtone's URI will be persisted as a string."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="Preference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:ringtoneType" TypesCSV="flag" Inputs="Value">
+				<Description Locale="en" Content="Which ringtone type(s) to show in the picker."/>
+				<ParameterValue Name="ringtone">
+					<Description Locale="en" Content="Ringtones."/>
+				</ParameterValue>
+				<ParameterValue Name="notification">
+					<Description Locale="en" Content="Notification sounds."/>
+				</ParameterValue>
+				<ParameterValue Name="alarm">
+					<Description Locale="en" Content="Alarm sounds."/>
+				</ParameterValue>
+				<ParameterValue Name="all">
+					<Description Locale="en" Content="All available ringtone sounds."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:showDefault" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Whether to show an item for a default sound."/>
+			</Parameter>
+			<Parameter Name="android:showSilent" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Whether to show an item for 'Silent'."/>
+			</Parameter>
+		</Node>
+		<Node Name="TwoStatePreference" Abstract="true" Required="false">	
+			<Description Locale="en" Content="Common base class for preferences that have two selectable states, persist a boolean value in SharedPreferences, and may have dependent preferences that are enabled/disabled based on the current state."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="Preference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+		</Node>
+		<Node Name="CheckBoxPreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that provides checkbox widget functionality."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="TwoStatePreference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:disableDependentsState" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The state (true for on, or false for off) that causes dependents to be disabled. By default, dependents will be disabled when this is unchecked, so the value of this preference is false."/>
+			</Parameter>
+			<Parameter Name="android:summaryOff" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen when the CheckBoxPreference is unchecked. If separate on/off summaries are not needed, the summary attribute can be used instead."/>
+			</Parameter>
+			<Parameter Name="android:summaryOn" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen when the CheckBoxPreference is checked. If separate on/off summaries are not needed, the summary attribute can be used instead."/>
+			</Parameter>
+		</Node>
+		<Node Name="SwitchPreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that provides a two-state toggleable option."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="TwoStatePreference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:disableDependentsState" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The state (true for on, or false for off) that causes dependents to be disabled. By default, dependents will be disabled when this is unchecked, so the value of this preference is false."/>
+			</Parameter>
+			<Parameter Name="android:summaryOff" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen when the CheckBoxPreference is unchecked. If separate on/off summaries are not needed, the summary attribute can be used instead."/>
+			</Parameter>
+			<Parameter Name="android:summaryOn" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen when the CheckBoxPreference is checked. If separate on/off summaries are not needed, the summary attribute can be used instead."/>
+			</Parameter>
+			<Parameter Name="android:switchTextOff" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The text used on the switch itself when in the 'off' state. This should be a very SHORT string, as it appears in a small space."/>
+			</Parameter>
+			<Parameter Name="android:switchTextOn" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The text used on the switch itself when in the 'on' state. This should be a very SHORT string, as it appears in a small space."/>
+			</Parameter>
+		</Node>
+		<Node Name="EditTextPreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that allows for string input. It is a subclass of DialogPreference and shows the EditText in a dialog. This EditText can be modified either programmatically via getEditText(), or through XML by setting any EditText attributes on the EditTextPreference. This preference will store a string into the SharedPreferences."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="DialogPreference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+		</Node>
+		<Node Name="ListPreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that displays a list of entries as a dialog. This preference will store a string into the SharedPreferences. This string will be the value from the setEntryValues(CharSequence[]) array."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="DialogPreference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:entries" TypesCSV="array" Inputs="Reference">
+				<Description Locale="en" Content="The human-readable array to present as a list. Each entry must have a corresponding index in entryValues."/>
+			</Parameter>
+			<Parameter Name="android:entryValues" TypesCSV="array" Inputs="Reference">
+				<Description Locale="en" Content="The array to find the value to save for a preference when an entry from entries is selected. If a user clicks on the second item in entries, the second item in this array will be saved to the preference."/>
+			</Parameter>
+		</Node>
+		<Node Name="MultiSelectListPreference" Abstract="false" Required="false">	
+			<Description Locale="en" Content="A Preference that displays a list of entries as a dialog. This preference will store a set of strings into the SharedPreferences. This set will contain one or more values from the setEntryValues(CharSequence[]) array."/>	
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Preferences"/>
+				<ModifierArgument Name="Node" Value="DialogPreference"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+			<Parameter Name="android:entries" TypesCSV="array" Inputs="Reference">
+				<Description Locale="en" Content="The human-readable array to present as a list. Each entry must have a corresponding index in entryValues."/>
+			</Parameter>
+			<Parameter Name="android:entryValues" TypesCSV="array" Inputs="Reference">
+				<Description Locale="en" Content="The array to find the value to save for a preference when an entry from entries is selected. If a user clicks on the second item in entries, the second item in this array will be saved to the preference."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

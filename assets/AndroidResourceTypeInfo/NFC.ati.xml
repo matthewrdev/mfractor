@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="NFC"> 
+	<Description Locale="en" Content="Provides support for building and configuring the NFC technologies an application supports."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/connectivity/nfc/nfc.html"/>
+	<Node Name="resources" Abstract="false" Required="false">
+		<Description Locale="en" Content="Defines a set of NFC technologies supported by an Activity."/>
+		<Parameter Name="xmlns:xliff" RequirementBehaviour="Always" TypesCSV="XML Namespace" Inputs="ExactValue"  RequiredValue="urn:oasis:names:tc:xliff:document:1.2" DefaultValue="urn:oasis:names:tc:xliff:document:1.2"> 
+			<Description Locale="en" Content="Defines the XML namespace for the NFC configuratoin, which must be 'urn:oasis:names:tc:xliff:document:1.2'."/>
+		</Parameter>
+		<Node Name="tech-list" Abstract="false" Required="false">
+			<Description Locale="en" Content="A set of 'tech' elements supported by an Activity."/>
+			<Node Name="tech" Abstract="false" Required="false">
+				<Description Locale="en" Content="A supported NFC technology such as 'android.nfc.tech.IsoDep'"/>
+			</Node>
+		</Node>
+	</Node>
+</Module>

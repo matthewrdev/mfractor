@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <!--  <Target Name="GenerateT4ScriptContent">
+    <Message Text="Restoring t4 script content..." />
+    <Exec Command="../../Build/TextTransform.bat Properties/ProductInfo.tt" Condition="'$(OS)' != 'Unix'" />
+    <Exec Command="../../Build/TextTransform.sh Properties/ProductInfo.tt" Condition="'$(OS)' == 'Unix'" />
+  </Target>-->
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{1EF304DB-4157-4ED9-821D-5861DC191D7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MFractor.VS.Windows</RootNamespace>
+    <AssemblyName>MFractor.VS.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <UseCodebase>true</UseCodebase>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>true</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>true</CopyOutputSymbolsToOutputDirectory>
+    <StartAction>Program</StartAction>
+    <StartProgram Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;VS_WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;VS_WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Adornments\ColorAdornment.cs" />
+    <Compile Include="Adornments\GridIndexAdornment.cs" />
+    <Compile Include="Adornments\LabelAdornment.cs" />
+    <Compile Include="Commands\IdeCommandAdapter.cs" />
+    <Compile Include="IdeDispatcher.cs" />
+    <Compile Include="Services\IdeXmlFormattingPolicy.cs" />
+    <Compile Include="Services\ImagePicker.cs" />
+    <Compile Include="Services\LicenseSigningInformation.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\UrlLauncher.cs" />
+    <Compile Include="Services\XmlFormattingPolicyService.cs" />
+    <Compile Include="Tooltips\Fonts\FontGlyphTooltipViewElementFactory.cs" />
+    <Compile Include="Tooltips\Fonts\FontPreviewTooltipViewElementFactory.cs" />
+    <Compile Include="Tooltips\Thicknesses\ThicknessTooltipViewElementFactory.cs" />
+    <Compile Include="UI\Controls\AppIcon.xaml.cs">
+      <DependentUpon>AppIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\IconImporterDialog.xaml.cs">
+      <DependentUpon>IconImporterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tooltips\Text Content\TextContentTooltipViewElementFactory.cs" />
+    <Compile Include="Utilities\BitmapImageHelper.cs" />
+    <Compile Include="Utilities\ResourceAccessor.cs" />
+    <Compile Include="Utilities\TextColorHelper.cs" />
+    <Compile Include="Utilities\UIHelpers.cs" />
+    <Compile Include="Views\BrandedFooter.cs" />
+    <Compile Include="Views\ClickableLabel.cs" />
+    <Compile Include="Views\ColorTooltipView.cs" />
+    <Compile Include="Views\FontGlyphTooltipView.cs" />
+    <Compile Include="Views\FontTextTooltipView.cs" />
+    <Compile Include="Views\ImageFileTooltipView.cs" />
+    <Compile Include="Views\ThicknessPreviewView.cs" />
+    <Compile Include="Work Unit Handlers\ImportIconWizardWorkUnitHandler.cs" />
+    <Compile Include="Views\TextContentTooltipView.cs" />
+    <Compile Include="Work Unit Handlers\Navigation\NavigationTableDataSource.cs" />
+    <Compile Include="Work Unit Handlers\Navigation\NavigationTableEntriesSnapshot.cs" />
+    <Compile Include="Work Unit Handlers\SetBuildActionWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\ImportImageAssetWorkUnitHandler.cs" />
+    <Compile Include="Services\IdeImageImporterService.cs" />
+    <Compile Include="Services\IdeTextReplacementService.cs" />
+    <Compile Include="Utilities\CoreExtensions.cs" />
+    <Compile Include="Workspace Model\FileSystemProjectFile.cs" />
+    <Compile Include="Workspace Model\IMutableWorkspaceShadowModel.cs" />
+    <Compile Include="Workspace Model\IWorkspaceShadowModel.cs" />
+    <Compile Include="Services\MachineIdentificationService.cs" />
+    <Compile Include="source.extension.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>source.extension.vsixmanifest</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\BaseDialogWindow.cs" />
+    <Compile Include="UI\Dialogs\ImageImporterDialog.xaml.cs">
+      <DependentUpon>ImageImporterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IdeWorkEngine.cs" />
+    <Compile Include="MFractor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFractor.vsct</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\OptionsPageHeader.xaml.cs">
+      <DependentUpon>OptionsPageHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Resources.xaml.cs">
+      <DependentUpon>Resources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ValueConverters\FalseToVisibleConverter.cs" />
+    <Compile Include="UI\ValueConverters\TrueToVisibileConverter.cs" />
+    <Compile Include="UI\ValueConverters\EmptyCollectionVisibilityConverter.cs" />
+    <Compile Include="UI\ViewModels\ChooseImageCommand.cs" />
+    <Compile Include="UI\ViewModels\ImageImportPreviewViewModel.cs" />
+    <Compile Include="UI\ViewModels\ImageImporterTargetProjectViewModel.cs" />
+    <Compile Include="Work Unit Handlers\IdeCreateProjectFileWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\NavigateToFileSpanWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\NavigateToFileSpansResponseHandler.cs" />
+    <Compile Include="Work Unit Handlers\NavigateToSymbolWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\OpenFileWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\OpenImageManagerWorkUnitHandler.cs" />
+    <Compile Include="Work Unit Handlers\OpenPreferencesWorkUnitHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Work Unit Handlers\SelectFileInProjectPadWorkUnitHandler.cs" />
+    <Compile Include="Services\DialogsService.cs" />
+    <Compile Include="ToolWindows\ImageAssetsToolWindow.cs" />
+    <Compile Include="Utilities\IdeEnvironmentDetails.cs" />
+    <Compile Include="Utilities\ITextViewExtensions.cs" />
+    <Compile Include="Utilities\PackageHelper.cs" />
+    <Compile Include="Utilities\DteProjectHelper.cs" />
+    <Compile Include="Utilities\WorkspaceHelper.cs" />
+    <Compile Include="Tooltips\Code Issue\CodeIssueTooltipViewElementFactory.cs" />
+    <Compile Include="Tooltips\Colors\ColorTooltipViewElementFactory.cs" />
+    <Compile Include="Tooltips\Images\ImageTooltipViewElementFactory.cs" />
+    <Compile Include="Views\CodeIssueView.cs" />
+    <Compile Include="Options\CodeAnalysisPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\DeleteOutputOptions.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\FormattingPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\OptionsPageAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\SettingsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MFractorPackage.cs" />
+    <Compile Include="IdeExportResolver.cs" />
+    <Compile Include="Services\IdeWorkspaceService.cs" />
+    <Compile Include="Services\TextEditorFactory.cs" />
+    <Compile Include="Services\RootWindowService.cs" />
+    <Compile Include="Services\IdeSolutionPad.cs" />
+    <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\IdeUserOptions.cs" />
+    <Compile Include="Services\ProductInformation.cs" />
+    <Compile Include="Workspace Model\IdeProjectFolder.cs" />
+    <Compile Include="Workspace Model\IdeProjectFile.cs" />
+    <Compile Include="Services\CodeFormattingPolicyService.cs" />
+    <Compile Include="Services\CodeSnippetService.cs" />
+    <Compile Include="Services\ActiveDocument.cs" />
+    <Compile Include="UI\ViewModels\ImageImporterViewModel.cs" />
+    <Compile Include="Workspace Model\IdeProject.cs" />
+    <Compile Include="Workspace Model\IdeSolution.cs" />
+    <Compile Include="Workspace Model\WorkspaceShadowModel.cs" />
+    <Compile Include="Workspace\VSWinWorkspaceProjectService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\end-user-license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="libSkiaSharp.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+      <Generator>VsixManifestGenerator</Generator>
+      <LastGenOutput>source.extension.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0" Condition="'$(OS)' != 'Unix'" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.LanguageServices">
+      <Version>4.5.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.1.32210.191" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xwt">
+      <Version>0.2.251</Version>
+    </PackageReference>
+    <PackageReference Include="Xwt.WPF">
+      <Version>0.2.251</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\ProductInfo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\MFractor.Android\MFractor.Android.csproj">
+      <Project>{59ea543a-afc6-4bf4-a5bc-605851d4bd73}</Project>
+      <Name>MFractor.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Code\MFractor.Code.csproj">
+      <Project>{b61277dc-b39c-4ca1-a1ff-cafd8cdb10ca}</Project>
+      <Name>MFractor.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.CSharp\MFractor.CSharp.csproj">
+      <Project>{01a11926-a8e1-4a1b-a7b3-90df7c9b0f12}</Project>
+      <Name>MFractor.CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Fonts\MFractor.Fonts.csproj">
+      <Project>{72888130-6ec7-4098-a309-2f0761a37cff}</Project>
+      <Name>MFractor.Fonts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Ide\MFractor.Ide.csproj">
+      <Project>{da2eb984-bf75-491b-9f4b-b7d2497e0721}</Project>
+      <Name>MFractor.Ide</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Maui\MFractor.Maui.csproj">
+      <Project>{2aebf345-7438-42eb-a9f1-77f5cbb2bd58}</Project>
+      <Name>MFractor.Maui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.i18n\MFractor.i18n.csproj">
+      <Project>{6d460946-d1f6-43dc-ad3c-20bc07ed6d2a}</Project>
+      <Name>MFractor.i18n</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Images\MFractor.Images.csproj">
+      <Project>{92f5f145-8d5a-4c03-8960-179855bc0ae2}</Project>
+      <Name>MFractor.Images</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.iOS\MFractor.iOS.csproj">
+      <Project>{427f7765-e6ef-4130-a607-025093ba3b8f}</Project>
+      <Name>MFractor.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Linker\MFractor.Linker.csproj">
+      <Project>{8f20cfa7-f50d-48a4-b054-34bb920cd6b1}</Project>
+      <Name>MFractor.Linker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Localisation\MFractor.Localisation.csproj">
+      <Project>{cf634cdc-15ed-4fdf-a7e7-28ba434ec491}</Project>
+      <Name>MFractor.Localisation</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.MSBuild\MFractor.MSBuild.csproj">
+      <Project>{19051b25-a066-4899-a3e3-e0a7b9e8f1ae}</Project>
+      <Name>MFractor.MSBuild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Workspace\MFractor.Workspace.csproj">
+      <Project>{AA73066A-756A-4FBD-8C6A-4D9DA20C0892}</Project>
+      <Name>MFractor.Workspace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor.Xml\MFractor.Xml.csproj">
+      <Project>{3bc1224b-4fcd-4318-bf48-62d2785fad47}</Project>
+      <Name>MFractor.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\MFractor\MFractor.csproj">
+      <Project>{6a3d1be5-6a2b-48d4-ae92-51dd32f98324}</Project>
+      <Name>MFractor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Licensing\MFractor.Portable.Licensing\MFractor.Portable.Licensing.csproj">
+      <Project>{6e25382a-c6f4-45c4-8c16-84183eea3902}</Project>
+      <Name>MFractor.Portable.Licensing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Third Party\MFractor.Tinify\MFractor.Tinify.csproj">
+      <Project>{a9d0782a-ecaf-42f8-aee4-30508e645978}</Project>
+      <Name>MFractor.Tinify</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\exclamation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\mfractor_logo_grayscale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\wand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="libSkiaSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="logo-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="logo-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Resource Include="Assets\mfractor_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\Book.png" />
+    <Content Include="Resources\Clean.png" />
+    <Content Include="Resources\CodeBehind.png" />
+    <Content Include="Resources\Compress.png" />
+    <Content Include="Resources\Email.png" />
+    <Content Include="Resources\Feedback.png" />
+    <Content Include="Resources\Gitter.png" />
+    <Content Include="Resources\ImportAppIcon.png" />
+    <Content Include="Resources\ImportFont.png" />
+    <Content Include="Resources\ImportImage.png" />
+    <Content Include="Resources\License.png" />
+    <Content Include="Resources\Localization.png" />
+    <EmbeddedResource Include="Resources\logo-16.png" />
+    <Content Include="Resources\ManageImageAssets.png" />
+    <Content Include="Resources\MFractorIcon.png" />
+    <Content Include="Resources\Mvvm.png" />
+    <Content Include="Resources\Settings.png" />
+    <Content Include="Resources\Slack.png" />
+    <Content Include="Resources\Synchronize.png" />
+    <Content Include="Resources\Twitter.png" />
+    <Content Include="Resources\ValueConverter.png" />
+    <Content Include="Resources\ViewModel.png" />
+    <Content Include="Resources\Xaml.png" />
+    <Content Include="SkiaSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="_libs\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Resources\MainMenuCommand.png" />
+    <VSCTCompile Include="MFractor.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+      <Generator>VsctGenerator</Generator>
+      <LastGenOutput>MFractor.cs</LastGenOutput>
+    </VSCTCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\Controls\AppIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\IconImporterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Dialogs\ImageImporterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\OptionsPageHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="x86\" />
+  </ItemGroup>
+  <Import Project="..\Libraries\MFractor.Editor\MFractor.Editor.projitems" Label="Shared" />
+  <Import Project="..\Libraries\MFractor.Views\MFractor.Views.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

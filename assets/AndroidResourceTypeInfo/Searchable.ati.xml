@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Searchable">
+	<!-- Starts from http://developer.android.com/reference/android/view/View.html#attr_android:accessibilityLiveRegion -->
+	<Description Locale="en" Content="Provies support for defining xml configurations that implement search with assistance from the Android system. That is, delivering search queries to an activity and provide search suggestions."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/search/searchable-config.html"/>
+	<Node Name="searchable" Abstract="false" Required="false">
+		<Description Locale="en" Content="Defines all search configurations used by the Android system to provide assisted search."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:label" RequirementBehaviour="Always" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="The name of your application. It should be the same as the name applied to the android:label attribute of your 'activity' or 'application' manifest element. This label is only visible to the user when you set android:includeInGlobalSearch to 'true', in which case, this label is used to identify your application as a searchable item in the system's search settings."/>
+		</Parameter>
+		<Parameter Name="android:hint" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="The text to display in the search text field when no text has been entered. It provides a hint to the user about what content is searchable. For consistency with other Android applications, you should format the string for android:hint as 'Search content-or-product'. For example, 'Search songs and artists' or 'Search YouTube'."/>
+		</Parameter>
+		<Parameter Name="android:searchMode" TypesCSV="keyword" Inputs="Value" > 
+			<Description Locale="en" Content="Sets additional modes that control the search presentation. Currently available modes define how the query text should be rewritten when a custom suggestion receives focus."/>
+			<ParameterValue Name="queryRewriteFromText">
+				<Description Locale="en" Content="Use the value from the SUGGEST_COLUMN_TEXT_1 column to rewrite the query text."/>
+			</ParameterValue>
+			<ParameterValue Name="queryRewriteFromData">
+				<Description Locale="en" Content="Use the value from the SUGGEST_COLUMN_INTENT_DATA column to rewrite the query text. This should only be used when the values in SUGGEST_COLUMN_INTENT_DATA are suitable for user inspection and editing, typically HTTP URI's."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:searchButtonText" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="The text to display in the button that executes search. By default, the button shows a search icon (a magnifying glass), which is ideal for internationalization, so you should not use this attribute to change the button unless the behavior is something other than a search (such as a URL request in a web browser)."/>
+		</Parameter>
+		<Parameter Name="android:inputType" TypesCSV="flag" Inputs="Value" > 
+			<Description Locale="en" Content="Defines the type of input method (such as the type of soft keyboard) to use. For most searches, in which free-form text is expected, you don't need this attribute."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="There is no content type. The text is not editable."/>
+			</ParameterValue>
+			<ParameterValue Name="text">
+				<Description Locale="en" Content="Just plain old text. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapCharacters">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of all characters. Corresponds to TYPE_TEXT_FLAG_CAP_CHARACTERS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapWords">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every word. Corresponds to TYPE_TEXT_FLAG_CAP_WORDS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapSentences">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every sentence. Corresponds to TYPE_TEXT_FLAG_CAP_SENTENCES."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoCorrect">
+				<Description Locale="en" Content="Can be combined with text and its variations to request auto-correction of text being input. Corresponds to TYPE_TEXT_FLAG_AUTO_CORRECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoComplete">
+				<Description Locale="en" Content="Can be combined with text and its variations to specify that this field will be doing its own auto-completion and talking with the input method appropriately. Corresponds to TYPE_TEXT_FLAG_AUTO_COMPLETE."/>
+			</ParameterValue>
+			<ParameterValue Name="textMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to allow multiple lines of text in the field. If this flag is not set, the text field will be constrained to a single line. Corresponds to TYPE_TEXT_FLAG_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textImeMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that though the regular text view should not be multiple lines, the IME should provide multiple lines if it can. Corresponds to TYPE_TEXT_FLAG_IME_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textNoSuggestions">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that the IME should not show any dictionary-based word suggestions. Corresponds to TYPE_TEXT_FLAG_NO_SUGGESTIONS."/>
+			</ParameterValue>
+			<ParameterValue Name="textUri">
+				<Description Locale="en" Content="Text that will be used as a URI. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_URI."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailSubject">
+				<Description Locale="en" Content="Text that is being supplied as the subject of an e-mail. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_SUBJECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textShortMessage">
+				<Description Locale="en" Content="Text that is the content of a short message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_SHORT_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textLongMessage">
+				<Description Locale="en" Content="Text that is the content of a long message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_LONG_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textPersonName">
+				<Description Locale="en" Content="Text that is the name of a person. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PERSON_NAME."/>
+			</ParameterValue>
+			<ParameterValue Name="textPostalAddress">
+				<Description Locale="en" Content="Text that is being supplied as a postal mailing address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_POSTAL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textPassword">
+				<Description Locale="en" Content="Text that is a password. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textVisiblePassword">
+				<Description Locale="en" Content="Text that is a password that should be visible. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEditText">
+				<Description Locale="en" Content="Text that is being supplied as text in a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EDIT_TEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="textFilter">
+				<Description Locale="en" Content="Text that is filtering some other data. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_FILTER."/>
+			</ParameterValue>
+			<ParameterValue Name="textPhonetic">
+				<Description Locale="en" Content="Text that is for phonetic pronunciation, such as a phonetic name field in a contact entry. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PHONETIC."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebPassword">
+				<Description Locale="en" Content="Text that will be used as a password on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="number">
+				<Description Locale="en" Content="A numeric only field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberSigned">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a signed number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_SIGNED."/>
+			</ParameterValue>
+			<ParameterValue Name="numberDecimal">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a decimal (fractional) number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberPassword">
+				<Description Locale="en" Content="A numeric password field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="phone">
+				<Description Locale="en" Content="For entering a phone number. Corresponds to TYPE_CLASS_PHONE."/>
+			</ParameterValue>
+			<ParameterValue Name="datetime">
+				<Description Locale="en" Content="For entering a date and time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="date">
+				<Description Locale="en" Content="For entering a date. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_DATE."/>
+			</ParameterValue>
+			<ParameterValue Name="time">
+				<Description Locale="en" Content="For entering a time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_TIME."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:imeOptions" TypesCSV="flag" Inputs="Value" DefaultValue="actionSearch"> 
+			<Description Locale="en" Content=" Supplies additional options for the input method. For most searches, in which free-form text is expected, you don't need this attribute. The default IME is 'actionSearch' (provides the 'search' button instead of a carriage return in the soft keyboard)."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="There are no special semantics associated with this editor."/>
+			</ParameterValue>
+			<ParameterValue Name="actionUnspecified">
+				<Description Locale="en" Content="There is no specific action associated with this editor, let the editor come up with its own if it can. Corresponds to IME_NULL."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNone">
+				<Description Locale="en" Content="This editor has no action associated with it. Corresponds to IME_ACTION_NONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionGo">
+				<Description Locale="en" Content="The action key performs a 'go' operation to take the user to the target of the text they typed. Typically used, for example, when entering a URL. Corresponds to IME_ACTION_GO."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSearch">
+				<Description Locale="en" Content="The action key performs a 'search' operation, taking the user to the results of searching for the text the have typed (in whatever context is appropriate). Corresponds to IME_ACTION_SEARCH."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSend">
+				<Description Locale="en" Content="The action key performs a 'send' operation, delivering the text to its target. This is typically used when composing a message. Corresponds to IME_ACTION_SEND."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNext">
+				<Description Locale="en" Content="The action key performs a 'next' operation, taking the user to the next field that will accept text. Corresponds to IME_ACTION_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="actionDone">
+				<Description Locale="en" Content="The action key performs a 'done' operation, closing the soft input method. Corresponds to IME_ACTION_DONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionPrevious">
+				<Description Locale="en" Content="The action key performs a 'previous' operation, taking the user to the previous field that will accept text. Corresponds to IME_ACTION_PREVIOUS."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoFullscreen">
+				<Description Locale="en" Content="Used to request that the IME never go into fullscreen mode. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigatePrevious">
+				<Description Locale="en" Content="Like flagNavigateNext, but specifies there is something interesting that a backward navigation can focus on. If the user selects the IME's facility to backward navigate, this will show up in the application as an actionPrevious at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigateNext">
+				<Description Locale="en" Content="Used to specify that there is something interesting that a forward navigation can focus on. This is like using actionNext, except allows the IME to be multiline (with an enter key) as well as provide forward navigation. Note that some IMEs may not be able to do this, especially when running on a small screen where there is little space. In that case it does not need to present a UI for this option. Like actionNext, if the user selects the IME's facility to forward navigate, this will show up in the application at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NAVIGATE_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoExtractUi">
+				<Description Locale="en" Content="Used to specify that the IME does not need to show its extracted text UI. For input methods that may be fullscreen, often when in landscape mode, this allows them to be smaller and let part of the application be shown behind. Though there will likely be limited access to the application available from the user, it can make the experience of a (mostly) fullscreen IME less jarring. Note that when this flag is specified the IME may not be set up to be able to display text, so it should only be used in situations where this is not needed. Corresponds to IME_FLAG_NO_EXTRACT_UI."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoAccessoryAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available as an accessory button when the input method is full-screen. Note that by setting this flag, there can be cases where the action is simply never available to the user. Setting this generally means that you think showing text being edited is more important than the action you have supplied. Corresponds to IME_FLAG_NO_ACCESSORY_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoEnterAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available in-line as a replacement for the 'enter' key. Typically this is because the action has such a significant impact or is not recoverable enough that accidentally hitting it should be avoided, such as sending a message. Note that TextView will automatically set this flag for you on multi-line text views. Corresponds to IME_FLAG_NO_ENTER_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagForceAscii">
+				<Description Locale="en" Content="Used to request that the IME should be capable of inputting ASCII characters. The intention of this flag is to ensure that the user can type Roman alphabet characters in a TextView used for, typically, account ID or password input. It is expected that IMEs normally are able to input ASCII even without being told so (such IMEs already respect this flag in a sense), but there could be some cases they aren't when, for instance, only non-ASCII input languagaes like Arabic, Greek, Hebrew, Russian are enabled in the IME. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. However, it is strongly recommended for IME authors to respect this flag especially when their IME could end up with a state that has only non-ASCII input languages enabled. Corresponds to IME_FLAG_FORCE_ASCII."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:searchSuggestAuthority" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="This value must match the authority string provided in the android:authorities attribute of the Android manifest 'provider' element."/>
+		</Parameter>
+		<Parameter Name="android:searchSuggestPath" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="This path is used as a portion of the suggestions query Uri, after the prefix and authority, but before the standard suggestions path. This is only required if you have a single content provider issuing different types of suggestions (such as for different data types) and you need a way to disambiguate the suggestions queries when you receive them."/>
+		</Parameter>
+		<Parameter Name="android:searchSuggestSelection" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="This value is passed into your query function as the selection parameter. Typically this is a WHERE clause for your database, and should contain a single question mark, which is a placeholder for the actual query string that has been typed by the user (for example, 'query=?'). However, you can also use any non-null value to trigger the delivery of the query text via the selectionArgs parameter (and then ignore the selection parameter)."/>
+		</Parameter>
+		<Parameter Name="android:searchSuggestIntentAction" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="The default intent action to be used when a user clicks on a custom search suggestion (such as 'android.intent.action.VIEW'). If this is not overridden by the selected suggestion (via the SUGGEST_COLUMN_INTENT_ACTION column), this value is placed in the action field of the Intent when the user clicks a suggestion."/>
+		</Parameter>
+		<Parameter Name="android:searchSuggestIntentData" TypesCSV="string" Inputs="ValueOrReference" > 
+			<Description Locale="en" Content="The default intent data to be used when a user clicks on a custom search suggestion. If not overridden by the selected suggestion (via the SUGGEST_COLUMN_INTENT_DATA column), this value is placed in the data field of the Intent when the user clicks a suggestion."/>
+		</Parameter>
+		<Parameter Name="android:searchSuggestThreshold" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="0"> 
+			<Description Locale="en" Content="The minimum number of characters needed to trigger a suggestion look-up. Only guarantees that the system will not query your content provider for anything shorter than the threshold. The default value is 0."/>
+		</Parameter>
+		<Parameter Name="android:includeInGlobalSearch" TypesCSV="boolean" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Required to provide search suggestions in Quick Search Box.) Set to 'true' if you want your suggestions to be included in the globally accessible Quick Search Box. The user must still enable your application as a searchable item in the system search settings before your suggestions will appear in Quick Search Box."/>
+		</Parameter>
+		<Parameter Name="android:searchSettingsDescription" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Provides a brief description of the search suggestions that you provide to Quick Search Box, which is displayed in the searchable items entry for your application. Your description should concisely describe the content that is searchable. For example, 'Artists, albums, and tracks' for a music application, or 'Saved notes' for a notepad application."/>
+		</Parameter>
+		<Parameter Name="android:queryAfterZeroResults" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="false"> 
+			<Description Locale="en" Content="Set to 'true' if you want your content provider to be invoked for supersets of queries that have returned zero results in the past. For example, if your content provider returned zero results for 'bo', it should be requiried for 'bob'. If set to 'false', supersets are ignored for a single session ('bob' does not invoke a requery). This lasts only for the life of the search dialog or the life of the activity when using the search widget (when the search dialog or activity is reopened, 'bo' queries your content provider again). The default value is false."/>
+		</Parameter>
+		<Parameter Name="android:voiceSearchMode" TypesCSV="flag" Inputs="Value"> 
+			<Description Locale="en" Content="(Required to provide voice search capabilities.) Enables voice search, with a specific mode for voice search. (Voice search may not be provided by the device, in which case these flags have no effect.)"/>
+			<ParameterValue Name="showVoiceSearchButton">
+				<Description Locale="en" Content="Display a voice search button, if voice search is available on the device. If set, then either 'launchWebSearch' or 'launchRecognizer' must also be set (separated by the pipe | character)."/>
+			</ParameterValue>
+			<ParameterValue Name="launchWebSearch">
+				<Description Locale="en" Content="The voice search button takes the user directly to a built-in voice web search activity. Most applications don't need this flag, as it takes the user away from the activity in which search was invoked."/>
+			</ParameterValue>
+			<ParameterValue Name="launchRecognizer">
+				<Description Locale="en" Content="The voice search button takes the user directly to a built-in voice recording activity. This activity prompts the user to speak, transcribes the spoken text, and forwards the resulting query text to the searchable activity, just as if the user typed it into the search UI and clicked the search button."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:voiceLanguageModel" TypesCSV="keyword" Inputs="ValueOrReference" DefaultValue="free_form"> 
+			<Description Locale="en" Content="The language model that should be used by the voice recognition system."/>
+			<ParameterValue Name="free_form">
+				<Description Locale="en" Content="Use free-form speech recognition for dictating queries. This is primarily optimized for English. This is the default."/>
+			</ParameterValue>
+			<ParameterValue Name="web_search">
+				<Description Locale="en" Content="Use web-search-term recognition for shorter, search-like phrases. This is available in more languages than 'free_form'."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:voicePromptText" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="An additional message to display in the voice input dialog."/>
+		</Parameter>
+		<Parameter Name="android:voiceLanguage" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The spoken language to be expected, expressed as the string value of a constants in Locale (such as 'de' for German or 'fr' for French). This is needed only if it is different from the current value of Locale.getDefault()."/>
+		</Parameter>
+		<Parameter Name="android:voiceMaxResults" TypesCSV="integer" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Forces the maximum number of results to return, including the 'best' result which is always provided as the ACTION_SEARCH intent's primary query. Must be 1 or greater. Use EXTRA_RESULTS to get the results from the intent. If not provided, the recognizer chooses how many results to return."/>
+		</Parameter>
+		<Node Name="actionkey" Abstract="false" Required="false">
+			<Description Locale="en" Content="Defines a device key and behavior for a search action. A search action provides a special behavior at the touch of a button on the device, based on the current query or focused suggestion. For example, the Contacts application provides a search action to initiate a phone call to the currenly focused contact suggestion at the press of the CALL button. Not all action keys are available on every device, and not all keys are allowed to be overriden in this way. For example, the 'Home' key cannot be used and must always return to the home screen. Also be sure not to define an action key for a key that's needed for typing a search query. This essentially limits the available and reasonable action keys to the call button and menu button. Also note that action keys are not generally discoverable, so you should not provide them as a core user feature. You must define the android:keycode to define the key and at least one of the other three attributes in order to define the search action."/>
+			<Parameter Name="android:keycode" RequirementBehaviour="Always" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A key code from KeyEvent that represents the action key you wish to respond to (for example 'KEYCODE_CALL'). This is added to the ACTION_SEARCH intent that is passed to your searchable activity. To examine the key code, use getIntExtra(SearchManager.ACTION_KEY). Not all keys are supported for a search action, as many of them are used for typing, navigation, or system functions."/>
+			</Parameter>
+			<Parameter Name="android:queryActionMsg" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="An action message to be sent if the action key is pressed while the user is entering query text. This is added to the ACTION_SEARCH intent that the system passes to your searchable activity. To examine the string, use getStringExtra(SearchManager.ACTION_MSG)."/>
+			</Parameter>
+			<Parameter Name="android:queryActionMsg" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="An action message to be sent if the action key is pressed while the user is entering query text. This is added to the ACTION_SEARCH intent that the system passes to your searchable activity. To examine the string, use getStringExtra(SearchManager.ACTION_MSG)."/>
+			</Parameter>
+			<Parameter Name="android:suggestActionMsg" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="An action message to be sent if the action key is pressed while a suggestion is in focus. This is added to the intent that the system passes to your searchable activity (using the action you've defined for the suggestion). To examine the string, use getStringExtra(SearchManager.ACTION_MSG). This should only be used if all your suggestions support this action key. If not all suggestions can handle the same action key, then you must instead use the following android:suggestActionMsgColumn attribute."/>
+			</Parameter>
+			<Parameter Name="android:suggestActionMsgColumn" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The name of the column in your content provider that defines the action message for this action key, which is to be sent if the user presses the action key while a suggestion is in focus. This attribute lets you control the action key on a suggestion-by-suggestion basis, because, instead of using the android:suggestActionMsg attribute to define the action message for all suggestions, each entry in your content provider provides its own action message. First, you must define a column in your content provider for each suggestion to provide an action message, then provide the name of that column in this attribute. The system looks at your suggestion cursor, using the string provided here to select your action message column, and then select the action message string from the Cursor. That string is added to the intent that the system passes to your searchable activity (using the action you've defined for suggestions). To examine the string, use getStringExtra(SearchManager.ACTION_MSG). If the data does not exist for the selected suggestion, the action key is ignored."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

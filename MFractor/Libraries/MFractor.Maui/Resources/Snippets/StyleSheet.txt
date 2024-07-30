@@ -1,0 +1,3 @@
+﻿$control$  {
+    margin:10;
+}

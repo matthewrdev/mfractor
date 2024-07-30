@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="values" Name="Styles">
+	<Description Locale="en" Content="Support for defining custom styles and extending existing styles."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/ui/themes.html"/>
+	<Node Name="resources" Abstract="false" Required="true">
+		<Description Locale="en" Content="This must be the root node."/>
+		<Node Name="style" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="styles.xml"/>
+			<Description Locale="en" Content="Defines a single style. Contains 'item' elements."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the style, which is used as the resource ID to apply the style to a View, Activity, or application."/>
+			</Parameter>
+			<Parameter Name="parent" RequirementBehaviour="Optional" TypesCSV="style" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a style from which this style should inherit style properties."/>
+			</Parameter>
+			<Node Name="item" Abstract="false" Required="true">
+				<Description Locale="en" Content="Defines a single property for the style. Must be a child of a 'style' element."/>
+				<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="attribute" Inputs="Reference">
+					<Description Locale="en" Content="The name of the style property to be defined, with a package prefix if necessary (for example android:textColor)."/>
+				</Parameter>
+			</Node>
+		</Node> 
+	</Node>
+</Module>

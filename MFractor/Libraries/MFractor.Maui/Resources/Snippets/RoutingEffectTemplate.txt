@@ -1,0 +1,12 @@
+﻿using System;
+using Xamarin.Forms;
+
+namespace $namespace$
+{
+    public class $name$ : RoutingEffect
+    {
+        public $name$() : base("$group_name$.$name$")
+        {
+        }
+    }
+}

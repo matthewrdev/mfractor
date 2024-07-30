@@ -1,0 +1,9 @@
+﻿using System;
+
+namespace $namespace$
+{
+    [AttributeUsage(AttributeTargets.Class)]
+    public class $name$ : Attribute
+    {
+    }
+}

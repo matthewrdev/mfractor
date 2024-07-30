@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.Net.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>MFractor.VS.Mac</RootNamespace>
+    <AssemblyName>MFractor.VS.Mac</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <DefineConstants>$(DefineConstants);VS_MAC</DefineConstants>
+    <IsAddin>true</IsAddin>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AddinReference Include="MonoDevelop.MonoAndroid" />
+    <AddinReference Include="MonoDevelop.Refactoring" />
+    <AddinReference Include="MonoDevelop.Xml" />
+    <AddinReference Include="MonoDevelop.PackageManagement" />
+    <AddinReference Include="MonoDevelop.Debugger" />
+    <AddinReference Include="MonoDevelop.CSharpBinding" />
+    <AddinReference Include="MonoDevelop.Xamarin.Ide" />
+    <AddinReference Include="MonoDevelop.DesignerSupport" />
+    <AddinReference Include="MonoDevelop.TextEditor" />
+    <AddinReference Include="MonoDevelop.IPhone" />
+    <AddinReference Include="MonoDevelop.MacDev" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AddinFile Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\libSkiaSharp.dll" Condition="Exists('$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\libSkiaSharp.dll')">
+      <Link>x64\libSkiaSharp.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="$(PreferredWindowsNativeSkiaSharpPath)" Condition=" Exists('$(PreferredWindowsNativeSkiaSharpPath)') ">
+      <Link>libSkiaSharp.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="$(PreferredOSXNativeSkiaSharpPath)" Condition=" Exists('$(PreferredOSXNativeSkiaSharpPath)') ">
+      <Link>libSkiaSharp.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="libSkiaSharp.dylib" />
+    <AddinFile Include="SkiaSharp.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\android-icon-mini.png" />
+    <EmbeddedResource Include="Assets\android-icon.png" />
+    <EmbeddedResource Include="Assets\code-16.png">
+      <LogicalName>code-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\color-picker-16.png">
+      <LogicalName>color-picker-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\css-16.png">
+      <LogicalName>css-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\logo-16.png" />
+    <EmbeddedResource Include="Assets\logo_prefs.png" />
+    <EmbeddedResource Include="Assets\pencil.png" />
+    <EmbeddedResource Include="Assets\wand-16.png">
+      <LogicalName>wand-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\feather-box-16.png">
+      <LogicalName>feather-box-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\exchange-16.png">
+      <LogicalName>exchange-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\crosshairs-16.png">
+      <LogicalName>crosshairs-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\eye-16.png">
+      <LogicalName>eye-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\grid-column-16.png">
+      <LogicalName>grid-column-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\grid-row-16.png">
+      <LogicalName>grid-row-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\box-dynamic-resource-16.png">
+      <LogicalName>box-dynamic-resource-16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\font-icon-16.png" />
+    <EmbeddedResource Include="Assets\copy-16.png">
+      <LogicalName>copy-16.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\MFractor.Maui\MFractor.Maui.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.iOS\MFractor.iOS.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Linker\MFractor.Linker.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Localisation\MFractor.Localisation.csproj" />
+    <ProjectReference Include="..\Licensing\MFractor.Portable.Licensing\MFractor.Portable.Licensing.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Xml\MFractor.Xml.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Images\MFractor.Images.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Android\MFractor.Android.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.MSBuild\MFractor.MSBuild.csproj" />
+    <ProjectReference Include="..\Third Party\MFractor.Tinify\MFractor.Tinify.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor.Ide\MFractor.Ide.csproj" />
+    <ProjectReference Include="..\Libraries\MFractor\MFractor.csproj" />
+  </ItemGroup>
+
+  <!-- Shared Project Imports -->
+  <Import Project="..\Libraries\MFractor.Views\MFractor.Views.projitems" Label="Shared" Condition="Exists('..\Libraries\MFractor.Views\MFractor.Views.projitems')" />
+  <Import Project="..\Libraries\MFractor.Editor\MFractor.Editor.projitems" Label="Shared" Condition="Exists('..\Libraries\MFractor.Editor\MFractor.Editor.projitems')" />
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="Microsoft.VisualStudioMac.Sdk" Version="17.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="libSkiaSharp.dylib" />
+    <None Remove="SkiaSharp.dll" />
+    <None Remove="Commands\Main Menu\Preferences\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\Main Menu\Preferences\" />
+  </ItemGroup>
+</Project>

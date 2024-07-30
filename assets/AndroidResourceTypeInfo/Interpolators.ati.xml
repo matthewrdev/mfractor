@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="anim" Name="Interpolator">
+ 	<Description Locale="en" Content="Provides support to Androids animation interpolators; an animation modifier defined in XML that affects the rate of change in an animation."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/reference/android/view/animation/Interpolator.html"/>
+	<Node Name="accelerateDecelerateInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="The rate of change starts and ends slowly but accelerates through the middle."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+	</Node>
+	<Node Name="accelerateInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="This must be the root node. Contains 'item' and/or 'group' elements."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+	</Node>
+	<Node Name="accelerateDecelerateInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en"  Content="The rate of change starts out slowly, then accelerates."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:factor" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="1.0">
+ 			<Description Locale="en" Content="The acceleration rate (default is 1)."/>
+		</Parameter>
+	</Node>
+	<Node Name="anticipateInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en"  Content="The change starts backward then flings forward."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:tension" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="2.0">
+ 			<Description Locale="en" Content="The amount of tension to apply (default is 2)."/>
+		</Parameter>
+	</Node>
+	<Node Name="anticipateOvershootInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en"  Content="The change starts backward, flings forward and overshoots the target value, then settles at the final value."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:tension" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="2.0">
+ 			<Description Locale="en" Content="The amount of tension to apply (default is 2)."/>
+		</Parameter>
+		<Parameter Name="android:extraTension" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="1.5">
+ 			<Description Locale="en" Content="The amount by which to multiply the tension (default is 1.5)."/>
+		</Parameter>
+	</Node>
+	<Node Name="bounceInterpolator" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="The change bounces at the end."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+	</Node>
+	<Node Name="cycleInterpolator" Abstract="false" Required="false" >
+ 		<Description Locale="en" Content="Repeats the animation for a specified number of cycles. The rate of change follows a sinusoidal pattern."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:tension" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="1">
+ 			<Description Locale="en" Content="The number of cycles (default is 1)."/>
+		</Parameter>
+	</Node>
+	<Node Name="decelerateInterpolator" Abstract="false" Required="false" >
+ 		<Description Locale="en" Content="The rate of change starts out quickly, then decelerates."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:factor" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="1.0">
+ 			<Description Locale="en" Content="The deceleration rate (default is 1)."/>
+		</Parameter>
+	</Node>
+	<Node Name="linearInterpolator" Abstract="false" Required="false" >
+ 		<Description Locale="en" Content="The rate of change is constant."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+	</Node>
+	<Node Name="overshootInterpolator" Abstract="false" Required="false" >
+ 		<Description Locale="en" Content="The change flings forward and overshoots the last value, then comes back."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="The name of the interpolator."/>
+		</Parameter>
+		<Parameter Name="android:tension" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="2.0">
+ 			<Description Locale="en" Content="The amount of tension to apply (default is 2)."/>
+		</Parameter>
+	</Node>
+</Module>

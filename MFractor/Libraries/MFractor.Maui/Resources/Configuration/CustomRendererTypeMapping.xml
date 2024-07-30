@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Renderers Platform="XamarinForms">
+  
+    <!-- Pages -->
+    <Map Type="Xamarin.Forms.ContentPage" Renderer="Xamarin.Forms.Platform.$platform$.PageRenderer">
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.PageRenderer" BackwardsCompatible="true"/>
+    </Map>
+    <Map Type="Xamarin.Forms.MasterDetailPage" Renderer="Xamarin.Forms.Platform.$platform$.MasterDetailRenderer">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.PhoneMasterDetailRenderer"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.MasterDetailPageRenderer" BackwardsCompatible="true"/>
+        <OnPlatform Platform="UWP" Renderer="Xamarin.Forms.Platform.UWP.MasterDetailPageRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.NavigationPage" Renderer="Xamarin.Forms.Platform.$platform$.NavigationRenderer">
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.NavigationPageRenderer " BackwardsCompatible="true"/>
+        <OnPlatform Platform="UWP" Renderer="Xamarin.Forms.Platform.UWP.NavigationPageRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.TabbedPage" Renderer="Xamarin.Forms.Platform.$platform$.TabbedRenderer">
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.TabbedPageRenderer" BackwardsCompatible="true"/>
+        <OnPlatform Platform="UWP" Renderer="Xamarin.Forms.Platform.UWP.TabbedPageRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.TemplatedPage" Renderer="Xamarin.Forms.Platform.$platform$.PageRenderer">
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.PageRenderer" BackwardsCompatible="true"/>
+    </Map>
+    <Map Type="Xamarin.Forms.CarouselPage" Renderer="Xamarin.Forms.Platform.$platform$.CarouselPageRenderer">
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.BackwardsCompatible.CarouselPageRenderer" BackwardsCompatible="true"/>
+    </Map>
+
+    <!-- Layouts -->
+    <Map Type="Xamarin.Forms.ContentPresenter">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.ContentView">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.Frame">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.FrameRenderer"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.FrameRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.ScrollView">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ScrollViewRenderer"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ScrollViewRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.TemplatedView">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.AbsoluteLayout">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.Grid">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.RelativeLayout">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+    <Map Type="Xamarin.Forms.StackLayout">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.View.View&gt;"/>
+    </Map>
+
+    <!-- Controls -->
+
+    <Map Type="Xamarin.Forms.ActivityIndicator" Renderer="Xamarin.Forms.Platform.$platform$.ActivityIndicatorRenderer"/>
+    <Map Type="Xamarin.Forms.BoxView" Renderer="Xamarin.Forms.Platform.$platform$.BoxRenderer">
+        <OnPlatform Platform="UWP" Renderer="Xamarin.Forms.Platform.UWP.BoxViewRenderer"/>
+        <OnPlatform Platform="MacOS" Renderer="Xamarin.Forms.Platform.MacOS.BoxViewRenderer"/>
+        <OnPlatform Platform="WPF" Renderer="Xamarin.Forms.Platform.WPF.BoxViewRenderer"/>
+        <OnPlatform Platform="Tizen" Renderer="Xamarin.Forms.Platform.Tizen.BoxViewRenderer"/>
+    </Map>
+    <Map Type="Xamarin.Forms.Button" Renderer="Xamarin.Forms.Platform.$platform$.ButtonRenderer"/>
+    <Map Type="Xamarin.Forms.CarouselView" Renderer="Xamarin.Forms.Platform.$platform$.CarouselViewRenderer"/>
+    <Map Type="Xamarin.Forms.DatePicker" Renderer="Xamarin.Forms.Platform.$platform$.DatePickerRenderer"/>
+    <Map Type="Xamarin.Forms.Editor" Renderer="Xamarin.Forms.Platform.$platform$.EditorRenderer"/>
+    <Map Type="Xamarin.Forms.Entry" Renderer="Xamarin.Forms.Platform.$platform$.EntryRenderer"/>
+    <Map Type="Xamarin.Forms.Image" Renderer="Xamarin.Forms.Platform.$platform$.ImageRenderer"/>
+    <Map Type="Xamarin.Forms.Label" Renderer="Xamarin.Forms.Platform.$platform$.LabelRenderer"/>
+    <Map Type="Xamarin.Forms.ListView" Renderer="Xamarin.Forms.Platform.$platform$.ListViewRenderer"/>
+    <Map Type="Xamarin.Forms.Map" Renderer="Xamarin.Forms.Platform.$platform$.MapRenderer"/>
+    <Map Type="Xamarin.Forms.Picker" Renderer="Xamarin.Forms.Platform.$platform$.PickerRenderer"/>
+    <Map Type="Xamarin.Forms.ProgressBar" Renderer="Xamarin.Forms.Platform.$platform$.ProgressBarRenderer"/>
+    <Map Type="Xamarin.Forms.SearchBar" Renderer="Xamarin.Forms.Platform.$platform$.SearchBarRenderer"/>
+    <Map Type="Xamarin.Forms.Slider" Renderer="Xamarin.Forms.Platform.$platform$.SliderRenderer"/>
+    <Map Type="Xamarin.Forms.Stepper" Renderer="Xamarin.Forms.Platform.$platform$.StepperBarRenderer"/>
+    <Map Type="Xamarin.Forms.Switch" Renderer="Xamarin.Forms.Platform.$platform$.SwitchBarRenderer"/>
+    <Map Type="Xamarin.Forms.TableView" Renderer="Xamarin.Forms.Platform.$platform$.TableViewRenderer"/>
+    <Map Type="Xamarin.Forms.TimePicker" Renderer="Xamarin.Forms.Platform.$platform$.TimePickerRenderer"/>
+    <Map Type="Xamarin.Forms.WebView" Renderer="Xamarin.Forms.Platform.$platform$.WebViewRenderer"/>
+    <Map Type="Xamarin.Forms.View">
+        <OnPlatform Platform="iOS" Renderer="Xamarin.Forms.Platform.iOS.ViewRenderer&lt;$type$, UIKit.UIView&gt;"/>
+        <OnPlatform Platform="Android" Renderer="Xamarin.Forms.Platform.Android.ViewRenderer&lt;$type$, Android.Views.View&gt;"/>
+    </Map>
+
+    <!-- Cells -->
+    <Map Type="Xamarin.Forms.EntryCell" Renderer="Xamarin.Forms.Platform.$platform$.EntryCellRenderer"/>
+    <Map Type="Xamarin.Forms.SwitchCell" Renderer="Xamarin.Forms.Platform.$platform$.SwitchCellRenderer"/>
+    <Map Type="Xamarin.Forms.TextCell" Renderer="Xamarin.Forms.Platform.$platform$.TextCellRenderer"/>
+    <Map Type="Xamarin.Forms.ImageCell" Renderer="Xamarin.Forms.Platform.$platform$.ImageCellRenderer"/>
+    <Map Type="Xamarin.Forms.ViewCell" Renderer="Xamarin.Forms.Platform.$platform$.ViewCellRenderer"/>
+
+</Renderers> 

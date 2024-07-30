@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="animator" Name="Property Animation">
+	<Description  Locale="en" Content="Provides support for property animations; an animation defined in XML that modifies properties of the target object, such as background color or alpha value, over a set amount of time."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/graphics/prop-animation.html"/>
+	<Node Name="set" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Property Animation"/>
+			<ModifierArgument Name="RootOnly" Value="false"/>
+		</Modifier>
+		<Description Locale="en" Content="A container that holds other animation elements ('objectAnimator', 'valueAnimator', or other 'set' elements). Represents an AnimatorSet. You can specify nested 'set' tags to further group animations together. Each 'set' can define its own ordering attribute."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:ordering" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value">
+			<Description Locale="en" Content="Specifies the play ordering of animations in this set."/>
+			<ParameterValue Name="sequentially">
+				<Description Locale="en" Content="Play animations in this set sequentially."/>
+			</ParameterValue>
+			<ParameterValue Name="together">
+				<Description Locale="en" Content="Play animations in this set at the same time."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="valueAnimator" Abstract="true" Required="false" IntroducedApiLevel="11">
+		<Description Locale="en" Content="Base class for value animations."/>
+		<Node Name="propertyValuesHolder" Abstract="false" Required="false" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Holds information about a property and the values that that property should take on during an animation"/>
+			<Parameter Name="android:valueType" TypesCSV="keyword" Inputs="Value" DefaultValue="floatType">
+				<Description Locale="en" Content="Do not specify this attribute if the value is a color. The animation framework automatically handles color values" />
+				<ParameterValue Name="intType">
+					<Description Locale="en"  Content="Specifies that the animated values are integers."/>
+				</ParameterValue>
+				<ParameterValue Name="floatType">
+					<Description Locale="en" Content="Specifies that the animated values are floats."/>
+				</ParameterValue>
+				<ParameterValue Name="pathType">
+					<Description Locale="en" Content="Values are paths defined as strings.  This type is used for path morphing in AnimatedVectorDrawable."/>
+				</ParameterValue>
+				<ParameterValue Name="colorType">
+					<Description Locale="en" Content="values are colors, which are integers starting with '#'."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:propertyName" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of the property to animate."/>
+			</Parameter>
+			<Parameter Name="android:valueFrom" TypesCSV="string" Inputs="Any">
+				<Description Locale="en" Content="The value where the animated property starts. If not specified, the animation starts at the value obtained by the property's get method. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/> 
+			</Parameter>
+			<Parameter Name="android:valueTo" TypesCSV="string" Inputs="Any">
+				<Description Locale="en" Content="The value where the animated property ends. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/> 
+			</Parameter>
+			<Parameter Name="android:valueTo" TypesCSV="string" Inputs="Any">
+				<Description Locale="en" Content="The value where the animated property ends. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/> 
+			</Parameter>
+			<Node Name="Keyframe" Abstract="false" Required="false" IntroducedApiLevel="11">
+				<Description Locale="en" Content="Holds a time/value pair for an animation."/>
+				<Parameter Name="android:valueType" TypesCSV="keyword" Inputs="Value" DefaultValue="floatType">
+					<Description Locale="en" Content="Do not specify this attribute if the value is a color. The animation framework automatically handles color values" />
+					<ParameterValue Name="intType">
+						<Description Locale="en" Content="Specifies that the animated values are integers."/>
+					</ParameterValue>
+					<ParameterValue Name="floatType">
+						<Description Locale="en" Content="Specifies that the animated values are floats."/>
+					</ParameterValue>
+					<ParameterValue Name="pathType">
+						<Description Locale="en" Content="Values are paths defined as strings.  This type is used for path morphing in AnimatedVectorDrawable."/>
+					</ParameterValue>
+					<ParameterValue Name="colorType">
+						<Description Locale="en" Content="values are colors, which are integers starting with '#'."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:value" TypesCSV="integer,float" Inputs="ValueOrReference">
+					<Description Locale="en" Content="The starting value."/> 
+				</Parameter>
+				<Parameter Name="android:interpolator" TypesCSV="interpolator" Inputs="Reference">
+					<Description Locale="en"  Content="Defines a per-interval interpolator for this keyframe. This interpolator will be used to interpolate between this keyframe and the previous keyframe."/>
+				</Parameter>
+				<Parameter Name="android:fraction" TypesCSV="float" Inputs="ValueOrReference">
+					<Description Locale="en" Content="The keyframe fraction"/> 
+				</Parameter>
+			</Node>
+		</Node>
+	</Node>
+	<Node Name="objectAnimator" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="propertyValuesHolder"/>
+		</Modifier>
+		<Description Locale="en" Content="This must be the root element. Contains one or more 'item' elements."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:propertyName" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+			<Description Locale="en" Content="The object's property to animate, referenced by its name. For example you can specify 'alpha' or 'backgroundColor' for a View object. The objectAnimator element does not expose a target attribute, however, so you cannot set the object to animate in the XML declaration. You have to inflate your animation XML resource by calling loadAnimator() and call setTarget() to set the target object that contains this property."/>
+		</Parameter>
+		<Parameter Name="android:valueTo" RequirementBehaviour="Always" TypesCSV="float,integer,color" Inputs="Any">
+			<Description Locale="en" Content="The value where the animated property ends. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/> 
+		</Parameter>
+		<Parameter Name="android:valueFrom" TypesCSV="float,integer,color" Inputs="Any">
+			<Description Locale="en" Content="The value where the animated property starts. If not specified, the animation starts at the value obtained by the property's get method. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/> 
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="300">
+			<Description Locale="en" Content="The time in milliseconds of the animation. 300 milliseconds is the default."/> 
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The amount of milliseconds the animation delays after start() is called."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en"  Content="How many times to repeat an animation. Set to '-1' to infinitely repeat or to a positive integer. For example, a value of '1' means that the animation is repeated once after the initial run of the animation, so the animation plays a total of two times. The default value is '0', which means no repetition."/>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="integer,keyword" Inputs="ValueOrReference">
+			<Description Locale="en" Content="How an animation behaves when it reaches the end of the animation. android:repeatCount must be set to a positive integer or '-1' for this attribute to have an effect. Set to 'reverse' to have the animation reverse direction with each iteration or 'repeat' to have the animation loop from the beginning each time."/>
+			<ParameterValue Name="repeat">
+				<Description Locale="en" Content="Reverses the direction of the animation when the end or start is reached."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en" Content="Repeats the animation from the start when the end is reached."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:valueType" TypesCSV="keyword" Inputs="Value" DefaultValue="floatType">
+			<Description Locale="en" Content="Do not specify this attribute if the value is a color. The animation framework automatically handles color values" />
+			<ParameterValue Name="intType">
+				<Description Locale="en"  Content="Specifies that the animated values are integers."/>
+			</ParameterValue>
+			<ParameterValue Name="floatType">
+				<Description Locale="en" Content="Specifies that the animated values are floats."/>
+			</ParameterValue>
+			<ParameterValue Name="pathType">
+				<Description Locale="en" Content="Values are paths defined as strings.  This type is used for path morphing in AnimatedVectorDrawable."/>
+			</ParameterValue>
+			<ParameterValue Name="colorType">
+				<Description Locale="en" Content="values are colors, which are integers starting with '#'."/>
+			</ParameterValue>
+		</Parameter>
+		<!-- TODO: Add keyframe support here -->
+	</Node>
+	<Node Name="animator" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="propertyValuesHolder"/>
+		</Modifier>
+		<Description Locale="en" Content="Performs an animation over a specified amount of time. Represents a ValueAnimator."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:valueTo" RequirementBehaviour="Always" TypesCSV="float,integer,color" Inputs="Any">
+			<Description Locale="en"  Content="The value where the animation ends. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/>
+		</Parameter>
+		<Parameter Name="android:valueFrom" RequirementBehaviour="Always" TypesCSV="float,integer,color" Inputs="Any">
+			<Description Locale="en"  Content="The value where the animation starts. Colors are represented as six digit hexadecimal numbers (for example, #333333)."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="300">
+			<Description Locale="en"  Content="The time in milliseconds of the animation. 300 milliseconds is the default."/>
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The amount of milliseconds the animation delays after start() is called."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en" Content="How many times to repeat an animation. Set to '-1' to infinitely repeat or to a positive integer. For example, a value of '1' means that the animation is repeated once after the initial run of the animation, so the animation plays a total of two times. The default value is '0', which means no repetition."/>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="integer,keyword" Inputs="ValueOrReference">
+			<Description Locale="en"  Content="How an animation behaves when it reaches the end of the animation. android:repeatCount must be set to a positive integer or '-1' for this attribute to have an effect. Set to 'reverse' to have the animation reverse direction with each iteration or 'repeat' to have the animation loop from the beginning each time."/>
+			<ParameterValue Name="repeat">
+				<Description Locale="en" Content="Reverses the direction of the animation when the end or start is reached."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en" Content="Repeats the animation from the start when the end is reached."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:valueType" TypesCSV="keyword" Inputs="Value">
+			<Description Locale="en"  Content="Do not specify this attribute if the value is a color. The animation framework automatically handles color values"/>
+			<ParameterValue Name="intType">
+				<Description Locale="en" Content="Specifies that the animated values are integers."/>
+			</ParameterValue>
+			<ParameterValue Name="floatType">
+				<Description Locale="en" Content="Specifies that the animated values are floats."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+</Module>

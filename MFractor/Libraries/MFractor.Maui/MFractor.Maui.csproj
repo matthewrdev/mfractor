@@ -1,0 +1,178 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Configuration\CustomRendererTypeMapping.xml" />
+    <None Remove="Resources\Configuration\FreshMvvm\config.json" />
+    <None Remove="Resources\Configuration\FreshMvvm\config.xml" />
+    <None Remove="Resources\Snippets\BindableProperty.txt" />
+    <None Remove="Resources\Snippets\CodeBehindClass.txt" />
+    <None Remove="Resources\Snippets\Command.txt" />
+    <None Remove="Resources\Snippets\DataTemplateSelectorTemplate.txt" />
+    <None Remove="Resources\Snippets\DesignTimeBindingContextAnnotation.txt" />
+    <None Remove="Resources\Snippets\DesignTimeBindingContextAttribute.txt" />
+    <None Remove="Resources\Snippets\PlatformEffectTemplate.txt" />
+    <None Remove="Resources\Snippets\RoutingEffectTemplate.txt" />
+    <None Remove="Resources\Snippets\StyleSheet.txt" />
+    <None Remove="Resources\Snippets\ValueConversionAttribute.txt" />
+    <None Remove="Resources\Snippets\ValueConverter.txt" />
+    <None Remove="Resources\Snippets\View.xaml.txt" />
+    <None Remove="Resources\Snippets\ViewModelProperty.txt" />
+    <None Remove="Resources\Snippets\ViewModelPropertyWithValue.txt" />
+    <None Remove="Resources\Snippets\iOS\CellRenderer.txt" />
+    <None Remove="Resources\Snippets\iOS\ControlRenderer.txt" />
+    <None Remove="Resources\Snippets\iOS\CustomRenderer.txt" />
+    <None Remove="Resources\Snippets\Android\CellRenderer.txt" />
+    <None Remove="Resources\Snippets\Android\ControlRenderer.txt" />
+    <None Remove="Resources\Snippets\Android\CustomRenderer.txt" />
+    <None Remove="Resources\Snippets\AttachedProperty.txt" />
+    <None Remove="Resources\Snippets\FodyWeavers.txt" />
+    <None Remove="Resources\Configuration\FontSizeMapping.xml" />
+    <None Remove="Resources\Snippets\BindableProperty_PropertyChanged %28copy%29.txt" />
+    <None Remove="Resources\Snippets\ExportFont.txt" />
+    <None Remove="Xaml Platforms\UWP\" />
+    <None Remove="Xaml Platforms\WPF\" />
+    <None Remove="Attributes\" />
+    <None Remove="Data\Indexes\" />
+    <None Remove="Analysis\StackLayout\" />
+    <None Remove="Code Actions\Fix\StackLayout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Configuration\CustomRendererTypeMapping.xml" />
+    <EmbeddedResource Include="Resources\Snippets\BindableProperty_PropertyChanged.txt" />
+    <EmbeddedResource Include="Resources\Snippets\CodeBehindClass.txt" />
+    <EmbeddedResource Include="Resources\Snippets\Command.txt" />
+    <EmbeddedResource Include="Resources\Snippets\DataTemplateSelectorTemplate.txt" />
+    <EmbeddedResource Include="Resources\Snippets\DesignTimeBindingContextAnnotation.txt" />
+    <EmbeddedResource Include="Resources\Snippets\DesignTimeBindingContextAttribute.txt" />
+    <EmbeddedResource Include="Resources\Snippets\PlatformEffectTemplate.txt" />
+    <EmbeddedResource Include="Resources\Snippets\RoutingEffectTemplate.txt" />
+    <EmbeddedResource Include="Resources\Snippets\StyleSheet.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ValueConversionAttribute.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ValueConverter.txt" />
+    <EmbeddedResource Include="Resources\Snippets\View.xaml.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ViewModelProperty.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ViewModelPropertyWithValue.txt" />
+    <EmbeddedResource Include="Resources\Snippets\iOS\CellRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\iOS\ControlRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\iOS\CustomRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\Android\CellRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\Android\ControlRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\Android\CustomRenderer.txt" />
+    <EmbeddedResource Include="Resources\Snippets\AttachedProperty.txt" />
+    <EmbeddedResource Include="Resources\Snippets\FodyWeavers.txt" />
+    <EmbeddedResource Include="Resources\Configuration\FontSizeMapping.xml" />
+    <EmbeddedResource Include="Resources\Snippets\BindableProperty.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ExportFont.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mvvm\" />
+    <Folder Include="Mvvm\Binding Context Connectors\" />
+    <Folder Include="Code Generation\Value Conversion\" />
+    <Folder Include="Code Generation\Grids\" />
+    <Folder Include="Code Generation\Effects\" />
+    <Folder Include="Code Generation\Properties\" />
+    <Folder Include="Code Generation\Bindable Properties\" />
+    <Folder Include="Code Generation\Commands\" />
+    <Folder Include="Code Actions\Refactor\Grids\" />
+    <Folder Include="Code Actions\Fix\Static Resources\" />
+    <Folder Include="Code Generation\Resource Dictionaries\" />
+    <Folder Include="Images\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Localisation\" />
+    <Folder Include="Xmlns\" />
+    <Folder Include="Code Generation\Attached Properties\" />
+    <Folder Include="Analysis\Colors\" />
+    <Folder Include="Code Actions\Fix\Colors\" />
+    <Folder Include="Code Actions\Fix\Thickness\" />
+    <Folder Include="Code Actions\Refactor\Static Resources\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Code Actions\Fix\Triggers\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Semantics\" />
+    <Folder Include="Code Generation\Fonts\" />
+    <Folder Include="Code Generation\" />
+    <Folder Include="Code Generation\Styles\" />
+    <Folder Include="Scaffolding\" />
+    <Folder Include="Code Actions\" />
+    <Folder Include="Code Actions\Refactor\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Value Converters\" />
+    <Folder Include="Commands\Wizards\" />
+    <Folder Include="Commands\Navigation\" />
+    <Folder Include="Analysis\" />
+    <Folder Include="Analysis\Sliders\" />
+    <Folder Include="Code Actions\Fix\Setters\" />
+    <Folder Include="Code Actions\Fix\" />
+    <Folder Include="Code Actions\Fix\Sliders\" />
+    <Folder Include="Code Actions\Fix\Grids\" />
+    <Folder Include="Font Sizes\" />
+    <Folder Include="Analysis\CollectionView\" />
+    <Folder Include="Analysis\Preprocessors\" />
+    <Folder Include="Analysis\Fonts\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Commands\Fonts\" />
+    <Folder Include="Analysis\RefreshView\" />
+    <Folder Include="Code Generation\Thickness\" />
+    <Folder Include="Code Generation\Colors\" />
+    <Folder Include="Tooltips\" />
+    <Folder Include="Analysis\Strings\" />
+    <Folder Include="Code Actions\Fix\Strings\" />
+    <Folder Include="Code Actions\Fix\OnPlatform\" />
+    <Folder Include="Code Actions\Fix\RefreshView\" />
+    <Folder Include="Code Actions\Refactor\Layouts\" />
+    <Folder Include="Analysis\Data Templates\" />
+    <Folder Include="Analysis\Visual States\" />
+    <Folder Include="Code Actions\Refactor\Pages\" />
+    <Folder Include="Code Actions\Refactor\Properties\" />
+    <Folder Include="Code Actions\Fix\Icon\" />
+    <Folder Include="Relational Navigation\" />
+    <Folder Include="Grids\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Snippets\" />
+    <Folder Include="Code Actions\Fix\Fonts\" />
+    <Folder Include="Navigation\" />
+    <Folder Include="Symbols\" />
+    <Folder Include="Data\Synchronisation\" />
+    <Folder Include="Thickness\" />
+    <Folder Include="Static Resources\" />
+    <Folder Include="Code Actions\Fix\Code Behind Field\" />
+    <Folder Include="Code Actions\Fix\Schemas\" />
+    <Folder Include="Code Generation\Static Binding\" />
+    <Folder Include="Work Units\" />
+    <Folder Include="Analysis\Grid\" />
+    <Folder Include="Xaml Platforms\" />
+    <Folder Include="Xaml Platforms\Maui\" />
+    <Folder Include="Xaml Platforms\XamarinForms\" />
+    <Folder Include="Xaml Platforms\UWP\" />
+    <Folder Include="Xaml Platforms\WPF\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Data\Indexes\" />
+    <Folder Include="Analysis\StackLayout\" />
+    <Folder Include="Code Actions\Fix\StackLayout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor.Localisation\MFractor.Localisation.csproj" />
+    <ProjectReference Include="..\MFractor.Xml\MFractor.Xml.csproj" />
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />
+    <ProjectReference Include="..\MFractor.Images\MFractor.Images.csproj" />
+
+    <ProjectReference Include="..\MFractor.Fonts\MFractor.Fonts.csproj" />
+  </ItemGroup>
+</Project>

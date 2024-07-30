@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Optimisation\" />
+    <Folder Include="Work Units\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Image Manager\" />
+    <Folder Include="Image Manager\Commands\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Data\Synchronisers\" />
+    <Folder Include="Deletion\" />
+    <Folder Include="Preview\" />
+    <Folder Include="Preview\Preview Renderers\" />
+    <Folder Include="Work Unit Handlers\" />
+    <Folder Include="Importing\Generators\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Android\" />
+    <Folder Include="Importing\" />
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Third Party\MFractor.Tinify\MFractor.Tinify.csproj" />
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.MSBuild\MFractor.MSBuild.csproj" />
+    <ProjectReference Include="..\..\Third Party\Mobile.BuildTools\src\Mobile.BuildTools.Reference\Mobile.BuildTools.Reference.csproj" />
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor.Ide\MFractor.Ide.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Android\icon.txt" />
+    <None Remove="Resources\Android\icon_round.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Android\icon.txt" />
+    <EmbeddedResource Include="Resources\Android\icon_round.txt" />
+  </ItemGroup>
+</Project>

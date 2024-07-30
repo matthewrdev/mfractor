@@ -1,0 +1,10 @@
+﻿public System.Windows.Input.ICommand $name$
+{
+    get
+    {
+        return new $type$(() =>
+        {
+            throw new System.NotImplementedException();
+        });
+    }
+}

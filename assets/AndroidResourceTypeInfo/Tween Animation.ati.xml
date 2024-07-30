@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="anim" Name="Tween Animation"> 
+	<Description Locale="en" Content="Provides support for building animations that perform transitions on view elements. For instance, rotating, fading, moving, and stretching on a graphic."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/resources/animation-resource.html#Tween"/>
+	<Node Name="set" Abstract="false" Required="false">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Tween Animation"/>
+			<ModifierArgument Name="RootOnly" Value="false"/>
+		</Modifier>
+		<Description Locale="en"  Content="A container that holds other animation elements ('alpha', 'scale', 'translate', 'rotate'or other 'set' elements). Represents an AnimatorSet."/> 
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+			<Description Locale="en"  Content="An Interpolator to apply on the animation. The value must be a reference to a resource that specifies an interpolator (not an interpolator class name). There are default interpolator resources available from the platform or you can create your own interpolator resource."/>
+		</Parameter>
+		<Parameter Name="android:shareInterpolator" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Specifies the play ordering of animations in this set."/>
+		</Parameter>
+	</Node>
+	<Node Name="alpha" Abstract="false" Required="false">
+		<Description Locale="en" Content="A fade-in or fade-out animation. Represents an AlphaAnimation."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<!-- Common Animation Parameters -->
+		<Parameter Name="android:detachWallpaper" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Special option for window animations: if this window is on top of a wallpaper, don't animate the wallpaper with it."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Amount of time (in milliseconds) for the animation to run."/>
+		</Parameter>
+		<Parameter Name="android:fillAfter" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="false">
+			<Description Locale="en" Content="When set to true, the animation transformation is applied after the animation is over. The default value is false. If fillEnabled is not set to true and the animation is not set on a View, fillAfter is assumed to be true." />
+		</Parameter>
+		<Parameter Name="android:fillBefore" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="true">
+			<Description Locale="en" Content="When set to true or when fillEnabled is not set to true, the animation transformation is applied before the animation has started. The default value is true."/>
+		</Parameter>
+		<Parameter Name="android:fillEnabled" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="When set to true, the value of fillBefore is taken into account."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+			<Description Locale="en" Content="Defines the interpolator used to smooth the animation movement in time."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="keyword,integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en" Content="Defines how many times the animation should repeat. The default value is 0"/>
+			<ParameterValue Name="infinite">
+				<Description Locale="en" Content="Infinitely repeats the animation."/> 
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="keyword" Inputs="Value" DefaultValue="restart">
+			<Description Locale="en" Content="Defines the animation behavior when it reaches the end and the repeat count is greater than 0 or infinite. The default value is restart."/>
+			<ParameterValue Name="restart">
+				<Description Locale="en"  Content="The animation starts again from the beginning."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en"  Content="The animation plays backward."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Delay in milliseconds before the animation runs, once start time is reached."/>
+		</Parameter>
+		<Parameter Name="android:zAdjustment" TypesCSV="keyword" Inputs="Value" DefaultValue="normal">
+			<Description Locale="en" Content="Allows for an adjustment of the Z ordering of the content being animated for the duration of the animation. The default value is normal."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="The content being animated be kept in its current Z order."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="The content being animated is forced on top of all other content for the duration of the animation."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="The content being animated is forced under all other content for the duration of the animation."/>
+			</ParameterValue>
+		</Parameter>
+		<!-- Alpha specific parameters -->
+		<Parameter Name="android:fromAlpha" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en"  Content="Starting opacity offset, where 0.0 is transparent and 1.0 is opaque."/>
+		</Parameter>
+		<Parameter Name="android:toAlpha" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Ending opacity offset, where 0.0 is transparent and 1.0 is opaque."/>
+		</Parameter>
+	</Node>
+	<Node Name="scale" Abstract="false" Required="false">
+		<Description Locale="en" Content="A resizing animation. You can specify the center point of the image from which it grows outward (or inward) by specifying pivotX and pivotY. For example, if these values are 0, 0 (top-left corner), all growth will be down and to the right. Represents a ScaleAnimation."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<!-- Common Animation Parameters -->
+		<Parameter Name="android:detachWallpaper" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Special option for window animations: if this window is on top of a wallpaper, don't animate the wallpaper with it."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Amount of time (in milliseconds) for the animation to run."/>
+		</Parameter>
+		<Parameter Name="android:fillAfter" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="false">
+			<Description Locale="en" Content="When set to true, the animation transformation is applied after the animation is over. The default value is false. If fillEnabled is not set to true and the animation is not set on a View, fillAfter is assumed to be true." />
+		</Parameter>
+		<Parameter Name="android:fillBefore" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="true">
+			<Description Locale="en" Content="When set to true or when fillEnabled is not set to true, the animation transformation is applied before the animation has started. The default value is true."/>
+		</Parameter>
+		<Parameter Name="android:fillEnabled" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="When set to true, the value of fillBefore is taken into account."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+			<Description Locale="en" Content="Defines the interpolator used to smooth the animation movement in time."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="keyword,integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en" Content="Defines how many times the animation should repeat. The default value is 0"/>
+			<ParameterValue Name="infinite">
+				<Description Locale="en" Content="Infinitely repeats the animation."/> 
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="keyword" Inputs="Value" DefaultValue="restart">
+			<Description Locale="en" Content="Defines the animation behavior when it reaches the end and the repeat count is greater than 0 or infinite. The default value is restart."/>
+			<ParameterValue Name="restart">
+				<Description Locale="en"  Content="The animation starts again from the beginning."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en"  Content="The animation plays backward."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Delay in milliseconds before the animation runs, once start time is reached."/>
+		</Parameter>
+		<Parameter Name="android:zAdjustment" TypesCSV="keyword" Inputs="Value" DefaultValue="normal">
+			<Description Locale="en" Content="Allows for an adjustment of the Z ordering of the content being animated for the duration of the animation. The default value is normal."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="The content being animated be kept in its current Z order."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="The content being animated is forced on top of all other content for the duration of the animation."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="The content being animated is forced under all other content for the duration of the animation."/>
+			</ParameterValue>
+		</Parameter>
+		<!-- Scale specific parameters -->
+		<Parameter Name="android:fromXScale" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Starting X size offset, where 1.0 is no change."/>
+		</Parameter>
+		<Parameter Name="android:toXScale" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Ending X size offset, where 1.0 is no change."/>
+		</Parameter>
+		<Parameter Name="android:fromYScale" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Starting Y size offset, where 1.0 is no change."/>
+		</Parameter>
+		<Parameter Name="android:toYScale" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en"  Content="End Y size offset, where 1.0 is no change."/>
+		</Parameter>
+		<Parameter Name="android:pivotX" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The X coordinate to remain fixed when the object is scaled."/>
+		</Parameter>
+		<Parameter Name="android:pivotY" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The Y coordinate to remain fixed when the object is scaled."/>
+		</Parameter>
+	</Node>
+	<Node Name="translate" Abstract="false" Required="false">
+		<Description Locale="en"  Content="A vertical and/or horizontal motion. Supports the following attributes in any of the following three formats: values from -100 to 100 ending with '#37;', indicating a percentage relative to itself; values from -100 to 100 ending in '#37;', indicating a percentage relative to its parent; a float value with no suffix, indicating an absolute value. Represents a TranslateAnimation."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<!-- Common Animation Parameters -->
+		<Parameter Name="android:detachWallpaper" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Special option for window animations: if this window is on top of a wallpaper, don't animate the wallpaper with it."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Amount of time (in milliseconds) for the animation to run."/>
+		</Parameter>
+		<Parameter Name="android:fillAfter" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="false">
+			<Description Locale="en" Content="When set to true, the animation transformation is applied after the animation is over. The default value is false. If fillEnabled is not set to true and the animation is not set on a View, fillAfter is assumed to be true." />
+		</Parameter>
+		<Parameter Name="android:fillBefore" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="true">
+			<Description Locale="en" Content="When set to true or when fillEnabled is not set to true, the animation transformation is applied before the animation has started. The default value is true."/>
+		</Parameter>
+		<Parameter Name="android:fillEnabled" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="When set to true, the value of fillBefore is taken into account."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+			<Description Locale="en" Content="Defines the interpolator used to smooth the animation movement in time."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="keyword,integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en" Content="Defines how many times the animation should repeat. The default value is 0"/>
+			<ParameterValue Name="infinite">
+				<Description Locale="en" Content="Infinitely repeats the animation."/> 
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="keyword" Inputs="Value" DefaultValue="restart">
+			<Description Locale="en" Content="Defines the animation behavior when it reaches the end and the repeat count is greater than 0 or infinite. The default value is restart."/>
+			<ParameterValue Name="restart">
+				<Description Locale="en"  Content="The animation starts again from the beginning."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en"  Content="The animation plays backward."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Delay in milliseconds before the animation runs, once start time is reached."/>
+		</Parameter>
+		<Parameter Name="android:zAdjustment" TypesCSV="keyword" Inputs="Value" DefaultValue="normal">
+			<Description Locale="en" Content="Allows for an adjustment of the Z ordering of the content being animated for the duration of the animation. The default value is normal."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="The content being animated be kept in its current Z order."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="The content being animated is forced on top of all other content for the duration of the animation."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="The content being animated is forced under all other content for the duration of the animation."/>
+			</ParameterValue>
+		</Parameter>
+		<!-- Translate specific parameters -->
+		<Parameter Name="android:fromXDelta" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Starting X offset. Expressed either: in pixels relative to the normal position (such as '5'), in percentage relative to the element width (such as '5%'), or in percentage relative to the parent width (such as '5%p')."/>
+		</Parameter>
+		<Parameter Name="android:toXDelta" TypesCSV="float,percentage" Inputs="ValueOrReference" >
+			<Description Locale="en" Content="Ending X offset. Expressed either: in pixels relative to the normal position (such as '5'), in percentage relative to the element width (such as '5%'), or in percentage relative to the parent width (such as '5%p')."/>
+		</Parameter>
+		<Parameter Name="android:fromYDelta" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Starting Y offset. Expressed either: in pixels relative to the normal position (such as '5'), in percentage relative to the element width (such as '5%'), or in percentage relative to the parent width (such as '5%p')."/>
+		</Parameter>
+		<Parameter Name="android:toYDelta" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Ending Y offset. Expressed either: in pixels relative to the normal position (such as '5'), in percentage relative to the element width (such as '5%'), or in percentage relative to the parent width (such as '5%p')."/>
+		</Parameter>
+	</Node>
+	<Node Name="rotate" Abstract="false" Required="false">
+		<Description Locale="en" Content="A rotation animation. Represents a RotateAnimation."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<!-- Common Animation Parameters -->
+		<Parameter Name="android:detachWallpaper" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Special option for window animations: if this window is on top of a wallpaper, don't animate the wallpaper with it."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Amount of time (in milliseconds) for the animation to run."/>
+		</Parameter>
+		<Parameter Name="android:fillAfter" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="false">
+			<Description Locale="en" Content="When set to true, the animation transformation is applied after the animation is over. The default value is false. If fillEnabled is not set to true and the animation is not set on a View, fillAfter is assumed to be true." />
+		</Parameter>
+		<Parameter Name="android:fillBefore" TypesCSV="boolean" Inputs="ValueOrReference" DefaultValue="true">
+			<Description Locale="en" Content="When set to true or when fillEnabled is not set to true, the animation transformation is applied before the animation has started. The default value is true."/>
+		</Parameter>
+		<Parameter Name="android:fillEnabled" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="When set to true, the value of fillBefore is taken into account."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+			<Description Locale="en" Content="Defines the interpolator used to smooth the animation movement in time."/>
+		</Parameter>
+		<Parameter Name="android:repeatCount" TypesCSV="keyword,integer" Inputs="ValueOrReference" DefaultValue="0">
+			<Description Locale="en" Content="Defines how many times the animation should repeat. The default value is 0"/>
+			<ParameterValue Name="infinite">
+				<Description Locale="en" Content="Infinitely repeats the animation."/> 
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:repeatMode" TypesCSV="keyword" Inputs="Value" DefaultValue="restart">
+			<Description Locale="en" Content="Defines the animation behavior when it reaches the end and the repeat count is greater than 0 or infinite. The default value is restart."/>
+			<ParameterValue Name="restart">
+				<Description Locale="en"  Content="The animation starts again from the beginning."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en"  Content="The animation plays backward."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:startOffset" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Delay in milliseconds before the animation runs, once start time is reached."/>
+		</Parameter>
+		<Parameter Name="android:zAdjustment" TypesCSV="keyword" Inputs="Value" DefaultValue="normal">
+			<Description Locale="en" Content="Allows for an adjustment of the Z ordering of the content being animated for the duration of the animation. The default value is normal."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="The content being animated be kept in its current Z order."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="The content being animated is forced on top of all other content for the duration of the animation."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="The content being animated is forced under all other content for the duration of the animation."/>
+			</ParameterValue>
+		</Parameter>
+		<!-- Rotate specific parameters -->
+		<Parameter Name="android:fromDegrees" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Starting angular position, in degrees."/>
+		</Parameter>
+		<Parameter Name="android:toDegrees" TypesCSV="float" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Ending angular position, in degrees."/>
+		</Parameter>
+		<Parameter Name="android:pivotX" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The X coordinate of the center of rotation. Expressed either: in pixels relative to the object&apos;s left edge (such as '5'), in percentage relative to the object&apos;s left edge (such as '5%'), or in percentage relative to the parent container&apos;s left edge (such as '5%p')."/>
+		</Parameter>
+		<Parameter Name="android:pivotY" TypesCSV="float,percentage" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The Y coordinate of the center of rotation. Expressed either: in pixels relative to the object&apos;s left edge (such as '5'), in percentage relative to the object&apos;s left edge (such as '5%'), or in percentage relative to the parent container&apos;s left edge (such as '5%p')."/>
+		</Parameter>
+	</Node>
+</Module>

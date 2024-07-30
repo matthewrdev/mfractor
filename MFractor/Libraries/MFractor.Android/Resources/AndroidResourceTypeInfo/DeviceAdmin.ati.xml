@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Device Admin">
+	<Description Locale="en" Content="Provides support for the Device Administration API; an api that allows system admins to build applications that enforce security policies."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/admin/device-admin.html"/>
+	<Node Name="device-admin" Abstract="false" Required="false">
+		<Description Locale="en" Content="System administrators can use the Device Administration API to write an application that enforces remote/local device security policy enforcement."/>
+		<Node Name="uses-policies" Abstract="false" Required="false">
+			<Description Locale="en" Content="Defines a set of administration policies for the device."/>
+			<Node Name="limit-password" Abstract="false"  Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: limit the passwords that the user can select, via setPasswordQuality(ComponentName, int) and setPasswordMinimumLength(ComponentName, int)."/>
+			</Node>
+			<Node Name="watch-login" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: able to watch login attempts from the user, via ACTION_PASSWORD_FAILED, ACTION_PASSWORD_SUCCEEDED, and getCurrentFailedPasswordAttempts()."/>
+			</Node>
+			<Node Name="reset-password" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: able to reset the user's password via resetPassword(String, int)."/>
+			</Node>
+			<Node Name="force-lock" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: able to force the device to lock vialockNow() or limit the maximum lock timeout for the device via setMaximumTimeToLock(ComponentName, long)."/>
+			</Node>
+			<Node Name="expire-password" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: force the user to change their password after an administrator-defined time limit."/>
+			</Node>
+			<Node Name="disable-keyguard-features" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: disables use of keyguard features."/>
+			</Node>
+			<Node Name="encrypted-storage" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: require encryption of stored data."/>
+			</Node>
+			<Node Name="disable-camera" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: disables use of all device cameras."/>
+			</Node>
+			<Node Name="wipe-data" Abstract="false" Required="false">
+				<Description Locale="en" Content="A type of policy that this device admin can use: able to factory reset the device, erasing all of the user's data, via wipeData(int)."/>
+			</Node>
+		</Node>
+	</Node>
+</Module>

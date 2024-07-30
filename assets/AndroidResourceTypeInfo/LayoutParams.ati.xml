@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="Layout Params" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides IntelliSense and code analysis for all LayoutParams classes; the classes used by views to tell their parent view groups how to be laid out."/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/reference/android/view/ViewGroup.LayoutParams.html"/>
+	<Node Name="AbsListView.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AbsListView.LayoutParams"/>
+		<Description Locale="en" Content="AbsListView extends LayoutParams to provide a place to hold the view type"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="AbsoluteLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AbsoluteLayout.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with AbsoluteLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="ActionBar.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.app.ActionBar.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with action bar custom views"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Standard gravity constant that a child supplies to its parent."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="ActionMenuView.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="21">
+		<MetaData Name="FullType" Value="android.widget.ActionMenuView.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="LinearLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.design.widget.AppBarLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.AppBarLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="LinearLayout.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="android.support.design:layout_scrollFlags" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android.support.design:layout_scrollInterpolator" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An interpolator to use when scrolling this View."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.CollapsingToolbarLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.CollapsingToolbarLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="FrameLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.design.widget.CoordinatorLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.CoordinatorLayout.LayoutParams"/>
+		<Description Locale="en" Content="Parameters describing the desired layout for a child of a CoordinatorLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.percent.PercentFrameLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.percent.PercentFrameLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="FrameLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.percent.PercentRelativeLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.percent.PercentRelativeLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="RelativeLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.BaseCardView.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.BaseCardView.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with BaseCardView"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="FrameLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.view.ViewPager.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.view.ViewPager.LayoutParams"/>
+		<Description Locale="en" Content="Layout parameters that should be supplied for views added to a ViewPager"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.DrawerLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.DrawerLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.SlidingPaneLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.SlidingPaneLayout.LayoutParams"/>
+		<Description Locale="en" Content=""/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.app.ActionBar.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.app.ActionBar.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with action bar custom views"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.GridLayoutManager.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.GridLayoutManager.LayoutParams"/>
+		<Description Locale="en" Content="LayoutParams used by GridLayoutManager"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="android.support.v7.widget.RecyclerView.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.LinearLayoutCompat.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.LinearLayoutCompat.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with ViewLinearLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.RecyclerView.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.RecyclerView.LayoutParams"/>
+		<Description Locale="en" Content="LayoutParams subclass for children of RecyclerView"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams"/>
+		<Description Locale="en" Content="LayoutParams used by StaggeredGridLayoutManager"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="android.support.v7.widget.RecyclerView.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="FrameLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.FrameLayout.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information for layouts that support margins"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Standard gravity constant that a child supplies to its parent."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="Gallery.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.Gallery.LayoutParams"/>
+		<Description Locale="en" Content="Gallery extends LayoutParams to provide a place to hold current Transformation information along with previous position/transformation info"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="GridLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="14">
+		<MetaData Name="FullType" Value="android.widget.GridLayout.LayoutParams"/>
+		<Description Locale="en" Content="Layout information associated with each of the children of a GridLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_column" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The column boundary delimiting the left of the group of cells occupied by this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_columnSpan" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The column span: the difference between the right and left boundaries delimiting the group of cells occupied by this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_columnWeight" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The relative proportion of horizontal space that should be allocated to this view during excess space distribution."/>
+		</Parameter>
+		<Parameter Name="android:layout_gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Gravity specifies how a component should be placed in its group of cells."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:layout_row" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The row boundary delimiting the top of the group of cells occupied by this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_rowSpan" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The row span: the difference between the top and bottom boundaries delimiting the group of cells occupied by this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_rowWeight" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The relative proportion of vertical space that should be allocated to this view during excess space distribution."/>
+		</Parameter>
+	</Node>
+	<Node Name="LinearLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.LinearLayout.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with ViewLinearLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Standard gravity constant that a child supplies to its parent."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:layout_weight" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="RadioGroup.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RadioGroup.LayoutParams"/>
+		<Description Locale="en" Content="This set of layout parameters defaults the width and the height of the children to WRAP_CONTENT when they are not specified in the XML file"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="LinearLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="RelativeLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RelativeLayout.LayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information associated with RelativeLayout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_above" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the bottom edge of this view above the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignBaseline" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the baseline of this view on the baseline of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignBottom" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the bottom edge of this view match the bottom edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignEnd" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the end edge of this view match the end edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignLeft" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the left edge of this view match the left edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentBottom" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the bottom edge of this view match the bottom edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentEnd" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the end edge of this view match the end edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentLeft" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the left edge of this view match the left edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentRight" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the right edge of this view match the right edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentStart" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the start edge of this view match the start edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignParentTop" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, makes the top edge of this view match the top edge of the parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignRight" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the right edge of this view match the right edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignStart" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the start edge of this view match the start edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignTop" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the top edge of this view match the top edge of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_alignWithParentIfMissing" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set to true, the parent will be used as the anchor when the anchor cannot be be found for layout_toLeftOf, layout_toRightOf, etc."/>
+		</Parameter>
+		<Parameter Name="android:layout_below" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the top edge of this view below the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_centerHorizontal" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, centers this child horizontally within its parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_centerInParent" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, centers this child horizontally and vertically within its parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_centerVertical" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, centers this child vertically within its parent."/>
+		</Parameter>
+		<Parameter Name="android:layout_toEndOf" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the start edge of this view to the end of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_toLeftOf" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the right edge of this view to the left of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_toRightOf" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the left edge of this view to the right of the given anchor view ID."/>
+		</Parameter>
+		<Parameter Name="android:layout_toStartOf" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Positions the end edge of this view to the start of the given anchor view ID."/>
+		</Parameter>
+	</Node>
+	<Node Name="TableLayout.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TableLayout.LayoutParams"/>
+		<Description Locale="en" Content="This set of layout parameters enforces the width of each child to be MATCH_PARENT and the height of each child to be WRAP_CONTENT, but only if the height is not specified"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="LinearLayout.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="TableRow.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TableRow.LayoutParams"/>
+		<Description Locale="en" Content="Set of layout parameters used in table rows"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="LinearLayout.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_column" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The index of the column in which this child should be."/>
+		</Parameter>
+		<Parameter Name="android:layout_span" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines how many columns this child should span."/>
+		</Parameter>
+	</Node>
+	<Node Name="Toolbar.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="21">
+		<MetaData Name="FullType" Value="android.widget.Toolbar.LayoutParams"/>
+		<Description Locale="en" Content="Layout information for child views of Toolbars"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ActionBar.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Standard gravity constant that a child supplies to its parent."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="Toolbar.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ActionBar.LayoutParams"/>
+		</Modifier>
+	</Node>
+	<Node Name="ViewGroup.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.ViewGroup.LayoutParams"/>
+		<Description Locale="en" Content="LayoutParams are used by views to tell their parents how they want to be laid out"/>
+		<Parameter Name="android:layout_height" RequirementBehaviour="Optional" TypesCSV="keyword,dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the basic height of the view."/>
+			<ParameterValue Name="fill_parent">
+				<Description Locale="en" Content="The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent."/>
+			</ParameterValue>
+			<ParameterValue Name="match_parent">
+				<Description Locale="en" Content="The view should be as big as its parent (minus padding). Introduced in API Level 8."/>
+			</ParameterValue>
+			<ParameterValue Name="wrap_content">
+				<Description Locale="en" Content="The view should be only big enough to enclose its content (plus padding)."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:layout_width" RequirementBehaviour="Optional" TypesCSV="keyword,dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the basic width of the view."/>
+			<ParameterValue Name="fill_parent">
+				<Description Locale="en" Content="The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent."/>
+			</ParameterValue>
+			<ParameterValue Name="match_parent">
+				<Description Locale="en" Content="The view should be as big as its parent (minus padding). Introduced in API Level 8."/>
+			</ParameterValue>
+			<ParameterValue Name="wrap_content">
+				<Description Locale="en" Content="The view should be only big enough to enclose its content (plus padding)."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="ViewGroup.MarginLayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.ViewGroup.MarginLayoutParams"/>
+		<Description Locale="en" Content="Per-child layout information for layouts that support margins"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="android:layout_marginBottom" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the bottom side of this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_marginEnd" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the end side of this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_marginLeft" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the left side of this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_marginRight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the right side of this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_marginStart" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the start side of this view."/>
+		</Parameter>
+		<Parameter Name="android:layout_marginTop" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the top side of this view."/>
+		</Parameter>
+	</Node>
+	<Node Name="WindowManager.LayoutParams" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.WindowManager.LayoutParams"/>
+		<Description Locale="en" Content="Indicates whether this window should be hardware accelerated"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+	</Node>
+</Module>

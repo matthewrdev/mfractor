@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="SyncAdapter">
+	<Description  Locale="en" Content="Provides support for building a configuration for a custom SyncAdapter; a component in your app that encapsulates the code for the tasks that transfer data between the device and a server."/>
+	<MetaData  Name="SdkUrl" Value="http://developer.android.com/training/sync-adapters/creating-sync-adapter.html"/>
+	<Node Name="sync-adapter" Abstract="false" Required="false">
+		<Description  Locale="en" Content="The SyncAdapter metadata specifies the account type you've created for your sync adapter, declares a content provider authority associated with your app, controls a part of the system user interface related to sync adapters, and declares other sync-related flags. "/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:contentAuthority" TypesCSV="string" Inputs="Value">
+			<Description Locale="en" Content="The URI authority for your content provider. If you created a stub content provider for your app in the previous lesson Creating a Stub Content Provider, use the value you specified for the attribute android:authorities in the 'provider' element you added to your app manifest. If you're transferring data from a content provider to a server with your sync adapter, this value should be the same as the content URI authority you're using for that data. This value is also one of the authorities you specify in the android:authorities attribute of the 'provider' element that declares your provider in your app manifest."/>
+		</Parameter>		
+		<Parameter Name="android:accountType" TypesCSV="string" Inputs="Value">
+			<Description Locale="en" Content="The account type required by the sync adapter framework. The value must be the same as the account type value you provided when you created the authenticator metadata file."/>
+		</Parameter>	
+		<Parameter Name="android:userVisible" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Sets the visibility of the sync adapter's account type. By default, the account icon and label associated with the account type are visible in the Accounts section of the system's Settings app, so you should make your sync adapter invisible unless you have an account type or domain that's easily associated with your app. If you make your account type invisible, you can still allow users to control your sync adapter with a user interface in one of your app's activities."/>
+		</Parameter>	
+		<Parameter Name="android:supportsUploading" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Allows you to upload data to the cloud. Set this to false if your app only downloads data."/>
+		</Parameter>	
+		<Parameter Name="android:allowParallelSyncs" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Allows multiple instances of your sync adapter component to run at the same time. Use this if your app supports multiple user accounts and you want to allow multiple users to transfer data in parallel. This flag has no effect if you never run multiple data transfers."/>
+		</Parameter>
+		<Parameter Name="android:isAlwaysSyncable" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Indicates to the sync adapter framework that it can run your sync adapter at any time you've specified. If you want to programmatically control when your sync adapter can run, set this flag to false, and then call requestSync() to run the sync adapter."/>
+		</Parameter>
+	</Node>
+</Module>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="AppWidget Provider Configuration">
+	<Description Locale="en" Content="Provides support for AppWidget configurations. An AppWidget is a UI element that the user can place onto their devices homescreen."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/appwidgets/index.html"/>
+	<Node Name="appwidget-provider" Abstract="false" Required="true">
+		<Description Locale="en" Content="The AppWidgetProviderInfo defines the essential qualities of an App Widget, such as its minimum layout dimensions, its initial layout resource, how often to update the App Widget, and (optionally) a configuration Activity to launch at create-time. "/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:autoAdvanceViewId" TypesCSV="id" Inputs="Reference">
+			<Description Locale="en" Content="The view id of the AppWidget subview which should be auto-advanced by the widget's host."/>
+		</Parameter>
+		<Parameter Name="android:configure" TypesCSV="class:android.app.Activity" Inputs="Value">
+			<Description Locale="en" Content="The activity to launch that will configure the AppWidget."/>
+		</Parameter>
+		<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="The icon to display for this AppWidget in the AppWidget picker. If not supplied in the xml, the application icon will be used."/>
+		</Parameter>
+		<Parameter Name="android:initialKeyguardLayout" TypesCSV="layout" Inputs="Reference">
+			<Description Locale="en" Content="The resource id of the initial layout for this AppWidget when it is displayed on keyguard. This parameter only needs to be provided if the widget can be displayed on the keyguard, see widgetCategory."/>
+		</Parameter>
+		<Parameter Name="android:initialLayout" TypesCSV="layout" Inputs="Reference">
+			<Description Locale="en" Content="The resource id of the initial layout for this AppWidget. This should be displayed until the RemoteViews for the AppWidget is available. Supported layout elements are: FrameLayout, LinearLayout, RelativeLayout, GridLayout, AnalogClock, Button, Chronometer, ImageButton, ImageView, ProgressBar, TextView, ViewFlipper, ListView, GridView, StackView and AdapterViewFlipper."/>
+		</Parameter>
+		<Parameter Name="android:minHeight" TypesCSV="dimension" Inputs="Value">
+			<Description Locale="en" Content="The default height of the widget when added to a host, in dp. The widget will get at least this height, and will often be given more, depending on the host."/>
+		</Parameter>
+		<Parameter Name="android:minResizeHeight" TypesCSV="dimension" Inputs="Value">
+			<Description Locale="en" Content="Minimum height (in dp) which the widget can be resized to. This field has no effect if it is greater than minHeight or if vertical resizing isn't enabled (see resizeMode)."/>
+		</Parameter>
+		<Parameter Name="android:minWidth" TypesCSV="dimension" Inputs="Value">
+			<Description Locale="en" Content="The default width of the widget when added to a host, in dp. The widget will get at least this width, and will often be given more, depending on the host."/>
+		</Parameter>
+		<Parameter Name="android:minResizewidth" TypesCSV="dimension" Inputs="Value">
+			<Description Locale="en" Content="Minimum width (in dp) which the widget can be resized to. This field has no effect if it is greater than minWidth or if vertical resizing isn't enabled (see resizeMode)."/>
+		</Parameter>
+		<Parameter Name="android:previewImage" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="A preview of what the AppWidget will look like after it's configured. If not supplied, the AppWidget's icon will be used."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+			<Description Locale="en" Content="Identity of this AppWidget component. This component should be a BroadcastReceiver, and it will be sent the AppWidget intents as described in the AppWidget package documentation."/>
+		</Parameter>
+		<Parameter Name="android:resizeMode" TypesCSV="keyword" Inputs="Value">
+			<Description Locale="en" Content="The rules by which a widget can be resized."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Allow horizontal resizing."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Allow vertical resizing."/>
+			</ParameterValue>
+			<ParameterValue Name="horizontal|vertical">
+				<Description Locale="en" Content="Allow both horizontal and vertical resizing."/>
+			</ParameterValue>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="No resizing is allowed."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:updatePeriodMillis" TypesCSV="integer" Inputs="Value">
+			<Description Locale="en" Content="How often, in milliseconds, that this AppWidget wants to be updated. The AppWidget manager may place a limit on how often a AppWidget is updated. Note: Updates requested with updatePeriodMillis will not be delivered more than once every 30 minutes."/>
+		</Parameter>
+		<Parameter Name="android:widgetCategory" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="Determines whether this widget can be displayed on the home screen, the keyguard, or both."/>
+			<ParameterValue Name="home_screen">
+				<Description Locale="en" Content="The widget can be displayed on the users home screen."/>
+			</ParameterValue>
+			<ParameterValue Name="keyguard">
+				<Description Locale="en" Content="The widget can be displayed on the users lock screen."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+</Module>
+

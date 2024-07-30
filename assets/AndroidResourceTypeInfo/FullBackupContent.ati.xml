@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Full Backup Content">
+ 	<Description Locale="en" Content="Provides support for defining a backup configuration for an application."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/backup/autosyncapi.html"/>
+	<Node Name="full-backup-content" Abstract="false" Required="false" IntroducedApiLevel="23">
+ 		<Description Locale="en" Content="The backup service configuration allows you to specify what files to include or exclude from backup."/>
+		<Node Name="include" Abstract="false" Required="false" IntroducedApiLevel="23">
+ 			<Description Locale="en" Content="Specifies a set of resources to back up, instead of having the system back up all data in your app by default. If you specify an 'include' element, the system backs up only the resources specified with this element. You can specify multiple sets of resources to back up by using multiple 'include' elements"/>
+			<Parameter Name="domain" TypesCSV="keyword" Inputs="Value">
+	 			<Description Locale="en" Content="Specifies the type of resource you want to include in, or exclude from, backup."/>
+				<ParameterValue Name="root">
+					<Description Locale="en" Content="Specifies that the resource is in the app’s root directory."/>
+				</ParameterValue>
+				<ParameterValue Name="file">
+					<Description Locale="en" Content="Specifies a resource in the directory returned by the getFilesDir() method."/>
+				</ParameterValue>
+				<ParameterValue Name="database">
+					<Description Locale="en" Content="Specifies a database that the getDatabasePath() method returns, or that the app interacts with via the SQLiteOpenHelper class."/>
+				</ParameterValue>
+				<ParameterValue Name="sharedpref">
+					<Description Locale="en" Content="Specifies a SharedPreferences object that the getSharedPreferences() method returns."/>
+				</ParameterValue>
+				<ParameterValue Name="external">
+					<Description Locale="en" Content="Specifies that the resource is in external storage, and corresponds to a file in the directory that the getExternalFilesDir() method returns."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="path" TypesCSV="string" Inputs="Value">
+	 			<Description Locale="en" Content="Specifies the file path to a resource that you want to include in, or exclude from, backup."/>
+			</Parameter>
+		</Node>
+		<Node Name="exclude" Abstract="false" Required="false" IntroducedApiLevel="23">
+			<Modifier Name="InheritParameters">
+				<ModifierArgument Name="ModuleName" Value="Full Backup Content"/>
+				<ModifierArgument Name="Node" Value="include"/>
+				<ModifierArgument Name="Cascade" Value="true"/>
+			</Modifier>
+ 			<Description Locale="en" Content="Specifies any data you want the system to exclude when it does a full backup. If you target the same set of resources with both the 'include' and 'exclude' elements, 'exclude' takes precedence."/>
+		</Node>
+	</Node>
+</Module>
+

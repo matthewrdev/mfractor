@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Analysis\" />
+    <Folder Include="Code Actions\" />
+    <Folder Include="Code Generation\" />
+    <Folder Include="Formatting\" />
+    <Folder Include="Scaffolding\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Type Inferment\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Documents\" />
+    <Folder Include="Work Unit Handlers\" />
+    <Folder Include="Work Units\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Snippets\FodyWeavers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Snippets\FodyWeavers.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Ide\MFractor.Ide.csproj" />
+  </ItemGroup>
+</Project>

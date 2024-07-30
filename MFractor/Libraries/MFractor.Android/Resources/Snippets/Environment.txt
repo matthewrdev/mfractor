@@ -1,0 +1,10 @@
+﻿# To learn more about the Android Environment file, see: https://docs.microsoft.com/en-us/xamarin/android/deploy-test/environment
+
+# See: http://developer.xamarin.com/guides/android/advanced_topics/garbage_collection/#Configuration
+MONO_GC_PARAMS=bridge-implementation=tarjan,nursery-size=32m,soft-heap-limit=512m,evacuation-threshold=80
+
+# See: http://www.mono-project.com/docs/advanced/runtime/logging-runtime-events/#trace-levels
+MONO_LOG_LEVEL=info
+
+# See: http://www.mono-project.com/docs/advanced/runtime/logging-runtime-events/#trace-filters
+MONO_LOG_MASK=gc

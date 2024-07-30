@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Account Authenticator">
+	<Description Locale="en" Content="Provides support for Account Authenticator configurations. An Account Authenticator exposes the login configuration of your application into Androids account management framework."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/sync-adapters/creating-authenticator.html#CreateAuthenticatorFile"/>
+	<Node Name="account-authenticator" Abstract="false" Required="false">
+		<Description Locale="en" Content="To plug your authenticator component into the sync adapter and account frameworks, you need to provide these framework with metadata that describes the component. This metadata declares the account type you've created for your sync adapter and declares user interface elements that the system displays if you want to make your account type visible to the user."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue" RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:accountType" TypesCSV="string" Inputs="Value">
+			<Description Locale="en" Content="The sync adapter framework requires each sync adapter to have an account type, in the form of a domain name. The framework uses the account type as part of the sync adapter's internal identification. For servers that require login, the account type along with a user account is sent to the server as part of the login credentials. If your server doesn't require login, you still have to provide an account type. For the value, use a domain name that you control. While the framework uses it to manage your sync adapter, the value is not sent to your server."/>
+		</Parameter>
+		<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Pointer to a Drawable resource containing an icon. If you make the sync adapter visible by specifying the attribute android:userVisible='true' in res/xml/syncadapter.xml, then you must provide this icon resource. It appears in the Accounts section of the system's Settings app."/>
+		</Parameter>
+		<Parameter Name="android:smallIcon" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Pointer to a Drawable resource containing a small version of the icon. This resource may be used instead of android:icon in the Accounts section of the system's Settings app, depending on the screen size."/>
+		</Parameter>
+		<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Localizable string that identifies the account type to users. If you make the sync adapter visible by specifying the attribute android:userVisible='true' in res/xml/syncadapter.xml, then you should provide this string. It appears in the Accounts section of the system's Settings app, next to the icon you define for the authenticator."/>
+		</Parameter>
+	</Node>
+</Module>
+

@@ -1,0 +1,14 @@
+﻿using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms;
+
+[assembly: Xamarin.Forms.ExportRenderer (typeof($control_type$), typeof($namespace$.$renderer_name$))]
+
+namespace $namespace$
+{
+    public class $renderer_name$ : $base_type$
+    {
+        public $renderer_name$(Android.Content.Context context) : base(context)
+        {
+        }
+    }
+}

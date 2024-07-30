@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="Layout Merge-Include-Fragment" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides support for the merge, include and fragment tags within layout files."/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/training/improving-layouts/reusing-layouts.html"/>
+	<Node Name="merge" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<Description Locale="en" Content="An alternative root element that is not drawn in the layout hierarchy. Using this as the root element is useful when you know that this layout will be placed into a layout that already contains the appropriate parent View to contain the children of the 'merge' element. "/>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Modifier Name="RootOnly">
+		</Modifier>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+	</Node>
+	<Node Name="include" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<Description Locale="en" Content="The include tag copies the content from another layout into the current layout, allowing reuse of common view collections."/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="false"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="false"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="layout" TypesCSV="layout" RequirementBehaviour="Always" Inputs="Reference"> 
+			<Description Locale="en" Content="A reference to the layout to include."/>
+		</Parameter>
+		<Parameter Name="android:id" TypesCSV="id" RequirementBehaviour="Optional" Inputs="Reference"> 
+			<Description Locale="en" Content="Overrides the ID given to the root view in the included layout"/>
+		</Parameter>
+	</Node>
+	<Node Name="fragment" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<Description Locale="en" Content="Includes a fragment into the layout"/>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="false"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.MarginLayoutParams"/>
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="false"/>
+			<ModifierArgument Name="ModuleName" Value="Layout Params"/>
+			<ModifierArgument Name="Node" Value="ViewGroup.LayoutParams"/>
+		</Modifier>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="class:android.app.Fragment" RequirementBehaviour="Optional" Inputs="Reference"> 
+			<Description Locale="en" Content="A reference to the fragment to use."/>
+		</Parameter>
+		<Parameter Name="class" TypesCSV="class:android.app.Fragment" RequirementBehaviour="Optional" Inputs="Reference"> 
+			<Description Locale="en" Content="A reference to the fragment to use."/>
+		</Parameter>
+		<Parameter Name="android:id" TypesCSV="id" RequirementBehaviour="Optional" Inputs="Reference"> 
+			<Description Locale="en" Content="The id for the fragment layout element"/>
+		</Parameter>
+	</Node>
+	<Node Name="requestFocus" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<Description Locale="en" Content="The include tag copies the content from another layout into the current layout, allowing reuse of common view collections."/>
+	</Node>
+</Module>

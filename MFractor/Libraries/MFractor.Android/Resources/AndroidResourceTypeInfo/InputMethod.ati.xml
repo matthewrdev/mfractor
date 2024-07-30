@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Input Method">
+ 	<Description Locale="en" Content="Provides support for building input method editors; a control that enables users to enter text."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/text/creating-input-method.html"/>
+	<Node Name="input-method" Abstract="false" Required="false" IntroducedApiLevel="3">
+ 		<Description Locale="en" Content="Use input-method as the root tag of the XML resource that describes an android.view.inputmethod.InputMethod service, which is referenced from its android.view.inputmethod.InputMethod.SERVICE_META_DATA meta-data entry."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:settingsActivity" TypesCSV="class:android.app.Activity" Inputs="Value">
+ 			<Description Locale="en" Content="Component name of an activity that allows the user to modify the settings for this service."/>
+		</Parameter>
+		<Parameter Name="android:isDefault" TypesCSV="boolean" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Set to true in all of the configurations for which this input method should be considered an option as the default."/>
+		</Parameter>
+		<Parameter Name="android:supportsSwitchingToNextInputMethod" TypesCSV="boolean" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Set to true if this input method supports ways to switch to a next input method (e.g. a globe key.)."/>
+		</Parameter>
+		<Node Name="sub-type" Abstract="false" Required="false">
+ 			<Description Locale="en" Content="This is the subtype of InputMethod. Subtype can describe locales (e.g. en_US, fr_FR...) and modes (e.g. voice, keyboard...), and is used for IME switch. This subtype allows the system to call the specified subtype of the IME directly."/>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="The name of the subtype."/>
+			</Parameter>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+	 			<Description Locale="en" Content="The name of the subtype."/>
+			</Parameter>
+			<Parameter Name="android:imeSubtypeLocale" TypesCSV="string" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="The locale of the subtype. This string should be a locale (e.g. en_US, fr_FR...) and will be passed to the IME when the framework calls the IME with the subtype. This is also used by the framework to know the supported locales of the IME."/>
+			</Parameter>
+			<Parameter Name="android:imeSubtypeMode" TypesCSV="dimension,percentage" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="The mode of the subtype. This string can be a mode (e.g. voice, keyboard...) and this string will be passed to the IME when the framework calls the IME with the subtype."/>
+			</Parameter>
+			<Parameter Name="android:isAuxiliary" TypesCSV="boolean" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Set true if the subtype is auxiliary.  An auxiliary subtype won't be shown in the input method selection list in the settings app."/>
+			</Parameter>
+			<Parameter Name="android:overridesImplicitlyEnabledSubtype" TypesCSV="boolean" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="Set true when this subtype should be selected by default if no other subtypes are selected explicitly. Note that a subtype with this parameter being true will not be shown in the subtypes list."/>
+			</Parameter>
+			<Parameter Name="android:imeSubtypeExtraValue" TypesCSV="string" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="The extra value of the subtype. This string can be any string and will be passed to the IME when the framework calls the IME with the subtype."/>
+			</Parameter>
+			<Parameter Name="android:subtypeId" TypesCSV="integer" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="he unique id for the subtype."/>
+			</Parameter>
+			<Parameter Name="android:isAsciiCapable" TypesCSV="boolean" Inputs="ValueOrReference">
+	 			<Description Locale="en" Content="et to true if this subtype is ASCII capable. If the subtype is ASCII capable, it should guarantee that the user can input ASCII characters with this subtype. This is important because many password fields only allow ASCII-characters."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

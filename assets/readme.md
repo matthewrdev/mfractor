@@ -1,0 +1,2 @@
+#About
+These `ati.xml` files are legacy data files that used to drive MFractors android resource features. They remain in the repository as they intended to eventually be reused for more features but never were. Such is life!

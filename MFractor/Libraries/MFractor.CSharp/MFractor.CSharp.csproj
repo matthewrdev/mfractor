@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor.Ide\MFractor.Ide.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Code Actions\MEF\" />
+    <Folder Include="Analysis\" />
+    <Folder Include="Analysis\MEF\" />
+    <Folder Include="Work Units\" />
+    <Folder Include="Scaffolding\" />
+    <Folder Include="Code Generation\" />
+    <Folder Include="Code Actions\" />
+    <Folder Include="Code Actions\Refactor\" />
+    <Folder Include="Scaffolding\Class Declaration\" />
+    <Folder Include="Scaffolding\Interface Declaration\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Code Generation\Class From Clipboard\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Documentation\generate_interface_implementation.md" />
+    <None Remove="Resources\Documentation\implement_interface_member_in_children.md" />
+    <None Remove="Resources\Snippets\EventHandlerDeclaration.txt" />
+    <None Remove="Resources\Snippets\EventHandlerMethod.txt" />
+    <None Remove="Resources\Snippets\Property.txt" />
+    <None Remove="Resources\Snippets\ReadOnlyProperty.txt" />
+    <None Remove="Resources\Snippets\WriteOnlyProperty.txt" />
+    <None Remove="Resources\Snippets\InterfaceDeclaration.txt" />
+    <None Remove="Resources\Snippets\AttributeDeclaration.txt" />
+    <None Remove="Resources\Snippets\EventArgsDeclaration.txt" />
+    <None Remove="Resources\Snippets\EventHandlerDeclaration %28copy%29.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Snippets\EventHandlerDeclaration.txt" />
+    <EmbeddedResource Include="Resources\Snippets\EventHandlerMethod.txt" />
+    <EmbeddedResource Include="Resources\Snippets\Property.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ReadOnlyProperty.txt" />
+    <EmbeddedResource Include="Resources\Snippets\WriteOnlyProperty.txt" />
+    <EmbeddedResource Include="Resources\Snippets\InterfaceDeclaration.txt" />
+    <EmbeddedResource Include="Resources\Snippets\AttributeDeclaration.txt" />
+    <EmbeddedResource Include="Resources\Snippets\EventArgsDeclaration.txt" />
+    <EmbeddedResource Include="Resources\Snippets\EventHandlerDeclarationWithArgs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+
+  </ItemGroup>
+</Project>

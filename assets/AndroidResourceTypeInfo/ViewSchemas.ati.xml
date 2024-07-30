@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="View" IntroducedApiLevel="1" AllowUnknownNodes="true">
+    <Description Locale="en" Content="Provides the schema information for."/>
+    <MetaData Name="SdkUrl" Value="https://developer.android.com/guide/topics/ui/declaring-layout.html"/>
+	
+</Module>

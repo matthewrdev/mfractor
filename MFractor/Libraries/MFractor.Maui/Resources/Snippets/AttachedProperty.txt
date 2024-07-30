@@ -1,0 +1,11 @@
+﻿public static readonly BindableProperty $name$Property = BindableProperty.CreateAttached("$name$", typeof($type$), typeof($control_type$), default($type$));
+
+public static $type$ Get$name$(BindableObject target)
+{
+    return ($type$)target.GetValue($name$Property);
+}
+
+public static void Set$name$(BindableObject target, $type$ value)
+{
+    target.SetValue($name$Property, value);
+}

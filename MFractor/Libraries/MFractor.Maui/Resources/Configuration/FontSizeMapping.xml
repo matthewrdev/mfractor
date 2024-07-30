@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FontSizes Url="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/fonts#named-font-sizes">
+  <FontSize Name="Default"  iOS="16" Android="14" UWP="14"/>
+  <FontSize Name="Micro"    iOS="11" Android="10" UWP="15.667"/>
+  <FontSize Name="Small"    iOS="13" Android="14" UWP="18.667"/>
+  <FontSize Name="Medium"   iOS="16" Android="17" UWP="22.667"/>
+  <FontSize Name="Large"    iOS="20" Android="22" UWP="32"/>
+  <FontSize Name="Body"     iOS="17" Android="16" UWP="14"/>
+  <FontSize Name="Header"   iOS="17" Android="96" UWP="46"/>
+  <FontSize Name="Title"    iOS="28" Android="24" UWP="24"/>
+  <FontSize Name="Subtitle" iOS="22" Android="16" UWP="20"/>
+  <FontSize Name="Caption"  iOS="12" Android="12" UWP="12"/>
+</FontSizes>

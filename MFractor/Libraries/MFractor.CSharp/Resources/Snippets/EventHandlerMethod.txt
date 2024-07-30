@@ -1,0 +1,4 @@
+﻿public void $name$(object sender, $type$ e)
+{
+    throw new System.NotImplementedException();
+}

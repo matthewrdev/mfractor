@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="drawable" Name="Drawable">
+	<Description Locale="en" Content="Provides support for Androids drawable API. This includes layer-lists, level-lists, clipping, scale, rotation and more."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/resources/drawable-resource.html"/>
+	<Node Name="bitmap" Abstract="false" Required="false">
+		<Description Locale="en" Content="An XML bitmap is a resource defined in XML that points to a bitmap file. The effect is an alias for a raw bitmap file. The XML can specify additional properties for the bitmap such as dithering and tiling."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:src" RequirementBehaviour="Always" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Reference to a drawable resource."/>
+		</Parameter>
+		<Parameter Name="android:antialias" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Enables or disables antialiasing."/>
+		</Parameter>
+		<Parameter Name="android:dither" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Enables or disables dithering of the bitmap if the bitmap does not have the same pixel configuration as the screen (for instance: a ARGB 8888 bitmap with an RGB 565 screen)."/>
+		</Parameter>
+		<Parameter Name="android:filter" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content=" Enables or disables bitmap filtering. Filtering is used when the bitmap is shrunk or stretched to smooth its apperance."/>
+		</Parameter>
+		<Parameter Name="android:gravity" TypesCSV="flag" Inputs="Value" DefaultValue="fill">
+			<Description Locale="en" Content="Defines the gravity for the bitmap. The gravity indicates where to position the drawable in its container if the bitmap is smaller than the container."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Put the object at the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Put the object at the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Put the object at the left edge of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Put the object at the right edge of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container. This is the default."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip is based on the vertical gravity: a top gravity clips the bottom edge, a bottom gravity clips the top edge, and neither clips both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip is based on the horizontal gravity: a left gravity clips the right edge, a right gravity clips the left edge, and neither clips both edges."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:mipmap" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+			<Description Locale="en" Content="Enables or disables the mipmap hint."/>
+		</Parameter>
+		<Parameter Name="android:tileMode" TypesCSV="keyword" Inputs="Value" DefaultValue="fill">
+			<Description Locale="en" Content="Defines the tile mode. When the tile mode is enabled, the bitmap is repeated. Gravity is ignored when the tile mode is enabled."/>
+			<ParameterValue Name="disabled">
+				<Description Locale="en" Content="Do not tile the bitmap. This is the default value."/>
+			</ParameterValue>
+			<ParameterValue Name="clamp">
+				<Description Locale="en" Content="Replicates the edge color if the shader draws outside of its original bounds"/>
+			</ParameterValue>
+			<ParameterValue Name="repeat">
+				<Description Locale="en" Content="Repeats the shader's image horizontally and vertically."/>
+			</ParameterValue>
+			<ParameterValue Name="mirror">
+				<Description Locale="en" Content="Repeats the shader's image horizontally and vertically, alternating mirror images so that adjacent images always seam."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="nine-patch" Abstract="false" Required="false">
+		<Description Locale="en" Content="An XML Nine-Patch is a resource defined in XML that points to a Nine-Patch file. The XML can specify dithering for the image."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:src" RequirementBehaviour="Always" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Reference to a drawable resource."/>
+		</Parameter>
+		<Parameter Name="android:dither" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="Enables or disables dithering of the bitmap if the bitmap does not have the same pixel configuration as the screen (for instance: a ARGB 8888 bitmap with an RGB 565 screen)."/>
+		</Parameter>
+	</Node>
+	<Node Name="layer-list" Abstract="false" Required="false">
+		<Description Locale="en" Content="A LayerDrawable is a drawable object that manages an array of other drawables. Each drawable in the list is drawn in the order of the list—the last drawable in the list is drawn on top. Each drawable is represented by an 'item' element inside a single 'layer-list' element."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a drawable to place in the layer drawable, in a position defined by its attributes. Must be a child of a 'layer-list' element. Accepts child 'bitmap' elements."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:id" TypesCSV="id" Inputs="Reference">
+				<Description Locale="en" Content="A unique resource ID for this drawable. To create a new resource ID for this item, use the form: '@+id/name'. The plus symbol indicates that this should be created as a new ID. You can use this identifier to retrieve and modify the drawable with View.findViewById() or Activity.findViewById()."/>
+			</Parameter>
+			<Parameter Name="android:top" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The top offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:bottom" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The bottom offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:left" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The left offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:right" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The right offset in pixels."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="selector" Abstract="false" Required="false">
+		<Description Locale="en" Content="This must be the root element. Contains one or more 'item' elements."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:constantSize" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+			<Description Locale="en" Content="'true' if the drawable's reported internal size remains constant as the state changes (the size is the maximum of all of the states); 'false' if the size varies based on the current state. Default is false."/>
+		</Parameter>
+		<Parameter Name="android:dither" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+			<Description Locale="en" Content="'true' to enable dithering of the bitmap if the bitmap does not have the same pixel configuration as the screen (for instance, an ARGB 8888 bitmap with an RGB 565 screen); 'false' to disable dithering. Default is true."/>
+		</Parameter>
+		<Parameter Name="android:variablePadding" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+			<Description Locale="en" Content="'true' if the drawable's padding should change based on the current state that is selected; 'false' if the padding should stay the same (based on the maximum padding of all the states). Enabling this feature requires that you deal with performing layout when the state changes, which is often not supported. Default is false."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a drawable to use during certain states, as described by its attributes. Must be a child of a 'selector' element."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:state_pressed" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object is pressed (such as when a button is touched/clicked); 'false' if this item should be used in the default, non-pressed state."/>
+			</Parameter>
+			<Parameter Name="android:state_focused" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object has input focus (such as when the user selects a text input); 'false' if this item should be used in the default, non-focused state."/>
+			</Parameter>
+			<Parameter Name="android:state_hovered" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="14">
+				<Description Locale="en" Content="'true' if this item should be used when the object is being hovered by a cursor; 'false' if this item should be used in the default, non-hovered state. Often, this drawable may be the same drawable used for the 'focused' state."/>
+			</Parameter>
+			<Parameter Name="android:state_selected" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object is the current user selection when navigating with a directional control (such as when navigating through a list with a d-pad); 'false' if this item should be used when the object is not selected. The selected state is used when focus (android:state_focused) is not sufficient (such as when list view has focus and an item within it is selected with a d-pad)."/>
+			</Parameter>
+			<Parameter Name="android:state_checkable" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object is checkable; 'false' if this item should be used when the object is not checkable. (Only useful if the object can transition between a checkable and non-checkable widget.)"/>
+			</Parameter>
+			<Parameter Name="android:state_checked" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object is checked; 'false' if it should be used when the object is un-checked."/>
+			</Parameter>
+			<Parameter Name="android:state_enabled" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the object is enabled (capable of receiving touch/click events); 'false' if it should be used when the object is disabled."/>
+			</Parameter>
+			<Parameter Name="android:state_activated" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="11">
+				<Description Locale="en" Content="'true' if this item should be used when the object is activated as the persistent selection (such as to 'highlight' the previously selected list item in a persistent navigation view); 'false' if it should be used when the object is not activated."/>
+			</Parameter>
+			<Parameter Name="android:state_window_focused" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this item should be used when the application window has focus (the application is in the foreground), 'false' if this item should be used when the application window does not have focus (for example, if the notification shade is pulled down or a dialog appears)."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="level-list" Abstract="false" Required="false">
+		<Description Locale="en" Content="A Drawable that manages a number of alternate Drawables, each assigned a maximum numerical value. Setting the level value of the drawable with setLevel() loads the drawable resource in the level list that has a android:maxLevel value greater than or equal to the value passed to the method."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a drawable to use at a certain level."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:maxLevel" TypesCSV="integer" Inputs="Value">
+				<Description Locale="en" Content="The maximum level allowed for this item."/>
+			</Parameter>
+			<Parameter Name="android:minLevel" TypesCSV="integer" Inputs="Value">
+				<Description Locale="en" Content="The minimum level allowed for this item."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="transition" Abstract="false" Required="false">
+		<Description Locale="en" Content="A TransitionDrawable is a drawable object that can cross-fade between the two drawable resources. Each drawable is represented by an 'item' element inside a single 'transition' element. No more than two items are supported. To transition forward, call startTransition(). To transition backward, call reverseTransition()."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a drawable to use as part of the drawable transition. Must be a child of a 'transition' element. Accepts child 'bitmap' elements."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:id" TypesCSV="id" Inputs="Reference">
+				<Description Locale="en" Content="A unique resource ID for this drawable. To create a new resource ID for this item, use the form: '@+id/name'. The plus symbol indicates that this should be created as a new ID. You can use this identifier to retrieve and modify the drawable with View.findViewById() or Activity.findViewById()."/>
+			</Parameter>
+			<Parameter Name="android:top" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The top offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:bottom" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The bottom offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:left" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The left offset in pixels."/>
+			</Parameter>
+			<Parameter Name="android:right" TypesCSV="integer,dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The right offset in pixels."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="inset" Abstract="false" Required="false">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Drawable"/>
+		</Modifier>
+		<Modifier Name="AddChildrenFromModule">
+			<ModifierArgument Name="TypesCSV" Value="shape"/>
+			<ModifierArgument Name="ModuleName" Value="Shape"/>
+		</Modifier>
+		<Description Locale="en" Content="A drawable defined in XML that insets another drawable by a specified distance. This is useful when a View needs a background that is smaller than the View's actual bounds."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:drawable" RequirementBehaviour="Always" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Reference to a drawable resource to be inset."/>
+		</Parameter>
+		<Parameter Name="android:insetTop" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The top inset, as a dimension value or dimension resource."/>
+		</Parameter>
+		<Parameter Name="android:insetBottom" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The bottom inset, as a dimension value or dimension resource."/>
+		</Parameter>
+		<Parameter Name="android:insetLeft" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The left inset, as a dimension value or dimension resource."/>
+		</Parameter>
+		<Parameter Name="android:insetRight" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The right inset, as a dimension value or dimension resource."/>
+		</Parameter>
+	</Node>
+	<Node Name="clip" Abstract="false" Required="false">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Drawable"/>
+		</Modifier>
+		<Description Locale="en" Content="A drawable defined in XML that clips another drawable based on this Drawable's current level. You can control how much the child drawable gets clipped in width and height based on the level, as well as a gravity to control where it is placed in its overall container. Most often used to implement things like progress bars."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:drawable" RequirementBehaviour="Always" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Reference to a drawable resource to be clipped."/>
+		</Parameter>
+		<Parameter Name="android:clipOrientation" TypesCSV="keyword" Inputs="Value">
+			<Description Locale="en" Content="The orientation for the clip."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Clip the drawable horizontally."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Clip the drawable vertically."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:gravity" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="Specifies where to clip within the drawable. Must be one or more (separated by '|') of the constant values."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Put the object at the top of its container, not changing its size. When clipOrientation is 'vertical, clipping occurs at the bottom of the drawable."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Put the object at the bottom of its container, not changing its size. When clipOrientation is 'vertical', clipping occurs at the top of the drawable."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Put the object at the left edge of its container, not changing its size. This is the default. When clipOrientation is 'horizontal', clipping occurs at the right side of the drawable. This is the default."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Put the object at the right edge of its container, not changing its size. When clipOrientation is 'horizontal', clipping occurs at the left side of the drawable."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size. Clipping behaves the same as when gravity is 'center'."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container. When clipOrientation is 'vertical', no clipping occurs because the drawable fills the vertical space (unless the drawable level is 0, in which case it's not visible)."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size. Clipping behaves the same as when gravity is 'center'."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container. When clipOrientation is 'horizontal', no clipping occurs because the drawable fills the horizontal space (unless the drawable level is 0, in which case it's not visible)."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. When clipOrientation is 'horizontal', clipping occurs on the left and right. When clipOrientation is 'vertical', clipping occurs on the top and bottom."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container. No clipping occurs because the drawable fills the horizontal and vertical space (unless the drawable level is 0, in which case it's not visible)."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip is based on the vertical gravity: a top gravity clips the bottom edge, a bottom gravity clips the top edge, and neither clips both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip is based on the horizontal gravity: a left gravity clips the right edge, a right gravity clips the left edge, and neither clips both edges."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="scale" Abstract="false" Required="false">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Drawable"/>
+		</Modifier>
+		<Description Locale="en" Content="A drawable defined in XML that changes the size of another drawable based on its current level."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:drawable" RequirementBehaviour="Always" TypesCSV="drawable" Inputs="Reference">
+			<Description Locale="en" Content="Reference to a drawable resource to be clipped."/>
+		</Parameter>
+		<Parameter Name="android:scaleGravity" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="Specifies the gravity position after scaling. Must be one or more (separated by '|') of the constant values."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Put the object at the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Put the object at the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Put the object at the left edge of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Put the object at the right edge of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container. This is the default."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip is based on the vertical gravity: a top gravity clips the bottom edge, a bottom gravity clips the top edge, and neither clips both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip is based on the horizontal gravity: a left gravity clips the right edge, a right gravity clips the left edge, and neither clips both edges."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:scaleHeight" TypesCSV="percentage" Inputs="Value">
+			<Description Locale="en" Content="The scale height, expressed as a percentage of the drawable's bound. The value's format is XX%. For instance: 100%, 12.5%, etc."/>
+		</Parameter>
+		<Parameter Name="android:scaleWidth" TypesCSV="percentage" Inputs="Value">
+			<Description Locale="en" Content="The scale width, expressed as a percentage of the drawable's bound. The value's format is XX%. For instance: 100%, 12.5%, etc."/>
+		</Parameter>
+	</Node>
+	<Node Name="ripple" Abstract="false" Required="false">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Drawable"/>
+			<ModifierArgument Name="Node" Value="layer-list"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Description Locale="en" Content="Drawable that shows a ripple effect in workUnit to state changes."/>
+		<Parameter Name="android:color" TypesCSV="color" Inputs="ValueOrReference" RequirementBehaviour="Always">
+			<Description Locale="en" Content="The color to use for ripple effects."/>
+		</Parameter>
+		<Parameter Name="android:radius" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The radius of the ripple when fully expanded. By default, the radius is computed based on the size of the ripple's container."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a drawable to use as part of the drawable transition. Must be a child of a 'transition' element. Accepts child 'bitmap' elements."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="Reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:id" TypesCSV="id" Inputs="Reference">
+				<Description Locale="en" Content="A unique resource ID for this drawable. To create a new resource ID for this item, use the form: '@+id/name'. The plus symbol indicates that this should be created as a new ID. You can use this identifier to retrieve and modify the drawable with View.findViewById() or Activity.findViewById()."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="animation-list" Abstract="false" Required="false">
+		<Description Locale="en" Content="This must be the root element. Contains one or more 'item' elements."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:oneshot" RequirementBehaviour="Always" TypesCSV="boolean" Inputs="Value"> 
+			<Description Locale="en" Content="If true, the animation will only run a single time and then stop."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true"> 
+			<Modifier Name="SupportAllForModuleName">
+				<ModifierArgument Name="Name" Value="Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+				<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+			</Modifier>
+			<Modifier Name="AddChildrenFromModule">
+				<ModifierArgument Name="TypesCSV" Value="shape"/>
+				<ModifierArgument Name="ModuleName" Value="Shape"/>
+			</Modifier>
+			<Description Locale="en"  Content="A single frame of animation. Must be a child of a 'animation-list' element."/>
+			<Parameter Name="android:drawable" RequirementBehaviour="WhenLeaf" TypesCSV="drawable" Inputs="Reference"> 
+				<Description Locale="en"  Content="The drawable to use for this frame."/>
+			</Parameter>
+			<Parameter Name="android:duration" RequirementBehaviour="Always" TypesCSV="integer" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The duration to show this frame, in milliseconds."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="rotate" Abstract="false" Required="false">
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Drawable"/>
+		</Modifier>
+		<Modifier Name="AddChildrenFromModule">
+			<ModifierArgument Name="TypesCSV" Value="vector,animated-vector"/>
+			<ModifierArgument Name="ModuleName" Value="Vector Drawable"/>
+		</Modifier>
+		<Modifier Name="AddChildrenFromModule">
+			<ModifierArgument Name="TypesCSV" Value="shape"/>
+			<ModifierArgument Name="ModuleName" Value="Shape"/>
+		</Modifier>
+		<Description Locale="en" Content="A Drawable that can rotate another Drawable based on the current level value."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:drawable" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="Reference"> 
+			<Description Locale="en" Content="Reference to a drawable resource to use for the frame. If not given, the drawable must be defined by the first child tag."/>
+		</Parameter>
+		<Parameter Name="android:fromDegrees" RequirementBehaviour="Optional" TypesCSV="float,int,percentage" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The starting degrees of rotation."/>
+		</Parameter>
+		<Parameter Name="android:toDegrees" RequirementBehaviour="Optional" TypesCSV="float,int,percentage" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The ending degrees of rotation."/>
+		</Parameter>
+		<Parameter Name="android:pivotX" RequirementBehaviour="Optional" TypesCSV="float,int,percentage" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The x axis pivot"/>
+		</Parameter>
+		<Parameter Name="android:pivotY" RequirementBehaviour="Optional" TypesCSV="float,int,percentage" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The y axis pivot."/>
+		</Parameter>
+	</Node>
+</Module>

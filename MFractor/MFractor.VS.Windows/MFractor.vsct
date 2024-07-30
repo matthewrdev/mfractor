@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+  <Commands package="guidMFractorPackage">
+    <Menus>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_MainMenu" priority="0x700" type="Menu">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+        <Strings>
+          <ButtonText>MFractor</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Wizards" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2" />
+        <Strings>
+          <ButtonText>Wizards</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Import" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2" />
+        <Strings>
+          <ButtonText>Import</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Actions" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2" />
+        <Strings>
+          <ButtonText>Tools</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_About" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment3" />
+        <Strings>
+          <ButtonText>About</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Legal" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment3" />
+        <Strings>
+          <ButtonText>Legal</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Support" priority="0x700" type="Menu">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment3" />
+        <Strings>
+          <ButtonText>Support</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    
+    <Groups>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment1">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_MainMenu" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_MainMenu" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment3">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_MainMenu" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Wizards">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Wizards" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Import">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Import" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Actions">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Actions" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_About">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_About" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Legal">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Legal" />
+      </Group>
+      <Group guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Menus_Support" />
+      </Group>
+      <Group guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_VIEW" />
+      </Group>
+      <Group guid ="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" />
+      <Group guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+    </Groups>
+    
+    <Buttons>
+      <!-- Buttons/Commands for the 1st Segment of the Top Level Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_LicenseSummary" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment1" />
+        <Icon guid="guidImages" id="MFractor_Logo" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+        <Strings>
+          <ButtonText>License Summary</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_LicenseInfo" priority="0x0101" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment1" />
+        <Icon guid="guidIconLicense" id="IconLicense" />
+        <Strings>
+          <ButtonText>License Information</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Buy" priority="0x0102" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment1" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Buy MFractor</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_RecoverLicense" priority="0x0103" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment1" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Recover Professional License</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the 2nd Segment of the Top Level Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Preferences" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2" />
+        <Icon guid="guidIconSettings" id="IconSettings" />
+        <Strings>
+          <ButtonText>Preferences</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ManageImageAssets" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_MainMenu_Segment2" />
+        <Icon guid="guidIconManageImageAssets" id="IconManageImageAssets" />
+        <Strings>
+          <ButtonText>Manage Image Assets</ButtonText>
+        </Strings>
+      </Button>
+      
+      <!-- Buttons/Commands for the Wizards -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Wizards_LocalizeDocument" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Wizards" />
+        <Icon guid="guidIconLocalization" id="IconLocalization" />
+        <Strings>
+          <ButtonText>Localize Document</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Wizards_Mvvm" priority="0x0101" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Wizards" />
+        <Icon guid="guidIconMvvm" id="IconMvvm" />
+        <Strings>
+          <ButtonText>MVVM Wizard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Wizards_ValueConverter" priority="0x0102" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Wizards" />
+        <Icon guid="guidIconValueConverter" id="IconValueConverter" />
+        <Strings>
+          <ButtonText>Value Converter Wizard</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the Importers -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportFont" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Import" />
+        <Icon guid="guidIconImportFont" id="IconImportFont" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Font</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportImageAsset" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Import" />
+        <Icon guid="guidIconImportImage" id="IconImportImage" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Image Asset</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportIconWizard" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Import" />
+        <Icon guid="guidIconImportAppIcon" id="IconImportAppIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>App Icon</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the Importers added to Solution Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportFont_SolutionExplorer" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" />
+        <Icon guid="guidIconImportFont" id="IconImportFont" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Font</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportImageAsset_SolutionExplorer" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" />
+        <Icon guid="guidIconImportImage" id="IconImportImage" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Image Asset</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ImportIconWizard_SolutionExplorer" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" />
+        <Icon guid="guidIconImportAppIcon" id="IconImportAppIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>App Icon</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the Actions Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ManageImageAssets" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Actions" />
+        <Strings>
+          <ButtonText>Manage Image Assets</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ResyncMFractor" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Actions" />
+        <Icon guid="guidIconSynchronize" id="IconSynchronize" />
+        <Strings>
+          <ButtonText>Resync MFractor Solution Resources</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the About Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Activate" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_About" />
+        <Strings>
+          <ButtonText>Activate</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Onboarding" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_About" />
+        <Strings>
+          <ButtonText>Onboarding</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_LicenseInfo" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_About" />
+        <Strings>
+          <ButtonText>License Information</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_About" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_About" />
+        <Strings>
+          <ButtonText>About MFractor</ButtonText>
+        </Strings>
+      </Button>
+      
+      
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_PrivacyPolicy" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Legal" />
+        <Strings>
+          <ButtonText>Privacy Policy</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_EndUserLicense" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Legal" />
+        <Strings>
+          <ButtonText>End User License</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ThirdParty" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Legal" />
+        <Strings>
+          <ButtonText>Third Party Software Attribution</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the Support Menu -->
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_Slack" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconSlack" id="IconSlack" />
+        <Strings>
+          <ButtonText>Slack</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_Gitter" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconGitter" id="IconGitter" />
+        <Strings>
+          <ButtonText>Gitter</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_Twitter" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconTwitter" id="IconTwitter" />
+        <Strings>
+          <ButtonText>Twitter</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_Email" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconEmail" id="IconEmail" />
+        <Strings>
+          <ButtonText>Email</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_SubmitFeedback" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconFeedback" id="IconFeedback" />
+        <Strings>
+          <ButtonText>Submit Feedback</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Support_Documentation" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_Menus_Support" />
+        <Icon guid="guidIconBook" id="IconBook" />
+        <Strings>
+          <ButtonText>Documentation</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_ManageImageAssets" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="guidIconManageImageAssets" id="IconManageImageAssets" />
+        <Strings>
+          <ButtonText>Manage Image Assets</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorTopMenuCmdSet" id="MFractor_Commands_Debug_Lab" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Strings>
+          <ButtonText>MFractor Lab</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Buttons/Commands for the navigation shortcuts -->
+      <Button guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalImplementation" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" />
+        <Icon guid="guidIconViewModel" id="IconViewModel" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Go To View Model</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalDefinitionCodeBehind" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" />
+        <Icon guid="guidIconCodeBehind" id="IconCodeBehind" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Go To Code Behind Class</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalDefinition" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" />
+        <Icon guid="guidIconXaml" id="IconXaml" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Go To Xaml View</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToXamlSymbol" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Go To Xaml Symbol</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_FindCustomRenderers" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Find Custom Renderers</ButtonText>
+        </Strings>
+      </Button>
+    
+      <!-- Button/Commands for Solution Context -->
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_DeleteOutputFolders" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Icon guid="guidIconClean" id="IconClean" />
+        <Strings>
+          <ButtonText>Delete Output Folders</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_CleanAndCompress" priority="0x0101" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <Icon guid="guidIconCompress" id="IconCompress" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Clean And Compress</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_CreateClassFromClipboard" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Create Class From Clipboard</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_Scaffold" priority="0x0100" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Scaffold</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_GenerateFontGlyphCodeClass" priority="0x0101" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Generate Font Glyph Code Class</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_DeleteImageAsset" priority="0x0102" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Delete Image Asset</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_ManageImageAssets" priority="0x0103" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Manage Image Assets</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_CopyAndroidPackageId" priority="0x0104" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Copy Package Id To Clipboard</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_CopyiOSBundleId" priority="0x0105" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Copy Bundle Id To Clipboard</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_AddExportFontDeclaration" priority="0x0106" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Add Export Font Declaration</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_OpenAndroidManifest" priority="0x0107" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Open Android Manifest</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidMFractorSolutionCmdSet" id="MFractor_Commands_Solution_ConvertToCSharp9" priority="0x0108" type="Button">
+        <Parent guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Convert Project to C# 9.0</ButtonText>
+        </Strings>
+      </Button>
+      
+    </Buttons>
+    
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\MFractorIcon.png" usedList="MFractor_Logo" />
+      <Bitmap guid="guidIconSettings" href="Resources\Settings.png" usedList="IconSettings" />
+      <Bitmap guid="guidIconLicense" href="Resources\License.png" usedList="IconLicense" />
+      <Bitmap guid="guidIconClean" href="Resources\Clean.png" usedList="IconClean" />
+      <Bitmap guid="guidIconCompress" href="Resources\Compress.png" usedList="IconCompress" />
+      <Bitmap guid="guidIconImportImage" href="Resources\ImportImage.png" usedList="IconImportImage" />
+      <Bitmap guid="guidIconImportFont" href="Resources\ImportFont.png" usedList="IconImportFont" />
+      <Bitmap guid="guidIconImportAppIcon" href="Resources\ImportAppIcon.png" usedList="IconImportAppIcon" />
+      <Bitmap guid="guidIconManageImageAssets" href="Resources\ManageImageAssets.png" usedList="IconManageImageAssets" />
+      <Bitmap guid="guidIconSynchronize" href="Resources\Synchronize.png" usedList="IconSynchronize" />
+      <Bitmap guid="guidIconBook" href="Resources\Book.png" usedList="IconBook" />
+      <Bitmap guid="guidIconEmail" href="Resources\Email.png" usedList="IconEmail" />
+      <Bitmap guid="guidIconFeedback" href="Resources\Feedback.png" usedList="IconFeedback" />
+      <Bitmap guid="guidIconGitter" href="Resources\Gitter.png" usedList="IconGitter" />
+      <Bitmap guid="guidIconSlack" href="Resources\Slack.png" usedList="IconSlack" />
+      <Bitmap guid="guidIconTwitter" href="Resources\Twitter.png" usedList="IconTwitter" />
+      <Bitmap guid="guidIconCodeBehind" href="Resources\CodeBehind.png" usedList="IconCodeBehind" />
+      <Bitmap guid="guidIconViewModel" href="Resources\ViewModel.png" usedList="IconViewModel" />
+      <Bitmap guid="guidIconXaml" href="Resources\Xaml.png" usedList="IconXaml" />
+      <Bitmap guid="guidIconMvvm" href="Resources\Mvvm.png" usedList="IconMvvm" />
+      <Bitmap guid="guidIconLocalization" href="Resources\Localization.png" usedList="IconLocalization" />
+      <Bitmap guid="guidIconValueConverter" href="Resources\ValueConverter.png" usedList="IconValueConverter" />
+    </Bitmaps>
+  </Commands>
+  
+  <CommandPlacements>
+    <CommandPlacement guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" priority="0x0001">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation_SolutionPad" priority="0x0001">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorNavigationCmdSet" id="MFractor_Groups_Navigation" priority="0x0002">
+      <Parent guid="guidXamlCmdSet" id="editorContextMenu" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorSolutionCmdSet" id="MFractor_Groups_Solution" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_SOLUTION_ADD" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidMFractorTopMenuCmdSet" id="MFractor_Groups_SolutionExplorer_Import" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_PROJECT_ADD" />
+    </CommandPlacement>
+  </CommandPlacements>
+  
+  <KeyBindings>
+    <KeyBinding guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalImplementation" editor="guidVSStd97"
+        key1="1" mod1="Alt" mod2="Shift" />
+    <KeyBinding guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalDefinitionCodeBehind" editor="guidVSStd97"
+       key1="2" mod1="Alt" mod2="Shift" />
+    <KeyBinding guid="guidMFractorNavigationCmdSet" id="MFractor_Commands_Navigation_GoToRelationalDefinition" editor="guidVSStd97"
+        key1="3" mod1="Alt" mod2="Shift" />
+  </KeyBindings>
+  
+  <Symbols>
+    <GuidSymbol name="guidMFractorPackage" value="{9772085d-2cd1-46f3-aa46-c62ee90fefec}" />
+    <GuidSymbol name="guidMFractorTopMenuCmdSet" value="{9cff72df-e0c4-4ced-befe-0f415ae7cb6f}">
+      <IDSymbol name="MFractor_Menus_MainMenu" value="0x1000" />
+      <IDSymbol name="MFractor_Menus_About" value="0x1010" />
+      <IDSymbol name="MFractor_Menus_Support" value="0x1011" />
+      <IDSymbol name="MFractor_Menus_Wizards" value="0x1012" />
+      <IDSymbol name="MFractor_Menus_Import" value="0x1013" />
+      <IDSymbol name="MFractor_Menus_Actions" value="0x1014" />
+      <IDSymbol name="MFractor_Menus_Legal" value="0x1015" />
+      
+      <IDSymbol name="MFractor_Groups_MainMenu" value="0x2001" />
+      <IDSymbol name="MFractor_Groups_MainMenu_Segment1" value="0x2003" />
+      <IDSymbol name="MFractor_Groups_MainMenu_Segment2" value="0x2004" />
+      <IDSymbol name="MFractor_Groups_MainMenu_Segment3" value="0x2005" />
+      <IDSymbol name="MFractor_Groups_Menus_Wizards" value="0x2006" />
+      <IDSymbol name="MFractor_Groups_Menus_Import" value="0x2007" />
+      <IDSymbol name="MFractor_Groups_Menus_Actions" value="0x2008" />
+      <IDSymbol name="MFractor_Groups_Menus_About" value="0x2009" />
+      <IDSymbol name="MFractor_Groups_Menus_Support" value="0x2010" />
+      <IDSymbol name="MFractor_Groups_SolutionExplorer_Import" value="0x2011" />
+      <IDSymbol name="MFractor_Groups_Menus_Legal" value="0x2012" />
+
+      <IDSymbol name="MFractor_Commands_LicenseInfo" value="0x1100" />
+      <IDSymbol name="MFractor_Commands_Buy" value="0x1101" />
+      <IDSymbol name="MFractor_Commands_Preferences" value="0x1102" />
+      <IDSymbol name="MFractor_Commands_ManageImageAssets" value="0x1103" />
+      <IDSymbol name="MFractor_Commands_Wizards_LocalizeDocument" value="0x1112" />
+      <IDSymbol name="MFractor_Commands_Wizards_Mvvm" value="0x1104" />
+      <IDSymbol name="MFractor_Commands_Wizards_ValueConverter" value="0x1105" />
+      <IDSymbol name="MFractor_Commands_ImportFont" value="0x1106" />
+      <IDSymbol name="MFractor_Commands_ImportImageAsset" value="0x1107" />
+      <IDSymbol name="MFractor_Commands_ImportIconWizard" value="0x1119" />
+      <IDSymbol name="MFractor_Commands_ResyncMFractor" value="0x1108" />
+      <IDSymbol name="MFractor_Commands_Activate" value="0x1109" />
+      <IDSymbol name="MFractor_Commands_About" value="0x1110" />
+      <IDSymbol name="MFractor_Commands_ThirdParty" value="0x1111" />
+      <IDSymbol name="MFractor_Commands_PrivacyPolicy" value="0x1113" />
+      <IDSymbol name="MFractor_Commands_EndUserLicense" value="0x1114" />
+      <IDSymbol name="MFractor_Commands_RecoverLicense" value="0x1115" />
+      <IDSymbol name="MFractor_Commands_LicenseSummary" value="0x1116" />
+      <IDSymbol name="MFractor_Commands_Onboarding" value="0x1118" />
+      <IDSymbol name="MFractor_Commands_Support_Slack" value="0x1501" />
+      <IDSymbol name="MFractor_Commands_Support_Gitter" value="0x1502" />
+      <IDSymbol name="MFractor_Commands_Support_Twitter" value="0x1503" />
+      <IDSymbol name="MFractor_Commands_Support_Email" value="0x1504" />
+      <IDSymbol name="MFractor_Commands_Support_SubmitFeedback" value="0x1505" />
+      <IDSymbol name="MFractor_Commands_Support_Documentation" value="0x1506" />
+      <IDSymbol name="MFractor_Commands_Debug_Lab" value="0x1600" />
+      <IDSymbol name="MFractor_Commands_ImportFont_SolutionExplorer" value="0x1701" />
+      <IDSymbol name="MFractor_Commands_ImportImageAsset_SolutionExplorer" value="0x1702" />
+      <IDSymbol name="MFractor_Commands_ImportIconWizard_SolutionExplorer" value="0x1703" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidMFractorSolutionCmdSet" value="{9cca1067-4323-4f66-b269-5ae6bdd8141b}">
+      <IDSymbol name="MFractor_Groups_Solution" value="0x0001" />
+      <IDSymbol name="MFractor_Commands_Solution_DeleteOutputFolders" value="0x1001" />
+      <IDSymbol name="MFractor_Commands_Solution_CleanAndCompress" value="0x1002" />
+      <IDSymbol name="MFractor_Commands_Solution_DeleteImageAsset" value="0x1003" />
+      <IDSymbol name="MFractor_Commands_Solution_GenerateFontGlyphCodeClass" value="0x1042" />
+      <IDSymbol name="MFractor_Commands_Solution_ManageImageAssets" value="0x1004" />
+      <IDSymbol name="MFractor_Commands_Solution_CreateClassFromClipboard" value="0x1005" />
+      <IDSymbol name="MFractor_Commands_Solution_Scaffold" value="0x1006" />
+      <IDSymbol name="MFractor_Commands_Solution_CopyAndroidPackageId" value="0x1007" />
+      <IDSymbol name="MFractor_Commands_Solution_CopyiOSBundleId" value="0x1008" />
+      <IDSymbol name="MFractor_Commands_Solution_AddExportFontDeclaration" value="0x1009" />
+      <IDSymbol name="MFractor_Commands_Solution_OpenAndroidManifest" value="0x1010" />
+      <IDSymbol name="MFractor_Commands_Solution_ConvertToCSharp9" value="0x1801" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidMFractorNavigationCmdSet" value="{EF1E3DB8-D10B-4BB5-B254-68B76936E492}">
+      <IDSymbol name="MFractor_Groups_Navigation" value="0x0001" />
+      <IDSymbol name="MFractor_Groups_Navigation_SolutionPad" value="0x0002" />
+      <IDSymbol name="MFractor_Commands_Navigation_GoToRelationalImplementation" value="0x1001" />
+      <IDSymbol name="MFractor_Commands_Navigation_GoToRelationalDefinitionCodeBehind" value="0x1002" />
+      <IDSymbol name="MFractor_Commands_Navigation_GoToRelationalDefinition" value="0x1003" />
+      <IDSymbol name="MFractor_Commands_Navigation_GoToXamlSymbol" value="0x1004" />
+      <IDSymbol name="MFractor_Commands_Navigation_FindCustomRenderers" value="0x1005" />
+    </GuidSymbol>
+      
+    <GuidSymbol name="guidImages" value="{7df7500b-37a0-4d31-b9fd-f27538f26bae}">
+      <IDSymbol name="MFractor_Logo" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconSettings" value="{e7821d74-761f-4061-8d5a-e1c63edc6569}">
+      <IDSymbol name="IconSettings" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconLicense" value="{2ee20b56-a0a1-46e2-b17e-1dbb3a8d4a36}">
+      <IDSymbol name="IconLicense" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconClean" value="{b5a2b110-2222-45f3-9ad3-dbb897bb5aef}">
+      <IDSymbol name="IconClean" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconCompress" value="{3679d4ce-06b8-44a6-bf2d-79c368fb39f3}">
+      <IDSymbol name="IconCompress" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconImportImage" value="{c6c6c019-28bf-49d7-831b-fbf61002abe1}">
+      <IDSymbol name="IconImportImage" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconImportFont" value="{5037d665-c33a-46a3-ac6f-cc9cb6239c87}">
+      <IDSymbol name="IconImportFont" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconImportAppIcon" value="{6F9ADF98-1877-42AB-881F-5E5C690FDA43}">
+      <IDSymbol name="IconImportAppIcon" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconManageImageAssets" value="{55acbd6c-e13d-4bb4-b285-6a18c41a423f}">
+      <IDSymbol name="IconManageImageAssets" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconSynchronize" value="{3776aa89-affa-4bd2-ab22-773130d6ad29}">
+      <IDSymbol name="IconSynchronize" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconBook" value="{bba8e78b-0e5e-425f-ac50-8b22dd2812b8}">
+      <IDSymbol name="IconBook" value="1" />      
+    </GuidSymbol>
+    <GuidSymbol name="guidIconEmail" value="{baabfbae-003e-4447-ba9e-046ea88c698a}">
+      <IDSymbol name="IconEmail" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconFeedback" value="{51666105-6898-4ba9-b1bf-42bc1e725bfc}">
+      <IDSymbol name="IconFeedback" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconGitter" value="{f647eaf0-9d4b-4273-b4c7-5e3e9a6ed99d}">
+      <IDSymbol name="IconGitter" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconSlack" value="{43506343-3cef-4c04-8026-a8993626c937}">
+      <IDSymbol name="IconSlack" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconTwitter" value="{2fdbcd5f-d0b4-4c3e-8d58-daeeee08c8f5}">
+      <IDSymbol name="IconTwitter" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconCodeBehind" value="{01d69358-d6dd-4341-a5ee-8c29eaaea562}">
+      <IDSymbol name="IconCodeBehind" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconViewModel" value="{ac81709a-9cd3-4546-9b09-33422e0621a6}">
+      <IDSymbol name="IconViewModel" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconXaml" value="{359f54ce-843c-43a8-b626-4bda3489df32}">
+      <IDSymbol name="IconXaml" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconMvvm" value="{03d723a8-6a2c-419f-95a8-df99025f563a}">
+      <IDSymbol name="IconMvvm" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconLocalization" value="{108744a8-2655-40b7-bc82-f6f604248534}">
+      <IDSymbol name="IconLocalization" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidIconValueConverter" value="{36dac197-0e4b-4c47-b245-c02ca57f1ffb}">
+      <IDSymbol name="IconValueConverter" value="1" />
+    </GuidSymbol>
+  
+    <GuidSymbol name="guidXamlCmdSet" value="{4C87B692-1202-46AA-B64C-EF01FAEC53DA}">
+      <IDSymbol name="editorContextMenu" value="259"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\AndroidResourceTypeInfo\AccessibilityService.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\AccountAuthenticator.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\AppWidget.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\ColorStateList.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Controls.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\DeviceAdmin.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Drawable.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\FullBackupContent.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\InputExtras.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\InputMethod.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Interpolators.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Keyboard.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\LayoutAnimationControllers.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\LayoutMergeInclude.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\LayoutParams.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Manifest.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Menu.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\NFC.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\PreferenceHeaders.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Preferences.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\PropertyAnimation.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Searchable.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\ShapeDrawable.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\SpellChecker.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Styleable.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Styles.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\SyncAdapter.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Transition.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Tween Animation.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\Values.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\VectorDrawable.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\View.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\ViewGroup.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\ViewGroupControls.ati.xml" />
+    <None Remove="Resources\AndroidResourceTypeInfo\ViewSchemas.ati.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Data\Synchronisers\" />
+    <Folder Include="Scaffolding\" />
+    <Folder Include="Resources\Snippets\" />
+    <Folder Include="Data\Models\Manifest\" />
+    <Folder Include="Scaffolding\Resources\" />
+    <Folder Include="Scaffolding\Components\" />
+    <Folder Include="Data\Repositories\Manifest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\AccessibilityService.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\AccountAuthenticator.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\AppWidget.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\ColorStateList.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Controls.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\DeviceAdmin.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Drawable.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\FullBackupContent.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\InputExtras.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\InputMethod.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Interpolators.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Keyboard.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\LayoutAnimationControllers.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\LayoutMergeInclude.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\LayoutParams.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Manifest.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Menu.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\NFC.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\PreferenceHeaders.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Preferences.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\PropertyAnimation.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Searchable.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\ShapeDrawable.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\SpellChecker.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Styleable.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Styles.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\SyncAdapter.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Transition.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Tween Animation.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\Values.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\VectorDrawable.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\View.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\ViewGroup.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\ViewGroupControls.ati.xml" />
+    <EmbeddedResource Include="Resources\AndroidResourceTypeInfo\ViewSchemas.ati.xml" />
+    <EmbeddedResource Include="Resources\Snippets\Environment.txt" />
+  </ItemGroup>
+</Project>

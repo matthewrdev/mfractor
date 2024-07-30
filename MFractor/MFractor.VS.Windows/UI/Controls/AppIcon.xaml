@@ -1,0 +1,24 @@
+﻿<StackPanel 
+    x:Class="MFractor.VS.Windows.UI.Controls.AppIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MFractor.VS.Windows.UI.Controls"
+    mc:Ignorable="d" >
+    <Border 
+        BorderBrush="Black" 
+        BorderThickness="1"
+        Padding="4"
+        Width="60"
+        Height="60">
+        <Image
+            x:Name="iconImage"
+            Source="/MFractor.VS.Windows;component/Assets/mfractor_logo.png" />
+    </Border>
+
+    <Label
+        x:Name="nameLabel"
+        HorizontalAlignment="Center"
+        Content="3x" />
+</StackPanel>

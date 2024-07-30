@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="values" Name="Styleable">
+	<Description Locale="en" Content="Provides support for specifying custom attributes for Views."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/custom-views/create-view.html#customattr"/>
+	<Node Name="resources" Abstract="false" Required="true">
+		<Description Locale="en" Content="This must be the root node."/>
+		<Node Name="declare-styleable" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="attrs.xml"/>
+			<Description Locale="en" Content="Defines attributes that a custom view can use."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of the styleable."/>
+			</Parameter>
+			<Node Name="attr" Abstract="false" Required="false">
+				<Description Locale="en" Content="A custom attribute."/>
+				<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the attribute."/>
+				</Parameter>
+				<Parameter Name="format" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="One or more allowed types for the attribute joined by pipes ('|'). This is implicitly defined if this attribute has 'flag' or 'enum' child elements."/>
+					<ParameterValue Name="integer">
+						<Description Locale="en" Content="A number in numerical (EG: '1') or hexadecimal (EG: '0xFF') notation."/>
+					</ParameterValue>
+					<ParameterValue Name="float">
+						<Description Locale="en" Content="A decimal number in numerical notation."/>
+					</ParameterValue>
+					<ParameterValue Name="fraction">
+						<Description Locale="en" Content="A fractional number as a percentage (EG: '25%') or fraction (EG: '1/5')."/>
+					</ParameterValue>
+					<ParameterValue Name="boolean">
+						<Description Locale="en" Content="A true or false value."/>
+					</ParameterValue>
+					<ParameterValue Name="reference">
+						<Description Locale="en" Content="A reference to a resource, either a built-in or defined in an XML file."/>
+					</ParameterValue>
+					<ParameterValue Name="color">
+						<Description Locale="en" Content="A hexadecimal color value."/>
+					</ParameterValue>
+					<ParameterValue Name="dimension">
+						<Description Locale="en" Content="A dimension value."/>
+					</ParameterValue>
+					<ParameterValue Name="string">
+						<Description Locale="en" Content="A string value."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="min" TypesCSV="integer" Inputs="Value">
+					<Description Locale="en" Content="The minimum required value for the attribute. Only applicable when 'format' is 'integer'."/>
+				</Parameter>
+				<Node Name="flag" Abstract="false" Required="false">
+					<Description Locale="en" Content="A series of unique values"/>
+					<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The name of the flag."/>
+					</Parameter>
+					<Parameter Name="value" TypesCSV="integer" Inputs="Value">
+						<Description Locale="en" Content="An integer or hex value."/>
+					</Parameter>
+				</Node>
+				<Node Name="enum" Abstract="false" Required="false">
+					<Description Locale="en" Content="A set of integers mapped to literal names"/>
+					<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The name of the enum."/>
+					</Parameter>
+					<Parameter Name="value" TypesCSV="integer" Inputs="Value">
+						<Description Locale="en" Content="The enum value."/>
+					</Parameter>
+				</Node>
+			</Node>
+		</Node>
+	</Node>
+</Module>

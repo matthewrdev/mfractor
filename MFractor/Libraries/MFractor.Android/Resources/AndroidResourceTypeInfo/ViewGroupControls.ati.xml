@@ -1,0 +1,2186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="View Group Controls" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides IntelliSense support for all controls that inherit from 'ViewGroup'."/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/guide/topics/ui/declaring-layout.html"/>
+	<Node Name="AbsListView" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AbsListView"/>
+		<MetaData Name="LayoutParams" Value="AbsListView.LayoutParams"/>
+		<Description Locale="en" Content="Base class that can be used to implement virtualized lists of items"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AdapterView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:cacheColorHint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates that this list will always be drawn on top of solid, single-color opaque background."/>
+		</Parameter>
+		<Parameter Name="android:choiceMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the choice behavior for the view."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Normal list that does not indicate choices."/>
+			</ParameterValue>
+			<ParameterValue Name="singleChoice">
+				<Description Locale="en" Content="The list allows up to one choice."/>
+			</ParameterValue>
+			<ParameterValue Name="multipleChoice">
+				<Description Locale="en" Content="The list allows multiple choices."/>
+			</ParameterValue>
+			<ParameterValue Name="multipleChoiceModal">
+				<Description Locale="en" Content="The list allows multiple choices in a custom selection mode."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:drawSelectorOnTop" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to true, the selector will be drawn over the selected item."/>
+		</Parameter>
+		<Parameter Name="android:fastScrollEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Enables the fast scroll thumb that can be dragged to quickly scroll through the list."/>
+		</Parameter>
+		<Parameter Name="android:listSelector" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used to indicate the currently selected item in the list."/>
+		</Parameter>
+		<Parameter Name="android:scrollingCache" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to true, the list uses a drawing cache during scrolling."/>
+		</Parameter>
+		<Parameter Name="android:smoothScrollbar" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to true, the list will use a more refined calculation method based on the pixels height of the items visible on screen."/>
+		</Parameter>
+		<Parameter Name="android:stackFromBottom" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Used by ListView and GridView to stack their content from the bottom."/>
+		</Parameter>
+		<Parameter Name="android:textFilterEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to true, the list will filter results as the user types."/>
+		</Parameter>
+		<Parameter Name="android:transcriptMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the transcript mode for the list."/>
+			<ParameterValue Name="disabled">
+				<Description Locale="en" Content="Disables transcript mode. This is the default value."/>
+			</ParameterValue>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="The list will automatically scroll to the bottom when a data set change notification is received and only if the last item is already visible on screen."/>
+			</ParameterValue>
+			<ParameterValue Name="alwaysScroll">
+				<Description Locale="en" Content="The list will automatically scroll to the bottom, no matter what items are currently visible."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="AbsoluteLayout" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="3">
+		<MetaData Name="FullType" Value="android.widget.AbsoluteLayout"/>
+		<MetaData Name="LayoutParams" Value="AbsoluteLayout.LayoutParams"/>
+		<Description Locale="en" Content="A layout that lets you specify exact locations (x/y coordinates) of its children"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="AbsSpinner" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AbsSpinner"/>
+		<Description Locale="en" Content="An abstract base class for spinner widgets"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AdapterView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:entries" RequirementBehaviour="Optional" TypesCSV="array" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Reference to an array resource that will populate the Spinner."/>
+		</Parameter>
+	</Node>
+	<Node Name="ActionMenuView" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<MetaData Name="FullType" Value="android.widget.ActionMenuView"/>
+		<MetaData Name="LayoutParams" Value="ActionMenuView.LayoutParams"/>
+		<Description Locale="en" Content="ActionMenuView is a presentation of a series of menu options as a View"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="AdapterView" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AdapterView"/>
+		<Description Locale="en" Content="An AdapterView is a view whose children are determined by an Adapter"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="AdapterViewAnimator" Abstract="true" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.AdapterViewAnimator"/>
+		<Description Locale="en" Content="Base class for a AdapterView that will perform animations when switching between its views"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AdapterView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:animateFirstView" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Defines whether to animate the current View when the ViewAnimation is first displayed."/>
+		</Parameter>
+		<Parameter Name="android:inAnimation" RequirementBehaviour="Optional" TypesCSV="anim" Inputs="Reference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Identifier for the animation to use when a view is shown."/>
+		</Parameter>
+		<Parameter Name="android:loopViews" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Defines whether the animator loops to the first view once it has reached the end of the list."/>
+		</Parameter>
+		<Parameter Name="android:outAnimation" RequirementBehaviour="Optional" TypesCSV="anim" Inputs="Reference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="Identifier for the animation to use when a view is hidden."/>
+		</Parameter>
+	</Node>
+	<Node Name="AdapterViewFlipper" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.AdapterViewFlipper"/>
+		<Description Locale="en" Content="Simple ViewAnimator that will animate between two or more views that have been added to it"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AdapterViewAnimator"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:autoStart" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="When true, automatically start animating Must be a boolean value, either 'true' or 'false'."/>
+		</Parameter>
+		<Parameter Name="android:flipInterval" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="11">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.AppBarLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.AppBarLayout"/>
+		<MetaData Name="LayoutParams" Value="AppBarLayout.LayoutParams"/>
+		<Description Locale="en" Content="AppBarLayout is a vertical LinearLayout which implements many of the features of material designs app bar concept, namely scrolling gestures"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.design:expanded" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The initial expanded state for the AppBarLayout."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.CollapsingToolbarLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.CollapsingToolbarLayout"/>
+		<MetaData Name="LayoutParams" Value="CollapsingToolbarLayout.LayoutParams"/>
+		<Description Locale="en" Content="CollapsingToolbarLayout is a wrapper for Toolbar which implements a collapsing app bar"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.design:collapsedTitleGravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how the title should be positioned when collapsed."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push title to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push title to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push title to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push title to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place title in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the title if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place title in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the title in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push title to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push title to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android.support.design:collapsedTitleTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text appearance of the CollapsingToolbarLayouts title when it is fully 'collapsed' Must be a reference to another resource, in the form '@[+][package:]type:name'or to a theme attribute in the form '?[package:][type:]name'."/>
+		</Parameter>
+		<Parameter Name="android.support.design:contentScrim" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to use as a scrim on top of the CollapsingToolbarLayouts content when it has been scrolled sufficiently off screen."/>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleGravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how the title should be positioned when expanded."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push title to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push title to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push title to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push title to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place title in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the title if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place title in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the title in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push title to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push title to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleMargin" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the start, top, end and bottom sides of the the expanded title text."/>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleMarginBottom" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the bottom side of the the expanded title text."/>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleMarginEnd" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the end side of the the expanded title text."/>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleMarginStart" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies extra space on the start side of the the expanded title text."/>
+		</Parameter>
+		<Parameter Name="android.support.design:expandedTitleTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text appearance of the CollapsingToolbarLayout's title when it is fully 'expanded' Must be a reference to another resource, in the form '@[+][package:]type:name'or to a theme attribute in the form '?[package:][type:]name'."/>
+		</Parameter>
+		<Parameter Name="android.support.design:statusBarScrim" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to use as a scrim for the status bar content when the CollapsingToolbarLayout has been scrolled sufficiently off screen."/>
+		</Parameter>
+		<Parameter Name="android.support.design:title" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The title to show when titleEnabled is set to true."/>
+		</Parameter>
+		<Parameter Name="android.support.design:titleEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the CollapsingToolbarLayout should draw its own shrinking/growing title."/>
+		</Parameter>
+		<Parameter Name="android.support.design:toolbarId" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The id of the primary Toolbar child that you wish to use for the purpose of collapsing."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.CoordinatorLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.CoordinatorLayout"/>
+		<MetaData Name="LayoutParams" Value="CoordinatorLayout.LayoutParams"/>
+		<Description Locale="en" Content="CoordinatorLayout is a super-powered FrameLayout"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.design.widget.NavigationView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.NavigationView"/>
+		<Description Locale="en" Content="Represents a standard navigation menu for application"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.design:itemBackground" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android.support.design:itemIconTint" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android.support.design:itemTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android.support.design:itemTextColor" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.TabLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.TabLayout"/>
+		<Description Locale="en" Content="TabLayout provides a horizontal layout to display tabs"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="HorizontalScrollView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.design.widget.TextInputLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.TextInputLayout"/>
+		<Description Locale="en" Content="Layout which wraps an EditText (or descendant) to show a floating label when the hint is hidden due to the user inputting text"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.design:errorEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the layout is laid out as if an error will be displayed Must be a boolean value, either 'true' or 'false'."/>
+		</Parameter>
+		<Parameter Name="android.support.design:hintAnimationEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether to animate hint state changes."/>
+		</Parameter>
+		<Parameter Name="android.support.design:hintTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:hint" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The hint to display in the floating label This corresponds to the global attribute resource symbol hint."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.percent.PercentFrameLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.percent.PercentFrameLayout"/>
+		<MetaData Name="LayoutParams" Value="PercentFrameLayout.LayoutParams"/>
+		<Description Locale="en" Content="Subclass of FrameLayout that supports percentage based dimensions and margins"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.percent.PercentRelativeLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.percent.PercentRelativeLayout"/>
+		<MetaData Name="LayoutParams" Value="PercentRelativeLayout.LayoutParams"/>
+		<Description Locale="en" Content="Subclass of RelativeLayout that supports percentage based dimensions and margins"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="RelativeLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.BaseCardView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.BaseCardView"/>
+		<MetaData Name="LayoutParams" Value="BaseCardView.LayoutParams"/>
+		<Description Locale="en" Content="A card style layout that responds to certain state changes"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.BrowseFrameLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.BrowseFrameLayout"/>
+		<Description Locale="en" Content="A ViewGroup for managing focus behavior between overlapping views"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.HorizontalGridView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.HorizontalGridView"/>
+		<Description Locale="en" Content="A ViewGroup that shows items in a horizontal scrolling list"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="android.support.v7.widget.RecyclerView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.ImageCardView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.ImageCardView"/>
+		<Description Locale="en" Content="A subclass of BaseCardView with an ImageView as its main region"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="android.support.v17.leanback.widget.BaseCardView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.ListRowHoverCardView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.ListRowHoverCardView"/>
+		<Description Locale="en" Content="ListRowHoverCardView contains a title and description"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.ListRowView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.ListRowView"/>
+		<Description Locale="en" Content="ListRowView is a ViewGroup which always contains a HorizontalGridView, and may optionally include a hover card"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.SearchBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.SearchBar"/>
+		<Description Locale="en" Content="A search widget containing a search orb and a text entry view"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="RelativeLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.SearchOrbView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.SearchOrbView"/>
+		<Description Locale="en" Content="A widget that draws a search affordance, represented by a round background and an icon"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.ShadowOverlayContainer" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.ShadowOverlayContainer"/>
+		<Description Locale="en" Content="Provides an SDK version-independent wrapper to support shadows, color overlays, and rounded corners"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.SpeechOrbView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.SpeechOrbView"/>
+		<Description Locale="en" Content="A subclass of SearchOrbView that visualizes the state of an ongoing speech recognition"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="android.support.v17.leanback.widget.SearchOrbView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.TitleView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.TitleView"/>
+		<Description Locale="en" Content="Title view for a leanback fragment"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.VerticalGridView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.VerticalGridView"/>
+		<Description Locale="en" Content="A ViewGroup that shows items in a vertically scrolling list"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="android.support.v7.widget.RecyclerView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.app.FragmentTabHost" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.app.FragmentTabHost"/>
+		<Description Locale="en" Content="Special TabHost that allows the use of Fragment objects for its tab content"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="TabHost"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.view.PagerTabStrip" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.view.PagerTabStrip"/>
+		<Description Locale="en" Content="PagerTabStrip is an interactive indicator of the current, next, and previous pages of a ViewPager"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="android.support.v4.view.PagerTitleStrip"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.view.PagerTitleStrip" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.view.PagerTitleStrip"/>
+		<Description Locale="en" Content="PagerTitleStrip is a non-interactive indicator of the current, next, and previous pages of a ViewPager"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.view.ViewPager" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.view.ViewPager"/>
+		<MetaData Name="LayoutParams" Value="ViewPager.LayoutParams"/>
+		<Description Locale="en" Content="Layout manager that allows the user to flip left and right through pages of data"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.DrawerLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.DrawerLayout"/>
+		<MetaData Name="LayoutParams" Value="DrawerLayout.LayoutParams"/>
+		<Description Locale="en" Content="DrawerLayout acts as a top-level container for window content that allows for interactive 'drawer' views to be pulled out from the edge of the window"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.NestedScrollView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.NestedScrollView"/>
+		<Description Locale="en" Content="NestedScrollView is just like ScrollView, but it supports acting as both a nested scrolling parent and child on both new and old versions of Android"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:fillViewport" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the scrollview should stretch its content to fill the viewport."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.v4.widget.SlidingPaneLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.SlidingPaneLayout"/>
+		<MetaData Name="LayoutParams" Value="SlidingPaneLayout.LayoutParams"/>
+		<Description Locale="en" Content="SlidingPaneLayout provides a horizontal, multi-pane layout for use at the top level of a UI"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.SwipeRefreshLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.SwipeRefreshLayout"/>
+		<Description Locale="en" Content="The SwipeRefreshLayout should be used whenever the user can refresh the contents of a view via a vertical swipe gesture"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatSpinner" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatSpinner"/>
+		<Description Locale="en" Content="A Spinner which supports compatible features on older version of the platform, including: Allows dynamic tint of it background via the background tint methods in ViewCompat"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="Spinner"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.CardView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.CardView"/>
+		<Description Locale="en" Content="A FrameLayout with a rounded corner background and shadow"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.v7.cardview:cardBackgroundColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Background color for CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:cardCornerRadius" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Corner radius for CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:cardElevation" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Elevation for CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:cardMaxElevation" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Maximum Elevation for CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:cardPreventCornerOverlap" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:cardUseCompatPadding" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Add padding in API v21+ as well to have the same measurements with previous versions."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:contentPadding" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Inner padding between the edges of the Card and children of the CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:contentPaddingBottom" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Inner padding between the bottom edge of the Card and children of the CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:contentPaddingLeft" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Inner padding between the left edge of the Card and children of the CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:contentPaddingRight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Inner padding between the right edge of the Card and children of the CardView."/>
+		</Parameter>
+		<Parameter Name="android.support.v7.cardview:contentPaddingTop" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Inner padding between the top edge of the Card and children of the CardView."/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.v7.widget.LinearLayoutCompat" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.LinearLayoutCompat"/>
+		<MetaData Name="LayoutParams" Value="LinearLayoutCompat.LayoutParams"/>
+		<Description Locale="en" Content="A Layout that arranges its children in a single column or a single row"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.RecyclerView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.RecyclerView"/>
+		<MetaData Name="LayoutParams" Value="RecyclerView.LayoutParams"/>
+		<Description Locale="en" Content="A flexible view for providing a limited window into a large data set"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android.support.v7.recyclerview:layoutManager" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Class name of the Layout Manager to be used."/>
+		</Parameter>
+	</Node>
+	<Node Name="AppWidgetHostView" Abstract="false" Required="false" IntroducedApiLevel="3">
+		<MetaData Name="FullType" Value="android.appwidget.AppWidgetHostView"/>
+		<Description Locale="en" Content="Provides the glue to show AppWidget views"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="CalendarView" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.CalendarView"/>
+		<Description Locale="en" Content="This class is a calendar widget for displaying and selecting dates"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:dateTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The text appearance for the day numbers in the calendar grid."/>
+		</Parameter>
+		<Parameter Name="android:firstDayOfWeek" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The first day of week according to Calendar."/>
+		</Parameter>
+		<Parameter Name="android:focusedMonthDateColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:maxDate" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The minimal date shown by this calendar view in mm/dd/yyyy format."/>
+		</Parameter>
+		<Parameter Name="android:minDate" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The minimal date shown by this calendar view in mm/dd/yyyy format."/>
+		</Parameter>
+		<Parameter Name="android:selectedDateVerticalBar" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:selectedWeekBackgroundColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:shownWeekCount" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:showWeekNumber" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:unfocusedMonthDateColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:weekDayTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The text appearance for the week day abbreviation in the calendar header."/>
+		</Parameter>
+		<Parameter Name="android:weekNumberColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+		<Parameter Name="android:weekSeparatorLineColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="This is deprecated."/>
+		</Parameter>
+	</Node>
+	<Node Name="DatePicker" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.DatePicker"/>
+		<Description Locale="en" Content="Provides a widget for selecting a date"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:calendarTextColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text color list of the calendar."/>
+		</Parameter>
+		<Parameter Name="android:calendarViewShown" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the calendar view is shown."/>
+		</Parameter>
+		<Parameter Name="android:datePickerMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the look of the widget."/>
+			<ParameterValue Name="spinner">
+				<Description Locale="en" Content="Date picker with spinner controls to select the date."/>
+			</ParameterValue>
+			<ParameterValue Name="calendar">
+				<Description Locale="en" Content="Date picker with calendar to select the date."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:dayOfWeekBackground" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The background color for the header's day of week."/>
+		</Parameter>
+		<Parameter Name="android:dayOfWeekTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text color for the header's day of week."/>
+		</Parameter>
+		<Parameter Name="android:endYear" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The last year (inclusive), for example '2010'."/>
+		</Parameter>
+		<Parameter Name="android:firstDayOfWeek" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The first day of week according to Calendar."/>
+		</Parameter>
+		<Parameter Name="android:headerBackground" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The background for the selected date header."/>
+		</Parameter>
+		<Parameter Name="android:headerDayOfMonthTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text appearance for the day of month (ex."/>
+		</Parameter>
+		<Parameter Name="android:headerMonthTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text appearance for the month (ex."/>
+		</Parameter>
+		<Parameter Name="android:headerYearTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text appearance for the year (ex."/>
+		</Parameter>
+		<Parameter Name="android:maxDate" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The maximal date shown by this calendar view in mm/dd/yyyy format."/>
+		</Parameter>
+		<Parameter Name="android:minDate" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The minimal date shown by this calendar view in mm/dd/yyyy format."/>
+		</Parameter>
+		<Parameter Name="android:spinnersShown" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the spinners are shown."/>
+		</Parameter>
+		<Parameter Name="android:startYear" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The first year (inclusive), for example '1940'."/>
+		</Parameter>
+		<Parameter Name="android:yearListItemTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The list year's text appearance in the list."/>
+		</Parameter>
+		<Parameter Name="android:yearListSelectorColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The list year's selected circle color in the list."/>
+		</Parameter>
+	</Node>
+	<Node Name="DialerFilter" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.DialerFilter"/>
+		<Description Locale="en" Content="Must be a dimension value, which is a floating point number appended with a unit such as '14"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="RelativeLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="ExpandableListView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ExpandableListView"/>
+		<Description Locale="en" Content="A view that shows items in a vertically scrolling two-level list"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="ListView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:childDivider" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable or color that is used as a divider for children."/>
+		</Parameter>
+		<Parameter Name="android:childIndicator" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicator shown beside the child View."/>
+		</Parameter>
+		<Parameter Name="android:childIndicatorEnd" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The end bound for a child's indicator."/>
+		</Parameter>
+		<Parameter Name="android:childIndicatorLeft" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The left bound for a child's indicator."/>
+		</Parameter>
+		<Parameter Name="android:childIndicatorRight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The right bound for a child's indicator."/>
+		</Parameter>
+		<Parameter Name="android:childIndicatorStart" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The start bound for a child's indicator."/>
+		</Parameter>
+		<Parameter Name="android:groupIndicator" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicator shown beside the group View."/>
+		</Parameter>
+		<Parameter Name="android:indicatorEnd" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The end bound for an item's indicator."/>
+		</Parameter>
+		<Parameter Name="android:indicatorLeft" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The left bound for an item's indicator."/>
+		</Parameter>
+		<Parameter Name="android:indicatorRight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The right bound for an item's indicator."/>
+		</Parameter>
+		<Parameter Name="android:indicatorStart" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The start bound for an item's indicator."/>
+		</Parameter>
+	</Node>
+	<Node Name="FragmentBreadCrumbs" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="21">
+		<MetaData Name="FullType" Value="android.app.FragmentBreadCrumbs"/>
+		<Description Locale="en" Content="Helper class for showing 'bread crumbs' representing the fragment stack in an activity"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="FrameLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.FrameLayout"/>
+		<MetaData Name="LayoutParams" Value="FrameLayout.LayoutParams"/>
+		<Description Locale="en" Content="FrameLayout is designed to block out an area on the screen to display a single item"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:foregroundGravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the gravity to apply to the foreground drawable."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:measureAllChildren" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Determines whether to measure all children or just those in the VISIBLE or INVISIBLE state when measuring."/>
+		</Parameter>
+	</Node>
+	<Node Name="Gallery" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="16">
+		<MetaData Name="FullType" Value="android.widget.Gallery"/>
+		<MetaData Name="LayoutParams" Value="Gallery.LayoutParams"/>
+		<Description Locale="en" Content="A view that shows items in a center-locked, horizontally scrolling list"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AbsSpinner"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:animationDuration" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets how long a transition animation should run (in milliseconds) when layout has changed."/>
+		</Parameter>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how an object should position its content, on both the X and Y axes, within its own bounds."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:spacing" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:unselectedAlpha" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the alpha on the items that are not selected."/>
+		</Parameter>
+	</Node>
+	<Node Name="GestureOverlayView" Abstract="false" Required="false" IntroducedApiLevel="4">
+		<MetaData Name="FullType" Value="android.gesture.GestureOverlayView"/>
+		<Description Locale="en" Content="A transparent overlay for gesture input that can be placed on top of other widgets or contain other widgets"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:eventsInterceptionEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Defines whether the overlay should intercept the motion events when a gesture is recognized."/>
+		</Parameter>
+		<Parameter Name="android:fadeDuration" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Duration, in milliseconds, of the fade out effect after the user is done drawing a gesture."/>
+		</Parameter>
+		<Parameter Name="android:fadeEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Defines whether the gesture will automatically fade out after being recognized."/>
+		</Parameter>
+		<Parameter Name="android:fadeOffset" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Time, in milliseconds, to wait before the gesture fades out after the user is done drawing it."/>
+		</Parameter>
+		<Parameter Name="android:gestureColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Color used to draw a gesture."/>
+		</Parameter>
+		<Parameter Name="android:gestureStrokeAngleThreshold" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Minimum curve angle a stroke must contain before it is recognized as a gesture."/>
+		</Parameter>
+		<Parameter Name="android:gestureStrokeLengthThreshold" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Minimum length of a stroke before it is recognized as a gesture."/>
+		</Parameter>
+		<Parameter Name="android:gestureStrokeSquarenessThreshold" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Squareness threshold of a stroke before it is recognized as a gesture."/>
+		</Parameter>
+		<Parameter Name="android:gestureStrokeType" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Defines the type of strokes that define a gesture."/>
+			<ParameterValue Name="single">
+				<Description Locale="en" Content="A gesture is made of only one stroke."/>
+			</ParameterValue>
+			<ParameterValue Name="multiple">
+				<Description Locale="en" Content="A gesture is made of multiple strokes."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:gestureStrokeWidth" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Width of the stroke used to draw the gesture."/>
+		</Parameter>
+		<Parameter Name="android:orientation" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Indicates whether horizontal (when the orientation is vertical) or vertical (when orientation is horizontal) strokes automatically define a gesture."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Defines an horizontal widget."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Defines a vertical widget."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:uncertainGestureColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Color used to draw the user's strokes until we are sure it's a gesture."/>
+		</Parameter>
+	</Node>
+	<Node Name="GridLayout" Abstract="false" Required="false" IntroducedApiLevel="14">
+		<MetaData Name="FullType" Value="android.widget.GridLayout"/>
+		<MetaData Name="LayoutParams" Value="GridLayout.LayoutParams"/>
+		<Description Locale="en" Content="A layout that places its children in a rectangular grid"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:alignmentMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="When set to alignMargins, causes alignment to take place between the outer boundary of a view, as defined by its margins."/>
+			<ParameterValue Name="alignBounds">
+				<Description Locale="en" Content="Align the bounds of the children. See ALIGN_BOUNDS."/>
+			</ParameterValue>
+			<ParameterValue Name="alignMargins">
+				<Description Locale="en" Content="Align the margins of the children. See ALIGN_MARGINS."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:columnCount" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The maxmimum number of columns to create when automatically positioning children."/>
+		</Parameter>
+		<Parameter Name="android:columnOrderPreserved" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="When set to true, forces column boundaries to appear in the same order as column indices."/>
+		</Parameter>
+		<Parameter Name="android:orientation" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The orientation property is not used during layout."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Defines an horizontal widget."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Defines a vertical widget."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:rowCount" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="The maxmimum number of rows to create when automatically positioning children."/>
+		</Parameter>
+		<Parameter Name="android:rowOrderPreserved" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="When set to true, forces row boundaries to appear in the same order as row indices."/>
+		</Parameter>
+		<Parameter Name="android:useDefaultMargins" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="When set to true, tells GridLayout to use default margins when none are specified in a view's layout parameters."/>
+		</Parameter>
+	</Node>
+	<Node Name="GridView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.GridView"/>
+		<Description Locale="en" Content="A view that shows items in two-dimensional scrolling grid"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AbsListView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:columnWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the fixed width for each column."/>
+		</Parameter>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the gravity within each cell."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:horizontalSpacing" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the default horizontal spacing between columns."/>
+		</Parameter>
+		<Parameter Name="android:numColumns" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines how many columns to show."/>
+			<ParameterValue Name="auto_fit">
+				<Description Locale="en" Content="Display as many columns as possible to fill the available space."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:stretchMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines how columns should stretch to fill the available empty space, if any."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Stretching is disabled."/>
+			</ParameterValue>
+			<ParameterValue Name="spacingWidth">
+				<Description Locale="en" Content="The spacing between each column is stretched."/>
+			</ParameterValue>
+			<ParameterValue Name="columnWidth">
+				<Description Locale="en" Content="Each column is stretched equally."/>
+			</ParameterValue>
+			<ParameterValue Name="spacingWidthUniform">
+				<Description Locale="en" Content="The spacing between each column is uniformly stretched.."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:verticalSpacing" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the default vertical spacing between rows."/>
+		</Parameter>
+	</Node>
+	<Node Name="HorizontalScrollView" Abstract="false" Required="false" IntroducedApiLevel="3">
+		<MetaData Name="FullType" Value="android.widget.HorizontalScrollView"/>
+		<Description Locale="en" Content="Layout container for a view hierarchy that can be scrolled by the user, allowing it to be larger than the physical display"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:fillViewport" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Defines whether the scrollview should stretch its content to fill the viewport."/>
+		</Parameter>
+	</Node>
+	<Node Name="ImageSwitcher" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ImageSwitcher"/>
+		<Description Locale="en" Content="Must be a dimension value, which is a floating point number appended with a unit such as '14"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="ViewSwitcher"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="LinearLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.LinearLayout"/>
+		<MetaData Name="LayoutParams" Value="LinearLayout.LayoutParams"/>
+		<Description Locale="en" Content="A Layout that arranges its children in a single column or a single row"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:baselineAligned" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to false, prevents the layout from aligning its children's baselines."/>
+		</Parameter>
+		<Parameter Name="android:baselineAlignedChildIndex" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When a linear layout is part of another layout that is baseline aligned, it can specify which of its children to baseline align to (that is, which child TextView)."/>
+		</Parameter>
+		<Parameter Name="android:divider" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable to use as a vertical divider between buttons."/>
+		</Parameter>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how an object should position its content, on both the X and Y axes, within its own bounds."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:measureWithLargestChild" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to true, all children with a weight will be considered having the minimum size of the largest child."/>
+		</Parameter>
+		<Parameter Name="android:orientation" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Should the layout be a column or a row? Use 'horizontal' for a row, 'vertical' for a column."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Defines an horizontal widget."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Defines a vertical widget."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:weightSum" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the maximum weight sum."/>
+		</Parameter>
+	</Node>
+	<Node Name="ListView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ListView"/>
+		<Description Locale="en" Content="A view that shows items in a vertically scrolling list"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AbsListView"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:divider" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable or color to draw between list items."/>
+		</Parameter>
+		<Parameter Name="android:dividerHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Height of the divider."/>
+		</Parameter>
+		<Parameter Name="android:entries" RequirementBehaviour="Optional" TypesCSV="array" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Reference to an array resource that will populate the ListView."/>
+		</Parameter>
+		<Parameter Name="android:footerDividersEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to false, the ListView will not draw the divider before each footer view."/>
+		</Parameter>
+		<Parameter Name="android:headerDividersEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When set to false, the ListView will not draw the divider after each header view."/>
+		</Parameter>
+	</Node>
+	<Node Name="MediaController" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.MediaController"/>
+		<Description Locale="en" Content="A view containing controls for a MediaPlayer"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="NumberPicker" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.NumberPicker"/>
+		<Description Locale="en" Content="A widget that enables the user to select a number from a predefined range"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="RadioGroup" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RadioGroup"/>
+		<MetaData Name="LayoutParams" Value="RadioGroup.LayoutParams"/>
+		<Description Locale="en" Content="This class is used to create a multiple-exclusion scope for a set of radio buttons"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:checkedButton" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The id of the child radio button that should be checked by default within this radio group."/>
+		</Parameter>
+	</Node>
+	<Node Name="RelativeLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RelativeLayout"/>
+		<MetaData Name="LayoutParams" Value="RelativeLayout.LayoutParams"/>
+		<Description Locale="en" Content="A Layout where the positions of the children can be described in relation to each other or to the parent"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how an object should position its content, on both the X and Y axes, within its own bounds."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:ignoreGravity" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates what view should not be affected by gravity."/>
+		</Parameter>
+	</Node>
+	<Node Name="ScrollView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ScrollView"/>
+		<Description Locale="en" Content="Layout container for a view hierarchy that can be scrolled by the user, allowing it to be larger than the physical display"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:fillViewport" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the scrollview should stretch its content to fill the viewport."/>
+		</Parameter>
+	</Node>
+	<Node Name="SearchView" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.SearchView"/>
+		<Description Locale="en" Content="A widget that provides a user interface for the user to enter a search query and submit a request to a search provider"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:iconifiedByDefault" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The default state of the SearchView."/>
+		</Parameter>
+		<Parameter Name="android:imeOptions" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The IME options to set on the query text field."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="There are no special semantics associated with this editor."/>
+			</ParameterValue>
+			<ParameterValue Name="actionUnspecified">
+				<Description Locale="en" Content="There is no specific action associated with this editor, let the editor come up with its own if it can. Corresponds to IME_NULL."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNone">
+				<Description Locale="en" Content="This editor has no action associated with it. Corresponds to IME_ACTION_NONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionGo">
+				<Description Locale="en" Content="The action key performs a 'go' operation to take the user to the target of the text they typed. Typically used, for example, when entering a URL. Corresponds to IME_ACTION_GO."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSearch">
+				<Description Locale="en" Content="The action key performs a 'search' operation, taking the user to the results of searching for the text the have typed (in whatever context is appropriate). Corresponds to IME_ACTION_SEARCH."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSend">
+				<Description Locale="en" Content="The action key performs a 'send' operation, delivering the text to its target. This is typically used when composing a message. Corresponds to IME_ACTION_SEND."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNext">
+				<Description Locale="en" Content="The action key performs a 'next' operation, taking the user to the next field that will accept text. Corresponds to IME_ACTION_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="actionDone">
+				<Description Locale="en" Content="The action key performs a 'done' operation, closing the soft input method. Corresponds to IME_ACTION_DONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionPrevious">
+				<Description Locale="en" Content="The action key performs a 'previous' operation, taking the user to the previous field that will accept text. Corresponds to IME_ACTION_PREVIOUS."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoFullscreen">
+				<Description Locale="en" Content="Used to request that the IME never go into fullscreen mode. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigatePrevious">
+				<Description Locale="en" Content="Like flagNavigateNext, but specifies there is something interesting that a backward navigation can focus on. If the user selects the IME's facility to backward navigate, this will show up in the application as an actionPrevious at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigateNext">
+				<Description Locale="en" Content="Used to specify that there is something interesting that a forward navigation can focus on. This is like using actionNext, except allows the IME to be multiline (with an enter key) as well as provide forward navigation. Note that some IMEs may not be able to do this, especially when running on a small screen where there is little space. In that case it does not need to present a UI for this option. Like actionNext, if the user selects the IME's facility to forward navigate, this will show up in the application at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NAVIGATE_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoExtractUi">
+				<Description Locale="en" Content="Used to specify that the IME does not need to show its extracted text UI. For input methods that may be fullscreen, often when in landscape mode, this allows them to be smaller and let part of the application be shown behind. Though there will likely be limited access to the application available from the user, it can make the experience of a (mostly) fullscreen IME less jarring. Note that when this flag is specified the IME may not be set up to be able to display text, so it should only be used in situations where this is not needed. Corresponds to IME_FLAG_NO_EXTRACT_UI."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoAccessoryAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available as an accessory button when the input method is full-screen. Note that by setting this flag, there can be cases where the action is simply never available to the user. Setting this generally means that you think showing text being edited is more important than the action you have supplied. Corresponds to IME_FLAG_NO_ACCESSORY_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoEnterAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available in-line as a replacement for the 'enter' key. Typically this is because the action has such a significant impact or is not recoverable enough that accidentally hitting it should be avoided, such as sending a message. Note that TextView will automatically set this flag for you on multi-line text views. Corresponds to IME_FLAG_NO_ENTER_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagForceAscii">
+				<Description Locale="en" Content="Used to request that the IME should be capable of inputting ASCII characters. The intention of this flag is to ensure that the user can type Roman alphabet characters in a TextView used for, typically, account ID or password input. It is expected that IMEs normally are able to input ASCII even without being told so (such IMEs already respect this flag in a sense), but there could be some cases they aren't when, for instance, only non-ASCII input languagaes like Arabic, Greek, Hebrew, Russian are enabled in the IME. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. However, it is strongly recommended for IME authors to respect this flag especially when their IME could end up with a state that has only non-ASCII input languages enabled. Corresponds to IME_FLAG_FORCE_ASCII."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:inputType" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="11">
+			<Description Locale="en" Content="The input type to set on the query text field."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="There is no content type. The text is not editable."/>
+			</ParameterValue>
+			<ParameterValue Name="text">
+				<Description Locale="en" Content="Just plain old text. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapCharacters">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of all characters. Corresponds to TYPE_TEXT_FLAG_CAP_CHARACTERS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapWords">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every word. Corresponds to TYPE_TEXT_FLAG_CAP_WORDS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapSentences">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every sentence. Corresponds to TYPE_TEXT_FLAG_CAP_SENTENCES."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoCorrect">
+				<Description Locale="en" Content="Can be combined with text and its variations to request auto-correction of text being input. Corresponds to TYPE_TEXT_FLAG_AUTO_CORRECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoComplete">
+				<Description Locale="en" Content="Can be combined with text and its variations to specify that this field will be doing its own auto-completion and talking with the input method appropriately. Corresponds to TYPE_TEXT_FLAG_AUTO_COMPLETE."/>
+			</ParameterValue>
+			<ParameterValue Name="textMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to allow multiple lines of text in the field. If this flag is not set, the text field will be constrained to a single line. Corresponds to TYPE_TEXT_FLAG_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textImeMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that though the regular text view should not be multiple lines, the IME should provide multiple lines if it can. Corresponds to TYPE_TEXT_FLAG_IME_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textNoSuggestions">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that the IME should not show any dictionary-based word suggestions. Corresponds to TYPE_TEXT_FLAG_NO_SUGGESTIONS."/>
+			</ParameterValue>
+			<ParameterValue Name="textUri">
+				<Description Locale="en" Content="Text that will be used as a URI. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_URI."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailSubject">
+				<Description Locale="en" Content="Text that is being supplied as the subject of an e-mail. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_SUBJECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textShortMessage">
+				<Description Locale="en" Content="Text that is the content of a short message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_SHORT_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textLongMessage">
+				<Description Locale="en" Content="Text that is the content of a long message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_LONG_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textPersonName">
+				<Description Locale="en" Content="Text that is the name of a person. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PERSON_NAME."/>
+			</ParameterValue>
+			<ParameterValue Name="textPostalAddress">
+				<Description Locale="en" Content="Text that is being supplied as a postal mailing address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_POSTAL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textPassword">
+				<Description Locale="en" Content="Text that is a password. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textVisiblePassword">
+				<Description Locale="en" Content="Text that is a password that should be visible. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEditText">
+				<Description Locale="en" Content="Text that is being supplied as text in a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EDIT_TEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="textFilter">
+				<Description Locale="en" Content="Text that is filtering some other data. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_FILTER."/>
+			</ParameterValue>
+			<ParameterValue Name="textPhonetic">
+				<Description Locale="en" Content="Text that is for phonetic pronunciation, such as a phonetic name field in a contact entry. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PHONETIC."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebPassword">
+				<Description Locale="en" Content="Text that will be used as a password on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="number">
+				<Description Locale="en" Content="A numeric only field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberSigned">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a signed number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_SIGNED."/>
+			</ParameterValue>
+			<ParameterValue Name="numberDecimal">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a decimal (fractional) number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberPassword">
+				<Description Locale="en" Content="A numeric password field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="phone">
+				<Description Locale="en" Content="For entering a phone number. Corresponds to TYPE_CLASS_PHONE."/>
+			</ParameterValue>
+			<ParameterValue Name="datetime">
+				<Description Locale="en" Content="For entering a date and time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="date">
+				<Description Locale="en" Content="For entering a date. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_DATE."/>
+			</ParameterValue>
+			<ParameterValue Name="time">
+				<Description Locale="en" Content="For entering a time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_TIME."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:maxWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="An optional maximum width of the SearchView."/>
+		</Parameter>
+		<Parameter Name="android:queryHint" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="11">
+			<Description Locale="en" Content="An optional query hint string to be displayed in the empty query field."/>
+		</Parameter>
+	</Node>
+	<Node Name="SlidingDrawer" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="17">
+		<MetaData Name="FullType" Value="android.widget.SlidingDrawer"/>
+		<Description Locale="en" Content="SlidingDrawer hides content out of the screen and allows the user to drag a handle to bring the content on screen"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:allowSingleTap" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates whether the drawer can be opened/closed by a single tap on the handle."/>
+		</Parameter>
+		<Parameter Name="android:animateOnClick" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates whether the drawer should be opened/closed with an animation when the user clicks the handle."/>
+		</Parameter>
+		<Parameter Name="android:bottomOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Extra offset for the handle at the bottom of the SlidingDrawer."/>
+		</Parameter>
+		<Parameter Name="android:content" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Identifier for the child that represents the drawer's content."/>
+		</Parameter>
+		<Parameter Name="android:handle" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Identifier for the child that represents the drawer's handle."/>
+		</Parameter>
+		<Parameter Name="android:orientation" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Orientation of the SlidingDrawer."/>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Defines an horizontal widget."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Defines a vertical widget."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:topOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Extra offset for the handle at the top of the SlidingDrawer."/>
+		</Parameter>
+	</Node>
+	<Node Name="Spinner" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.Spinner"/>
+		<Description Locale="en" Content="A view that displays one child at a time and lets the user pick among them"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AbsSpinner"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:dropDownHorizontalOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Amount of pixels by which the drop down should be offset horizontally."/>
+		</Parameter>
+		<Parameter Name="android:dropDownSelector" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="List selector to use for spinnerMode='dropdown' display."/>
+		</Parameter>
+		<Parameter Name="android:dropDownVerticalOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Amount of pixels by which the drop down should be offset vertically."/>
+		</Parameter>
+		<Parameter Name="android:dropDownWidth" RequirementBehaviour="Optional" TypesCSV="keyword,dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Width of the dropdown in spinnerMode='dropdown'."/>
+			<ParameterValue Name="fill_parent">
+				<Description Locale="en" Content="The dropdown should fill the width of the screen. This constant is deprecated starting from API Level 8 and is replaced by match_parent."/>
+			</ParameterValue>
+			<ParameterValue Name="match_parent">
+				<Description Locale="en" Content="The dropdown should fit the width of the screen. Introduced in API Level 8."/>
+			</ParameterValue>
+			<ParameterValue Name="wrap_content">
+				<Description Locale="en" Content="The dropdown should fit the width of its anchor."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Gravity setting for positioning the currently selected item."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:popupBackground" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Background drawable to use for the dropdown in spinnerMode='dropdown'."/>
+		</Parameter>
+		<Parameter Name="android:prompt" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The prompt to display when the spinner's dialog is shown."/>
+		</Parameter>
+		<Parameter Name="android:spinnerMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Display mode for spinner options."/>
+			<ParameterValue Name="dialog">
+				<Description Locale="en" Content="Spinner options will be presented to the user as a dialog window."/>
+			</ParameterValue>
+			<ParameterValue Name="dropdown">
+				<Description Locale="en" Content="Spinner options will be presented to the user as an inline dropdown anchored to the spinner widget itself."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="StackView" Abstract="false" Required="false" IntroducedApiLevel="11">
+		<MetaData Name="FullType" Value="android.widget.StackView"/>
+		<Description Locale="en" Content="Must be a dimension value, which is a floating point number appended with a unit such as '14"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AdapterViewAnimator"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="TabHost" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TabHost"/>
+		<Description Locale="en" Content="Container for a tabbed window view"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="TableLayout" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TableLayout"/>
+		<MetaData Name="LayoutParams" Value="TableLayout.LayoutParams"/>
+		<Description Locale="en" Content="A layout that arranges its children into rows and columns"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:collapseColumns" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The zero-based index of the columns to collapse."/>
+		</Parameter>
+		<Parameter Name="android:shrinkColumns" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The zero-based index of the columns to shrink."/>
+		</Parameter>
+		<Parameter Name="android:stretchColumns" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The zero-based index of the columns to stretch."/>
+		</Parameter>
+	</Node>
+	<Node Name="TableRow" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TableRow"/>
+		<MetaData Name="LayoutParams" Value="TableRow.LayoutParams"/>
+		<Description Locale="en" Content="A layout that arranges its children horizontally"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="TabWidget" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TabWidget"/>
+		<Description Locale="en" Content="Displays a list of tab labels representing each page in the parent's tab collection"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:divider" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used to draw the divider between tabs."/>
+		</Parameter>
+		<Parameter Name="android:tabStripEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Determines whether the strip under the tab indicators is drawn or not."/>
+		</Parameter>
+		<Parameter Name="android:tabStripLeft" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used to draw the left part of the strip underneath the tabs."/>
+		</Parameter>
+		<Parameter Name="android:tabStripRight" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used to draw the right part of the strip underneath the tabs."/>
+		</Parameter>
+	</Node>
+	<Node Name="TextSwitcher" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TextSwitcher"/>
+		<Description Locale="en" Content="Specialized ViewSwitcher that contains only children of type TextView"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="ViewSwitcher"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="TimePicker" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TimePicker"/>
+		<Description Locale="en" Content="A widget for selecting the time of day, in either 24-hour or AM/PM mode"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:timePickerMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the look of the widget."/>
+			<ParameterValue Name="spinner">
+				<Description Locale="en" Content="Time picker with spinner controls to select the time."/>
+			</ParameterValue>
+			<ParameterValue Name="clock">
+				<Description Locale="en" Content="Time picker with clock face to select the time."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="Toolbar" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<MetaData Name="FullType" Value="android.widget.Toolbar"/>
+		<MetaData Name="LayoutParams" Value="Toolbar.LayoutParams"/>
+		<Description Locale="en" Content="A standard toolbar for use within application content"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:navigationContentDescription" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Text to set as the content description for the navigation button located at the start of the toolbar."/>
+		</Parameter>
+		<Parameter Name="android:navigationIcon" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Icon drawable to use for the navigation button located at the start of the toolbar."/>
+		</Parameter>
+	</Node>
+	<Node Name="TvView" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<MetaData Name="FullType" Value="android.media.tv.TvView"/>
+		<Description Locale="en" Content="Displays TV contents"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group"/>
+			<ModifierArgument Name="Node" Value="ViewGroup"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="TwoLineListItem" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="17">
+		<MetaData Name="FullType" Value="android.widget.TwoLineListItem"/>
+		<Description Locale="en" Content="A view group with two children, intended for use in ListViews"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="RelativeLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:mode" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="ViewAnimator" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ViewAnimator"/>
+		<Description Locale="en" Content="Base class for a FrameLayout container that will perform animations when switching between its views"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="FrameLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:animateFirstView" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether to animate the current View when the ViewAnimation is first displayed."/>
+		</Parameter>
+		<Parameter Name="android:inAnimation" RequirementBehaviour="Optional" TypesCSV="anim" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Identifier for the animation to use when a view is shown."/>
+		</Parameter>
+		<Parameter Name="android:outAnimation" RequirementBehaviour="Optional" TypesCSV="anim" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Identifier for the animation to use when a view is hidden."/>
+		</Parameter>
+	</Node>
+	<Node Name="ViewFlipper" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ViewFlipper"/>
+		<Description Locale="en" Content="Simple ViewAnimator that will animate between two or more views that have been added to it"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="ViewAnimator"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:autoStart" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When true, automatically start animating Must be a boolean value, either 'true' or 'false'."/>
+		</Parameter>
+		<Parameter Name="android:flipInterval" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="ViewSwitcher" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ViewSwitcher"/>
+		<Description Locale="en" Content="ViewAnimator that switches between two views, and has a factory from which these views are created"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="ViewAnimator"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="WebView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.webkit.WebView"/>
+		<Description Locale="en" Content="A View that displays web pages"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="AbsoluteLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+	<Node Name="ZoomControls" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ZoomControls"/>
+		<Description Locale="en" Content="The ZoomControls class displays a simple set of controls used for zooming and provides callbacks to register for events"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View Group Controls"/>
+			<ModifierArgument Name="Node" Value="LinearLayout"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+	</Node>
+</Module>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="anim" Name="Layout Controllers">
+ 	<Description Locale="en" Content="Provides support for layout animation controllers; animation controllers is used to animated a layout's, or a view group's, children."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/reference/android/view/animation/LayoutAnimationController.html"/>
+	<Node Name="layoutAnimation" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="A layout animation controller used to animated a layout's, or a view group's, children."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:animation" TypesCSV="anim" Inputs="Reference">
+ 			<Description Locale="en" Content="Animation to use on each child."/>
+		</Parameter>
+		<Parameter Name="android:animationOrder" TypesCSV="keyword" Inputs="Value">
+ 			<Description Locale="en" Content="The order in which the animations will be started."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="Animations are started in the natural order."/>
+			</ParameterValue>
+			<ParameterValue Name="reverse">
+				<Description Locale="en" Content="Animations are started in the reverse order."/>
+			</ParameterValue>
+			<ParameterValue Name="random">
+				<Description Locale="en" Content="Animations are started randomly."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:delay" TypesCSV="float,fraction" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Fraction of the animation duration used to delay the beginning of the animation of each child."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="anim,interpolator" Inputs="Reference">
+ 			<Description Locale="en" Content="Interpolator used to interpolate the delay between the start of each animation."/>
+		</Parameter>
+	</Node>
+	<Node Name="gridLayoutAnimation" Abstract="false" Required="false">
+ 		<Description Locale="en" Content="A layout animation controller used to animated a grid layout's children"/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:columnDelay" TypesCSV="float,fraction" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Fraction of the animation duration used to delay the beginning of the animation of each column."/>
+		</Parameter>
+		<Parameter Name="android:direction" TypesCSV="flag" Inputs="Value">
+ 			<Description Locale="en" Content="Direction of the animation in the grid. Must be one or more (separated by '|') of the constant values."/>
+			<ParameterValue Name="left_to_right">
+				<Description Locale="en" Content="Animates columns from left to right."/>
+			</ParameterValue>
+			<ParameterValue Name="right_to_left">
+				<Description Locale="en" Content="Animates columns from right to left."/>
+			</ParameterValue>
+			<ParameterValue Name="top_to_bottom">
+				<Description Locale="en" Content="Animates columns from top to bottom."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom_to_top">
+				<Description Locale="en" Content="Animates columns from bottom to top."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:directionPriority" TypesCSV="keyword" Inputs="Value">
+ 			<Description Locale="en" Content="Priority of the rows and columns. When the priority is none, both rows and columns have the same priority. When the priority is column, the animations will be applied on the columns first. The same goes for rows."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Rows and columns are animated at the same time."/>
+			</ParameterValue>
+			<ParameterValue Name="column">
+				<Description Locale="en" Content="Columns are animated first."/>
+			</ParameterValue>
+			<ParameterValue Name="row">
+				<Description Locale="en" Content="Rows are animated first."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:rowDelay" TypesCSV="float,fraction" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="Fraction of the animation duration used to delay the beginning of the animation of each row."/>
+		</Parameter>
+	</Node>
+</Module>

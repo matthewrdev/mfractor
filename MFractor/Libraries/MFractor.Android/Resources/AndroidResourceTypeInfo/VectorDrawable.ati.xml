@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="drawable" Name="Vector Drawable">
+	<Description Locale="en" Content="Provides support for building vector drawables; drawables that scale without losing definition."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/material/drawables.html#VectorDrawables"/>
+	<Node Name="vector" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Description Locale="en" Content="Used to define a vector drawable"/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Defines the name of this vector drawable."/>
+		</Parameter>
+		<Parameter Name="android:width" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Used to define the intrinsic width the drawable. This support all the dimension units, normally specified with dp."/>
+		</Parameter>
+		<Parameter Name="android:height" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Used to define the intrinsic height the drawable. This support all the dimension units, normally specified with dp."/>
+		</Parameter>
+		<Parameter Name="android:viewportWidth" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Used to define the width of the viewport space. Viewport is basically the virtual canvas where the paths are drawn on."/>
+		</Parameter>
+		<Parameter Name="android:viewportHeight" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Used to define the height of the viewport space. Viewport is basically the virtual canvas where the paths are drawn on."/>
+		</Parameter>
+		<Parameter Name="android:tint" TypesCSV="color" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The color to apply to the drawable as a tint."/>
+		</Parameter>
+		<Parameter Name="android:tintMode" TypesCSV="keyword" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Defines the name of this vector drawable."/>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:autoMirrored" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Indicates if the drawable needs to be mirrored when its layout direction is RTL (right-to-left)."/>
+		</Parameter>
+		<Parameter Name="android:alpha" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The opacity of this drawable."/>
+		</Parameter>
+		<Node Name="group" Abstract="false" Required="false" IntroducedApiLevel="21">
+			<Modifier Name="AddChildren">
+				<ModifierArgument Name="TypesCSV" Value="group,path,clip-path"/>
+			</Modifier>
+			<Description Locale="en" Content="Defines a group of paths or subgroups, plus transformation information. The transformations are defined in the same coordinates as the viewport. And the transformations are applied in the order of scale, rotate then translate."/>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines the name of the group."/>
+			</Parameter>
+			<Parameter Name="android:rotation" TypesCSV="integer,float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The degrees of rotation of the group."/>
+			</Parameter>
+			<Parameter Name="android:pivotX" TypesCSV="integer,float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The X coordinate of the pivot for the scale and rotation of the group. This is defined in the viewport space."/>
+			</Parameter>
+			<Parameter Name="android:pivotY" TypesCSV="integer,float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The Y coordinate of the pivot for the scale and rotation of the group. This is defined in the viewport space."/>
+			</Parameter>
+			<Parameter Name="android:scaleX" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The amount of scale on the X Coordinate."/>
+			</Parameter>
+			<Parameter Name="android:scaleY" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The amount of scale on the Y coordinate."/>
+			</Parameter>
+			<Parameter Name="android:translateX" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The amount of translation on the X coordinate. This is defined in the viewport space."/>
+			</Parameter>
+			<Parameter Name="android:translateY" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The amount of translation on the Y coordinate. This is defined in the viewport space."/>
+			</Parameter>
+		</Node>
+		<Node Name="path" Abstract="false" Required="false" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Defines paths to be drawn."/>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines the name of the path."/>
+			</Parameter>
+			<Parameter Name="android:pathData" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines path data using exactly same format as 'd' attribute in the SVG's path data. This is defined in the viewport space."/>
+			</Parameter>
+			<Parameter Name="android:fillColor" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines the color to fill the path (none if not present)."/>
+			</Parameter>
+			<Parameter Name="android:strokeColor" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines the color to draw the path outline (none if not present)."/>
+			</Parameter>
+			<Parameter Name="android:strokeWidth" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The width a path stroke."/>
+			</Parameter>
+			<Parameter Name="android:strokeAlpha" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The opacity of a path stroke."/>
+			</Parameter>
+			<Parameter Name="android:fillAlpha" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The opacity to fill the path with."/>
+			</Parameter>
+			<Parameter Name="android:trimPathStart" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The fraction of the path to Trim from the start, in the range from 0 to 1."/>
+			</Parameter>
+			<Parameter Name="android:trimPathEnd" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The fraction of the path to Trim from the end, in the range from 0 to 1."/>
+			</Parameter>
+			<Parameter Name="android:strokeLineCap" TypesCSV="keyword" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Sets the linecap for a stroked path."/>
+				<ParameterValue Name="butt">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+				<ParameterValue Name="round">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+				<ParameterValue Name="square">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:strokeLineJoin" TypesCSV="keyword" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Sets the lineJoin for a stroked path."/>
+				<ParameterValue Name="miter">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+				<ParameterValue Name="round">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+				<ParameterValue Name="bevel">
+					<Description Locale="en" Content=""/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:strokeMiterLimit" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Sets the Miter limit for a stroked path."/>
+			</Parameter>
+		</Node>
+		<Node Name="clip-path" Abstract="false" Required="false" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Defines path to be the current clip. Note that the clip path only apply to the current group and its children."/>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines the name of the clip path."/>
+			</Parameter>
+			<Parameter Name="android:pathData" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Defines clip path using the same format as 'd' attribute in the SVG's path data."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="animated-vector" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Description Locale="en" Content="Defines the target VectorDrawable, the target paths and groups to animate, the properties of the path and group to animate and the animations defined as the ObjectAnimators or AnimatorSets."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:drawable" TypesCSV="drawable" Inputs="Reference" RequirementBehaviour="Always">
+			<Description Locale="en" Content="The static vector drawable."/>
+		</Parameter>
+		<Node Name="target" Abstract="false" Required="false" IntroducedApiLevel="21">
+			<Description Locale="en" Content="Defines the target VectorDrawable, the target paths and groups to animate, the properties of the path and group to animate and the animations defined as the ObjectAnimators or AnimatorSets."/>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference" RequirementBehaviour="Always">
+				<Description Locale="en" Content="The name of the target path, group or vector drawable."/>
+			</Parameter>
+			<Parameter Name="android:animation" TypesCSV="anim" Inputs="Reference" RequirementBehaviour="Always">
+				<Description Locale="en" Content="The animation for the target path, group or vector drawable"/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>
+

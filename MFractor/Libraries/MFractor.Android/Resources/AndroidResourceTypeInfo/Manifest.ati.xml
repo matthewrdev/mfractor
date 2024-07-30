@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="manifest" Name="Android Manifest" AllowUnknownNodes="false">
+	<Description Locale="en" Content="Provides support for all Android manifest elements."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/manifest/manifest-intro.html"/>
+	<Node Name="manifest" Abstract="false" Required="true">
+		<Description Locale="en" Content="The root element of the AndroidManifest.xml file. It must contain an 'application' element and specify xmlns:android and package attributes."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="package" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+ 			<Description Locale="en" Content="A full Java-language-style package name for the application. The name should be unique. The name may contain uppercase or lowercase letters ('A' through 'Z'), numbers, and underscores ('_'). However, individual package name parts may only start with letters. To avoid conflicts with other developers, you should use Internet domain ownership as the basis for your package names (in reverse). For example, applications published by Google start with com.google. You should also never use the com.example namespace when publishing your applications. The package name serves as a unique identifier for the application. It's also the default name for the application process (see the 'application' element's process process attribute) and the default task affinity of an activity (see the 'activity' element's taskAffinity attribute)."/>
+		</Parameter>
+		<Parameter Name="android:sharedUserId" TypesCSV="string" Inputs="Value" IntroducedApiLevel="3">
+ 			<Description Locale="en" Content="The name of a Linux user ID that will be shared with other applications. By default, Android assigns each application its own unique user ID. However, if this attribute is set to the same value for two or more applications, they will all share the same ID — provided that they are also signed by the same certificate. Application with the same user ID can access each other's data and, if desired, run in the same process."/>
+		</Parameter>
+		<Parameter Name="android:sharedUserLabel" TypesCSV="string" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="A user-readable label for the shared user ID. The label must be set as a reference to a string resource; it cannot be a raw string."/>
+		</Parameter>
+		<Parameter Name="android:versionCode" TypesCSV="integer" Inputs="Value">
+ 			<Description Locale="en" Content="An internal version number. This number is used only to determine whether one version is more recent than another, with higher numbers indicating more recent versions. This is not the version number shown to users; that number is set by the versionName attribute. The value must be set as an integer, such as '100'. You can define it however you want, as long as each successive version has a higher number. For example, it could be a build number. Or you could translate a version number in 'x.y' format to an integer by encoding the 'x' and 'y' separately in the lower and upper 16 bits. Or you could simply increase the number by one each time a new version is released."/>
+		</Parameter>
+		<Parameter Name="android:versionName" TypesCSV="string" Inputs="ValueOrReference">
+ 			<Description Locale="en" Content="The version number shown to users. This attribute can be set as a raw string or as a reference to a string resource. The string has no other purpose than to be displayed to users. The versionCode attribute holds the significant version number used internally."/>
+		</Parameter>
+		<Parameter Name="android:installLocation" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="8">
+ 			<Description Locale="en" Content="The default install location for the application."/>
+			<ParameterValue Name="internalOnly">
+				<Description Locale="en"  Content="The application must be installed on the internal device storage only. If this is set, the application will never be installed on the external storage. If the internal storage is full, then the system will not install the application. This is also the default behavior if you do not define android:installLocation."/>
+			</ParameterValue>
+			<ParameterValue Name="auto">
+				<Description Locale="en"  Content="The application may be installed on the external storage, but the system will install the application on the internal storage by default. If the internal storage is full, then the system will install it on the external storage. Once installed, the user can move the application to either internal or external storage through the system settings."/>
+			</ParameterValue>
+			<ParameterValue Name="preferExternal">
+				<Description Locale="en"  Content="The application prefers to be installed on the external storage (SD card). There is no guarantee that the system will honor this request. The application might be installed on internal storage if the external media is unavailable or full. Once installed, the user can move the application to either internal or external storage through the system settings."/>
+			</ParameterValue>
+		</Parameter>
+		<Node Name="application" Abstract="false" Required="true">
+			<Modifier Name="AddChildren">
+				<ModifierArgument Name="TypesCSV" Value="meta-data"/>
+			</Modifier>
+			<Description Locale="en" Content="The declaration of the application. This element contains subelements that declare each of the application's components and has attributes that can affect all the components. Many of these attributes (such as icon, label, permission, process, taskAffinity, and allowTaskReparenting) set default values for corresponding attributes of the component elements. Others (such as debuggable, enabled, description, and allowClearUserData) set values for the application as a whole and cannot be overridden by the components."/>
+			<Parameter Name="android:allowTaskReparenting" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not activities that the application defines can move from the task that started them to the task they have an affinity for when that task is next brought to the front — 'true' if they can move, and 'false' if they must remain with the task where they started. The default value is 'false'. The 'activity' element has its own allowTaskReparenting attribute that can override the value set here. "/>
+			</Parameter>
+			<Parameter Name="android:allowBackup" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Whether to allow the application to participate in the backup and restore infrastructure. If this attribute is set to false, no backup or restore of the application will ever be performed, even by a full-system backup that would otherwise cause all application data to be saved via adb. The default value of this attribute is true."/>
+			</Parameter>
+			<Parameter Name="android:backupAgent" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of the class that implement's the application's backup agent, a subclass of BackupAgent. The attribute value should be a fully qualified class name (such as, 'com.example.project.MyBackupAgent'). However, as a shorthand, if the first character of the name is a period (for example, '.MyBackupAgent'), it is appended to the package name specified in the 'manifest' element."/>
+			</Parameter>
+			<Parameter Name="android:banner" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="A drawable resource providing an extended graphical banner for its associated item. Use with the 'application' tag to supply a default banner for all application activities, or with the 'activity' tag to supply a banner for a specific activity. The system uses the banner to represent an app in the Android TV home screen. Since the banner is displayed only in the home screen, it should only be specified by applications with an activity that handles the CATEGORY_LEANBACK_LAUNCHER intent."/>
+			</Parameter>
+			<Parameter Name="android:debuggable" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not the application can be debugged, even when running on a device in user mode — 'true' if it can be, and 'false' if not. The default value is 'false'."/>
+			</Parameter>
+			<Parameter Name="android:description" TypesCSV="string" Inputs="Reference">
+				<Description Locale="en" Content="User-readable text about the application, longer and more descriptive than the application label. The value must be set as a reference to a string resource. Unlike the label, it cannot be a raw string. "/>
+			</Parameter>
+			<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Whether or not the Android system can instantiate components of the application — 'true' if it can, and 'false' if not. If the value is 'true', each component's enabled attribute determines whether that component is enabled or not. If the value is 'false', it overrides the component-specific values; all components are disabled."/>
+			</Parameter>
+			<Parameter Name="android:hasCode" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Whether or not the application contains any code — 'true' if it does, and 'false' if not. When the value is 'false', the system does not try to load any application code when launching components. The default value is 'true'. An application would not have any code of its own only if it's using nothing but built-in component classes, such as an activity that uses the AliasActivity class, a rare occurrence."/>
+			</Parameter>
+			<Parameter Name="android:hardwareAccelerated" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Whether or not hardware-accelerated rendering should be enabled for all activities and views in this application — 'true' if it should be enabled, and 'false' if not. The default value is 'true' if you've set either minSdkVersion or targetSdkVersion to '14' or higher; otherwise, it's 'false'. Starting from Android 3.0 (API level 11), a hardware-accelerated OpenGL renderer is available to applications, to improve performance for many common 2D graphics operations. When the hardware-accelerated renderer is enabled, most operations in Canvas, Paint, Xfermode, ColorFilter, Shader, and Camera are accelerated. This results in smoother animations, smoother scrolling, and improved responsiveness overall, even for applications that do not explicitly make use the framework's OpenGL libraries."/>
+			</Parameter>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="An icon for the application as whole, and the default icon for each of the application's components. See the individual icon attributes for 'activity', 'activity-alias', 'service', 'receiver', and 'provider' elements."/>
+			</Parameter>
+			<Parameter Name="android:isGame" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not the application is a game. The system may group together applications classifed as games or display them separately from other applications."/>
+			</Parameter>
+			<Parameter Name="android:killAfterRestore" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Whether the application in question should be terminated after its settings have been restored during a full-system restore operation. Single-package restore operations will never cause the application to be shut down. Full-system restore operations typically only occur once, when the phone is first set up. Third-party applications will not normally need to use this attribute."/>
+			</Parameter>
+			<Parameter Name="android:largeHeap" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Whether your application's processes should be created with a large Dalvik heap. This applies to all processes created for the application. It only applies to the first application loaded into a process; if you're using a shared user ID to allow multiple applications to use a process, they all must use this option consistently or they will have unpredictable results. Most apps should not need this and should instead focus on reducing their overall memory usage for improved performance. Enabling this also does not guarantee a fixed increase in available memory, because some devices are constrained by their total available memory. To query the available memory size at runtime, use the methods getMemoryClass() or getLargeMemoryClass()."/>
+			</Parameter>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A user-readable label for the application as a whole, and a default label for each of the application's components. See the individual label attributes for activity, activity-alias, service, receiver, and provider elements."/>
+			</Parameter>
+			<Parameter Name="android:logo" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="A logo for the application as whole, and the default logo for activities."/>
+			</Parameter>
+			<Parameter Name="android:manageSpaceActivity" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The fully qualified name of an Activity subclass that the system can launch to let users manage the memory occupied by the application on the device. The activity should also be declared with an 'activity' element."/>
+			</Parameter>
+			<Parameter Name="android:name" TypesCSV="class:android.app.Application" Inputs="Value">
+				<Description Locale="en" Content="The fully qualified name of an Application subclass implemented for the application. When the application process is started, this class is instantiated before any of the application's components. The subclass is optional; most applications won't need one. In the absence of a subclass, Android uses an instance of the base Application class."/>
+			</Parameter>
+			<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of a permission that clients must have in order to interact with the application. This attribute is a convenient way to set a permission that applies to all of the application's components. It can be overwritten by setting the permission attributes of individual components."/>
+			</Parameter>
+			<Parameter Name="android:persistent" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not the application should remain running at all times — 'true' if it should, and 'false' if not. The default value is 'false'. Applications should not normally set this flag; persistence mode is intended only for certain system applications."/>
+			</Parameter>
+			<Parameter Name="android:process" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of a process where all components of the application should run. Each component can override this default by setting its own process attribute. By default, Android creates a process for an application when the first of its components needs to run. All components then run in that process. The name of the default process matches the package name set by the 'manifest' element. By setting this attribute to a process name that's shared with another application, you can arrange for components of both applications to run in the same process — but only if the two applications also share a user ID and be signed with the same certificate. If the name assigned to this attribute begins with a colon (':'), a new process, private to the application, is created when it's needed. If the process name begins with a lowercase character, a global process of that name is created. A global process can be shared with other applications, reducing resource usage."/>
+			</Parameter>
+			<Parameter Name="android:restoreAnyVersion" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Indicates that the application is prepared to attempt a restore of any backed-up data set, even if the backup was stored by a newer version of the application than is currently installed on the device. Setting this attribute to true will permit the Backup Manager to attempt restore even when a version mismatch suggests that the data are incompatible. Use with caution!"/>
+			</Parameter>
+			<Parameter Name="android:requiredAccountType" TypesCSV="string" Inputs="Value" IntroducedApiLevel="18">
+				<Description Locale="en" Content="Specifies the account type required by the application in order to function. If your app requires an Account, the value for this attribute must correspond to the account authenticator type used by your app (as defined by AuthenticatorDescription), such as 'com.google'. The default value is null and indicates that the application can work without any accounts. Because restricted profiles currently cannot add accounts, specifying this attribute makes your app unavailable from a restricted profile unless you also declare android:restrictedAccountType with the same value."/>
+			</Parameter>
+			<Parameter Name="android:restrictedAccountType" TypesCSV="string" Inputs="Value" IntroducedApiLevel="18">
+				<Description Locale="en" Content="Specifies the account type required by this application and indicates that restricted profiles are allowed to access such accounts that belong to the owner user. If your app requires an Account and restricted profiles are allowed to access the primary user's accounts, the value for this attribute must correspond to the account authenticator type used by your app (as defined by AuthenticatorDescription), such as 'com.google'. The default value is null and indicates that the application can work without any accounts."/>
+			</Parameter>
+			<Parameter Name="android:supportsRtl" TypesCSV="boolean" Inputs="Value" DefaultValue="false" IntroducedApiLevel="17">
+				<Description Locale="en" Content="Declares whether your application is willing to support right-to-left (RTL) layouts."/>
+			</Parameter>
+			<Parameter Name="android:taskAffinity" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="An affinity name that applies to all activities within the application, except for those that set a different affinity with their own taskAffinity attributes. See that attribute for more information. By default, all activities within an application share the same affinity. The name of that affinity is the same as the package name set by the 'manifest' element."/>
+			</Parameter>
+			<Parameter Name="android:testOnly" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Indicates whether this application is only for testing purposes. For example, it may expose functionality or data outside of itself that would cause a security hole, but is useful for testing. This kind of application can be installed only through adb."/>
+			</Parameter>
+			<Parameter Name="android:theme" TypesCSV="style" Inputs="Reference">
+				<Description Locale="en" Content="A reference to a style resource defining a default theme for all activities in the application. Individual activities can override the default by setting their own theme attributes."/>
+			</Parameter>
+			<Parameter Name="android:uiOptions" TypesCSV="keyword" Inputs="Value" DefaultValue="none" IntroducedApiLevel="14">
+				<Description Locale="en" Content="Extra options for an activity's UI."/>
+				<ParameterValue Name="none">
+					<Description Locale="en" Content="No extra UI options. This is the default."/>
+				</ParameterValue>
+				<ParameterValue Name="splitActionBarWhenNarrow">
+					<Description Locale="en" Content="Add a bar at the bottom of the screen to display action items in the app bar (also known as the action bar), when constrained for horizontal space (such as when in portrait mode on a handset). Instead of a small number of action items appearing in the app bar at the top of the screen, the app bar is split into the top navigation section and the bottom bar for action items. This ensures a reasonable amount of space is made available not only for the action items, but also for navigation and title elements at the top. Menu items are not split across the two bars; they always appear together."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:usesCleartextTraffic" TypesCSV="boolean" Inputs="Value" DefaultValue="true" IntroducedApiLevel="23">
+				<Description Locale="en" Content="Indicates whether the app intends to use cleartext network traffic, such as cleartext HTTP. The default value is 'true'. When the attribute is set to 'false', platform components (for example, HTTP and FTP stacks, DownloadManager, MediaPlayer) will refuse the app's requests to use cleartext traffic. Third-party libraries are strongly encouraged to honor this setting as well. The key reason for avoiding cleartext traffic is the lack of confidentiality, authenticity, and protections against tampering: a network attacker can eavesdrop on transmitted data and also modify it without being detected. This flag is honored on a best effort basis because it's impossible to prevent all cleartext traffic from Android applications given the level of access provided to them. For example, there's no expectation that the Socket API will honor this flag because it cannot determine whether its traffic is in cleartext. However, most network traffic from applications is handled by higher-level network stacks/components which can honor this flag by either reading it from ApplicationInfo.flags or NetworkSecurityPolicy.isCleartextTrafficPermitted(). NOTE: WebView does not honor this flag. During app development, StrictMode can be used to identify any cleartext traffic from the app"/>
+			</Parameter>
+			<Parameter Name="android:vmSafeMode" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="8">
+				<Description Locale="en" Content="Indicates whether the app would like the virtual machine (VM) to operate in safe mode. The default value is 'false'."/>
+			</Parameter>
+			<Node Name="activity" Abstract="false" Required="false">
+				<Description Locale="en" Content="Declares an activity (an Activity subclass) that implements part of the application's visual user interface."/>
+				<Parameter Name="android:allowEmbedded" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Indicate that the activity can be launched as the embedded child of another activity. Particularly in the case where the child lives in a container such as a Display owned by another activity. For example, activities that are used for Wear custom notifications must declare this so Wear can display the activity in it's context stream, which resides in another process."/>
+				</Parameter>
+				<Parameter Name="android:allowTaskReparenting" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the activity can move from the task that started it to the task it has an affinity for when that task is next brought to the front — 'true' if it can move, and 'false' if it must remain with the task where it started."/>
+				</Parameter>
+				<Parameter Name="android:alwaysRetainTaskState" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the state of the task that the activity is in will always be maintained by the system."/>
+				</Parameter>
+				<Parameter Name="android:autoRemoveFromRecents" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not tasks launched by activities with this attribute remains in the overview screen until the last activity in the task is completed."/>
+				</Parameter>
+				<Parameter Name="android:banner" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="A drawable resource providing an extended graphical banner for its associated item. Use with the 'activity' tag to supply a default banner for a specific activity, or with the 'application' tag to supply a banner for all application activities."/>
+				</Parameter>
+				<Parameter Name="android:clearTaskOnLaunch" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not all activities will be removed from the task, except for the root activity, whenever it is re-launched from the home screen."/>
+				</Parameter>
+				<Parameter Name="android:configChanges" TypesCSV="flag" Inputs="Value">
+					<Description Locale="en" Content="Lists configuration changes that the activity will handle itself. When a configuration change occurs at runtime, the activity is shut down and restarted by default, but declaring a configuration with this attribute will prevent the activity from being restarted. Instead, the activity remains running and its onConfigurationChanged() method is called."/>
+					<ParameterValue Name="mcc">
+						<Description Locale="en" Content="The IMSI mobile country code (MCC) has changed — a SIM has been detected and updated the MCC."/>
+					</ParameterValue>
+					<ParameterValue Name="mnc">
+						<Description Locale="en" Content="The IMSI mobile network code (MNC) has changed — a SIM has been detected and updated the MNC."/>
+					</ParameterValue>
+					<ParameterValue Name="locale">
+						<Description Locale="en" Content="The locale has changed — the user has selected a new language that text should be displayed in."/>
+					</ParameterValue>
+					<ParameterValue Name="touchscreen">
+						<Description Locale="en" Content="The touchscreen has changed. (This should never normally happen.)"/>
+					</ParameterValue>
+					<ParameterValue Name="keyboard">
+						<Description Locale="en" Content="The keyboard type has changed — for example, the user has plugged in an external keyboard."/>
+					</ParameterValue>
+					<ParameterValue Name="keyboardHidden">
+						<Description Locale="en" Content="The keyboard accessibility has changed — for example, the user has revealed the hardware keyboard."/>
+					</ParameterValue>
+					<ParameterValue Name="navigation">
+						<Description Locale="en" Content="The navigation type (trackball/dpad) has changed. (This should never normally happen.)"/>
+					</ParameterValue>
+					<ParameterValue Name="screenLayout">
+						<Description Locale="en" Content="The screen layout has changed — this might be caused by a different display being activated."/>
+					</ParameterValue>
+					<ParameterValue Name="fontScale">
+						<Description Locale="en" Content="The font scaling factor has changed — the user has selected a new global font size."/>
+					</ParameterValue>
+					<ParameterValue Name="uiMode" IntroducedApiLevel="8">
+						<Description Locale="en" Content="The user interface mode has changed — this can be caused when the user places the device into a desk/car dock or when the night mode changes."/>
+					</ParameterValue>
+					<ParameterValue Name="orientation">
+						<Description Locale="en" Content="The screen orientation has changed — the user has rotated the device."/>
+					</ParameterValue>
+					<ParameterValue Name="screenSize" IntroducedApiLevel="13">
+						<Description Locale="en" Content="The current available screen size has changed. This represents a change in the currently available size, relative to the current aspect ratio, so will change when the user switches between landscape and portrait. However, if your application targets API level 12 or lower, then your activity always handles this configuration change itself (this configuration change does not restart your activity, even when running on an Android 3.2 or higher device)."/>
+					</ParameterValue>
+					<ParameterValue Name="smallestScreenSize" IntroducedApiLevel="13">
+						<Description Locale="en" Content="The screen orientation has changed — the user has rotated the device."/>
+					</ParameterValue>
+					<ParameterValue Name="layoutDirection" IntroducedApiLevel="17">
+						<Description Locale="en" Content="The layout direction has changed. For example, changing from left-to-right (LTR) to right-to-left (RTL)."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:documentLaunchMode" TypesCSV="keyword" Inputs="Value">
+					<Description Locale="en" Content="Specifies how a new instance of an activity should be added to a task each time it is launched. This attribute permits the user to have multiple documents from the same application appear in the overview screen."/>
+					<ParameterValue Name="intoExisting">
+						<Description Locale="en" Content="The activity reuses the existing task for the document."/>
+					</ParameterValue>
+					<ParameterValue Name="always">
+						<Description Locale="en" Content="The activity creates a new task for the document, even if the document is already opened."/>
+					</ParameterValue>
+					<ParameterValue Name="none">
+						<Description Locale="en" Content="The activity does not create a new task for the activity. This is the default value, which creates a new task only when FLAG_ACTIVITY_NEW_TASK is set. The overview screen treats the activity as it would by default: it displays a single task for the app, which resumes from whatever activity the user last invoked."/>
+					</ParameterValue>
+					<ParameterValue Name="never">
+						<Description Locale="en" Content="This activity is not launched into a new document even if the Intent contains FLAG_ACTIVITY_NEW_DOCUMENT. Setting this overrides the behavior of the FLAG_ACTIVITY_NEW_DOCUMENT and FLAG_ACTIVITY_MULTIPLE_TASK flags, if either of these are set in the activity, and the overview screen displays a single task for the app, which resumes from whatever activity the user last invoked."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+					<Description Locale="en" Content="Whether or not the activity can be instantiated by the system."/>
+				</Parameter>
+				<Parameter Name="android:excludeFromRecents" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the task initiated by this activity should be excluded from the list of recently used applications, the overview screen. That is, when this activity is the root activity of a new task, this attribute determines whether the task should not appear in the list of recent apps."/>
+				</Parameter>
+				<Parameter Name="android:exported" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not the activity can be launched by components of other applications — 'true' if it can be, and 'false' if not. If 'false', the activity can be launched only by components of the same application or applications with the same user ID. The default value depends on whether the activity contains intent filters. The absence of any filters means that the activity can be invoked only by specifying its exact class name. This implies that the activity is intended only for application-internal use (since others would not know the class name). So in this case, the default value is 'false'. On the other hand, the presence of at least one filter implies that the activity is intended for external use, so the default value is 'true'. This attribute is not the only way to limit an activity's exposure to other applications. You can also use a permission to limit the external entities that can invoke the activity (see the permission attribute)."/>
+				</Parameter>
+				<Parameter Name="android:finishOnTaskLaunch" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not an existing instance of the activity should be shut down (finished) whenever the user again launches its task (chooses the task on the home screen)."/>
+				</Parameter>
+				<Parameter Name="android:hardwareAccelerated" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not hardware-accelerated rendering should be enabled for this Activity."/>
+				</Parameter>
+				<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="An icon representing the activity. The icon is displayed to users when a representation of the activity is required on-screen. For example, icons for activities that initiate tasks are displayed in the launcher window. The icon is often accompanied by a label (see the android:label attribute)."/>
+				</Parameter>
+				<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+					<Description Locale="en" Content="A user-readable label for the activity. The label is displayed on-screen when the activity must be represented to the user. It's often displayed along with the activity icon."/>
+				</Parameter>
+				<Parameter Name="android:launchMode" TypesCSV="flag" Inputs="Value" DefaultValue="standard">
+					<Description Locale="en" Content="An instruction on how the activity should be launched."/>
+					<ParameterValue Name="standard">
+						<Description Locale="en" Content="Default. The system always creates a new instance of the activity in the target task and routes the intent to it."/>
+					</ParameterValue>
+					<ParameterValue Name="singleTop">
+						<Description Locale="en" Content="If an instance of the activity already exists at the top of the target task, the system routes the intent to that instance through a call to its onNewIntent() method, rather than creating a new instance of the activity."/>
+					</ParameterValue>
+					<ParameterValue Name="singleTask">
+						<Description Locale="en" Content="The system creates the activity at the root of a new task and routes the intent to it. However, if an instance of the activity already exists, the system routes the intent to existing instance through a call to its onNewIntent() method, rather than creating a new one."/>
+					</ParameterValue>
+					<ParameterValue Name="singleInstance">
+						<Description Locale="en" Content="Same as 'singleTask', except that the system doesn't launch any other activities into the task holding the instance. The activity is always the single and only member of its task."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:maxRecents" TypesCSV="integer" Inputs="Value" DefaultValue="16">
+					<Description Locale="en" Content="The maximum number of tasks rooted at this activity in the overview screen. When this number of entries is reached, the system removes the least-recently used instance from the overview screen. Valid values are 1 through 50 (25 on low memory devices); zero is invalid. This must be an integer value, such as 50. The default value is 16."/>
+				</Parameter>
+				<Parameter Name="android:multiprocess" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether an instance of the activity can be launched into the process of the component that started it."/>
+				</Parameter>
+				<Parameter Name="android:name" TypesCSV="class:android.app.Activity" Inputs="Value">
+					<Description Locale="en" Content="The name of the class that implements the activity, a subclass of Activity. The attribute value should be a fully qualified class name (such as, 'com.example.project.ExtracurricularActivity'). However, as a shorthand, if the first character of the name is a period (for example, '.ExtracurricularActivity'), it is appended to the package name specified in the 'manifest' element."/>
+				</Parameter>
+				<Parameter Name="android:noHistory" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="3" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the activity should be removed from the activity stack and finished (its finish() method called) when the user navigates away from it and it's no longer visible on screen."/>
+				</Parameter>
+				<Parameter Name="android:parentActivityName" TypesCSV="string" Inputs="Value" IntroducedApiLevel="16">
+					<Description Locale="en" Content="The class name of the logical parent of the activity. The name here must match the class name given to the corresponding 'activity' element's android:name attribute. The system reads this attribute to determine which activity should be started when the user presses the Up button in the action bar. The system can also use this information to synthesize a back stack of activities with TaskStackBuilder."/>
+				</Parameter>
+				<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of a permission that clients must have to launch the activity or otherwise get it to respond to an intent. If a caller of startActivity() or startActivityForResult() has not been granted the specified permission, its intent will not be delivered to the activity."/>
+				</Parameter>
+				<Parameter Name="android:process" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the process in which the activity should run. Normally, all components of an application run in a default process name created for the application and you do not need to use this attribute. But if necessary, you can override the default process name with this attribute, allowing you to spread your app components across multiple processes."/>
+				</Parameter>
+				<Parameter Name="android:relinquishTaskIdentity" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the activity relinquishes its task identifiers to an activity above it in the task stack."/>
+				</Parameter>
+				<Parameter Name="android:screenOrientation" TypesCSV="flag" Inputs="Value" DefaultValue="unspecified">
+					<Description Locale="en" Content="Whether or not the activity relinquishes its task identifiers to an activity above it in the task stack."/>
+					<ParameterValue Name="unspecified">
+						<Description Locale="en" Content="The default value. The system chooses the orientation. The policy it uses, and therefore the choices made in specific contexts, may differ from device to device."/>
+					</ParameterValue>
+					<ParameterValue Name="behind">
+						<Description Locale="en" Content="The same orientation as the activity that's immediately beneath it in the activity stack."/>
+					</ParameterValue>
+					<ParameterValue Name="landscape">
+						<Description Locale="en" Content="Landscape orientation (the display is wider than it is tall)."/>
+					</ParameterValue>
+					<ParameterValue Name="portrait">
+						<Description Locale="en" Content="Portrait orientation (the display is taller than it is wide)."/>
+					</ParameterValue>
+					<ParameterValue Name="reverseLandscape" IntroducedApiLevel="9">
+						<Description Locale="en" Content="Landscape orientation in the opposite direction from normal landscape."/>
+					</ParameterValue>
+					<ParameterValue Name="reversePortrait" IntroducedApiLevel="9">
+						<Description Locale="en" Content="Portrait orientation in the opposite direction from normal portrait."/>
+					</ParameterValue>
+					<ParameterValue Name="sensorLandscape" IntroducedApiLevel="9">
+						<Description Locale="en" Content="Landscape orientation, but can be either normal or reverse landscape based on the device sensor."/>
+					</ParameterValue>
+					<ParameterValue Name="sensorPortrait" IntroducedApiLevel="9">
+						<Description Locale="en" Content="Portrait orientation, but can be either normal or reverse portrait based on the device sensor."/>
+					</ParameterValue>
+					<ParameterValue Name="userLandscape" IntroducedApiLevel="18">
+						<Description Locale="en" Content="Landscape orientation, but can be either normal or reverse landscape based on the device sensor and the user's sensor preference. If the user has locked sensor-based rotation, this behaves the same as landscape, otherwise it behaves the same as sensorLandscape."/>
+					</ParameterValue>
+					<ParameterValue Name="userPortrait" IntroducedApiLevel="18">
+						<Description Locale="en" Content="Portrait orientation, but can be either normal or reverse portrait based on the device sensor and the user's sensor preference. If the user has locked sensor-based rotation, this behaves the same as portrait, otherwise it behaves the same as sensorPortrait."/>
+					</ParameterValue>
+					<ParameterValue Name="sensor">
+						<Description Locale="en" Content="The orientation is determined by the device orientation sensor. The orientation of the display depends on how the user is holding the device; it changes when the user rotates the device. Some devices, though, will not rotate to all four possible orientations, by default. To allow all four orientations, use 'fullSensor'."/>
+					</ParameterValue>
+					<ParameterValue Name="fullSensor" IntroducedApiLevel="9">
+						<Description Locale="en" Content="The orientation is determined by the device orientation sensor for any of the 4 orientations. This is similar to 'sensor' except this allows any of the 4 possible screen orientations, regardless of what the device will normally do (for example, some devices won't normally use reverse portrait or reverse landscape, but this enables those)."/>
+					</ParameterValue>
+					<ParameterValue Name="nosensor">
+						<Description Locale="en" Content="The orientation is determined without reference to a physical orientation sensor. The sensor is ignored, so the display will not rotate based on how the user moves the device. Except for this distinction, the system chooses the orientation using the same policy as for the 'unspecified' setting."/>
+					</ParameterValue>
+					<ParameterValue Name="user">
+						<Description Locale="en" Content="The user's current preferred orientation."/>
+					</ParameterValue>
+					<ParameterValue Name="fullUser" IntroducedApiLevel="18">
+						<Description Locale="en" Content="If the user has locked sensor-based rotation, this behaves the same as user, otherwise it behaves the same as fullSensor and allows any of the 4 possible screen orientations."/>
+					</ParameterValue>
+					<ParameterValue Name="locked" IntroducedApiLevel="18">
+						<Description Locale="en" Content="Locks the orientation to its current rotation, whatever that is."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:stateNotNeeded" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not the activity can be killed and successfully restarted without having saved its state."/>
+				</Parameter>
+				<Parameter Name="android:taskAffinity" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The task that the activity has an affinity for. Activities with the same affinity conceptually belong to the same task (to the same 'application' from the user's perspective). The affinity of a task is determined by the affinity of its root activity."/>
+				</Parameter>
+				<Parameter Name="android:theme" TypesCSV="style" Inputs="Reference">
+					<Description Locale="en" Content="A reference to a style resource defining an overall theme for the activity. This automatically sets the activity's context to use this theme (see setTheme(), and may also cause 'starting' animations prior to the activity being launched (to better match what the activity actually looks like)."/>
+				</Parameter>
+				<Parameter Name="android:uiOptions" TypesCSV="flag" Inputs="Value" DefaultValue="none" IntroducedApiLevel="14">
+					<Description Locale="en" Content="Extra options for an activity's UI."/>
+					<ParameterValue Name="none">
+						<Description Locale="en" Content="No extra UI options. This is the default."/>
+					</ParameterValue>
+					<ParameterValue Name="splitActionBarWhenNarrow">
+						<Description Locale="en" Content="Add a bar at the bottom of the screen to display action items in the app bar (also known as the action bar), when constrained for horizontal space (such as when in portrait mode on a handset). Instead of a small number of action items appearing in the app bar at the top of the screen, the app bar is split into the top navigation section and the bottom bar for action items. This ensures a reasonable amount of space is made available not only for the action items, but also for navigation and title elements at the top. Menu items are not split across the two bars; they always appear together."/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:windowSoftInputMode" TypesCSV="flag" Inputs="Value" DefaultValue="stateUnspecified|adjustUnspecified" IntroducedApiLevel="3">
+					<Description Locale="en" Content="How the main window of the activity interacts with the window containing the on-screen soft keyboard. "/>
+					<ParameterValue Name="stateUnspecified">
+						<Description Locale="en" Content="The state of the soft keyboard (whether it is hidden or visible) is not specified. The system will choose an appropriate state or rely on the setting in the theme."/>
+					</ParameterValue>
+					<ParameterValue Name="stateUnchanged">
+						<Description Locale="en" Content="The soft keyboard is kept in whatever state it was last in, whether visible or hidden, when the activity comes to the fore."/>
+					</ParameterValue>
+					<ParameterValue Name="stateHidden">
+						<Description Locale="en" Content="The soft keyboard is hidden when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity."/>
+					</ParameterValue>
+					<ParameterValue Name="stateAlwaysHidden">
+						<Description Locale="en" Content="The soft keyboard is always hidden when the activity's main window has input focus."/>
+					</ParameterValue>
+					<ParameterValue Name="stateVisible">
+						<Description Locale="en" Content="The soft keyboard is visible when that's normally appropriate (when the user is navigating forward to the activity's main window)."/>
+					</ParameterValue>
+					<ParameterValue Name="stateAlwaysVisible">
+						<Description Locale="en" Content="The soft keyboard is made visible when the user chooses the activity — that is, when the user affirmatively navigates forward to the activity, rather than backs into it because of leaving another activity."/>
+					</ParameterValue>
+					<ParameterValue Name="adjustUnspecified">
+						<Description Locale="en" Content="It is unspecified whether the activity's main window resizes to make room for the soft keyboard, or whether the contents of the window pan to make the current focus visible on-screen. The system will automatically select one of these modes depending on whether the content of the window has any layout views that can scroll their contents. If there is such a view, the window will be resized, on the assumption that scrolling can make all of the window's contents visible within a smaller area."/>
+					</ParameterValue>
+					<ParameterValue Name="adjustResize">
+						<Description Locale="en" Content="The activity's main window is always resized to make room for the soft keyboard on screen."/>
+					</ParameterValue>
+					<ParameterValue Name="adjustPan">
+						<Description Locale="en" Content="The activity's main window is not resized to make room for the soft keyboard. Rather, the contents of the window are automatically panned so that the current focus is never obscured by the keyboard and users can always see what they are typing. This is generally less desirable than resizing, because the user may need to close the soft keyboard to get at and interact with obscured parts of the window."/>
+					</ParameterValue>
+				</Parameter>
+				<Node Name="intent-filter" Abstract="false" Required="false">
+					<Description Locale="en" Content="Specifies the types of intents that an activity, service, or broadcast receiver can respond to. An intent filter declares the capabilities of its parent component — what an activity or service can do and what types of broadcasts a receiver can handle. It opens the component to receiving intents of the advertised type, while filtering out those that are not meaningful for the component."/>
+					<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+						<Description Locale="en" Content="An icon that represents the parent activity, service, or broadcast receiver when that component is presented to the user as having the capability described by the filter."/>
+					</Parameter>
+					<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+						<Description Locale="en" Content="A user-readable label for the parent component. This label, rather than the one set by the parent component, is used when the component is presented to the user as having the capability described by the filter."/>
+					</Parameter>
+					<Parameter Name="android:priority" TypesCSV="integer" Inputs="Value" DefaultValue="0">
+						<Description Locale="en" Content="The priority that should be given to the parent component with regard to handling intents of the type described by the filter. The value must be greater than -1000 and less than 1000."/>
+					</Parameter>
+					<Node Name="action" Abstract="false" Required="false">
+						<Description Locale="en" Content="Adds an action to an intent filter. An 'intent-filter' element must contain one or more 'action' elements. If it doesn't contain any, no Intent objects will get through the filter. "/>
+						<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The name of the action."/>
+						</Parameter>
+					</Node>
+					<Node Name="category" Abstract="false" Required="false">
+						<Description Locale="en" Content="Adds a category name to an intent filter"/>
+						<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The name of the category."/>
+						</Parameter>
+					</Node>
+					<Node Name="data" Abstract="false" Required="false">
+						<Description Locale="en" Content="Adds a data specification to an intent filter. The specification can be just a data type (the mimeType attribute), just a URI, or both a data type and a URI."/>
+						<Parameter Name="android:scheme" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The scheme part of a URI. This is the minimal essential attribute for specifying a URI; at least one scheme attribute must be set for the filter, or none of the other URI attributes are meaningful."/>
+						</Parameter>
+						<Parameter Name="android:host" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The host part of a URI authority. This attribute is meaningless unless a scheme attribute is also specified for the filter."/>
+						</Parameter>
+						<Parameter Name="android:port" TypesCSV="integer" Inputs="Value">
+							<Description Locale="en" Content="The port part of a URI authority. This attribute is meaningful only if the scheme and host attributes are also specified for the filter."/>
+						</Parameter>
+						<Parameter Name="android:path" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The path attribute specifies a complete path that is matched against the complete path in an Intent object."/>
+						</Parameter>
+						<Parameter Name="android:pathPrefix" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The pathPrefix attribute specifies a partial path that is matched against only the initial part of the path in the Intent object."/>
+						</Parameter>
+						<Parameter Name="android:pathPattern" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="The pathPattern attribute specifies a complete path that is matched against the complete path in the Intent object, but it can contain the following wildcards: An asterisk ('*') matches a sequence of 0 to many occurrences of the immediately preceding character. A period followed by an asterisk ('.*') matches any sequence of 0 to many characters."/>
+						</Parameter>
+						<Parameter Name="android:mimeType" TypesCSV="string" Inputs="Value">
+							<Description Locale="en" Content="A MIME media type, such as image/jpeg or audio/mpeg4-generic. The subtype can be the asterisk wildcard (*) to indicate that any subtype matches."/>
+						</Parameter>
+					</Node>
+				</Node>
+				<Node Name="meta-data" Abstract="false" Required="false">
+					<Description Locale="en" Content="The value assigned to the item."/>
+					<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="A unique name for the item. To ensure that the name is unique, use a Java-style naming convention — for example, 'com.example.project.activity.fred'."/>
+					</Parameter>
+					<Parameter Name="android:resource" TypesCSV="resource" Inputs="Reference">
+						<Description Locale="en" Content="A reference to a resource. The ID of the resource is the value assigned to the item. "/>
+					</Parameter>
+					<Parameter Name="android:value" TypesCSV="string,integer,boolean,color,float" Inputs="Value">
+						<Description Locale="en" Content="A reference to a resource. The ID of the resource is the value assigned to the item. "/>
+					</Parameter>
+				</Node>
+			</Node>
+			<Node Name="activity-alias" Abstract="false" Required="false">
+				<Modifier Name="AddChildren">
+					<ModifierArgument Name="TypesCSV" Value="intent-filter,meta-data"/>
+				</Modifier>
+				<Description Locale="en" Content="An alias for an activity, named by the targetActivity attribute. The target must be in the same application as the alias and it must be declared before the alias in the manifest."/>
+				<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+					<Description Locale="en" Content="Whether or not the target activity can be instantiated by the system through this alias."/>
+				</Parameter>
+				<Parameter Name="android:exported" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not components of other applications can launch the target activity through this alias."/>
+				</Parameter>
+				<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="An icon for the target activity when presented to users through the alias."/>
+				</Parameter>
+				<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+					<Description Locale="en" Content="A user-readable label for the alias when presented to users through the alias."/>
+				</Parameter>
+				<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="A unique name for the alias. The name should resemble a fully qualified class name. But, unlike the name of the target activity, the alias name is arbitrary; it does not refer to an actual class."/>
+				</Parameter>
+				<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of a permission that clients must have to launch the target activity or get it to do something via the alias. If a caller of startActivity() or startActivityForResult() has not been granted the specified permission, the target activity will not be activated."/>
+				</Parameter>
+				<Parameter Name="android:targetActivity" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the activity that can be activated through the alias. This name must match the name attribute of an 'activity' element that precedes the alias in the manifest."/>
+				</Parameter>
+			</Node>
+			<Node Name="service" Abstract="false" Required="false">
+				<Modifier Name="AddChildren">
+					<ModifierArgument Name="TypesCSV" Value="intent-filter,meta-data"/>
+				</Modifier>
+				<Description Locale="en" Content="Declares a service (a Service subclass) as one of the application's components. Unlike activities, services lack a visual user interface. They're used to implement long-running background operations or a rich communications API that can be called by other applications."/>
+				<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+					<Description Locale="en" Content="Whether or not the service can be instantiated by the system."/>
+				</Parameter>
+				<Parameter Name="android:exported" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not components of other applications can invoke the service or interact with it."/>
+				</Parameter>
+				<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="An icon representing the service."/>
+				</Parameter>
+				<Parameter Name="android:isolatedProcess" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="If set to true, this service will run under a special process that is isolated from the rest of the system and has no permissions of its own. The only communication with it is through the Service API (binding and starting)."/>
+				</Parameter>
+				<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+					<Description Locale="en" Content="A name for the service that can be displayed to users. If this attribute is not set, the label set for the application as a whole is used instead (see the 'application' element's label attribute)."/>
+				</Parameter>
+				<Parameter Name="android:name" TypesCSV="class:android.app.Service" Inputs="Value">
+					<Description Locale="en" Content="The name of a permission that an entity must have in order to launch the service or bind to it."/>
+				</Parameter>
+				<Parameter Name="android:process" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the process where the service is to run."/>
+				</Parameter>
+			</Node>
+			<Node Name="receiver" Abstract="false" Required="false">
+				<Modifier Name="AddChildren">
+					<ModifierArgument Name="TypesCSV" Value="intent-filter,meta-data"/>
+				</Modifier>
+				<Description Locale="en" Content="Declares a broadcast receiver (a BroadcastReceiver subclass) as one of the application's components. Broadcast receivers enable applications to receive intents that are broadcast by the system or by other applications, even when other components of the application are not running."/>
+				<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+					<Description Locale="en" Content="Whether or not the broadcast receiver can be instantiated by the system."/>
+				</Parameter>
+				<Parameter Name="android:exported" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not the broadcast receiver can receive messages from sources outside its application."/>
+				</Parameter>
+				<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="An icon representing the broadcast receiver."/>
+				</Parameter>
+				<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+					<Description Locale="en" Content="A user-readable label for the broadcast receiver."/>
+				</Parameter>
+				<Parameter Name="android:name" TypesCSV="class:Android.Content.BroadcastReceiver" Inputs="Value">
+					<Description Locale="en" Content="The name of the class that implements the broadcast receiver, a subclass of BroadcastReceiver. This should be a fully qualified class name (such as, 'com.example.project.ReportReceiver'). However, as a shorthand, if the first character of the name is a period (for example, '. ReportReceiver'), it is appended to the package name specified in the 'manifest' element."/>
+				</Parameter>
+				<Parameter Name="android:process" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the process where the service is to run."/>
+				</Parameter>
+				<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the process in which the broadcast receiver should run. Normally, all components of an application run in the default process created for the application."/>
+				</Parameter>
+			</Node>
+			<Node Name="provider" Abstract="false" Required="false">
+				<Modifier Name="AddChildren">
+					<ModifierArgument Name="TypesCSV" Value="intent-filter,meta-data"/>
+				</Modifier>
+				<Description Locale="en" Content="Declares a content provider component. A content provider is a subclass of ContentProvider that supplies structured access to data managed by the application."/>
+				<Parameter Name="android:authorities" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="A list of one or more URI authorities that identify data offered by the content provider. Multiple authorities are listed by separating their names with a semicolon. To avoid conflicts, authority names should use a Java-style naming convention (such as com.example.provider.cartoonprovider)."/>
+				</Parameter>
+				<Parameter Name="android:enabled" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+					<Description Locale="en" Content="Whether or not the content provider can be instantiated by the system."/>
+				</Parameter>
+				<Parameter Name="android:exported" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether the content provider is available for other applications to use."/>
+				</Parameter>
+				<Parameter Name="android:grantUriPermissions" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not those who ordinarily would not have permission to access the content provider's data can be granted permission to do so, temporarily overcoming the restriction imposed by the readPermission, writePermission, and permission attributes."/>
+				</Parameter>
+				<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+					<Description Locale="en" Content="An icon representing the content provider."/>
+				</Parameter>
+				<Parameter Name="android:initOrder" TypesCSV="integer" Inputs="Value">
+					<Description Locale="en" Content="The order in which the content provider should be instantiated, relative to other content providers hosted by the same process. When there are dependencies among content providers, setting this attribute for each of them ensures that they are created in the order required by those dependencies. The value is a simple integer, with higher numbers being initialized first."/>
+				</Parameter>
+				<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+					<Description Locale="en" Content="A user-readable label for the content provided."/>
+				</Parameter>
+				<Parameter Name="android:multiprocess" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+					<Description Locale="en" Content="Whether or not an instance of the content provider can be created in every client process."/>
+				</Parameter>
+				<Parameter Name="android:name" TypesCSV="class:Android.Content.ContentProvider" Inputs="Value">
+					<Description Locale="en" Content="The name of the class that implements the content provider, a subclass of ContentProvider. This should be a fully qualified class name (such as, 'com.example.project.TransportationProvider'). However, as a shorthand, if the first character of the name is a period, it is appended to the package name specified in the 'manifest' element."/>
+				</Parameter>
+				<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of a permission that clients must have to read or write the content provider's data."/>
+				</Parameter>
+				<Parameter Name="android:process" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the process in which the content provider should run."/>
+				</Parameter>
+				<Parameter Name="android:readPermission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="A permission that clients must have to query the content provider."/>
+				</Parameter>
+				<Parameter Name="android:syncable" TypesCSV="boolean" Inputs="Value">
+					<Description Locale="en" Content="Whether or not the data under the content provider's control is to be synchronized with data on a server."/>
+				</Parameter>
+				<Parameter Name="android:writePermission" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="A permission that clients must have to make changes to the data controlled by the content provider. "/>
+				</Parameter>
+				<Node Name="grant-uri-permission" Abstract="false" Required="false">
+					<Description Locale="en" Content="Specifies which data subsets of the parent content provider permission can be granted for. Data subsets are indicated by the path part of a content: URI. (The authority part of the URI identifies the content provider.) Granting permission is a way of enabling clients of the provider that don't normally have permission to access its data to overcome that restriction on a one-time basis."/>
+					<Parameter Name="android:path" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The path attribute specifies a complete path; permission can be granted only to the particular data subset identified by that path."/>
+					</Parameter>
+					<Parameter Name="android:pathPrefix" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The pathPrefix attribute specifies the initial part of a path; permission can be granted to all data subsets with paths that share that initial part."/>
+					</Parameter>
+					<Parameter Name="android:pathPattern" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The pathPattern attribute specifies a complete path, but one that can contain the following wildcards: An asterisk ('*') matches a sequence of 0 to many occurrences of the immediately preceding character. A period followed by an asterisk ('.*') matches any sequence of 0 to many characters."/>
+					</Parameter>
+				</Node>
+				<Node Name="path-permission" Abstract="false" Required="false" IntroducedApiLevel="4">
+					<Description Locale="en" Content=""/>
+					<Parameter Name="android:path" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="A complete URI path for a subset of content provider data. Permission can be granted only to the particular data identified by this path. When used to provide search suggestion content, it must be appended with '/search_suggest_query'."/>
+					</Parameter>
+					<Parameter Name="android:pathPrefix" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The initial part of a URI path for a subset of content provider data. Permission can be granted to all data subsets with paths that share this initial part."/>
+					</Parameter>
+					<Parameter Name="android:pathPattern" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="A complete URI path for a subset of content provider data, but one that can use the following wildcards: An asterisk ('*'). This matches a sequence of 0 to many occurrences of the immediately preceding character. A period followed by an asterisk ('.*'). This matches any sequence of 0 or more characters."/>
+					</Parameter>
+					<Parameter Name="android:permission" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="The name of a permission that clients must have in order to read or write the content provider's data. This attribute is a convenient way of setting a single permission for both reading and writing. However, the readPermission and writePermission attributes take precedence over this one."/>
+					</Parameter>
+					<Parameter Name="android:readPermission" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="A permission that clients must have in order to query the content provider."/>
+					</Parameter>
+					<Parameter Name="android:writePermission" TypesCSV="string" Inputs="Value">
+						<Description Locale="en" Content="A permission that clients must have in order to make changes to the data controlled by the content provider."/>
+					</Parameter>
+				</Node>
+			</Node>
+			<Node Name="uses-library" Abstract="false" Required="false">
+				<Description Locale="en" Content="Specifies a shared library that the application must be linked against. This element tells the system to include the library's code in the class loader for the package."/>
+				<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the library. The name is provided by the documentation for the package you are using. "/>
+				</Parameter>
+				<Parameter Name="android:required" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="7">
+					<Description Locale="en" Content="Boolean value that indicates whether the application requires the library specified by android:name: 'true' - The application does not function without this library. The system will not allow the application on a device that does not have the library. - 'false': The application can use the library if present, but is designed to function without it if necessary. The system will allow the application to be installed, even if the library is not present. If you use 'false', you are responsible for checking at runtime that the library is available. To check for a library, you can use reflection to determine if a particular class is available."/>
+				</Parameter>
+			</Node>
+		</Node>
+		<Node Name="compatible-screens" Abstract="false" Required="false" IntroducedApiLevel="9">
+			<Description Locale="en" Content="Specifies each screen configuration with which the application is compatible. Only one instance of the 'compatible-screens' element is allowed in the manifest, but it can contain multiple 'screen' elements."/>
+			<Node Name="screen" Abstract="false" Required="false">
+				<Description Locale="en" Content="Specifies a single screen configuration with which the application is compatible."/>
+				<Parameter Name="android:screenSize" RequirementBehaviour="Always" TypesCSV="keyword" Inputs="Value">
+					<Description Locale="en" Content="Specifies the screen size for this screen configuration."/>
+					<ParameterValue Name="small">
+						<Description Locale="en" Content="small screens are at least 426dp x 320dp"/>
+					</ParameterValue>
+					<ParameterValue Name="normal">
+						<Description Locale="en" Content="normal screens are at least 470dp x 320dp"/>
+					</ParameterValue>
+					<ParameterValue Name="large">
+						<Description Locale="en" Content="large screens are at least 640dp x 480dp"/>
+					</ParameterValue>
+					<ParameterValue Name="xlarge">
+						<Description Locale="en" Content="large screens are at least 640dp x 480dp"/>
+					</ParameterValue>
+				</Parameter>
+				<Parameter Name="android:screenDensity" RequirementBehaviour="Always" TypesCSV="keyword" Inputs="Value">
+					<Description Locale="en" Content="Specifies the screen density for this screen configuration."/>
+					<ParameterValue Name="ldpi">
+						<Description Locale="en" Content="approximately 120 dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="mdpi">
+						<Description Locale="en" Content="approximately 160 dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="hdpi">
+						<Description Locale="en" Content="approximately 240 dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="xhpdi">
+						<Description Locale="en" Content="approximately 320 dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="280">
+						<Description Locale="en" Content="280dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="360">
+						<Description Locale="en" Content="360dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="420">
+						<Description Locale="en" Content="420dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="480">
+						<Description Locale="en" Content="480dpi"/>
+					</ParameterValue>
+					<ParameterValue Name="560">
+						<Description Locale="en" Content="560dpi"/>
+					</ParameterValue>
+				</Parameter>
+			</Node>
+		</Node>
+		<Node Name="instrumentation" Abstract="false" Required="false">
+			<Description Locale="en" Content="Declares an Instrumentation class that enables you to monitor an application's interaction with the system. The Instrumentation object is instantiated before any of the application's components."/>
+			<Parameter Name="android:functionalTest" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not the Instrumentation class should run as a functional test."/>
+			</Parameter>
+			<Parameter Name="android:handleProfiling" TypesCSV="boolean" Inputs="Value" DefaultValue="false">
+				<Description Locale="en" Content="Whether or not the Instrumentation object will turn profiling on and off."/>
+			</Parameter>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="An icon that represents the Instrumentation class. This attribute must be set as a reference to a drawable resource."/>
+			</Parameter>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A user-readable label for the Instrumentation class."/>
+			</Parameter>
+			<Parameter Name="android:name" TypesCSV="class:android.app.Instrumentation" Inputs="Value">
+				<Description Locale="en" Content="The name of the Instrumentation subclass. This should be a fully qualified class name (such as, 'com.example.project.StringInstrumentation'). However, as a shorthand, if the first character of the name is a period, it is appended to the package name specified in the 'manifest' element."/>
+			</Parameter>
+			<Parameter Name="android:targetPackage" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The application that the Instrumentation object will run against. An application is identified by the package name assigned in its manifest file by the 'manifest' element."/>
+			</Parameter>
+		</Node>
+		<Node Name="permission" Abstract="false" Required="false">
+			<Description Locale="en" Content="Declares a security permission that can be used to limit access to specific components or features of this or other applications."/>
+			<Parameter Name="android:description" TypesCSV="string" Inputs="Reference">
+				<Description Locale="en" Content="A user-readable description of the permission, longer and more informative than the label. It may be displayed to explain the permission to the user — for example, when the user is asked whether to grant the permission to another application."/>
+			</Parameter>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="A reference to a drawable resource for an icon that represents the permission."/>
+			</Parameter>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A name for the permission, one that can be displayed to users."/>
+			</Parameter>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The name of the permission. This is the name that will be used in code to refer to the permission — for example, in a 'uses-permission' element and the permission attributes of application components. The name must be unique, so it should use Java-style scoping — for example, 'com.example.project.PERMITTED_ACTION'."/>
+			</Parameter>
+			<Parameter Name="android:permissionGroup" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="Assigns this permission to a group. The value of this attribute is the name of the group, which must be declared with the 'permission-group' element in this or another application. If this attribute is not set, the permission does not belong to a group."/>
+			</Parameter>
+			<Parameter Name="android:protectionLevel" TypesCSV="keyword" Inputs="Value" DefaultValue="normal">
+				<Description Locale="en" Content="Characterizes the potential risk implied in the permission and indicates the procedure the system should follow when determining whether or not to grant the permission to an application requesting it."/>
+				<ParameterValue Name="normal">
+					<Description Locale="en" Content="The default value. A lower-risk permission that gives requesting applications access to isolated application-level features, with minimal risk to other applications, the system, or the user. The system automatically grants this type of permission to a requesting application at installation, without asking for the user's explicit approval (though the user always has the option to review these permissions before installing)."/>
+				</ParameterValue>
+				<ParameterValue Name="dangerous">
+					<Description Locale="en" Content="A higher-risk permission that would give a requesting application access to private user data or control over the device that can negatively impact the user. Because this type of permission introduces potential risk, the system may not automatically grant it to the requesting application. For example, any dangerous permissions requested by an application may be displayed to the user and require confirmation before proceeding, or some other approach may be taken to avoid the user automatically allowing the use of such facilities."/>
+				</ParameterValue>
+				<ParameterValue Name="signature">
+					<Description Locale="en" Content="A higher-risk permission that would give a requesting application access to private user data or control over the device that can negatively impact the user. Because this type of permission introduces potential risk, the system may not automatically grant it to the requesting application. For example, any dangerous permissions requested by an application may be displayed to the user and require confirmation before proceeding, or some other approach may be taken to avoid the user automatically allowing the use of such facilities."/>
+				</ParameterValue>
+				<ParameterValue Name="signatureOrSystem">
+					<Description Locale="en" Content="A permission that the system grants only to applications that are in the Android system image or that are signed with the same certificate as the application that declared the permission. Please avoid using this option, as the signature protection level should be sufficient for most needs and works regardless of exactly where applications are installed. The 'signatureOrSystem' permission is used for certain special situations where multiple vendors have applications built into a system image and need to share specific features explicitly because they are being built together."/>
+				</ParameterValue>
+			</Parameter>
+		</Node>
+		<Node Name="permission-group" Abstract="false" Required="false">
+			<Description Locale="en" Content="Declares a name for a logical grouping of related permissions. Individual permission join the group through the permissionGroup attribute of the 'permission' element. Members of a group are presented together in the user interface. Note that this element does not declare a permission itself, only a category in which permissions can be placed."/>
+			<Parameter Name="android:description" TypesCSV="string" Inputs="Reference">
+				<Description Locale="en" Content="User-readable text that describes the group. The text should be longer and more explanatory than the label."/>
+			</Parameter>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="An icon representing the permission. This attribute must be set as a reference to a drawable resource containing the image definition."/>
+			</Parameter>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A user-readable name for the group."/>
+			</Parameter>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name of the group. This is the name that can be assigned to a 'permission' element's 'permissionGroup' attribute."/>
+			</Parameter>
+		</Node>
+		<Node Name="permission-tree" Abstract="false" Required="false">
+			<Description Locale="en" Content="Declares the base name for a tree of permissions. The application takes ownership of all names within the tree."/>
+			<Parameter Name="android:icon" TypesCSV="drawable" Inputs="Reference">
+				<Description Locale="en" Content="An icon representing all the permissions in the tree."/>
+			</Parameter>
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A user-readable name for the group."/>
+			</Parameter>
+			<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="The name that's at the base of the permission tree. It serves as a prefix to all permission names in the tree. Java-style scoping should be used to ensure that the name is unique. The name must have more than two period-separated segments in its path — for example, com.example.base is OK, but com.example is not."/>
+			</Parameter>
+		</Node>
+		<Node Name="supports-gl-texture" Abstract="false" Required="false">
+			<Description Locale="en" Content="Declares a single GL texture compression format that is supported by the application. An application 'supports' a GL texture compression format if it is capable of providing texture assets that are compressed in that format, once the application is installed on a device. The application can provide the compressed assets locally, from inside the .apk, or it can download them from a server at runtime."/>
+			<Parameter Name="android:icon" TypesCSV="string,keyword" Inputs="Value">
+				<Description Locale="en" Content="Specifies a single GL texture compression format supported by the application, as a descriptor string."/>
+				<ParameterValue Name="GL_OES_compressed_ETC1_RGB8_texture">
+					<Description Locale="en" Content="Ericsson texture compression. Specified in OpenGL ES 2.0 and available in all Android-powered devices that support OpenGL ES 2.0."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_OES_compressed_paletted_texture">
+					<Description Locale="en" Content="Generic paletted texture compression."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_AMD_compressed_3DC_texture">
+					<Description Locale="en" Content="ATI 3Dc texture compression."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_AMD_compressed_ATC_texture">
+					<Description Locale="en" Content="ATI texture compression. Available on devices running Adreno GPU, including HTC Nexus One, Droid Incredible, EVO, and others. For widest compatibility, devices may also declare a 'supports-gl-texture' element with the descriptor GL_ATI_texture_compression_atitc."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_EXT_texture_compression_latc">
+					<Description Locale="en" Content="Luminance alpha texture compression."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_EXT_texture_compression_dxt1">
+					<Description Locale="en" Content="S3 DXT1 texture compression. Supported on devices running Nvidia Tegra2 platform, including Motorala Xoom, Motorola Atrix, Droid Bionic, and others."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_EXT_texture_compression_s3tc">
+					<Description Locale="en" Content="S3 texture compression, nonspecific to DXT variant. Supported on devices running Nvidia Tegra2 platform, including Motorala Xoom, Motorola Atrix, Droid Bionic, and others. If your application requires a specific DXT variant, declare that descriptor instead of this one."/>
+				</ParameterValue>
+				<ParameterValue Name="GL_IMG_texture_compression_pvrtc">
+					<Description Locale="en" Content="PowerVR texture compression. Available in devices running PowerVR SGX530/540 GPU, such as Motorola DROID series; Samsung Galaxy S, Nexus S, and Galaxy Tab; and others."/>
+				</ParameterValue>
+			</Parameter>
+		</Node>
+		<Node Name="supports-screens" Abstract="false" Required="false" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Lets you specify the screen sizes your application supports and enable screen compatibility mode for screens larger than what your application supports."/>
+			<Parameter Name="android:resizeable" TypesCSV="boolean" Inputs="Value" DefaultValue="true" DeprecatedApiLevel="4">
+				<Description Locale="en" Content="Indicates whether the application is resizeable for different screen sizes. This attribute is true, by default. If set false, the system will run your application in screen compatibility mode on large screens."/>
+			</Parameter>
+			<Parameter Name="android:smallScreens" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Indicates whether the application supports smaller screen form-factors. A small screen is defined as one with a smaller aspect ratio than the 'normal' (traditional HVGA) screen. An application that does not support small screens will not be available for small screen devices from external services (such as Google Play), because there is little the platform can do to make such an application work on a smaller screen."/>
+			</Parameter>
+			<Parameter Name="android:normalScreens" TypesCSV="boolean" Inputs="Value" DefaultValue="true">
+				<Description Locale="en" Content="Indicates whether an application supports the 'normal' screen form-factors. Traditionally this is an HVGA medium density screen, but WQVGA low density and WVGA high density are also considered to be normal."/>
+			</Parameter>
+			<Parameter Name="android:largeScreens" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Indicates whether the application supports larger screen form-factors. A large screen is defined as a screen that is significantly larger than a 'normal' handset screen, and thus might require some special care on the application's part to make good use of it, though it may rely on resizing by the system to fill the screen."/>
+			</Parameter>
+			<Parameter Name="android:xlargeScreens" TypesCSV="boolean" Inputs="Value" IntroducedApiLevel="9">
+				<Description Locale="en" Content="Indicates whether the application supports extra large screen form-factors. An xlarge screen is defined as a screen that is significantly larger than a 'large' screen, such as a tablet (or something larger) and may require special care on the application's part to make good use of it, though it may rely on resizing by the system to fill the screen."/>
+			</Parameter>
+			<Parameter Name="android:anyDensity" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Indicates whether the application includes resources to accommodate any screen density."/>
+			</Parameter>
+			<Parameter Name="android:requiresSmallestWidthDp" TypesCSV="dimension" Inputs="Value" IntroducedApiLevel="13">
+				<Description Locale="en" Content="Specifies the minimum smallestWidth required. The smallestWidth is the shortest dimension of the screen space (in dp units) that must be available to your application UI—that is, the shortest of the available screen's two dimensions."/>
+			</Parameter>
+			<Parameter Name="android:compatibleWidthLimitDp" TypesCSV="dimension" Inputs="Value" IntroducedApiLevel="13">
+				<Description Locale="en" Content="This attribute allows you to enable screen compatibility mode as a user-optional feature by specifying the maximum 'smallest screen width' for which your application is designed. If the smallest side of a device's available screen is greater than your value here, users can still install your application, but are offered to run it in screen compatibility mode."/>
+			</Parameter>
+			<Parameter Name="android:largestWidthLimitDp" TypesCSV="dimension" Inputs="Value" IntroducedApiLevel="13">
+				<Description Locale="en" Content="This attribute allows you to force-enable screen compatibility mode by specifying the maximum 'smallest screen width' for which your application is designed. If the smallest side of a device's available screen is greater than your value here, the application runs in screen compatibility mode with no way for the user to disable it."/>
+			</Parameter>
+		</Node>
+		<Node Name="uses-configuration" Abstract="false" Required="false" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Indicates what hardware and software features the application requires. For example, an application might specify that it requires a physical keyboard or a particular navigation device, like a trackball. The specification is used to avoid installing the application on devices where it will not work."/>
+			<Parameter Name="android:reqFiveWayNav" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Whether or not the application requires a five-way navigation control."/>
+			</Parameter>
+			<Parameter Name="android:reqHardKeyboard" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Whether or not the application requires a hardware keyboard."/>
+			</Parameter>
+			<Parameter Name="android:reqKeyboardType" TypesCSV="keyword" Inputs="Value" DefaultValue="undefined">
+				<Description Locale="en" Content="The type of keyboard the application requires, if any at all. This attribute does not distinguish between hardware and software keyboards. If a hardware keyboard of a certain type is required, specify the type here and also set the reqHardKeyboard attribute to 'true'."/>
+				<ParameterValue Name="undefined">
+					<Description Locale="en" Content="The application does not require a keyboard. (A keyboard requirement is not defined.) This is the default value."/>
+				</ParameterValue>
+				<ParameterValue Name="nokeys">
+					<Description Locale="en" Content="The application does not require a keyboard."/>
+				</ParameterValue>
+				<ParameterValue Name="qwerty">
+					<Description Locale="en" Content="The application requires a standard QWERTY keyboard."/>
+				</ParameterValue>
+				<ParameterValue Name="twelvekey">
+					<Description Locale="en" Content="The application requires a twelve-key keypad, like those on most phones — with keys for the digits from 0 through 9 plus star (*) and pound (#) keys."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:reqNavigation" TypesCSV="keyword" Inputs="Value" DefaultValue="undefined">
+				<Description Locale="en" Content="The navigation device required by the application, if any."/>
+				<ParameterValue Name="undefined">
+					<Description Locale="en" Content="The application does not require any type of navigation control. (The navigation requirement is not defined.) This is the default value."/>
+				</ParameterValue>
+				<ParameterValue Name="nonav">
+					<Description Locale="en" Content="The application does not require a navigation control."/>
+				</ParameterValue>
+				<ParameterValue Name="dpad">
+					<Description Locale="en" Content="The application requires a D-pad (directional pad) for navigation."/>
+				</ParameterValue>
+				<ParameterValue Name="trackball">
+					<Description Locale="en" Content="The application requires a trackball for navigation."/>
+				</ParameterValue>
+				<ParameterValue Name="wheel">
+					<Description Locale="en" Content="The application requires a navigation wheel."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:reqTouchScreen" TypesCSV="boolean" Inputs="Value" DefaultValue="undefined">
+				<Description Locale="en" Content="The type of touch screen the application requires, if any at all."/>
+				<ParameterValue Name="undefined">
+					<Description Locale="en" Content="The application doesn't require a touch screen. (The touch screen requirement is undefined.) This is the default value."/>
+				</ParameterValue>
+				<ParameterValue Name="notouch">
+					<Description Locale="en" Content="The application doesn't require a touch screen."/>
+				</ParameterValue>
+				<ParameterValue Name="stylus">
+					<Description Locale="en" Content="The application requires a touch screen that's operated with a stylus."/>
+				</ParameterValue>
+				<ParameterValue Name="finger">
+					<Description Locale="en" Content="The application requires a touch screen that can be operated with a finger."/>
+				</ParameterValue>
+			</Parameter>
+		</Node>
+		<Node Name="uses-feature" Abstract="false" Required="false" IntroducedApiLevel="4">
+			<Description Locale="en" Content="Declares a single hardware or software feature that is used by the application."/>
+			<Parameter Name="android:name" TypesCSV="keyword" Inputs="Value">
+				<Description Locale="en" Content="Specifies a single hardware or software feature used by the application, as a descriptor string."/>
+				<ParameterValue Name="android.hardware.audio.low_latency">
+					<Description Locale="en" Content="The application uses a low-latency audio pipeline on the device and is sensitive to delays or lag in sound input or output."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.bluetooth">
+					<Description Locale="en" Content="The application uses Bluetooth radio features in the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.bluetooth_le">
+					<Description Locale="en" Content="The application uses Bluetooth Low Energy radio features in the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera">
+					<Description Locale="en" Content="The application uses the device's back-facing (main) camera."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.autofocus">
+					<Description Locale="en" Content="Subfeature. The application uses the device camera's autofocus capability."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.flash">
+					<Description Locale="en" Content="Subfeature. The application uses the device camera's flash."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.front">
+					<Description Locale="en" Content="Subfeature. The application uses a front-facing camera on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.any">
+					<Description Locale="en" Content="The application uses at least one camera facing in any direction, or an external camera device if one is connected. Use this in preference to android.hardware.camera if a back-facing camera is not required."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.external">
+					<Description Locale="en" Content="The application uses an external camera device if one is connected."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.level.full">
+					<Description Locale="en" Content="The application uses a camera device with FULL-level support."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.capability.manual_sensor">
+					<Description Locale="en" Content="The application uses a a camera device with the MANUAL_SENSOR capability."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.capability.manual_post_processing">
+					<Description Locale="en" Content="The application uses a a camera device with the MANUAL_POST_PROCESSING capability."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.camera.capability.raw">
+					<Description Locale="en" Content="The application uses a a camera device with the RAW capability."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.consumerir">
+					<Description Locale="en" Content="The application uses the consumer IR capabilities on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.location">
+					<Description Locale="en" Content="The application uses one or more features on the device for determining location, such as GPS location, network location, or cell location."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.location.network">
+					<Description Locale="en" Content="Subfeature. The application uses coarse location coordinates obtained from a network-based geolocation system supported on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.location.gps">
+					<Description Locale="en" Content="Subfeature. The application uses precise location coordinates obtained from a Global Positioning System receiver on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.microphone">
+					<Description Locale="en" Content="The application uses a microphone on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.nfc">
+					<Description Locale="en" Content="The application uses Near Field Communications radio features in the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.nfc.hce">
+					<Description Locale="en" Content="The application uses the NFC card emulation feature in the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.accelerometer">
+					<Description Locale="en" Content="The application uses motion readings from an accelerometer on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.barometer">
+					<Description Locale="en" Content="The application uses the device's barometer."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.compass">
+					<Description Locale="en" Content="The application uses directional readings from a magnetometer (compass) on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.gyroscope">
+					<Description Locale="en" Content="The application uses the device's gyroscope sensor."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.light">
+					<Description Locale="en" Content="The application uses the device's light sensor."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.proximity">
+					<Description Locale="en" Content="The application uses the device's proximity sensor."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.stepcounter">
+					<Description Locale="en" Content="The application uses the device's step counter."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.sensor.stepdetector">
+					<Description Locale="en" Content="The application uses the device's step detector."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.screen.landscape">
+					<Description Locale="en" Content="The application requires landscape orientation."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.screen.portrait">
+					<Description Locale="en" Content="The application requires portrait orientation."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.telephony">
+					<Description Locale="en" Content="The application uses telephony features on the device, such as telephony radio with data communication services."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.telephony.cdma">
+					<Description Locale="en" Content="Subfeature. The application uses CDMA telephony radio features on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.telephony.gsm">
+					<Description Locale="en" Content="Subfeature. The application uses GSM telephony radio features on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.type.television">
+					<Description Locale="en" Content="The application is designed for a television user experience."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.faketouch">
+					<Description Locale="en" Content="The application uses basic touch interaction events, such as 'click down', 'click up', and drag."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.faketouch.multitouch.distinct">
+					<Description Locale="en" Content="The application performs distinct tracking of two or more 'fingers' on a fake touch interface. This is a superset of the faketouch feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.faketouch.multitouch.jazzhand">
+					<Description Locale="en" Content="The application performs distinct tracking of five or more 'fingers' on a fake touch interface. This is a superset of the faketouch feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.touchscreen">
+					<Description Locale="en" Content="The application uses touchscreen capabilities for gestures that are more interactive than basic touch events, such as a fling. This is a superset of the basic faketouch feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.touchscreen.multitouch">
+					<Description Locale="en" Content="The application uses basic two-point multitouch capabilities on the device screen, such as for pinch gestures, but does not need to track touches independently. This is a superset of touchscreen feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.touchscreen.multitouch.distinct">
+					<Description Locale="en" Content="Subfeature. The application uses advanced multipoint multitouch capabilities on the device screen, such as for tracking two or more points fully independently. This is a superset of multitouch feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.touchscreen.multitouch.jazzhand">
+					<Description Locale="en" Content="The application uses advanced multipoint multitouch capabilities on the device screen, for tracking up to five points fully independently. This is a superset of distinct multitouch feature."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.usb.host">
+					<Description Locale="en" Content="The application uses USB host mode features (behaves as the host and connects to USB devices)."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.usb.accessory">
+					<Description Locale="en" Content="The application uses USB accessory features (behaves as the USB device and connects to USB hosts)."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.wifi">
+					<Description Locale="en" Content="The application uses 802.11 networking (Wi-Fi) features on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.hardware.wifi.direct">
+					<Description Locale="en" Content="The application uses the Wi-Fi Direct networking features on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.app_widgets">
+					<Description Locale="en" Content="The application uses or provides App Widgets and should be installed only on devices that include a Home screen or similar location where users can embed App Widgets."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.device_admin">
+					<Description Locale="en" Content="The application uses device policy enforcement via device administrators."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.home_screen">
+					<Description Locale="en" Content="The application behaves as a Home screen replacement and should be installed only on devices that support third-party Home screen apps."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.input_methods">
+					<Description Locale="en" Content="	The application provides a custom input method and should be installed only on devices that support third-party input methods."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.live_wallpaper">
+					<Description Locale="en" Content="The application uses or provides Live Wallpapers and should be installed only on devices that support Live Wallpapers."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.sip">
+					<Description Locale="en" Content="The application uses SIP service on the device and should be installed only on devices that support SIP."/>
+				</ParameterValue>
+				<ParameterValue Name="android.software.sip.voip">
+					<Description Locale="en" Content="Subfeature. The application uses SIP-based VOIP service on the device. This subfeature implicitly declares the android.software.sip parent feature, unless declared with android:required='false'."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:required" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="Boolean value that indicates whether the application requires the feature specified in android:name. When you declare android:required='true' for a feature, you are specifying that the application cannot function, or is not designed to function, when the specified feature is not present on the device. When you declare android:required='false' for a feature, it means that the application prefers to use the feature if present on the device, but that it is designed to function without the specified feature, if necessary."/>
+			</Parameter>
+			<Parameter Name="android:glEsVersion" TypesCSV="hexadecimal-16-bit" Inputs="Value">
+				<Description Locale="en" Content="The OpenGL ES version required by the application. The higher 16 bits represent the major number and the lower 16 bits represent the minor number. For example, to specify OpenGL ES version 2.0, you would set the value as '0x00020000', or to specify OpenGL ES 3.0, you would set the value as '0x00030000'."/>
+			</Parameter>
+		</Node>
+		<Node Name="uses-permission" Abstract="false" Required="false">
+			<Description Locale="en" Content="Requests a permission that the application must be granted in order for it to operate correctly."/>
+			<Parameter Name="android:name" TypesCSV="string,keyword" Inputs="Value">
+				<Description Locale="en" Content="The name of the permission. It can be a permission defined by the application with the 'permission' element, a permission defined by another application, or one of the standard system permissions (such as 'android.permission.CAMERA' or 'android.permission.READ_CONTACTS'). As these examples show, a permission name typically includes the package name as a prefix."/>
+				<ParameterValue Name="android.permission.ACCESS_CHECKIN_PROPERTIES">
+					<Description Locale="en" Content="Allows read/write access to the 'properties' table in the checkin database, to change values that get uploaded. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCESS_COARSE_LOCATION">
+					<Description Locale="en" Content="Allows an app to access approximate location."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCESS_FINE_LOCATION">
+					<Description Locale="en" Content="Allows an app to access precise location."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS">
+					<Description Locale="en" Content="Allows an application to access extra location provider commands."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCESS_NETWORK_STATE">
+					<Description Locale="en" Content="Allows applications to access information about networks."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCESS_NOTIFICATION_POLICY">
+					<Description Locale="en" Content="Allows applications to access information about Wi-Fi networks."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.ACCOUNT_MANAGER">
+					<Description Locale="en" Content="Allows applications to call into AccountAuthenticators. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.voicemail.permission.ADD_VOICEMAIL">
+					<Description Locale="en" Content="Allows an application to add voicemails into the system."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BATTERY_STATS">
+					<Description Locale="en" Content="Allows an application to collect battery statistics"/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_ACCESSIBILITY_SERVICE">
+					<Description Locale="en" Content="Must be required by an AccessibilityService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_APPWIDGET">
+					<Description Locale="en" Content="Allows an application to tell the AppWidget service which application can access AppWidget's data. The normal user flow is that a user picks an AppWidget to go into a particular host, thereby giving that host application access to the private data from the AppWidget app. An application that has this permission should honor that contract. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_CARRIER_MESSAGING_SERVICE" DeprecatedApiLevel="23">
+					<Description Locale="en" Content="Deprecated in Api Level 23. Use BIND_CARRIER_SERVICES instead."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_CARRIER_SERVICES">
+					<Description Locale="en" Content="The system process that is allowed to bind to services in carrier apps will have this permission. Carrier apps should use this permission to protect their services that only the system is allowed to bind to."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_CHOOSER_TARGET_SERVICE">
+					<Description Locale="en" Content="Must be required by a ChooserTargetService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_DEVICE_ADMIN">
+					<Description Locale="en" Content="Must be required by device administration receiver, to ensure that only the system can interact with it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_DREAM_SERVICE">
+					<Description Locale="en" Content="Must be required by an DreamService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_INCALL_SERVICE">
+					<Description Locale="en" Content="Must be required by a InCallService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_INPUT_METHOD">
+					<Description Locale="en" Content="Must be required by an InputMethodService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_MIDI_DEVICE_SERVICE">
+					<Description Locale="en" Content="Must be required by an MidiDeviceService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_NFC_SERVICE">
+					<Description Locale="en" Content="Must be required by a HostApduService or OffHostApduService to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+					<Description Locale="en" Content="Must be required by an NotificationListenerService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_PRINT_SERVICE">
+					<Description Locale="en" Content="Must be required by a PrintService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_REMOTEVIEWS">
+					<Description Locale="en" Content="Must be required by a RemoteViewsService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+					<Description Locale="en" Content="Must be required by a ConnectionService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_TEXT_SERVICE">
+					<Description Locale="en" Content="Must be required by a TextService (eg SpellCheckerService) to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_TV_INPUT">
+					<Description Locale="en" Content="Must be required by a TvInputService to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_VOICE_INTERACTION">
+					<Description Locale="en" Content="Must be required by a VoiceInteractionService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_VPN_SERVICE">
+					<Description Locale="en" Content="Must be required by a VpnService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BIND_WALLPAPER">
+					<Description Locale="en" Content="Must be required by a WallpaperService, to ensure that only the system can bind to it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BLUETOOTH">
+					<Description Locale="en" Content="Allows applications to connect to paired bluetooth devices."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BLUETOOTH_ADMIN">
+					<Description Locale="en" Content="Allows applications to discover and pair bluetooth devices."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BLUETOOTH_PRIVILEGED">
+					<Description Locale="en" Content="Allows applications to pair bluetooth devices without user interaction, and to allow or disallow phonebook access or message access. This is not available to third party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BODY_SENSORS">
+					<Description Locale="en" Content="Allows an application to access data from sensors that the user uses to measure what is happening inside his/her body, such as heart rate."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BROADCAST_PACKAGE_REMOVED">
+					<Description Locale="en" Content="Allows an application to broadcast a notification that an application package has been removed. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BROADCAST_SMS">
+					<Description Locale="en" Content="Allows an application to broadcast an SMS receipt notification. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BROADCAST_STICKY">
+					<Description Locale="en" Content="Allows an application to broadcast sticky intents. These are broadcasts whose data is held by the system after being finished, so that clients can quickly retrieve that data without having to wait for the next broadcast."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.BROADCAST_WAP_PUSH">
+					<Description Locale="en" Content="Allows an application to broadcast a WAP PUSH receipt notification. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CALL_PHONE">
+					<Description Locale="en" Content="Allows an application to initiate a phone call without going through the Dialer user interface for the user to confirm the call."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CALL_PRIVILEGED">
+					<Description Locale="en" Content="Allows an application to call any phone number, including emergency numbers, without going through the Dialer user interface for the user to confirm the call being placed. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CAMERA">
+					<Description Locale="en" Content="Required to be able to access the camera device. This will automatically enforce the 'uses-feature' manifest element for all camera features. If you do not require all camera features or can properly operate if a camera is not available, then you must modify your manifest as appropriate in order to install on devices that don't support all camera features."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CAPTURE_AUDIO_OUTPUT">
+					<Description Locale="en" Content="Allows an application to capture audio output. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">
+					<Description Locale="en" Content="Allows an application to capture secure video output. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CAPTURE_VIDEO_OUTPUT">
+					<Description Locale="en" Content="Allows an application to capture video output. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CHANGE_COMPONENT_ENABLED_STATE">
+					<Description Locale="en" Content="Allows an application to change whether an application component (other than its own) is enabled or not. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CHANGE_CONFIGURATION">
+					<Description Locale="en" Content="Allows an application to modify the current configuration, such as locale."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CHANGE_NETWORK_STATE">
+					<Description Locale="en" Content="Allows applications to change network connectivity state."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CHANGE_WIFI_MULTICAST_STATE">
+					<Description Locale="en" Content="Allows applications to enter Wi-Fi Multicast mode."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CHANGE_WIFI_STATE">
+					<Description Locale="en" Content="Allows applications to change Wi-Fi connectivity state."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CLEAR_APP_CACHE">
+					<Description Locale="en" Content="Allows an application to clear the caches of all installed applications on the device."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.CONTROL_LOCATION_UPDATES">
+					<Description Locale="en" Content="Allows enabling/disabling location update notifications from the radio. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.DELETE_CACHE_FILES">
+					<Description Locale="en" Content="Allows an application to delete cache files. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.DELETE_PACKAGES">
+					<Description Locale="en" Content="Allows an application to delete packages. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.DIAGNOSTIC">
+					<Description Locale="en" Content="Allows applications to RW to diagnostic resources. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.DISABLE_KEYGUARD">
+					<Description Locale="en" Content="Allows applications to disable the keyguard if it is not secure."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.DUMP">
+					<Description Locale="en" Content="Allows an application to retrieve state dump information from system services. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.EXPAND_STATUS_BAR">
+					<Description Locale="en" Content="Allows an application to expand or collapse the status bar."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.FACTORY_TEST">
+					<Description Locale="en" Content="Run as a manufacturer test application, running as the root user. Only available when the device is running in manufacturer test mode. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.FLASHLIGHT">
+					<Description Locale="en" Content="Allows access to the flashlight."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.GET_ACCOUNTS">
+					<Description Locale="en" Content="Allows access to the list of accounts in the Accounts Service."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.GET_ACCOUNTS_PRIVILEGED">
+					<Description Locale="en" Content="Allows access to the list of accounts in the Accounts Service."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.GET_PACKAGE_SIZE">
+					<Description Locale="en" Content="Allows an application to find out the space used by any package."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.GET_TASKS" DeprecatedApiLevel="21">
+					<Description Locale="en" Content="This constant was deprecated in API level 21. No longer enforced."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.GLOBAL_SEARCH">
+					<Description Locale="en" Content="This permission can be used on content providers to allow the global search system to access their data. Typically it used when the provider has some permissions protecting it (which global search would not be expected to hold), and added as a read-only permission to the path in the provider where global search queries are performed. This permission can not be held by regular applications; it is used by applications to protect themselves from everyone else besides global search."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.INSTALL_LOCATION_PROVIDER">
+					<Description Locale="en" Content="Allows an application to install a location provider into the Location Manager. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.launcher.permission.INSTALL_SHORTCUT">
+					<Description Locale="en" Content="Allows an application to install packages. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.INTERNET">
+					<Description Locale="en" Content="Allows applications to open network sockets."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.KILL_BACKGROUND_PROCESSES">
+					<Description Locale="en" Content="Allows an application to call killBackgroundProcesses(String)."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.LOCATION_HARDWARE">
+					<Description Locale="en" Content="Allows an application to use location features in hardware, such as the geofencing api. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MANAGE_DOCUMENTS">
+					<Description Locale="en" Content="Allows an application to manage access to documents, usually as part of a document picker."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MASTER_CLEAR">
+					<Description Locale="en" Content="Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MEDIA_CONTENT_CONTROL">
+					<Description Locale="en" Content="Allows an application to know what content is playing and control its playback. Not for use by third-party applications due to privacy of media consumption"/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MODIFY_AUDIO_SETTINGS">
+					<Description Locale="en" Content="Allows an application to modify global audio settings."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MODIFY_PHONE_STATE">
+					<Description Locale="en" Content="Allows modification of the telephony state - power on, mmi, etc. Does not include placing calls. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MOUNT_FORMAT_FILESYSTEMS">
+					<Description Locale="en" Content="Allows formatting file systems for removable storage. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS">
+					<Description Locale="en" Content="Allows mounting and unmounting file systems for removable storage. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.NFC">
+					<Description Locale="en" Content="Allows applications to perform I/O operations over NFC."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.PACKAGE_USAGE_STATS">
+					<Description Locale="en" Content="Allows an application to collect component usage statistics. Declaring the permission implies intention to use the API and the user of the device can grant permission through the Settings application."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.PERSISTENT_ACTIVITY" DeprecatedApiLevel="9">
+					<Description Locale="en" Content="This constant was deprecated in API level 9. This functionality will be removed in the future; please do not use. Allow an application to make its activities persistent."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.PROCESS_OUTGOING_CALLS">
+					<Description Locale="en" Content="Allows an application to see the number being dialed during an outgoing call with the option to redirect the call to a different number or abort the call altogether."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_CALENDAR">
+					<Description Locale="en" Content="Allows an application to read the user's calendar data."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_CALL_LOG">
+					<Description Locale="en" Content="Allows an application to read the user's call log?. Note: If your app uses the READ_CONTACTS permission and both your minSdkVersion and targetSdkVersion values are set to 15 or lower, the system implicitly grants your app this permission. If you don't need this permission, be sure your targetSdkVersion is 16 or higher."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_CONTACTS">
+					<Description Locale="en" Content="Allows an application to read the user's contacts data."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_EXTERNAL_STORAGE">
+					<Description Locale="en" Content="Allows an application to read from external storage."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_FRAME_BUFFER">
+					<Description Locale="en" Content="Allows an application to take screen shots and more generally get access to the frame buffer data. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_INPUT_STATE" DeprecatedApiLevel="16">
+					<Description Locale="en" Content="This constant was deprecated in API level 16. The API that used this permission has been removed. Allows an application to retrieve the current state of keys and switches. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_LOGS">
+					<Description Locale="en" Content="Allows an application to read the low-level system log files. Not for use by third-party applications, because Log entries can contain the user's private information."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_PHONE_STATE">
+					<Description Locale="en" Content="Allows read only access to phone state. Note: If both your minSdkVersion and targetSdkVersion values are set to 3 or lower, the system implicitly grants your app this permission. If you don't need this permission, be sure your targetSdkVersion is 4 or higher."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_SMS">
+					<Description Locale="en" Content="Allows an application to read SMS messages."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_SYNC_SETTINGS">
+					<Description Locale="en" Content="Allows applications to read the sync settings."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.READ_SYNC_STATS">
+					<Description Locale="en" Content="Allows applications to read the sync stats."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.voicemail.permission.READ_VOICEMAIL">
+					<Description Locale="en" Content="Allows an application to read voicemails in the system."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.REBOOT">
+					<Description Locale="en" Content="Required to be able to reboot the device. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RECEIVE_BOOT_COMPLETED">
+					<Description Locale="en" Content="Allows an application to receive the ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting. If you don't request this permission, you will not receive the broadcast at that time. Though holding this permission does not have any security implications, it can have a negative impact on the user experience by increasing the amount of time it takes the system to start and allowing applications to have themselves running without the user being aware of them. As such, you must explicitly declare your use of this facility to make that visible to the user."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RECEIVE_MMS">
+					<Description Locale="en" Content="Allows an application to monitor incoming MMS messages."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RECEIVE_SMS">
+					<Description Locale="en" Content="Allows an application to receive SMS messages."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RECEIVE_WAP_PUSH">
+					<Description Locale="en" Content="Allows an application to receive WAP push messages."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RECORD_AUDIO">
+					<Description Locale="en" Content="Allows an application to record audio."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.REORDER_TASKS">
+					<Description Locale="en" Content="Allows an application to change the Z-order of tasks."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS">
+					<Description Locale="en" Content="Permission an application must hold in order to use ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS. This is a normal permission: an app requesting it will always be granted the permission, without the user needing to approve or see it."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.REQUEST_INSTALL_PACKAGES">
+					<Description Locale="en" Content="Allows an application to request installing packages. Apps targeting APIs greater than 22 must hold this permission in order to use ACTION_INSTALL_PACKAGE."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.RESTART_PACKAGES" DeprecatedApiLevel="8">
+					<Description Locale="en" Content="This constant was deprecated in API level 8. The restartPackage(String) API is no longer supported."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SEND_RESPOND_VIA_MESSAGE">
+					<Description Locale="en" Content="Allows an application (Phone) to send a request to other applications to handle the respond-via-message action during incoming calls. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SEND_SMS">
+					<Description Locale="en" Content="Allows an application to send SMS messages."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.alarm.permission.SET_ALARM">
+					<Description Locale="en" Content="Allows an application to broadcast an Intent to set an alarm for the user."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_ALWAYS_FINISH">
+					<Description Locale="en" Content="Allows an application to control whether activities are immediately finished when put in the background. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_ANIMATION_SCALE">
+					<Description Locale="en" Content="Modify the global animation scaling factor. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_DEBUG_APP">
+					<Description Locale="en" Content="Configure an application for debugging. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_PREFERRED_APPLICATIONS" DeprecatedApiLevel="7">
+					<Description Locale="en" Content="This constant was deprecated in API level 7. No longer useful, see addPackageToPreferred(String) for details."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_PROCESS_LIMIT">
+					<Description Locale="en" Content="Allows an application to set the maximum number of (not needed) application processes that can be running. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_TIME">
+					<Description Locale="en" Content="Allows applications to set the system time. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_TIME_ZONE">
+					<Description Locale="en" Content="Allows applications to set the system time zone."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_WALLPAPER">
+					<Description Locale="en" Content="Allows applications to set the wallpaper."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SET_WALLPAPER_HINTS">
+					<Description Locale="en" Content="Allows applications to set the wallpaper hints."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SIGNAL_PERSISTENT_PROCESSES">
+					<Description Locale="en" Content="Allow an application to request that a signal be sent to all persistent processes. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.STATUS_BAR">
+					<Description Locale="en" Content="Allows an application to open, close, or disable the status bar and its icons. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.SYSTEM_ALERT_WINDOW">
+					<Description Locale="en" Content="Allows an app to create windows using the type TYPE_SYSTEM_ALERT, shown on top of all other apps. Very few apps should use this permission; these windows are intended for system-level interaction with the user."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.TRANSMIT_IR">
+					<Description Locale="en" Content="Allows using the device's IR transmitter, if available."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.launcher.permission.UNINSTALL_SHORTCUT">
+					<Description Locale="en" Content="Allows an application to uninstall a shortcut in Launcher."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.UPDATE_DEVICE_STATS">
+					<Description Locale="en" Content="Allows an application to update device statistics. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.USE_FINGERPRINT">
+					<Description Locale="en" Content="Allows an app to use fingerprint hardware."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.USE_SIP">
+					<Description Locale="en" Content="Allows an application to use SIP service."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.VIBRATE">
+					<Description Locale="en" Content="Allows access to the vibrator."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WAKE_LOCK">
+					<Description Locale="en" Content="Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_APN_SETTINGS">
+					<Description Locale="en" Content="Allows applications to write the apn settings. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_CALENDAR">
+					<Description Locale="en" Content="Allows an application to write the user's calendar data."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_CALL_LOG">
+					<Description Locale="en" Content="Allows an application to write (but not read) the user's contacts data. Note: If your app uses the WRITE_CONTACTS permission and both your minSdkVersion and targetSdkVersion values are set to 15 or lower, the system implicitly grants your app this permission. If you don't need this permission, be sure your targetSdkVersion is 16 or higher."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_CONTACTS">
+					<Description Locale="en" Content="Allows an application to write the user's contacts data."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_EXTERNAL_STORAGE">
+					<Description Locale="en" Content="Allows an application to write to external storage."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_GSERVICES">
+					<Description Locale="en" Content="Allows an application to modify the Google service map. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_SECURE_SETTINGS">
+					<Description Locale="en" Content="Allows an application to read or write the secure system settings. Not for use by third-party applications."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_SETTINGS">
+					<Description Locale="en" Content="Allows an application to read or write the system settings."/>
+				</ParameterValue>
+				<ParameterValue Name="android.permission.WRITE_SYNC_SETTINGS">
+					<Description Locale="en" Content="Allows applications to write the sync settings."/>
+				</ParameterValue>
+				<ParameterValue Name="com.android.voicemail.permission.WRITE_VOICEMAIL">
+					<Description Locale="en" Content="Allows an application to modify and remove existing voicemails in the system."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:maxSdkVersion" TypesCSV="integer" Inputs="Value" IntroducedApiLevel="19">
+				<Description Locale="en" Content="The highest API level at which this permission should be granted to your app. Setting this attribute is useful if the permission your app requires is no longer needed beginning at a certain API level."/>
+			</Parameter>
+		</Node>
+		<Node Name="uses-permission-sdk-23" Abstract="false" Required="false" IntroducedApiLevel="23">
+			<Description Locale="en" Content="Specifies that an app wants a particular permission, but only if the app is running on a device with SDK version 23 or higher. If the device is running SDK version 22 or lower, the app does not have the specified permission."/>
+			<Parameter Name="android:name" TypesCSV="string,keyword" Inputs="Value">
+				<Description Locale="en" Content="The name of the permission. It can be a permission defined by the application with the 'permission' element, a permission defined by another application, or one of the standard system permissions (such as 'android.permission.CAMERA' or 'android.permission.READ_CONTACTS'). As these examples show, a permission name typically includes the package name as a prefix."/>
+				<Modifier Name="InheritKeywords">
+					<ModifierArgument Name="ModuleName" Value="Android Manifest"/>
+					<ModifierArgument Name="NodeName" Value="uses-permission"/>
+					<ModifierArgument Name="ParameterName" Value="android:name"/>
+				</Modifier>
+			</Parameter>
+			<Parameter Name="android:maxSdkVersion" TypesCSV="integer" Inputs="Value">
+				<Description Locale="en" Content="The highest API level at which this permission should be granted to your app. Setting this attribute is useful if the permission your app requires is no longer needed beginning at a certain API level."/>
+			</Parameter>
+		</Node>
+		<Node Name="uses-sdk" Abstract="false" Required="false">
+			<Description Locale="en" Content="Lets you express an application's compatibility with one or more versions of the Android platform, by means of an API Level integer. The API Level expressed by an application will be compared to the API Level of a given Android system, which may vary among different Android devices. Despite its name, this element is used to specify the API Level, not the version number of the SDK (software development kit) or Android platform. The API Level is always a single integer. You cannot derive the API Level from its associated Android version number (for example, it is not the same as the major version or the sum of the major and minor versions)."/>
+			<Parameter Name="android:minSdkVersion" RequirementBehaviour="Always" TypesCSV="integer" Inputs="Value">
+				<Description Locale="en" Content="An integer designating the minimum API Level required for the application to run. The Android system will prevent the user from installing the application if the system's API Level is lower than the value specified in this attribute. You should always declare this attribute."/>
+			</Parameter>
+			<Parameter Name="android:targetSdkVersion" TypesCSV="integer" Inputs="Value" IntroducedApiLevel="4">
+				<Description Locale="en" Content="An integer designating the API Level that the application targets. If not set, the default value equals that given to minSdkVersion. This attribute informs the system that you have tested against the target version and the system should not enable any compatibility behaviors to maintain your app's forward-compatibility with the target version. The application is still able to run on older versions (down to minSdkVersion)."/>
+			</Parameter>
+			<Parameter Name="android:maxSdkVersion" TypesCSV="integer" Inputs="Value" IntroducedApiLevel="4">
+				<Description Locale="en" Content="An integer designating the maximum API Level on which the application is designed to run."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>
+
+

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="drawable" Name="Shape">
+	<Description Locale="en" Content="Provides support for building shapes such as rectangles, ovals, lines and rings via an xml file. Shape elements can be nested inside layer-list entities via the 'item' tag."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/resources/drawable-resource.html#Shape"/>
+	<Node Name="shape" Abstract="false" Required="false">
+		<Description Locale="en" Content="A generic shape such as a rectangle, oval, line or ring defined in XML."/>
+		<Modifier Name="ParametersRequireOtherParameterValue">
+			<ModifierArgument Name="Parameter" Value="android:shape"/>
+			<ModifierArgument Name="Value" Value="ring"/>
+			<ModifierArgument Name="ParametersCSV" Value="android:innerRadius,android:innerRadiusRatio,android:thickness,android:thicknessRatio,android:useLevel"/>
+		</Modifier>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:shape" TypesCSV="keyword" Inputs="Value">
+			<Description Locale="en" Content="Defines the type of shape."/>
+			<ParameterValue Name="rectangle">
+				<Description Locale="en" Content="A rectangle that fills the containing View. This is the default shape."/>
+			</ParameterValue>
+			<ParameterValue Name="oval">
+				<Description Locale="en" Content="An oval shape that fits the dimensions of the containing View."/>
+			</ParameterValue>
+			<ParameterValue Name="line">
+				<Description Locale="en" Content="A horizontal line that spans the width of the containing View. This shape requires the 'stroke' element to define the width of the line."/>
+			</ParameterValue>
+			<ParameterValue Name="ring">
+				<Description Locale="en" Content="A ring shape."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:innerRadius" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The radius for the inner part of the ring (the hole in the middle), as a dimension value or dimension resource."/>
+		</Parameter>
+		<Parameter Name="android:innerRadiusRatio" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="9">
+			<Description Locale="en" Content=" The radius for the inner part of the ring, expressed as a ratio of the ring's width. For instance, if android:innerRadiusRatio='5', then the inner radius equals the ring's width divided by 5. This value is overridden by android:innerRadius. Default value is 9."/>
+		</Parameter>
+		<Parameter Name="android:thickness" TypesCSV="dimension" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The thickness of the ring, as a dimension value or dimension resource."/>
+		</Parameter>
+		<Parameter Name="android:thicknessRatio" TypesCSV="float" Inputs="ValueOrReference" DefaultValue="3.0">
+			<Description Locale="en" Content="The thickness of the ring, expressed as a ratio of the ring's width. For instance, if android:thicknessRatio='2', then the thickness equals the ring's width divided by 2. This value is overridden by android:innerRadius. Default value is 3."/>
+		</Parameter>
+		<Parameter Name="android:useLevel" TypesCSV="boolean" Inputs="Value">
+			<Description Locale="en" Content="'true' if this is used as a LevelListDrawable. This should normally be 'false' or your shape may not appear."/>
+		</Parameter>
+		<Node Name="corners" Abstract="false" Required="false">
+			<Description Locale="en" Content="Creates rounded corners for the shape. Applies only when the shape is a rectangle."/>
+			<Parameter Name="android:radius" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for all corners, as a dimension value or dimension resource. This is overridden for each corner by the following attributes."/>
+			</Parameter>
+			<Parameter Name="android:topLeftRadius" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for the top-left corner, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:topRightRadius" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for the top-right corner, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:bottomLeftRadius" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for the bottom-left corner, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:bottomRightRadius" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for the bottom-right corner, as a dimension value or dimension resource."/>
+			</Parameter>
+		</Node>
+		<Node Name="gradient" Abstract="false" Required="false">
+			<Description Locale="en" Content="Specifies a gradient color for the shape."/>
+			<Parameter Name="android:angle" TypesCSV="integer" Inputs="ValueOrReference" DefaultValue="0">
+				<Description Locale="en" Content="The angle for the gradient, in degrees. 0 is left to right, 90 is bottom to top. It must be a multiple of 45. Default is 0."/>
+			</Parameter>
+			<Parameter Name="android:centerX" TypesCSV="float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The relative X-position for the center of the gradient (0 - 1.0)."/>
+			</Parameter>
+			<Parameter Name="android:centerY" TypesCSV="float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The relative Y-position for the center of the gradient (0 - 1.0)."/>
+			</Parameter>
+			<Parameter Name="android:centerColor" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Optional color that comes between the start and end colors, as a hexadecimal value or color resource."/>
+			</Parameter>
+			<Parameter Name="android:endColor" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The ending color, as a hexadecimal value or color resource."/>
+			</Parameter>
+			<Parameter Name="android:gradientRadius" TypesCSV="float" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The radius for the gradient. Only applied when android:type='radial'."/>
+			</Parameter>
+			<Parameter Name="android:startColor" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The starting color, as a hexadecimal value or color resource."/>
+			</Parameter>
+			<Parameter Name="android:type" TypesCSV="keyword" Inputs="Value" DefaultValue="linear">
+				<Description Locale="en" Content="The type of gradient pattern to apply."/>
+				<ParameterValue Name="linear">
+					<Description Locale="en" Content="A linear gradient. This is the default."/>
+				</ParameterValue>
+				<ParameterValue Name="radial">
+					<Description Locale="en" Content="A radial gradient. The start color is the center color."/>
+				</ParameterValue>
+				<ParameterValue Name="sweep">
+					<Description Locale="en" Content="A sweeping line gradient."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:useLevel" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="'true' if this is used as a LevelListDrawable."/>
+			</Parameter>
+		</Node>
+		<Node Name="padding" Abstract="false" Required="false">
+			<Description Locale="en" Content="Padding to apply to the containing View element (this pads the position of the View content, not the shape)."/>
+			<Parameter Name="android:left" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Left padding, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:right" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Right padding, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:top" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Top padding, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:bottom" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="Bottom padding, as a dimension value or dimension resource."/>
+			</Parameter>
+		</Node>
+		<Node Name="size" Abstract="false" Required="false">
+			<Description Locale="en" Content="The size of the shape."/>
+			<Parameter Name="android:height" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The height of the shape, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:width" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The width of the shape, as a dimension value or dimension resource."/>
+			</Parameter>
+		</Node>
+		<Node Name="solid" Abstract="false" Required="false">
+			<Description Locale="en" Content="A solid color to fill the shape."/>
+			<Parameter Name="android:color" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The color to apply to the shape, as a hexadecimal value or color resource."/>
+			</Parameter>
+		</Node>
+		<Node Name="stroke" Abstract="false" Required="false">
+			<Description Locale="en" Content="A solid color to fill the shape."/>
+			<Parameter Name="android:width" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The thickness of the line, as a dimension value or dimension resource."/>
+			</Parameter>
+			<Parameter Name="android:color" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The color of the line, as a hexadecimal value or color resource."/>
+			</Parameter>
+			<Parameter Name="android:dashGap" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The distance between line dashes, as a dimension value or dimension resource. Only valid if android:dashWidth is set."/>
+			</Parameter>
+			<Parameter Name="android:dashWidth" TypesCSV="dimension" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The size of each dash line, as a dimension value or dimension resource. Only valid if android:dashGap is set."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

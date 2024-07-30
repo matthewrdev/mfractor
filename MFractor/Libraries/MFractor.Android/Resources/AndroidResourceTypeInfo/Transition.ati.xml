@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="transition" Name="Transition Elements">
+	<Description Locale="en" Content="Provides support for building custom scene changes."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/transitions/overview.html"/>
+	<Node Name="transitionManager" Abstract="false" Required="false" IntroducedApiLevel="19">
+		<Description Locale="en" Content="Manages the set of transitions that fire when there is a change of Scene."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="transition" Abstract="false" Required="true">
+			<Description Locale="en" Content="A transition between an originating scene to the destination scene."/>
+			<Parameter Name="android:fromScene" TypesCSV="layout" Inputs="Reference"> 
+				<Description Locale="en" Content="The originating scene in this scene change."/>
+			</Parameter>
+			<Parameter Name="android:toScene" TypesCSV="layout" Inputs="Reference"> 
+				<Description Locale="en" Content="The destination scene in this scene change."/>
+			</Parameter>
+			<Parameter Name="android:transition" RequirementBehaviour="Always" TypesCSV="transition" Inputs="Reference"> 
+				<Description Locale="en" Content="The id of a transition to be used in a particular scene change."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="transition" Abstract="true" Required="false" IntroducedApiLevel="19">
+		<Description Locale="en" Content="Manages the set of transitions that fire when there is a change of Scene."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:duration" TypesCSV="integer" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Amount of time (in milliseconds) that the transition should run."/>
+		</Parameter>
+		<Parameter Name="android:interpolator" TypesCSV="interpolator" Inputs="Reference"> 
+			<Description Locale="en" Content="Interpolator to be used in the animations spawned by this transition."/>
+		</Parameter>
+		<Parameter Name="android:startDelay" TypesCSV="integer" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Delay in milliseconds before the transition starts."/>
+		</Parameter>
+		<Parameter Name="android:matchOrder" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The match order to use for the transition. This is a comma-separated list of values, containing one or more of the following: id, itemId, name, instance."/>
+		</Parameter>
+	</Node>
+	<Node Name="targets" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Description Locale="en" Content="Takes a set of target tags, each of which lists a specific targetId, targetClass, targetName, excludeId, excludeClass, or excludeName, which this transition acts upon."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="target" Abstract="false" Required="false" IntroducedApiLevel="21">
+			<Parameter Name="android:excludeClass" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The fully-qualified name of the Class to exclude from this transition."/>
+			</Parameter>
+			<Parameter Name="android:excludeId" TypesCSV="id" Inputs="Reference"> 
+				<Description Locale="en" Content="The id of a target to exclude from this transition."/>
+			</Parameter>
+			<Parameter Name="android:excludeName" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The transitionName of the target to exclude from this transition."/>
+			</Parameter>
+			<Parameter Name="android:targetClass" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The fully-qualified name of the Class to include in this transition."/>
+			</Parameter>
+			<Parameter Name="android:targetId" TypesCSV="id" Inputs="Reference"> 
+				<Description Locale="en" Content="The id of a target on which this transition will animate changes."/>
+			</Parameter>
+			<Parameter Name="android:targeName" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The transitionName of the target on which this transition will animation changes."/>
+			</Parameter>
+		</Node>
+	</Node>
+	<Node Name="transitionSet" Abstract="false" Required="false" IntroducedApiLevel="19">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleName">
+			<ModifierArgument Name="Name" Value="Transition Elements"/>
+		</Modifier>
+		<Description Locale="en" Content="A TransitionSet is a parent of child transitions (including other TransitionSets). Using TransitionSets enables more complex choreography of transitions."/>
+	</Node>
+	<Node Name="arcMotion" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="A PathMotion that generates a curved path along an arc on an imaginary circle containing the two points."/>
+		<Parameter Name="android:maximumAngle" TypesCSV="float" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The maximum arc angle in degrees between the start and end points."/>
+		</Parameter>
+		<Parameter Name="android:minimumHorizontalAngle" TypesCSV="float" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The minimum arc angle in degrees between the start and end points when they are close to horizontal."/>
+		</Parameter>
+		<Parameter Name="android:minimumVerticalAngle" TypesCSV="float" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The minimum arc angle in degrees between the start and end points when they are close to vertical."/>
+		</Parameter>
+	</Node>
+	<Node Name="pathMotion" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="This base class can be extended to provide motion along a Path to Transitions. Transitions such as ChangeBounds move Views, typically in a straight path between the start and end positions. Applications that desire to have these motions move in a curve can change how Views interpolate in two dimensions by extending PathMotion and implementing getPath(float, float, float, float)."/>
+		<Parameter Name="class" TypesCSV="class:Android.Transition.PathMotion" Inputs="Value"> 
+			<Description Locale="en" Content="The custom class to instantiate that describes the pathMotion."/>
+		</Parameter>
+	</Node>
+	<Node Name="patternPathMotion" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="A PathMotion that takes a Path pattern and applies it to the separation between two points. The starting point of the Path will be moved to the origin and the end point will be scaled and rotated so that it matches with the target end point."/>
+		<Parameter Name="android:patternPathData" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The path string describing the pattern to use for the PathPathMotion."/>
+		</Parameter>
+	</Node>
+	<Node Name="changeBounds" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Captures the layout bounds of target views before and after the scene change and animates those changes during the transition."/>
+		<Parameter Name="android:resizeClip" TypesCSV="boolean" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="Resize the view by adjusting the clipBounds rather than changing the dimensions of the view itself. The default value is false."/>
+		</Parameter>
+	</Node>
+	<Node Name="changeClipBounds" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="ChangeClipBounds captures the getClipBounds() before and after the scene change and animates those changes during the transition."/>
+	</Node>
+	<Node Name="changeImageTransform" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Captures an ImageView's matrix before and after the scene change and animates it during the transition."/>
+	</Node>
+	<Node Name="changeScroll" Abstract="false" Required="false" IntroducedApiLevel="21">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Captures the scroll properties of targets before and after the scene change and animates any changes."/>
+	</Node>
+	<Node Name="changeScroll" Abstract="false" Required="false" IntroducedApiLevel="23">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Captures the scroll properties of targets before and after the scene change and animates any changes."/>
+	</Node>
+	<Node Name="visibility" Abstract="true" Required="false" IntroducedApiLevel="19">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="transition"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Description Locale="en" Content="This transition tracks changes to the visibility of target views in the start and end scenes. "/>
+		<Parameter Name="android:transitionVisibilityMode" TypesCSV="flag" Inputs="Value"> 
+			<Description Locale="en" Content="Changes whether the transition supports appearing and/or disappearing Views."/>
+			<ParameterValue Name="mode_in">
+				<Description Locale="en" Content="Only appearing Views will be supported."/>
+			</ParameterValue>
+			<ParameterValue Name="mode_out">
+				<Description Locale="en" Content="Only disappearing Views will be supported."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="expode" Abstract="false" Required="false" IntroducedApiLevel="19">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="visibility"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Tracks changes to the visibility of target views in the start and end scenes and moves views in or out from the edges of the scene. Visibility is determined by both the setVisibility(int) state of the view as well as whether it is parented in the current view hierarchy. Disappearing Views are limited as described in onDisappear(android.view.ViewGroup, TransitionValues, int, TransitionValues, int). Views move away from the focal View or the center of the Scene if no epicenter was provided."/>
+	</Node>
+	<Node Name="fade" Abstract="false" Required="false" IntroducedApiLevel="19">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="visibility"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Tracks changes to the visibility of target views in the start and end scenes and fades views in or out when they become visible or non-visible."/>
+		<Parameter Name="android:fadingMode" TypesCSV="keyword" Inputs="Value"> 
+			<Description Locale="en" Content="The behavior of this transition, a combination of IN and OUT."/>
+			<ParameterValue Name="fade_in">
+				<Description Locale="en" Content="The view fades in."/>
+			</ParameterValue>
+			<ParameterValue Name="fade_in_out">
+				<Description Locale="en" Content="The view fades in and out."/>
+			</ParameterValue>
+			<ParameterValue Name="fade_out">
+				<Description Locale="en" Content="The view fades out."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="slide" Abstract="false" Required="false" IntroducedApiLevel="19">
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="ModuleName" Value="Transition Elements"/>
+			<ModifierArgument Name="Node" Value="visibility"/>
+			<ModifierArgument Name="Cascade" Value="true"/>
+		</Modifier>
+		<Modifier Name="AddChildren">
+			<ModifierArgument Name="TypesCSV" Value="targets"/>
+		</Modifier>
+		<Description Locale="en" Content="Tracks changes to the visibility of target views in the start and end scenes and moves views in or out from one of the edges of the scene."/>
+		<Parameter Name="android:slideEdge" TypesCSV="keyword" Inputs="Value"> 
+			<Description Locale="en" Content="The edge of the scene to use for Views appearing and disappearing."/>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to x-axis position at the start of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to x-axis position at the end of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+</Module>
+
+

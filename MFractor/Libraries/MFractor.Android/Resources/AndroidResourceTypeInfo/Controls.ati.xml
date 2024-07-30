@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="Controls" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides IntelliSense and code analysis for all controls that are not the 'View' base class or a child class of 'ViewGroup'. This includes EditText's, Spinner's etc"/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/guide/topics/ui/declaring-layout.html"/>
+	<Node Name="AbsSeekBar" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AbsSeekBar"/>
+		<Description Locale="en" Content="Must be an integer value, such as '100'"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ProgressBar"/>
+		</Modifier>
+		<Parameter Name="android:thumbTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the button graphic."/>
+		</Parameter>
+		<Parameter Name="android:thumbTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the button graphic tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="AnalogClock" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="23">
+		<MetaData Name="FullType" Value="android.widget.AnalogClock"/>
+		<Description Locale="en" Content="This widget display an analogic clock with two hands for hours and minutes"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:dial" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:hand_hour" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:hand_minute" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.design.widget.FloatingActionButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.design.widget.FloatingActionButton"/>
+		<Description Locale="en" Content="Floating action buttons are used for a special type of promoted action"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ImageView"/>
+		</Modifier>
+		<Parameter Name="android.support.design:fabSize" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Size for the FAB."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="mini">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.RowHeaderView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.RowHeaderView"/>
+		<Description Locale="en" Content="RowHeaderView is a header text view"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v17.leanback.widget.SearchEditText" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v17.leanback.widget.SearchEditText"/>
+		<Description Locale="en" Content="EditText widget that monitors keyboard changes"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="EditText"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v4.widget.ContentLoadingProgressBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v4.widget.ContentLoadingProgressBar"/>
+		<Description Locale="en" Content="ContentLoadingProgressBar implements a ProgressBar that waits a minimum time to be dismissed before showing"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ProgressBar"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.app.MediaRouteButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.app.MediaRouteButton"/>
+		<Description Locale="en" Content="The media route button allows the user to select routes and to control the currently selected route"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatAutoCompleteTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatAutoCompleteTextView"/>
+		<Description Locale="en" Content="A AutoCompleteTextView which supports compatible features on older version of the platform, including: Supports textAllCaps style attribute which works back to Eclair MR1"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="AutoCompleteTextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatButton"/>
+		<Description Locale="en" Content="A Button which supports compatible features on older version of the platform, including: Supports textAllCaps style attribute which works back to Eclair MR1"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="Button"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatCheckBox" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatCheckBox"/>
+		<Description Locale="en" Content="A CheckBox which supports compatible features on older version of the platform, including: Allows dynamic tint of it background via the background tint methods in CompoundButtonCompat"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CheckBox"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatCheckedTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatCheckedTextView"/>
+		<Description Locale="en" Content="A CheckedTextView which supports compatible features on older version of the platform"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CheckedTextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatEditText" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatEditText"/>
+		<Description Locale="en" Content="A EditText which supports compatible features on older version of the platform, including: Supports textAllCaps style attribute which works back to Eclair MR1"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="EditText"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatMultiAutoCompleteTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatMultiAutoCompleteTextView"/>
+		<Description Locale="en" Content="A MultiAutoCompleteTextView which supports compatible features on older version of the platform, including: Supports textAllCaps style attribute which works back to Eclair MR1"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="MultiAutoCompleteTextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatRadioButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatRadioButton"/>
+		<Description Locale="en" Content="A RadioButton which supports compatible features on older version of the platform, including: Allows dynamic tint of it background via the background tint methods in CompoundButtonCompat"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="RadioButton"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatRatingBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatRatingBar"/>
+		<Description Locale="en" Content="A RatingBar which supports compatible features on older version of the platform"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="RatingBar"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.AppCompatTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.AppCompatTextView"/>
+		<Description Locale="en" Content="A TextView which supports compatible features on older version of the platform, including: Supports textAllCaps style attribute which works back to Eclair MR1"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="android.support.v7.widget.SwitchCompat" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.support.v7.widget.SwitchCompat"/>
+		<Description Locale="en" Content="SwitchCompat is a version of the Switch widget which on devices back to API v7"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CompoundButton"/>
+		</Modifier>
+	</Node>
+	<Node Name="AutoCompleteTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.AutoCompleteTextView"/>
+		<Description Locale="en" Content="An editable text view that shows completion suggestions automatically while the user is typing"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="EditText"/>
+		</Modifier>
+		<Parameter Name="android:completionHint" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the hint displayed in the drop down menu."/>
+		</Parameter>
+		<Parameter Name="android:completionHintView" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the hint view displayed in the drop down menu."/>
+		</Parameter>
+		<Parameter Name="android:completionThreshold" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the number of characters that the user must type before completion suggestions are displayed in a drop down menu."/>
+		</Parameter>
+		<Parameter Name="android:dropDownAnchor" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="View to anchor the auto-complete dropdown to."/>
+		</Parameter>
+		<Parameter Name="android:dropDownHeight" RequirementBehaviour="Optional" TypesCSV="keyword,dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the basic height of the dropdown."/>
+			<ParameterValue Name="fill_parent">
+				<Description Locale="en" Content="The dropdown should fit the height of the screen. This constant is deprecated starting from API Level 8 and is replaced by match_parent."/>
+			</ParameterValue>
+			<ParameterValue Name="match_parent">
+				<Description Locale="en" Content="The dropdown should fit the height of the screen. Introduced in API Level 8."/>
+			</ParameterValue>
+			<ParameterValue Name="wrap_content">
+				<Description Locale="en" Content="The dropdown should fit the height of the content."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:dropDownHorizontalOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Amount of pixels by which the drop down should be offset horizontally."/>
+		</Parameter>
+		<Parameter Name="android:dropDownSelector" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Selector in a drop down list."/>
+		</Parameter>
+		<Parameter Name="android:dropDownVerticalOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Amount of pixels by which the drop down should be offset vertically."/>
+		</Parameter>
+		<Parameter Name="android:dropDownWidth" RequirementBehaviour="Optional" TypesCSV="keyword,dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the basic width of the dropdown."/>
+			<ParameterValue Name="fill_parent">
+				<Description Locale="en" Content="The dropdown should fill the width of the screen. This constant is deprecated starting from API Level 8 and is replaced by match_parent."/>
+			</ParameterValue>
+			<ParameterValue Name="match_parent">
+				<Description Locale="en" Content="The dropdown should fit the width of the screen. Introduced in API Level 8."/>
+			</ParameterValue>
+			<ParameterValue Name="wrap_content">
+				<Description Locale="en" Content="The dropdown should fit the width of its anchor."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:popupBackground" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The background to use for the popup window."/>
+		</Parameter>
+	</Node>
+	<Node Name="Button" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.Button"/>
+		<Description Locale="en" Content="Represents a push-button widget"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="CheckBox" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.CheckBox"/>
+		<Description Locale="en" Content="A checkbox is a specific type of two-states button that can be either checked or unchecked"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CompoundButton"/>
+		</Modifier>
+	</Node>
+	<Node Name="CheckedTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.CheckedTextView"/>
+		<Description Locale="en" Content="An extension to TextView that supports the Checkable interface and displays"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+		<Parameter Name="android:checked" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates the initial checked state of this text."/>
+		</Parameter>
+		<Parameter Name="android:checkMark" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used for the check mark graphic."/>
+		</Parameter>
+		<Parameter Name="android:checkMarkTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the check mark."/>
+		</Parameter>
+		<Parameter Name="android:checkMarkTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the check mark tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="Chronometer" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.Chronometer"/>
+		<Description Locale="en" Content="Class that implements a simple timer"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+		<Parameter Name="android:format" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Format string: if specified, the Chronometer will display this string, with the first '%s' replaced by the current timer value in 'MM:SS' or 'H:MM:SS' form."/>
+		</Parameter>
+	</Node>
+	<Node Name="CompoundButton" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.CompoundButton"/>
+		<Description Locale="en" Content="A button with two states, checked and unchecked"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="Button"/>
+		</Modifier>
+		<Parameter Name="android:button" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used for the button graphic (e."/>
+		</Parameter>
+		<Parameter Name="android:buttonTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the button graphic."/>
+		</Parameter>
+		<Parameter Name="android:buttonTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the button graphic tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="DigitalClock" Abstract="false" Required="false" IntroducedApiLevel="1" DeprecatedApiLevel="17">
+		<MetaData Name="FullType" Value="android.widget.DigitalClock"/>
+		<Description Locale="en" Content="Like AnalogClock, but digital"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="EditText" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.EditText"/>
+		<Description Locale="en" Content="EditText is a thin veneer over TextView that configures itself to be editable"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="ExtractEditText" Abstract="false" Required="false" IntroducedApiLevel="3">
+		<MetaData Name="FullType" Value="android.inputmethodservice.ExtractEditText"/>
+		<Description Locale="en" Content="Specialization of EditText for showing and interacting with the extracted text in a full-screen input method"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="EditText"/>
+		</Modifier>
+	</Node>
+	<Node Name="GLSurfaceView" Abstract="false" Required="false" IntroducedApiLevel="3">
+		<MetaData Name="FullType" Value="android.opengl.GLSurfaceView"/>
+		<Description Locale="en" Content="An implementation of SurfaceView that uses the dedicated surface for displaying OpenGL rendering"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="SurfaceView"/>
+		</Modifier>
+	</Node>
+	<Node Name="ImageButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ImageButton"/>
+		<Description Locale="en" Content="Displays a button with an image (instead of text) that can be pressed or clicked by the user"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ImageView"/>
+		</Modifier>
+	</Node>
+	<Node Name="ImageView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ImageView"/>
+		<Description Locale="en" Content="Displays an arbitrary image, such as an icon"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:adjustViewBounds" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Set this to true if you want the ImageView to adjust its bounds to preserve the aspect ratio of its drawable."/>
+		</Parameter>
+		<Parameter Name="android:baseline" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The offset of the baseline within this view."/>
+		</Parameter>
+		<Parameter Name="android:baselineAlignBottom" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, the image view will be baseline aligned with based on its bottom edge."/>
+		</Parameter>
+		<Parameter Name="android:cropToPadding" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If true, the image will be cropped to fit within its padding."/>
+		</Parameter>
+		<Parameter Name="android:maxHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An optional argument to supply a maximum height for this view."/>
+		</Parameter>
+		<Parameter Name="android:maxWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An optional argument to supply a maximum width for this view."/>
+		</Parameter>
+		<Parameter Name="android:scaleType" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls how the image should be resized or moved to match the size of this ImageView."/>
+			<ParameterValue Name="matrix">
+				<Description Locale="en" Content="Scale using the image matrix when drawing. See setImageMatrix(Matrix)."/>
+			</ParameterValue>
+			<ParameterValue Name="fitXY">
+				<Description Locale="en" Content="Scale the image using FILL."/>
+			</ParameterValue>
+			<ParameterValue Name="fitStart">
+				<Description Locale="en" Content="Scale the image using START."/>
+			</ParameterValue>
+			<ParameterValue Name="fitCenter">
+				<Description Locale="en" Content="Scale the image using CENTER."/>
+			</ParameterValue>
+			<ParameterValue Name="fitEnd">
+				<Description Locale="en" Content="Scale the image using END."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Center the image in the view, but perform no scaling."/>
+			</ParameterValue>
+			<ParameterValue Name="centerCrop">
+				<Description Locale="en" Content="Scale the image uniformly (maintain the image's aspect ratio) so both dimensions (width and height) of the image will be equal to or larger than the corresponding dimension of the view (minus padding). The image is then centered in the view."/>
+			</ParameterValue>
+			<ParameterValue Name="centerInside">
+				<Description Locale="en" Content="Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding). The image is then centered in the view."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:src" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets a drawable as the content of this ImageView."/>
+		</Parameter>
+		<Parameter Name="android:tint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Set a tinting color for the image."/>
+		</Parameter>
+		<Parameter Name="android:tintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the image tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="KeyboardView" Abstract="false" Required="false" IntroducedApiLevel="3">
+		<MetaData Name="FullType" Value="android.inputmethodservice.KeyboardView"/>
+		<Description Locale="en" Content="A view that renders a virtual Keyboard"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:keyBackground" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Image for the key."/>
+		</Parameter>
+		<Parameter Name="android:keyPreviewLayout" RequirementBehaviour="Optional" TypesCSV="layout" Inputs="Reference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Layout resource for key press feedback."/>
+		</Parameter>
+		<Parameter Name="android:keyPreviewOffset" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Vertical offset of the key press feedback from the key."/>
+		</Parameter>
+		<Parameter Name="android:keyTextColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Color to use for the label in a key."/>
+		</Parameter>
+		<Parameter Name="android:keyTextSize" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Size of the text for character keys."/>
+		</Parameter>
+		<Parameter Name="android:labelTextSize" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Size of the text for custom keys with some text and no icon."/>
+		</Parameter>
+		<Parameter Name="android:popupLayout" RequirementBehaviour="Optional" TypesCSV="layout" Inputs="Reference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Layout resource for popup keyboards."/>
+		</Parameter>
+		<Parameter Name="android:verticalCorrection" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="3">
+			<Description Locale="en" Content="Amount to offset the touch Y coordinate by, for bias correction."/>
+		</Parameter>
+	</Node>
+	<Node Name="MultiAutoCompleteTextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.MultiAutoCompleteTextView"/>
+		<Description Locale="en" Content="An editable text view, extending AutoCompleteTextView, that can show completion suggestions for the substring of the text where the user is typing instead of necessarily for the entire thing"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="AutoCompleteTextView"/>
+		</Modifier>
+	</Node>
+	<Node Name="ProgressBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ProgressBar"/>
+		<Description Locale="en" Content="Visual indicator of progress in some operation"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:animationResolution" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Timeout between frames of animation in milliseconds Must be an integer value, such as '100'."/>
+		</Parameter>
+		<Parameter Name="android:indeterminate" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Allows to enable the indeterminate mode."/>
+		</Parameter>
+		<Parameter Name="android:indeterminateBehavior" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines how the indeterminate mode should behave when the progress reaches max."/>
+			<ParameterValue Name="repeat">
+				<Description Locale="en" Content="Progress starts over from 0."/>
+			</ParameterValue>
+			<ParameterValue Name="cycle">
+				<Description Locale="en" Content="Progress keeps the current value and goes back to 0."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:indeterminateDrawable" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used for the indeterminate mode."/>
+		</Parameter>
+		<Parameter Name="android:indeterminateDuration" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Duration of the indeterminate animation."/>
+		</Parameter>
+		<Parameter Name="android:indeterminateOnly" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Restricts to ONLY indeterminate mode (state-keeping progress mode will not work)."/>
+		</Parameter>
+		<Parameter Name="android:indeterminateTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the indeterminate progress indicator."/>
+		</Parameter>
+		<Parameter Name="android:indeterminateTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the indeterminate progress indicator tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:interpolator" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:max" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the maximum value the progress can take."/>
+		</Parameter>
+		<Parameter Name="android:maxHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An optional argument to supply a maximum height for this view."/>
+		</Parameter>
+		<Parameter Name="android:maxWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An optional argument to supply a maximum width for this view."/>
+		</Parameter>
+		<Parameter Name="android:minHeight" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:minWidth" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="No documentation available"/>
+		</Parameter>
+		<Parameter Name="android:mirrorForRtl" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines if the associated drawables need to be mirrored when in RTL mode."/>
+		</Parameter>
+		<Parameter Name="android:progress" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the default progress value, between 0 and max."/>
+		</Parameter>
+		<Parameter Name="android:progressBackgroundTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the progress indicator background."/>
+		</Parameter>
+		<Parameter Name="android:progressBackgroundTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the progress indicator background tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:progressDrawable" RequirementBehaviour="Optional" TypesCSV="drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Drawable used for the progress mode."/>
+		</Parameter>
+		<Parameter Name="android:progressTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the progress indicator."/>
+		</Parameter>
+		<Parameter Name="android:progressTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the progress indicator tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:secondaryProgress" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the secondary progress value, between 0 and max."/>
+		</Parameter>
+		<Parameter Name="android:secondaryProgressTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the secondary progress indicator."/>
+		</Parameter>
+		<Parameter Name="android:secondaryProgressTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the secondary progress indicator tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="QuickContactBadge" Abstract="false" Required="false" IntroducedApiLevel="5">
+		<MetaData Name="FullType" Value="android.widget.QuickContactBadge"/>
+		<Description Locale="en" Content="Widget used to show an image with the standard QuickContact badge and on-click behavior"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ImageView"/>
+		</Modifier>
+	</Node>
+	<Node Name="RadioButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RadioButton"/>
+		<Description Locale="en" Content="A radio button is a two-states button that can be either checked or unchecked"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CompoundButton"/>
+		</Modifier>
+	</Node>
+	<Node Name="RatingBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.RatingBar"/>
+		<Description Locale="en" Content="A RatingBar is an extension of SeekBar and ProgressBar that shows a rating in stars"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="AbsSeekBar"/>
+		</Modifier>
+		<Parameter Name="android:isIndicator" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether this rating bar is an indicator (and non-changeable by the user)."/>
+		</Parameter>
+		<Parameter Name="android:numStars" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The number of stars (or rating items) to show."/>
+		</Parameter>
+		<Parameter Name="android:rating" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The rating to set by default."/>
+		</Parameter>
+		<Parameter Name="android:stepSize" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The step size of the rating."/>
+		</Parameter>
+	</Node>
+	<Node Name="SeekBar" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.SeekBar"/>
+		<Description Locale="en" Content="A SeekBar is an extension of ProgressBar that adds a draggable thumb"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="AbsSeekBar"/>
+		</Modifier>
+		<Parameter Name="android:thumb" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Draws the thumb on a seekbar."/>
+		</Parameter>
+	</Node>
+	<Node Name="Space" Abstract="false" Required="false" IntroducedApiLevel="14">
+		<MetaData Name="FullType" Value="android.widget.Space"/>
+		<Description Locale="en" Content="Space is a lightweight View subclass that may be used to create gaps between components in general purpose layouts"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+	</Node>
+	<Node Name="SurfaceView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.SurfaceView"/>
+		<Description Locale="en" Content="Provides a dedicated drawing surface embedded inside of a view hierarchy"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+	</Node>
+	<Node Name="Switch" Abstract="false" Required="false" IntroducedApiLevel="14">
+		<MetaData Name="FullType" Value="android.widget.Switch"/>
+		<Description Locale="en" Content="A Switch is a two-state toggle switch widget that can select between two options"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CompoundButton"/>
+		</Modifier>
+		<Parameter Name="android:showText" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Whether to draw on/off text."/>
+		</Parameter>
+		<Parameter Name="android:splitTrack" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Whether to split the track and leave a gap for the thumb drawable."/>
+		</Parameter>
+		<Parameter Name="android:switchMinWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Minimum width for the switch component Must be a dimension value, which is a floating point number appended with a unit such as '14."/>
+		</Parameter>
+		<Parameter Name="android:switchPadding" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Minimum space between the switch and caption text Must be a dimension value, which is a floating point number appended with a unit such as '14."/>
+		</Parameter>
+		<Parameter Name="android:switchTextAppearance" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="14">
+			<Description Locale="en" Content="TextAppearance style for text displayed on the switch thumb."/>
+		</Parameter>
+		<Parameter Name="android:textOff" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Text to use when the switch is in the unchecked/'off' state."/>
+		</Parameter>
+		<Parameter Name="android:textOn" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Text to use when the switch is in the checked/'on' state."/>
+		</Parameter>
+		<Parameter Name="android:textStyle" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Style (bold, italic, bolditalic) for the text."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="bold">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="italic">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:thumb" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Drawable to use as the 'thumb' that switches back and forth."/>
+		</Parameter>
+		<Parameter Name="android:thumbTextPadding" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Amount of padding on either side of text within the switch thumb."/>
+		</Parameter>
+		<Parameter Name="android:thumbTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Tint to apply to the thumb."/>
+		</Parameter>
+		<Parameter Name="android:thumbTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Blending mode used to apply the thumb tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:track" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Drawable to use as the 'track' that the switch thumb slides within."/>
+		</Parameter>
+		<Parameter Name="android:trackTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Tint to apply to the track."/>
+		</Parameter>
+		<Parameter Name="android:trackTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Blending mode used to apply the track tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:typeface" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="14">
+			<Description Locale="en" Content="Typeface (normal, sans, serif, monospace) for the text."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="sans">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="serif">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="monospace">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+	<Node Name="TextClock" Abstract="false" Required="false" IntroducedApiLevel="17">
+		<MetaData Name="FullType" Value="android.widget.TextClock"/>
+		<Description Locale="en" Content="TextClock can display the current date and/or time as a formatted string"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="TextView"/>
+		</Modifier>
+		<Parameter Name="android:format12Hour" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="17">
+			<Description Locale="en" Content="Specifies the formatting pattern used to show the time and/or date in 12-hour mode."/>
+		</Parameter>
+		<Parameter Name="android:format24Hour" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="17">
+			<Description Locale="en" Content="Specifies the formatting pattern used to show the time and/or date in 24-hour mode."/>
+		</Parameter>
+		<Parameter Name="android:timeZone" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="17">
+			<Description Locale="en" Content="Specifies the time zone to use."/>
+		</Parameter>
+	</Node>
+	<Node Name="TextureView" Abstract="false" Required="false" IntroducedApiLevel="14">
+		<MetaData Name="FullType" Value="android.view.TextureView"/>
+		<Description Locale="en" Content="A TextureView can be used to display a content stream"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+	</Node>
+	<Node Name="TextView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.TextView"/>
+		<Description Locale="en" Content="Displays text to the user and optionally allows them to edit it"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:autoLink" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls whether links such as urls and email addresses are automatically found and converted to clickable links."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Match no patterns (default)."/>
+			</ParameterValue>
+			<ParameterValue Name="web">
+				<Description Locale="en" Content="Match Web URLs."/>
+			</ParameterValue>
+			<ParameterValue Name="email">
+				<Description Locale="en" Content="Match email addresses."/>
+			</ParameterValue>
+			<ParameterValue Name="phone">
+				<Description Locale="en" Content="Match phone numbers."/>
+			</ParameterValue>
+			<ParameterValue Name="map">
+				<Description Locale="en" Content="Match map addresses."/>
+			</ParameterValue>
+			<ParameterValue Name="all">
+				<Description Locale="en" Content="Match all patterns (equivalent to web|email|phone|map)."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:autoText" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has a textual input method and automatically corrects some common spelling errors."/>
+		</Parameter>
+		<Parameter Name="android:breakStrategy" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Break strategy (control over paragraph layout)."/>
+			<ParameterValue Name="simple">
+				<Description Locale="en" Content="Line breaking uses simple strategy."/>
+			</ParameterValue>
+			<ParameterValue Name="high_quality">
+				<Description Locale="en" Content="Line breaking uses high-quality strategy, including hyphenation."/>
+			</ParameterValue>
+			<ParameterValue Name="balanced">
+				<Description Locale="en" Content="Line breaking strategy balances line lengths."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:bufferType" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Determines the minimum type that getText() will return."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="Can return any CharSequence, possibly a Spanned one if the source text was Spanned."/>
+			</ParameterValue>
+			<ParameterValue Name="spannable">
+				<Description Locale="en" Content="Can only return Spannable."/>
+			</ParameterValue>
+			<ParameterValue Name="editable">
+				<Description Locale="en" Content="Can only return Spannable and Editable."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:capitalize" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has a textual input method and should automatically capitalize what the user types."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Don't automatically capitalize anything."/>
+			</ParameterValue>
+			<ParameterValue Name="sentences">
+				<Description Locale="en" Content="Capitalize the first word of each sentence."/>
+			</ParameterValue>
+			<ParameterValue Name="words">
+				<Description Locale="en" Content="Capitalize the first letter of every word."/>
+			</ParameterValue>
+			<ParameterValue Name="characters">
+				<Description Locale="en" Content="Capitalize every character."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:cursorVisible" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the cursor visible (the default) or invisible."/>
+		</Parameter>
+		<Parameter Name="android:digits" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has a numeric input method and that these specific characters are the ones that it will accept."/>
+		</Parameter>
+		<Parameter Name="android:drawableBottom" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn below the text."/>
+		</Parameter>
+		<Parameter Name="android:drawableEnd" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn to the end of the text."/>
+		</Parameter>
+		<Parameter Name="android:drawableLeft" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn to the left of the text."/>
+		</Parameter>
+		<Parameter Name="android:drawablePadding" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The padding between the drawables and the text."/>
+		</Parameter>
+		<Parameter Name="android:drawableRight" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn to the right of the text."/>
+		</Parameter>
+		<Parameter Name="android:drawableStart" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn to the start of the text."/>
+		</Parameter>
+		<Parameter Name="android:drawableTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the compound (left, top, etc."/>
+		</Parameter>
+		<Parameter Name="android:drawableTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the compound (left, top, etc."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:drawableTop" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The drawable to be drawn above the text."/>
+		</Parameter>
+		<Parameter Name="android:editable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has an input method."/>
+		</Parameter>
+		<Parameter Name="android:editorExtras" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Reference to an 'lt;input-extras'gt; XML resource containing additional data to supply to an input method, which is private to the implementation of the input method."/>
+		</Parameter>
+		<Parameter Name="android:elegantTextHeight" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Elegant text height, especially for less compacted complex script text."/>
+		</Parameter>
+		<Parameter Name="android:ellipsize" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, causes words that are longer than the view is wide to be ellipsized instead of broken in the middle."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="middle">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="marquee">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:ems" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be exactly this many ems wide."/>
+		</Parameter>
+		<Parameter Name="android:fontFamily" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Font family (named by string) for the text."/>
+		</Parameter>
+		<Parameter Name="android:fontFeatureSettings" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Font feature settings."/>
+		</Parameter>
+		<Parameter Name="android:freezesText" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, the text view will include its current complete text inside of its frozen icicle in addition to meta-data such as the current cursor position."/>
+		</Parameter>
+		<Parameter Name="android:gravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies how to align the text by the view's x- and/or y-axis when the text is smaller than the view."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Push object to the beginning of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Push object to the end of its container, not changing its size."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:height" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be exactly this many pixels tall."/>
+		</Parameter>
+		<Parameter Name="android:hint" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Hint text to display when the text is empty."/>
+		</Parameter>
+		<Parameter Name="android:hyphenationFrequency" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Frequency of automatic hyphenation."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="No hyphenation."/>
+			</ParameterValue>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="Less frequent hyphenation, useful for informal use cases, such as chat messages."/>
+			</ParameterValue>
+			<ParameterValue Name="full">
+				<Description Locale="en" Content="Standard amount of hyphenation, useful for running text and for screens with limited space for text."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:imeActionId" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Supply a value for EditorInfo."/>
+		</Parameter>
+		<Parameter Name="android:imeActionLabel" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Supply a value for EditorInfo."/>
+		</Parameter>
+		<Parameter Name="android:imeOptions" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Additional features you can enable in an IME associated with an editor to improve the integration with your application."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content="There are no special semantics associated with this editor."/>
+			</ParameterValue>
+			<ParameterValue Name="actionUnspecified">
+				<Description Locale="en" Content="There is no specific action associated with this editor, let the editor come up with its own if it can. Corresponds to IME_NULL."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNone">
+				<Description Locale="en" Content="This editor has no action associated with it. Corresponds to IME_ACTION_NONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionGo">
+				<Description Locale="en" Content="The action key performs a 'go' operation to take the user to the target of the text they typed. Typically used, for example, when entering a URL. Corresponds to IME_ACTION_GO."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSearch">
+				<Description Locale="en" Content="The action key performs a 'search' operation, taking the user to the results of searching for the text the have typed (in whatever context is appropriate). Corresponds to IME_ACTION_SEARCH."/>
+			</ParameterValue>
+			<ParameterValue Name="actionSend">
+				<Description Locale="en" Content="The action key performs a 'send' operation, delivering the text to its target. This is typically used when composing a message. Corresponds to IME_ACTION_SEND."/>
+			</ParameterValue>
+			<ParameterValue Name="actionNext">
+				<Description Locale="en" Content="The action key performs a 'next' operation, taking the user to the next field that will accept text. Corresponds to IME_ACTION_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="actionDone">
+				<Description Locale="en" Content="The action key performs a 'done' operation, closing the soft input method. Corresponds to IME_ACTION_DONE."/>
+			</ParameterValue>
+			<ParameterValue Name="actionPrevious">
+				<Description Locale="en" Content="The action key performs a 'previous' operation, taking the user to the previous field that will accept text. Corresponds to IME_ACTION_PREVIOUS."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoFullscreen">
+				<Description Locale="en" Content="Used to request that the IME never go into fullscreen mode. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigatePrevious">
+				<Description Locale="en" Content="Like flagNavigateNext, but specifies there is something interesting that a backward navigation can focus on. If the user selects the IME's facility to backward navigate, this will show up in the application as an actionPrevious at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NO_FULLSCREEN."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNavigateNext">
+				<Description Locale="en" Content="Used to specify that there is something interesting that a forward navigation can focus on. This is like using actionNext, except allows the IME to be multiline (with an enter key) as well as provide forward navigation. Note that some IMEs may not be able to do this, especially when running on a small screen where there is little space. In that case it does not need to present a UI for this option. Like actionNext, if the user selects the IME's facility to forward navigate, this will show up in the application at InputConnection.performEditorAction(int). Corresponds to IME_FLAG_NAVIGATE_NEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoExtractUi">
+				<Description Locale="en" Content="Used to specify that the IME does not need to show its extracted text UI. For input methods that may be fullscreen, often when in landscape mode, this allows them to be smaller and let part of the application be shown behind. Though there will likely be limited access to the application available from the user, it can make the experience of a (mostly) fullscreen IME less jarring. Note that when this flag is specified the IME may not be set up to be able to display text, so it should only be used in situations where this is not needed. Corresponds to IME_FLAG_NO_EXTRACT_UI."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoAccessoryAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available as an accessory button when the input method is full-screen. Note that by setting this flag, there can be cases where the action is simply never available to the user. Setting this generally means that you think showing text being edited is more important than the action you have supplied. Corresponds to IME_FLAG_NO_ACCESSORY_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagNoEnterAction">
+				<Description Locale="en" Content="Used in conjunction with a custom action, this indicates that the action should not be available in-line as a replacement for the 'enter' key. Typically this is because the action has such a significant impact or is not recoverable enough that accidentally hitting it should be avoided, such as sending a message. Note that TextView will automatically set this flag for you on multi-line text views. Corresponds to IME_FLAG_NO_ENTER_ACTION."/>
+			</ParameterValue>
+			<ParameterValue Name="flagForceAscii">
+				<Description Locale="en" Content="Used to request that the IME should be capable of inputting ASCII characters. The intention of this flag is to ensure that the user can type Roman alphabet characters in a TextView used for, typically, account ID or password input. It is expected that IMEs normally are able to input ASCII even without being told so (such IMEs already respect this flag in a sense), but there could be some cases they aren't when, for instance, only non-ASCII input languagaes like Arabic, Greek, Hebrew, Russian are enabled in the IME. Applications need to be aware that the flag is not a guarantee, and not all IMEs will respect it. However, it is strongly recommended for IME authors to respect this flag especially when their IME could end up with a state that has only non-ASCII input languages enabled. Corresponds to IME_FLAG_FORCE_ASCII."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:includeFontPadding" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Leave enough room for ascenders and descenders instead of using the font ascent and descent strictly."/>
+		</Parameter>
+		<Parameter Name="android:inputMethod" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView should use the specified input method (specified by fully-qualified class name)."/>
+		</Parameter>
+		<Parameter Name="android:inputType" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The type of data being placed in a text field, used to help an input method decide how to let the user enter text."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="There is no content type. The text is not editable."/>
+			</ParameterValue>
+			<ParameterValue Name="text">
+				<Description Locale="en" Content="Just plain old text. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapCharacters">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of all characters. Corresponds to TYPE_TEXT_FLAG_CAP_CHARACTERS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapWords">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every word. Corresponds to TYPE_TEXT_FLAG_CAP_WORDS."/>
+			</ParameterValue>
+			<ParameterValue Name="textCapSentences">
+				<Description Locale="en" Content="Can be combined with text and its variations to request capitalization of the first character of every sentence. Corresponds to TYPE_TEXT_FLAG_CAP_SENTENCES."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoCorrect">
+				<Description Locale="en" Content="Can be combined with text and its variations to request auto-correction of text being input. Corresponds to TYPE_TEXT_FLAG_AUTO_CORRECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textAutoComplete">
+				<Description Locale="en" Content="Can be combined with text and its variations to specify that this field will be doing its own auto-completion and talking with the input method appropriately. Corresponds to TYPE_TEXT_FLAG_AUTO_COMPLETE."/>
+			</ParameterValue>
+			<ParameterValue Name="textMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to allow multiple lines of text in the field. If this flag is not set, the text field will be constrained to a single line. Corresponds to TYPE_TEXT_FLAG_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textImeMultiLine">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that though the regular text view should not be multiple lines, the IME should provide multiple lines if it can. Corresponds to TYPE_TEXT_FLAG_IME_MULTI_LINE."/>
+			</ParameterValue>
+			<ParameterValue Name="textNoSuggestions">
+				<Description Locale="en" Content="Can be combined with text and its variations to indicate that the IME should not show any dictionary-based word suggestions. Corresponds to TYPE_TEXT_FLAG_NO_SUGGESTIONS."/>
+			</ParameterValue>
+			<ParameterValue Name="textUri">
+				<Description Locale="en" Content="Text that will be used as a URI. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_URI."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textEmailSubject">
+				<Description Locale="en" Content="Text that is being supplied as the subject of an e-mail. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_EMAIL_SUBJECT."/>
+			</ParameterValue>
+			<ParameterValue Name="textShortMessage">
+				<Description Locale="en" Content="Text that is the content of a short message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_SHORT_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textLongMessage">
+				<Description Locale="en" Content="Text that is the content of a long message. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_LONG_MESSAGE."/>
+			</ParameterValue>
+			<ParameterValue Name="textPersonName">
+				<Description Locale="en" Content="Text that is the name of a person. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PERSON_NAME."/>
+			</ParameterValue>
+			<ParameterValue Name="textPostalAddress">
+				<Description Locale="en" Content="Text that is being supplied as a postal mailing address. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_POSTAL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textPassword">
+				<Description Locale="en" Content="Text that is a password. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textVisiblePassword">
+				<Description Locale="en" Content="Text that is a password that should be visible. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEditText">
+				<Description Locale="en" Content="Text that is being supplied as text in a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EDIT_TEXT."/>
+			</ParameterValue>
+			<ParameterValue Name="textFilter">
+				<Description Locale="en" Content="Text that is filtering some other data. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_FILTER."/>
+			</ParameterValue>
+			<ParameterValue Name="textPhonetic">
+				<Description Locale="en" Content="Text that is for phonetic pronunciation, such as a phonetic name field in a contact entry. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_PHONETIC."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebEmailAddress">
+				<Description Locale="en" Content="Text that will be used as an e-mail address on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS."/>
+			</ParameterValue>
+			<ParameterValue Name="textWebPassword">
+				<Description Locale="en" Content="Text that will be used as a password on a web form. Corresponds to TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_WEB_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="number">
+				<Description Locale="en" Content="A numeric only field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberSigned">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a signed number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_SIGNED."/>
+			</ParameterValue>
+			<ParameterValue Name="numberDecimal">
+				<Description Locale="en" Content="Can be combined with number and its other options to allow a decimal (fractional) number. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="numberPassword">
+				<Description Locale="en" Content="A numeric password field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_PASSWORD."/>
+			</ParameterValue>
+			<ParameterValue Name="phone">
+				<Description Locale="en" Content="For entering a phone number. Corresponds to TYPE_CLASS_PHONE."/>
+			</ParameterValue>
+			<ParameterValue Name="datetime">
+				<Description Locale="en" Content="For entering a date and time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="date">
+				<Description Locale="en" Content="For entering a date. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_DATE."/>
+			</ParameterValue>
+			<ParameterValue Name="time">
+				<Description Locale="en" Content="For entering a time. Corresponds to TYPE_CLASS_DATETIME | TYPE_DATETIME_VARIATION_TIME."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:letterSpacing" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Text letter-spacing."/>
+		</Parameter>
+		<Parameter Name="android:lines" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be exactly this many lines tall."/>
+		</Parameter>
+		<Parameter Name="android:lineSpacingExtra" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Extra spacing between lines of text."/>
+		</Parameter>
+		<Parameter Name="android:lineSpacingMultiplier" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Extra spacing between lines of text, as a multiplier."/>
+		</Parameter>
+		<Parameter Name="android:linksClickable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set to false, keeps the movement method from being set to the link movement method even if autoLink causes links to be found."/>
+		</Parameter>
+		<Parameter Name="android:marqueeRepeatLimit" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The number of times to repeat the marquee animation."/>
+			<ParameterValue Name="marquee_forever">
+				<Description Locale="en" Content="Indicates that marquee should repeat indefinitely."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:maxEms" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at most this many ems wide."/>
+		</Parameter>
+		<Parameter Name="android:maxHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at most this many pixels tall."/>
+		</Parameter>
+		<Parameter Name="android:maxLength" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Set an input filter to constrain the text length to the specified number."/>
+		</Parameter>
+		<Parameter Name="android:maxLines" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at most this many lines tall."/>
+		</Parameter>
+		<Parameter Name="android:maxWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at most this many pixels wide."/>
+		</Parameter>
+		<Parameter Name="android:minEms" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at least this many ems wide."/>
+		</Parameter>
+		<Parameter Name="android:minHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at least this many pixels tall."/>
+		</Parameter>
+		<Parameter Name="android:minLines" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at least this many lines tall."/>
+		</Parameter>
+		<Parameter Name="android:minWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be at least this many pixels wide."/>
+		</Parameter>
+		<Parameter Name="android:numeric" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has a numeric input method."/>
+			<ParameterValue Name="integer">
+				<Description Locale="en" Content="Input is numeric."/>
+			</ParameterValue>
+			<ParameterValue Name="signed">
+				<Description Locale="en" Content="Input is numeric, with sign allowed."/>
+			</ParameterValue>
+			<ParameterValue Name="decimal">
+				<Description Locale="en" Content="Input is numeric, with decimals allowed."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:password" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the characters of the field are displayed as password dots instead of themselves."/>
+		</Parameter>
+		<Parameter Name="android:phoneNumber" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If set, specifies that this TextView has a phone number input method."/>
+		</Parameter>
+		<Parameter Name="android:privateImeOptions" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="An addition content type description to supply to the input method attached to the text view, which is private to the implementation of the input method."/>
+		</Parameter>
+		<Parameter Name="android:scrollHorizontally" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Whether the text is allowed to be wider than the view (and therefore can be scrolled horizontally)."/>
+		</Parameter>
+		<Parameter Name="android:selectAllOnFocus" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If the text is selectable, select it all when the view takes focus."/>
+		</Parameter>
+		<Parameter Name="android:shadowColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Place a blurred shadow of text underneath the text, drawn with the specified color."/>
+		</Parameter>
+		<Parameter Name="android:shadowDx" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Horizontal offset of the text shadow."/>
+		</Parameter>
+		<Parameter Name="android:shadowDy" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Vertical offset of the text shadow."/>
+		</Parameter>
+		<Parameter Name="android:shadowRadius" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blur radius of the text shadow."/>
+		</Parameter>
+		<Parameter Name="android:singleLine" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Constrains the text to a single horizontally scrolling line instead of letting it wrap onto multiple lines, and advances focus instead of inserting a newline when you press the enter key."/>
+		</Parameter>
+		<Parameter Name="android:text" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Text to display."/>
+		</Parameter>
+		<Parameter Name="android:textAllCaps" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Present the text in ALL CAPS."/>
+		</Parameter>
+		<Parameter Name="android:textAppearance" RequirementBehaviour="Optional" TypesCSV="style" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Base text color, typeface, size, and style."/>
+		</Parameter>
+		<Parameter Name="android:textColor" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Text color."/>
+		</Parameter>
+		<Parameter Name="android:textColorHighlight" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Color of the text selection highlight."/>
+		</Parameter>
+		<Parameter Name="android:textColorHint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Color of the hint text."/>
+		</Parameter>
+		<Parameter Name="android:textColorLink" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Text color for links."/>
+		</Parameter>
+		<Parameter Name="android:textIsSelectable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates that the content of a non-editable text can be selected."/>
+		</Parameter>
+		<Parameter Name="android:textScaleX" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the horizontal scaling factor for the text."/>
+		</Parameter>
+		<Parameter Name="android:textSize" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Size of the text."/>
+		</Parameter>
+		<Parameter Name="android:textStyle" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Style (bold, italic, bolditalic) for the text."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="bold">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="italic">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:typeface" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Typeface (normal, sans, serif, monospace) for the text."/>
+			<ParameterValue Name="normal">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="sans">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="serif">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+			<ParameterValue Name="monospace">
+				<Description Locale="en" Content=""/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:width" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Makes the TextView be exactly this many pixels wide."/>
+		</Parameter>
+	</Node>
+	<Node Name="ToggleButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ToggleButton"/>
+		<Description Locale="en" Content="Displays checked/unchecked states as a button with a 'light' indicator and by default accompanied with the text 'ON' or 'OFF'"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="CompoundButton"/>
+		</Modifier>
+		<Parameter Name="android:disabledAlpha" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The alpha to apply to the indicator when disabled."/>
+		</Parameter>
+		<Parameter Name="android:textOff" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text for the button when it is not checked."/>
+		</Parameter>
+		<Parameter Name="android:textOn" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The text for the button when it is checked."/>
+		</Parameter>
+	</Node>
+	<Node Name="VideoView" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.VideoView"/>
+		<Description Locale="en" Content="Displays a video file"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="SurfaceView"/>
+		</Modifier>
+	</Node>
+	<Node Name="ViewStub" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.ViewStub"/>
+		<Description Locale="en" Content="A ViewStub is an invisible, zero-sized View that can be used to lazily inflate layout resources at runtime"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Parameter Name="android:inflatedId" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Overrides the id of the inflated View with this value."/>
+		</Parameter>
+		<Parameter Name="android:layout" RequirementBehaviour="Optional" TypesCSV="layout" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Supply an identifier for the layout resource to inflate when the ViewStub becomes visible or when forced to do so."/>
+		</Parameter>
+	</Node>
+	<Node Name="ZoomButton" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.widget.ZoomButton"/>
+		<Description Locale="en" Content="Must be a dimension value, which is a floating point number appended with a unit such as '14"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="true"/>
+			<ModifierArgument Name="ModuleName" Value="Controls"/>
+			<ModifierArgument Name="Node" Value="ImageButton"/>
+		</Modifier>
+	</Node>
+</Module>

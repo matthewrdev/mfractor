@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ProductInfo>
+    <ProductName>MFractor</ProductName>
+    <ProductVariant>Visual Studio For Windows</ProductVariant>
+    <ProductSKU>MFRACTOR-VS-WINDOWS</ProductSKU>
+  <PublicSigningKey>MIIBKjCB4wYHKoZIzj0CATCB1wIBATAsBgcqhkjOPQEBAiEA/////wAAAAEAAAAAAAAAAAAAAAD///////////////8wWwQg/////wAAAAEAAAAAAAAAAAAAAAD///////////////wEIFrGNdiqOpPns+u9VXaYhrxlHQawzFOw9jvOPD4n0mBLAxUAxJ02CIbnBJNqZnjhE50mt4GffpAEIQNrF9Hy4SxCR/i85uVjpEDydwN9gS3rM6D0oTlF2JjClgIhAP////8AAAAA//////////+85vqtpxeehPO5ysL8YyVRAgEBA0IABDdI0mwTrid9REZYd+AUt8EpZcIewAGqVpufmby1XAm69V85VYp81Fnwx71vkJrNrCLtTiJsuiPZA570arMwP04=</PublicSigningKey>
+  <LegacySigningKey>MIIBKjCB4wYHKoZIzj0CATCB1wIBATAsBgcqhkjOPQEBAiEA/////wAAAAEAAAAAAAAAAAAAAAD///////////////8wWwQg/////wAAAAEAAAAAAAAAAAAAAAD///////////////wEIFrGNdiqOpPns+u9VXaYhrxlHQawzFOw9jvOPD4n0mBLAxUAxJ02CIbnBJNqZnjhE50mt4GffpAEIQNrF9Hy4SxCR/i85uVjpEDydwN9gS3rM6D0oTlF2JjClgIhAP////8AAAAA//////////+85vqtpxeehPO5ysL8YyVRAgEBA0IABDdI0mwTrid9REZYd+AUt8EpZcIewAGqVpufmby1XAm69V85VYp81Fnwx71vkJrNrCLtTiJsuiPZA570arMwP04=</LegacySigningKey>
+  <RootNamespace>MFractor.VS.Windows</RootNamespace>
+    <Major>0</Major>
+    <Minor>0</Minor>
+    <Patch>1</Patch>
+    <VersionReleaseUrl>https://www.mfractor.com/blogs/news/mfractor-4-1-now-available-for-visual-studio-windows-mac</VersionReleaseUrl>
+    <ProductCategory>IDE extensions</ProductCategory>
+    <ProductDescription>A powerful productivity tool to streamline Xamarin development. Including image asset management, supercharged XAML IntelliSense, 150+ code inspections and refactorings, localisation tooling, font tooling and much more.</ProductDescription>
+    <ProductAuthor>MFractor Pty Ltd</ProductAuthor>
+    <ProductUrl>https://www.mfractor.com</ProductUrl>
+    <InstrumentationKey>5bed0a00-0dde-4ed9-9c87-b5acdf391b99</InstrumentationKey>
+</ProductInfo>

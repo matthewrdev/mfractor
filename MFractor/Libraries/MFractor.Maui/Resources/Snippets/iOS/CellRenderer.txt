@@ -1,0 +1,17 @@
+﻿using System;
+using System.ComponentModel;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
+
+[assembly: Xamarin.Forms.ExportRenderer(typeof($control_type$), typeof($namespace$.$renderer_name$))]
+namespace $namespace$
+{
+    public class $renderer_name$ : $base_type$
+    {
+        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

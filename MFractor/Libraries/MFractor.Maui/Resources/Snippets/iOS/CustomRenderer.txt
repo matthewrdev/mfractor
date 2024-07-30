@@ -1,0 +1,12 @@
+﻿using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
+using UIKit;
+
+[assembly: Xamarin.Forms.ExportRenderer (typeof($control_type$), typeof($namespace$.$renderer_name$))]
+
+namespace $namespace$
+{
+    public class $renderer_name$ : $base_type$
+    {
+    }
+}

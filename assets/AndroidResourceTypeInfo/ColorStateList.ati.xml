@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="color" Name="Color State List">
+	<Description Locale="en" Content="Provides support for drawable color state list. For example. a series of colors that represent the 'touch' states of a button such as pressed, focused or enabled."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/resources/color-list-resource.html"/>
+	<Node Name="selector" Abstract="false" Required="true">
+		<Description Locale="en" Content="A ColorStateList is an object you can define in XML that you can apply as a color, but will actually change colors, depending on the state of the View object to which it is applied. For example, a Button widget can exist in one of several different states (pressed, focused, or neither) and, using a color state list, you can provide a different color during each state."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="true">
+			<Description Locale="en" Content="Defines a color to use during certain states, as described by its attributes. Must be a child of a 'selector' element."/>
+			<Parameter Name="android:color" Required="true" TypesCSV="color" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The color is specified with an RGB value and optional alpha channel. The value always begins with a pound (#) character and then followed by the Alpha-Red-Green-Blue information in one of the following formats: #RGB, #ARGB, #RRGGBB or #AARRGGBB"/>
+			</Parameter>
+			<Parameter Name="android:state_pressed" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the object is pressed (such as when a button is touched/clicked); 'false' if this item should be used in the default, non-pressed state."/>
+			</Parameter>
+			<Parameter Name="android:state_focused" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the object is focused (such as when a button is highlighted using the trackball/d-pad); 'false' if this item should be used in the default, non-focused state."/>
+			</Parameter>
+			<Parameter Name="android:state_selected" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the object is selected (such as when a tab is opened); 'false' if this item should be used when the object is not selected."/>
+			</Parameter>
+			<Parameter Name="android:state_checkable" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the object is checkable; 'false' if this item should be used when the object is not checkable. (Only useful if the object can transition between a checkable and non-checkable widget.)"/>
+			</Parameter>
+			<Parameter Name="android:state_checked" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en"  Content="'true' if this item should be used when the object is checked; 'false' if it should be used when the object is un-checked."/>
+			</Parameter>
+			<Parameter Name="android:state_enabled" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the object is enabled (capable of receiving touch/click events); 'false' if it should be used when the object is disabled."/>
+			</Parameter>
+			<Parameter Name="android:state_window_focused" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if this item should be used when the application window has focus (the application is in the foreground), 'false' if this item should be used when the application window does not have focus (for example, if the notification shade is pulled down or a dialog appears)."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

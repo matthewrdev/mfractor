@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="values" Name="Value Resources">
+	<Description Locale="en" Content="Provides support for building XML files that contain simple values, such as strings, integers, and colors."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/resources/available-resources.html"/>
+	<Node Name="resources" Abstract="false" Required="true">
+		<Description Locale="en" Content="This must be the root node."/>
+		<Node Name="string" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="strings.xml"/>
+			<Description Locale="en" Content="A single string that can be referenced from the application or from other resource files (such as an XML layout)."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the string. This name will be used as the resource ID."/>
+			</Parameter>
+			<Parameter Name="translatable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="Value">
+				<Description Locale="en" Content="If this string is translatable."/>
+			</Parameter>
+		</Node>
+		<Node Name="string-array" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="arrays.xml"/>
+			<Description Locale="en" Content="An array of strings that can be referenced from the application."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the array. This name will be used as the resource ID to reference the array."/>
+			</Parameter>
+			<Node Name="item" Abstract="false" Required="true">
+				<Description Locale="en" Content="A string, which can include styling tags. The value can be a reference to another string resource. Must be a child of a 'string-array' element. Beware that you must escape apostrophes and quotation marks."/>
+			</Node>
+		</Node>
+		<Node Name="plurals" Abstract="false" Required="true">
+			<MetaData Name="DefaultFile" Value="arrays.xml"/>
+			<Description Locale="en" Content="A collection of strings, of which, one string is provided depending on the amount of something. Contains one or more 'item' elements."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the pair of strings. This name will be used as the resource ID."/>
+			</Parameter>
+			<Node Name="item" Abstract="false" Required="true">
+				<Description Locale="en" Content="A plural or singular string. The value can be a reference to another string resource. Must be a child of a 'plurals' element. Beware that you must escape apostrophes and quotation marks."/>
+				<Parameter Name="quantity" RequirementBehaviour="Always" TypesCSV="keyword" Inputs="Value">
+					<Description Locale="en" Content="A value indicating when this string should be used."/>
+					<ParameterValue Name="zero">
+						<Description Locale="en" Content="When the language requires special treatment of the number 0 (as in Arabic)."/>
+					</ParameterValue>
+					<ParameterValue Name="one">
+						<Description Locale="en" Content="When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class)."/>
+					</ParameterValue>
+					<ParameterValue Name="two">
+						<Description Locale="en" Content="When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian)."/>
+					</ParameterValue>
+					<ParameterValue Name="few">
+						<Description Locale="en" Content="When the language requires special treatment of 'small' numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish)."/>
+					</ParameterValue>
+					<ParameterValue Name="many">
+						<Description Locale="en" Content="When the language requires special treatment of 'large' numbers (as with numbers ending 11-99 in Maltese)."/>
+					</ParameterValue>
+					<ParameterValue Name="other">
+						<Description Locale="en" Content="When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English)."/>
+					</ParameterValue>
+				</Parameter>
+			</Node>
+		</Node>
+		<Node Name="bool" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="bools.xml"/>
+			<Description Locale="en" Content="A boolean value: true or false."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the bool value. This will be used as the resource ID."/>
+			</Parameter>
+		</Node>
+		<Node Name="color" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="colors.xml"/>
+			<Description Locale="en" Content="A color expressed in hexadecimal."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the color. This will be used as the resource ID."/>
+			</Parameter>
+		</Node>
+		<Node Name="dimen" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="dimens.xml"/>
+			<Description Locale="en" Content="A dimension, represented by a float, followed by a unit of measurement (dp, sp, pt, px, mm, in)."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the dimension. This will be used as the resource ID."/>
+			</Parameter>
+		</Node>
+		<Node Name="item" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="ids.xml"/>
+			<Description Locale="en" Content="Defines a unique ID. Takes no value, only attributes."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A unique name for the item."/>
+			</Parameter>
+			<Parameter Name="type" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" DefaultValue="id">
+				<Description Locale="en" Content="The type of resource"/>
+				<!-- TODO: Populate with the resource 'types' -->
+			</Parameter>
+			<Parameter Name="format" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" DefaultValue="id">
+				<Description Locale="en" Content="The format of the resource"/>
+				<!-- TODO: Populate with the resource 'formats' -->
+			</Parameter>
+		</Node>
+		<Node Name="integer" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="integers.xml"/>
+			<Description Locale="en" Content="An integer."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the integer. This name will be used as the resource ID to reference the array."/>
+			</Parameter>
+		</Node>
+		<Node Name="integer-array" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="arrays.xml"/>
+			<Description Locale="en" Content="Defines an array of integers. Contains one or more child 'item' elements."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the array. This name will be used as the resource ID to reference the array."/>
+			</Parameter>
+			<Node Name="item" Abstract="false" Required="true">
+				<Description Locale="en" Content="An integer. The value can be a reference to another integer resource. Must be a child of a 'integer-array' element."/>
+			</Node>
+		</Node>
+		<Node Name="array" Abstract="false" Required="false">
+			<MetaData Name="DefaultFile" Value="arrays.xml"/>
+			<Description Locale="en" Content="Defines an array. Contains one or more child 'item' elements."/>
+			<Parameter Name="name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Value">
+				<Description Locale="en" Content="A name for the array. This name will be used as the resource ID to reference the array."/>
+			</Parameter>
+			<Node Name="item" Abstract="false" Required="true">
+				<Description Locale="en" Content="A generic resource. The value can be a reference to a resource or a simple data type. Must be a child of an 'array' element."/>
+			</Node>
+		</Node>
+	</Node>
+</Module>

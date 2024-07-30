@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Accessibility Service">
+	<Description Locale="en" Content="Provides support for Accessibility Service configurations, that is, an application that assist users with disabilities or who may be temporarily be unable to fully interact with a device (such as driving)."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/training/accessibility/service.html"/>
+	<Node Name="accessibility-service" Abstract="false" Required="false">
+		<Description Locale="en" Content="An accessibility service is an application that provides user interface enhancements to assist users with disabilities, or who may temporarily be unable to fully interact with a device. For example, users who are driving, taking care of a young child or attending a very loud party might need additional or alternative interface feedback."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:description" RequirementBehaviour="Always" TypesCSV="string" Inputs="Reference">
+			<Description Locale="en" Content="Short description of the accessibility service purpose or behavior."/>
+		</Parameter>
+		<Parameter Name="android:packageNames" TypesCSV="string" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Comma separated package names from which this serivce would like to receive events (leave out for all packages)."/>
+		</Parameter>
+		<Parameter Name="android:accessibilityEventTypes" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="The event types this serivce would like to receive as specified in AccessibilityEvent. This setting can be changed at runtime by calling android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)."/>
+			<ParameterValue Name="typeViewClicked">
+				<Description Locale="en" Content="Receives TYPE_VIEW_CLICKED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewLongClicked">
+				<Description Locale="en" Content="Receives TYPE_VIEW_LONG_CLICKED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewSelected">
+				<Description Locale="en" Content="Receives TYPE_VIEW_SELECTED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewFocused">
+				<Description Locale="en" Content="Receives TYPE_VIEW_FOCUSED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewTextChanged">
+				<Description Locale="en" Content="Receives TYPE_VIEW_TEXT_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeWindowStateChanged">
+				<Description Locale="en" Content="Receives TYPE_WINDOW_STATE_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeNotificationStateChanged">
+				<Description Locale="en" Content="Receives TYPE_NOTIFICATION_STATE_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewHoverEnter">
+				<Description Locale="en" Content="Receives TYPE_VIEW_HOVER_ENTER events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewHoverExit">
+				<Description Locale="en" Content="Receives TYPE_VIEW_HOVER_EXIT events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeTouchExplorationGestureStart">
+				<Description Locale="en" Content="Receives TYPE_TOUCH_EXPLORATION_GESTURE_START events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeTouchExplorationGestureEnd">
+				<Description Locale="en" Content="Receives TYPE_TOUCH_EXPLORATION_GESTURE_END events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeWindowContentChanged">
+				<Description Locale="en" Content="Receives TYPE_WINDOW_CONTENT_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewTextSelectionChanged">
+				<Description Locale="en" Content="Receives TYPE_VIEW_TEXT_SELECTION_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewAccessibilityFocused">
+				<Description Locale="en" Content="Receives TYPE_VIEW_ACCESSIBILITY_FOCUSED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewAccessibilityFocusCleared">
+				<Description Locale="en" Content="Receives TYPE_VIEW_ACCESSIBILITY_FOCUSE_CLEARED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeViewTextTraversedAtMovementGranularity">
+				<Description Locale="en" Content="Receives TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeGestureDetectionStart">
+				<Description Locale="en" Content="Receives TYPE_GESTURE_DETECTION_START events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeGestureDetectionEnd">
+				<Description Locale="en" Content="Receives TYPE_GESTURE_DETECTION_END events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeTouchInteractionStart">
+				<Description Locale="en" Content="Receives TYPE_TOUCH_INTERACTION_START events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeTouchInteractionEnd">
+				<Description Locale="en" Content="Receives TYPE_TOUCH_INTERACTION_END events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeWindowsChanged">
+				<Description Locale="en" Content="Receives TYPE_WINDOWS_CHANGED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeContextClicked">
+				<Description Locale="en" Content="Receives TYPE_CONTEXT_CLICKED events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeAssistReadingContext">
+				<Description Locale="en" Content="Receives TYPE_ASSIST_READING_CONTEXT events."/>
+			</ParameterValue>
+			<ParameterValue Name="typeAllMask">
+				<Description Locale="en" Content="Receives TYPE_ALL_MASK i.e all events."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:accessibilityFlags" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="Additional flags as specified in AccessibilityServiceInfo. This setting can be changed at runtime by calling android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)."/>
+			<ParameterValue Name="flagDefault">
+				<Description Locale="en" Content="Has flag DEFAULT"/>
+			</ParameterValue>
+			<ParameterValue Name="flagIncludeNotImportantViews">
+				<Description Locale="en" Content="Has flag FLAG_INCLUDE_NOT_IMPORTANT_VIEWS"/>
+			</ParameterValue>
+			<ParameterValue Name="flagRequestTouchExplorationMode">
+				<Description Locale="en" Content="Has flag FLAG_REQUEST_TOUCH_EXPLORATION_MODE"/>
+			</ParameterValue>
+			<ParameterValue Name="flagRequestEnhancedWebAccessibility">
+				<Description Locale="en" Content="Has flag FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY"/>
+			</ParameterValue>
+			<ParameterValue Name="flagReportViewIds">
+				<Description Locale="en" Content="Has flag FLAG_REPORT_VIEW_IDS"/>
+			</ParameterValue>
+			<ParameterValue Name="flagRequestFilterKeyEvents">
+				<Description Locale="en" Content="Has flag FLAG_REQUEST_FILTER_KEY_EVENTS"/>
+			</ParameterValue>
+			<ParameterValue Name="flagRetrieveInteractiveWindows">
+				<Description Locale="en" Content="Has flag FLAG_RETRIEVE_INTERACTIVE_WINDOWS"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:accessibilityFeedbackType" TypesCSV="flag" Inputs="Value">
+			<Description Locale="en" Content="The feedback types this serivce provides as specified in AccessibilityServiceInfo. This setting can be changed at runtime by calling android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)."/>
+			<ParameterValue Name="feedbackSpoken">
+				<Description Locale="en" Content="Provides FEEDBACK_SPOKEN feedback."/>
+			</ParameterValue>
+			<ParameterValue Name="feedbackHaptic">
+				<Description Locale="en" Content="Provides FEEDBACK_HAPTIC feedback."/>
+			</ParameterValue>
+			<ParameterValue Name="feedbackAudible">
+				<Description Locale="en" Content="Provides FEEDBACK_AUDIBLE feedback."/>
+			</ParameterValue>
+			<ParameterValue Name="feedbackVisual">
+				<Description Locale="en" Content="Provides FEEDBACK_VISUAL feedback."/>
+			</ParameterValue>
+			<ParameterValue Name="feedbackGeneric">
+				<Description Locale="en" Content="Provides FEEDBACK_GENERIC feedback."/>
+			</ParameterValue>
+			<ParameterValue Name="feedbackAllMask">
+				<Description Locale="en" Content="Provides FEEDBACK_ALL_MASK feedback."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:notificationTimeout" TypesCSV="integer" Inputs="ValueOrReference">
+			<Description Locale="en" Content="The minimal period in milliseconds between two accessibility events of the same type are sent to this serivce. This setting can be changed at runtime by calling android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)."/>
+		</Parameter>
+		<Parameter Name="android:canRetrieveWindowContent" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Attribute whether the accessibility service wants to be able to retrieve the active window content. This setting cannot be changed at runtime."/>
+		</Parameter>
+		<Parameter Name="android:canRequestTouchExplorationMode" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Attribute whether the accessibility service wants to be able to request touch exploration mode in which touched items are spoken aloud and the UI can be explored via gestures."/>
+		</Parameter>
+		<Parameter Name="android:canRequestFilterKeyEvents" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Attribute whether the accessibility service wants to be able to request to filter key events."/>
+		</Parameter>
+		<Parameter Name="android:canRequestEnhancedWebAccessibility" TypesCSV="boolean" Inputs="ValueOrReference">
+			<Description Locale="en" Content="Attribute whether the accessibility service wants to be able to request enhanced web accessibility enhancements. For example, installing scripts to make app content more accessible."/>
+		</Parameter>
+	</Node>
+</Module>

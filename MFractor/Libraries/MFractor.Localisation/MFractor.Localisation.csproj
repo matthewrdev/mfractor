@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Documentation\Code Actions\localise_csharp.md" />
+    <None Remove="Resources\Snippets\ResxDesignerTemplate.txt" />
+    <None Remove="Resources\Snippets\ResxTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Snippets\ResxDesignerTemplate.txt" />
+    <EmbeddedResource Include="Resources\Snippets\ResxTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Localiser Refactorings\" />
+    <Folder Include="Value Providers\" />
+    <Folder Include="Exporting\" />
+    <Folder Include="Scaffolding\" />
+    <Folder Include="Tooltips\" />
+    <Folder Include="Navigation\" />
+  </ItemGroup>
+</Project>

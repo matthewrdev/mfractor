@@ -1,0 +1,22 @@
+﻿using System;
+using System.ComponentModel;
+using Android.Content;
+using Android.Views;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+
+[assembly: Xamarin.Forms.ExportRenderer(typeof($control_type$), typeof($namespace$.$renderer_name$))]
+namespace $namespace$
+{
+    public class $renderer_name$ : $base_type$
+    {
+        public $renderer_name$(Android.Content.Context context) : base(context)
+        {
+        }
+
+        protected override Android.Views.View GetCellCore(Xamarin.Forms.Cell item, Android.Views.View convertView, Android.Views.ViewGroup parent, Android.Content.Context context)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

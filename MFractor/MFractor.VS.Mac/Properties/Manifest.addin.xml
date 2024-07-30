@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+  
+  <!-- StartupHandler Operations -->
+  <Extension path="/MonoDevelop/Ide/StartupHandlers">
+      <Class class="MFractor.VS.Mac.IdeStartupCommand" />
+  </Extension>
+  
+  <!-- Top Level Menu -->
+  <Extension path="/MonoDevelop/Ide/MainMenu">
+    <ItemSet insertafter="Tools" id = "MFractor" _label = "MFractor">
+      <CommandItem id="MFractor.Commands.MainMenu.LicenseSummary" />
+      
+      <CommandItem id="MFractor.Commands.MainMenu.Licensing" />
+      <CommandItem id="MFractor.Commands.MainMenu.RecoverLicense" />
+      <CommandItem id="MFractor.Commands.MainMenu.BuyMFractor" />
+      
+      <SeparatorItem />
+      
+      <CommandItem id="MFractor.Commands.MainMenu.ImageManager"/>
+      <CommandItem id="MFractor.Commands.MainMenu.Scaffolder"/>
+      <CommandItem id="MFractor.Commands.MainMenu.Wizards"/>
+      <CommandItem id="MFractor.Commands.MainMenu.Importers"/>
+      
+      <ItemSet _label="Import">
+        <CommandItem id="MFractor.Commands.MainMenu.Import.AddImageCommand" />
+        <CommandItem id="MFractor.Commands.MainMenu.Import.AddFontCommand" />
+        <CommandItem id="MFractor.Commands.MainMenu.Import.AddAppIconCommand" />
+      </ItemSet>
+      
+      <CommandItem id="MFractor.Commands.MainMenu.Actions"/>
+      
+      <SeparatorItem />
+      
+      <CommandItem id="MFractor.Commands.MainMenu.VersionSummary" />
+      
+      
+      <ItemSet _label="Preferences">
+        <CommandItem id="MFractor.Commands.MainMenu.Preferences.GeneralCommand" />
+        <CommandItem id="MFractor.Commands.MainMenu.Preferences.CodeAnalysisCommand" />
+        <CommandItem id="MFractor.Commands.MainMenu.Preferences.FormattingOptionsCommand" />
+        <CommandItem id="MFractor.Commands.MainMenu.Preferences.DeleteOutputFoldersCommand" />
+      </ItemSet>
+
+      <CommandItem id="MFractor.Commands.MainMenu.About"/>
+      <CommandItem id="MFractor.Commands.MainMenu.Support"/>
+      <CommandItem id="MFractor.Commands.MainMenu.Legal"/>
+      <CommandItem id="MFractor.Commands.MainMenu.InternalTools"/>
+    </ItemSet>
+  </Extension>
+  
+  <!-- 'Tools' Top Level Menu Commands -->
+  <Extension path="/MonoDevelop/Ide/MainMenu/Tools">
+    <CommandItem id="MFractor.Commands.MainMenu.StartAccessibilityInspector" insertafter="MonoDevelop.MacDev.Commands.LaunchInstruments"/>
+  </Extension>
+  
+  <!-- Icons -->
+  <Extension path="/MonoDevelop/Core/StockIcons">
+      <StockIcon stockid="mfractor-menu" resource="MFractor.VS.Mac.Assets.logo_prefs.png" size="Menu" />
+      <StockIcon stockid="mfractor-logo-16" resource="MFractor.VS.Mac.Assets.logo-16.png" size="Menu" />
+      <StockIcon stockid="android-completion-icon" resource="MFractor.VS.Mac.Assets.android-icon.png" size="Menu" />
+      <StockIcon stockid="resx-pencil" resource="MFractor.VS.Mac.Assets.pencil.png" size="Menu" />
+      <StockIcon stockid="android-icon-greyscale" resource="MFractor.VS.Mac.Assets.android-icon-greyscale.png" size="LargeToolbar" />
+      <StockIcon stockid="ios-icon-greyscale" resource="MFractor.VS.Mac.Assets.ios-icon-greyscale.png" size="LargeToolbar" />
+    
+      <!-- Code Completion Icons -->
+      <StockIcon stockid="mf-wand" resource="wand-16.png" size="Menu" imageid="{d8d2ef08-6bc2-4ed5-a636-2eb1fc9c7368}#1"/>
+      <StockIcon stockid="mf-color-picker" resource="color-picker-16.png" size="Menu" imageid="{85911147-830e-4e79-8800-86157c98f6fe}#1"/>
+      <StockIcon stockid="mf-code" resource="code-16.png" size="Menu" imageid="{baed6ac0-c074-4983-b04c-a9733c2fab69}#1"/>
+      <StockIcon stockid="mf-css" resource="css-16.png" size="Menu" imageid="{591a14b2-8daa-4104-9fbf-0d054c781740}#1"/>
+      <StockIcon stockid="mf-feather-box" resource="feather-box-16.png" size="Menu" imageid="{12808e2a-b7bc-4515-a4ac-e1ea51238167}#1"/>
+      <StockIcon stockid="mf-dynamic-resource-box" resource="box-dynamic-resource-16.png" size="Menu" imageid="{3f5c7d8e-f4ce-4f77-9adf-9336db384d9e}#1"/>
+      <StockIcon stockid="mf-feather-image" resource="feather-image-16.png" size="Menu" imageid="{48415b4f-fc6b-4d65-bc20-c172f0df4ebf}#1"/>
+      <StockIcon stockid="mf-exchange" resource="exchange-16.png" size="Menu" imageid="{4e9d15aa-043a-43bc-becf-04e4067d3389}#1"/>
+      <StockIcon stockid="mf-crosshairs" resource="crosshairs-16.png" size="Menu" imageid="{ea2212db-2f58-452e-95e3-1c06126dfbc0}#1"/>
+      <StockIcon stockid="mf-eye" resource="eye-16.png" size="Menu" imageid="{f7fe03a3-2215-4af9-a780-df3e8a25fdaa}#1"/>
+      <StockIcon stockid="mf-grid-column" resource="grid-column-16.png" size="Menu" imageid="{bb882a1e-1a41-4a94-8fc9-77ab71aa9b41}#1"/>
+      <StockIcon stockid="mf-grid-row" resource="grid-row-16.png" size="Menu" imageid="{e4089b72-27cb-44c4-8248-2ad0e0ccd25d}#1"/>
+      <StockIcon stockid="mf-font-icon" resource="MFractor.VS.Mac.Assets.font-icon-16.png" size="Menu" imageid="{6bbfe5e2-80ba-432e-ba7f-9a8ff31c09fc}#1"/>
+  </Extension>
+  
+  <!-- Solution Pad Commands -->
+  <Extension path="/MonoDevelop/Ide/ContextMenu/ProjectPad">
+      <CommandItem id="MFractor.Ide.DeleteOutputFoldersCommand" insertafter="MonoDevelop.Ide.Commands.ProjectCommands.Clean" insertbefore="MonoDevelop.Ide.Commands.ProjectCommands.Unload" />
+      <CommandItem id="MFractor.CleanAndCompress" insertbefore="ActionsSectionEnd" />
+      <CommandItem id="MFractor.Commands.ClassFromClipboard" insertafter="Add" />
+      <CommandItem id="MFractor.Scaffolder" insertafter="Add" />
+    
+      <CommandItem id="MFractor.Commands.Pads.DeleteImageAsset" insertafter="MonoDevelop.Ide.Commands.EditCommands.Rename"/>
+    
+      <CommandItem id="MFractor.Commands.Pads.EditSharedProjectItems"/>
+      <CommandItem id="MFractor.Commands.Pads.OpenAndroidManifest"/>
+  </Extension>
+  
+  <!-- 'Tools' Menu Solution Pad Commands -->
+  <Extension path="/MonoDevelop/Ide/ContextMenu/ProjectPad/Tools">
+    <SeparatorItem />
+    <CommandItem id="MFractor.Commands.Pads.ManageImageAssets"/>
+    <CommandItem id="MFractor.Commands.Pads.GenerateFontCharacterCodeClass"/>
+    <CommandItem id="MFractor.Commands.Pads.AddExportFontDeclaration"/>"
+    <CommandItem id="MFractor.Commands.Pads.CopyResourceIDToClipboard"/>
+    <CommandItem id="MFractor.Commands.Pads.ResyncSolutionResources"/>
+  
+    <CommandItem id="MFractor.Commands.Pads.CopyPackageNameToClipboard"/>
+    <CommandItem id="MFractor.Commands.Pads.CopyBundleIdToClipboard" />
+    <CommandItem id="MFractor.Commands.Pads.EditSharedProjectItems"/>
+  
+    <SeparatorItem />
+  
+    <CommandItem id="MFractor.Commands.Pads.AddFontPlistEntry" />
+    <CommandItem id="MFractor.Commands.Pads.CopyFontFamilyXamlToClipboard" />   
+   
+    <SeparatorItem />
+    <CommandItem id="MFractor.Commands.ConvertProjectToCSharp9" />
+  </Extension>
+  
+  <!-- 'Add' Menu Solution Pad Commands -->
+  <Extension path="/MonoDevelop/Ide/ContextMenu/ProjectPad/Add">
+      <SeparatorItem />
+      <CommandItem id="MFractor.Commands.Pads.AddFile.ImageAsset"/>
+      <CommandItem id="MFractor.Commands.Pads.AddFile.FontAsset" />
+      <CommandItem id="MFractor.Commands.Pads.AddFile.AppIcon" />
+  </Extension>
+  
+  <!-- View Display Bindings -->
+  <Extension path = "/MonoDevelop/Ide/DisplayBindings">
+    <DisplayBinding insertbefore="DefaultDisplayBinding" class="MFractor.VS.Mac.DisplayBindings.ImageManagerDisplayBinding" />
+  </Extension>
+  
+  <!-- Editor Commands -->
+  <Extension path="/MonoDevelop/TextEditor/ContextMenu/Editor">
+    <CommandItem id="MFractor.Commands.CodeActions" _label="MFractor Code Actions" insertbefore="MonoDevelop.Debugger.DebugCommands.ExpressionEvaluator" />
+    <CommandItem id="MFractor.Commands.Scaffold" _label="Scaffold" insertbefore="MonoDevelop.Debugger.DebugCommands.ExpressionEvaluator" />
+    
+    <SeparatorItem />
+    
+    <CommandItem id="MFractor.Commands.Navigation.GoToRelationalImplementation"/>
+    <CommandItem id="MFractor.Commands.Navigation.GoToRelationalDefinitionCodeBehind"/>
+    <CommandItem id="MFractor.Commands.Navigation.GoToRelationalDefinition"/>
+    
+    <CommandItem id="MFractor.Commands.Navigation.OpenXamlSymbol" />
+  </Extension> 
+  
+  <!-- Commands -->
+  <Extension path="/MonoDevelop/Ide/Commands">
+    
+    <Category _name = "MFractor" id="MFractor">
+  
+      <!-- Solution Pad Commands -->
+      <Command id="MFractor.Ide.DeleteOutputFoldersCommand" _label="Delete Output Folders" _description="Clean the current solutions bin and obj directories." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.DeleteOutputFoldersCommandAdapter" />
+      <Command id="MFractor.CleanAndCompress" _label="Clean And Compress" _description="Cleans the current solution or project and then creates a zip archive of the codebase." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CleanAndCompressCommand" />
+      <Command id="MFractor.Commands.ClassFromClipboard" _label="Create Class From Clipboard" _description="Create a new class file using the contents of the clipboard." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CreateClassFromClipboardCommandAdapter" />
+      <Command id="MFractor.Scaffolder" _label="Scaffold" _description="Launch MFractors scaffolding tool to create new files." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.ScaffolderCommandAdapter" />
+      <Command id="MFractor.Commands.ConvertProjectToCSharp9" _label="Convert Project to C# 9.0" _description="Convert the current project to use C# 9.0" defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.ConvertProjectToCSharp9CommandAdapter" />
+    
+      <!-- Font Asset Commands -->
+      <Command id="MFractor.Commands.Pads.AddFontPlistEntry" _label="Add To UIAppFonts" _description="Adds a UIAppFonts entry for the font into the projects info.plist." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.AddFontPlistEntryCommandAdapter" />    
+      <Command id="MFractor.Commands.Pads.CopyFontFamilyXamlToClipboard" _label="Copy FontFamily Xaml To Clipboard" _description="Copies the XAML code for a new XAML font declaration to the clipboard." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CopyFontFamilyXamlToClipboardCommandAdapter" />    
+      <Command id="MFractor.Commands.Pads.GenerateFontCharacterCodeClass" _label="Generate Font Character Code Class" _description="Generates a new class file that lists all the character codes in this font file as string constants" defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.GenerateFontGlyphClassCommandAdapter" />    
+      <Command id="MFractor.Commands.Pads.AddExportFontDeclaration" _label="Add Export Font Declaration" _description="Adds an ExportFont attribute for the font to the projects AssemblyInfo.cs" defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.AddExportFontDeclarationCommandAdapter" />    
+     
+      <!-- Image Asset Commands -->
+      <Command id="MFractor.Commands.Pads.DeleteImageAsset" _label="Delete Image Asset" _description="Deletes all densities of this image asset from this project." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.DeleteImageAssetCommandAdapter" />    
+      <Command id="MFractor.Commands.Pads.ManageImageAssets" _label="Manage Image Assets Image Asset" _description="The Image Asset Manager lets you visually explore all the image assets in your mobile solution. You can delete image assets and also import new ones." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.LaunchImageManagerCommandAdapter"/>
+    
+      <!-- Tools -->
+      <Command id="MFractor.Commands.Pads.ResyncSolutionResources" _label="Resync Solution Resources (MFractor)" _description="Triggers MFractor to rebuild its resources database." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.ResyncSolutionResourcesCommandAdapter"/>
+      <Command id="MFractor.Commands.Pads.CopyResourceIDToClipboard" _label="Copy resource Id to clipboard" _description="Copies the embedded resources identifier to the clipboard." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CopyResourceIDToClipboardCommandAdapter"/>
+      <Command id="MFractor.Commands.Pads.EditSharedProjectItems" _label="Edit Shared Project Items" _description="Opens the .projitems file for this shared project in the XML editor." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.EditSharedProjectItemsCommandAdapter" />
+  
+      <!-- Solution Pad -->
+      <Command id="MFractor.Commands.Pads.AddFile.FontAsset" _label="Font Asset" _description="Import a new font asset into this project." defaultHandler="MFractor.VS.Mac.Commands.AddFile.AddFontCommandAdapter" />    
+      <Command id="MFractor.Commands.Pads.AddFile.ImageAsset" _label="Image Asset" _description="Import a new image asset into this project." defaultHandler="MFractor.VS.Mac.Commands.AddFile.AddImageCommandAdapter" />
+      <Command id="MFractor.Commands.Pads.AddFile.AppIcon" _label="App Icon" _description="Import a new application icon into your iOS and Android projects using the Importer." defaultHandler="MFractor.VS.Mac.Commands.AddFile.AddAppIconCommandAdapter" />
+    
+      <!-- Code Editor Actions-->
+      <Command id="MFractor.Commands.CodeActions" _label="MFractor Code Actions" type="array" _description="(MFractor) Refactor Xaml, Xml and Android resource documents" defaultHandler="MFractor.VS.Mac.Commands.CodeActions.CodeActionsCommandAdapter" />
+      <Command id="MFractor.Commands.Scaffold" _label="Scaffold" macShortcut="Alt|Shift|N" _description="Launch MFractor's scaffolding tool to generate new code files." defaultHandler="MFractor.VS.Mac.Commands.CodeActions.ScaffolderCommandAdapter" />
+  
+      <!-- Xaml Navigation Commands -->
+      <Command id="MFractor.Commands.Navigation.OpenXamlSymbol" insertbefore="MonoDevelop.Refactoring.RefactoryCommands.GotoDeclaration" _label="Go-To Xaml Symbol" macShortcut="Meta|D" _description="Performs a Go-To-Declaration operation for the xaml symbol under the cursor" defaultHandler="MFractor.VS.Mac.Commands.XAML.XamlGoToSymbolCommandAdapter" />
+      
+      <!-- Relational Navigation Commands -->
+      <Command id="MFractor.Commands.Navigation.GoToRelationalImplementation" _label="Go To Implementation" macShortcut="Alt|Shift|1" defaultHandler="MFractor.VS.Mac.Commands.Navigation.GoToRelationalImplementationCommandAdapter" icon="mfractor-logo-16"/>
+      <Command id="MFractor.Commands.Navigation.GoToRelationalDefinitionCodeBehind" _label="Go To Code Behind" macShortcut="Alt|Shift|2" defaultHandler="MFractor.VS.Mac.Commands.Navigation.GoToRelationalDefinitionCodeBehindCommandAdapter" icon="mfractor-logo-16"/>
+      <Command id="MFractor.Commands.Navigation.GoToRelationalDefinition" _label="Go To Definition" macShortcut="Alt|Shift|3" defaultHandler="MFractor.VS.Mac.Commands.Navigation.GoToRelationalDefinitionCommandAdapter" icon="mfractor-logo-16"/>
+ 
+      <!-- Main Menu Commands -->
+  
+      <Command id="MFractor.Commands.MainMenu.About" _label="About" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.AboutCommandAdapter" type="array"/>
+      <Command id="MFractor.Commands.MainMenu.Support" _label="Support" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.SupportCommandAdapter" type="array"/>
+      <Command id="MFractor.Commands.MainMenu.Legal" _label="Legal" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.LegalCommandAdapter" type="array"/>
+  
+      <Command id="MFractor.Commands.MainMenu.Wizards" type="array" _label="Wizards" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.WizardsCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.InternalTools" type="array" _label="Internal Tools" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.InternalToolsCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Actions" type="array" _label="Actions" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.ActionsCommandAdapter" />
+  
+      <Command id="MFractor.Commands.MainMenu.ImageManager" _label="Manage Image Assets" _description="The Image Asset Manager lets you visually explore all the image assets in your mobile solution. You can delete image assets and also import new ones." defaultHandler="MFractor.VS.Mac.Commands.MainMenu.LaunchImageManagerCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Scaffolder" _label="Scaffold" _description="Launch MFractor's scaffolding tool to generate new code files." defaultHandler="MFractor.VS.Mac.Commands.CodeActions.ScaffolderCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Licensing" _label="Licensing" _description="View the licensing information for this MFractor installation and import an MFractor Professional license." defaultHandler="MFractor.VS.Mac.Commands.MainMenu.ViewLicenseCommandAdapter" />
+  
+      <Command id="MFractor.Commands.MainMenu.LicenseSummary" _label="License Information" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.LicenseSummaryCommandAdapter"/>
+    
+      <Command id="MFractor.Commands.MainMenu.VersionSummary" _label="Version Summary" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.VersionSummaryCommandAdapter"/>
+    
+      <Command id="MFractor.Commands.MainMenu.RecoverLicense" _label="Recover License" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.RecoverLicenseCommandAdapter"/>
+      <Command id="MFractor.Commands.MainMenu.BuyMFractor" _label="Buy MFractor" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.BuyMFractorCommandAdapter"/>
+    
+      <!-- Tools Menu Commands -->
+      <Command id="MFractor.Commands.MainMenu.StartAccessibilityInspector" _label="Accessibility Inspector" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.StartAccessibilityInspectorCommandAdapter"/>
+    
+      <!-- Import Commands -->
+      <Command id="MFractor.Commands.MainMenu.Import.AddImageCommand" _label="Import Image" _description="Import a new image asset into your Android and iOS projects using the Image Importer." defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Import.AddImageCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Import.AddFontCommand" _label="Import Font" _description="Import a new font asset into your iOS and Android projects." defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Import.AddFontCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Import.AddAppIconCommand" _label="Import App Icon" _description="Import a new application icon into your iOS and Android projects using the Importer." defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Import.AddAppIconCommandAdapter" />
+
+      <!-- Preferences Commands -->
+      <Command id="MFractor.Commands.MainMenu.Preferences.GeneralCommand" _label="General" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Preferences.SettingsPreferencesCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Preferences.CodeAnalysisCommand" _label="Code Analysis" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Preferences.CodeAnalysisPreferencesCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Preferences.FormattingOptionsCommand" _label="Formatting Options" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Preferences.FormattingOptionsPreferencesCommandAdapter" />
+      <Command id="MFractor.Commands.MainMenu.Preferences.DeleteOutputFoldersCommand" _label="Delete Output Folders" defaultHandler="MFractor.VS.Mac.Commands.MainMenu.Preferences.DeleteOutputOptionsPreferencesCommandAdapter" />
+
+      <!-- Android Commands -->
+      <Command id="MFractor.Commands.Pads.CopyPackageNameToClipboard" _label="Copy Package Id To Clipboard" _description="Copies the Android Package Id to the clipboard." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CopyPackageNameToClipboardCommandAdapter" />
+      <Command id="MFractor.Commands.Pads.OpenAndroidManifest" _label="Open Android Manifest" _description="Opens the manifest file for this Android project." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.Android.OpenAndroidManifestCommandAdapter" />
+      
+      <!-- iOS Commands -->
+      <Command id="MFractor.Commands.Pads.CopyBundleIdToClipboard" _label="Copy Bundle Id To Clipboard" _description="Copies the iOS Bundle Identifier to the clipboard." defaultHandler="MFractor.VS.Mac.Commands.SolutionPad.CopyBundleIdToClipboardCommandAdapter" />
+      
+    </Category>
+    
+  </Extension>
+
+  <!-- Search Bindings -->
+  <Extension path="/MonoDevelop/Ide/SearchCategories">
+      <Class id="MFractor.StaticResourceSearch" class="MFractor.VS.Mac.Search.Xaml.StaticResourceSearch" />
+      <Class id="MFractor.AutomationIdSearch" class="MFractor.VS.Mac.Search.Xaml.AutomationIdSearch" />
+      <Class id="MFractor.DynamicResourceSearch" class="MFractor.VS.Mac.Search.Xaml.DynamicResourceSearch" />
+      <Class id="MFractor.ResXSearch" class="MFractor.VS.Mac.Search.Localisation.ResXLocalisationSearch" />
+      <Class id="MFractor.CommandSearch" class="MFractor.VS.Mac.Search.Commands.CommandSearch" />
+  </Extension>
+  
+  <!-- MEF Catalog -->
+  <Extension path="/MonoDevelop/Ide/Composition">
+      <Assembly file="MFractor.VS.Mac.dll" />
+      <Assembly file="MFractor.dll" />
+      <Assembly file="MFractor.CSharp.dll" />
+      <Assembly file="MFractor.Fonts.dll" />
+      <Assembly file="MFractor.Maui.dll" />
+      <Assembly file="MFractor.iOS.dll" />
+      <Assembly file="MFractor.Images.dll" />
+      <Assembly file="MFractor.Localisation.dll" />
+      <Assembly file="MFractor.Linker.dll" />
+      <Assembly file="MFractor.Xml.dll" />
+      <Assembly file="MFractor.MSBuild.dll" />
+      <Assembly file="MFractor.Android.dll" />
+      <Assembly file="MFractor.Code.dll" />
+      <Assembly file="MFractor.Ide.dll" />
+      <Assembly file="MFractor.Workspace.dll" />
+  </Extension>
+
+  <!-- Roslyn Diagnostics -->
+  <Extension path="/MonoDevelop/Refactoring/AnalyzerAssemblies">
+      <Assembly file="MFractor.VS.Mac.dll" />
+      <Assembly file="MFractor.dll" />
+      <Assembly file="MFractor.CSharp.dll" />
+      <Assembly file="MFractor.Fonts.dll" />
+      <Assembly file="MFractor.Maui.dll" />
+      <Assembly file="MFractor.iOS.dll" />
+      <Assembly file="MFractor.Images.dll" />
+      <Assembly file="MFractor.Localisation.dll" />
+      <Assembly file="MFractor.Linker.dll" />
+      <Assembly file="MFractor.Xml.dll" />
+      <Assembly file="MFractor.MSBuild.dll" />
+      <Assembly file="MFractor.Android.dll" />
+      <Assembly file="MFractor.Code.dll" />
+      <Assembly file="MFractor.Ide.dll" />
+      <Assembly file="MFractor.Workspace.dll" />
+  </Extension>
+  
+</ExtensionModel>

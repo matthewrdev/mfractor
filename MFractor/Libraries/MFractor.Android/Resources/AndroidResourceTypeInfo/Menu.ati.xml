@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="menu" Name="Menu" AllowUnknownNodes="false"> 
+	<Description Locale="en" Content="Provides support for 'menu' resources; xml files that define the structure of application menus (such as those triggered through the Action Bar)."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/ui/menus.html"/>
+	<Node Name="menu" Abstract="false" Required="true">
+		<Description Locale="en" Content="This must be the root node. Contains 'item' and/or 'group' elements."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="item" Abstract="false" Required="false"> 
+			<Modifier Name="AddChildren">
+				<ModifierArgument Name="TypesCSV" Value="menu"/>
+			</Modifier>
+			<Description Locale="en" Content="A menu item. May contain a 'menu' element (for a Sub Menu). Must be a child of a 'menu' or 'group' element."/>
+			<Parameter Name="android:id" Required="false" TypesCSV="id" Inputs="Reference" > 
+				<Description Locale="en" Content="A unique resource ID. To create a new resource ID for this item, use the form: '@+id/name'. The plus symbol indicates that this should be created as a new ID."/>
+			</Parameter>
+			<Parameter Name="android:title" Required="false" TypesCSV="string" Inputs="ValueOrReference" > 
+				<Description Locale="en" Content="The menu title as a string resource or raw string."/>
+			</Parameter>
+			<Parameter Name="android:titleCondensed" Required="false" TypesCSV="string" Inputs="ValueOrReference" > 
+				<Description Locale="en" Content="A condensed title as a string resource or a raw string. This title is used for situations in which the normal title is too long."/>
+			</Parameter>
+			<Parameter Name="android:icon" Required="false" TypesCSV="drawable" Inputs="Reference"> 
+				<Description Locale="en"  Content="An image to be used as the menu item icon."/>
+			</Parameter>
+			<Parameter Name="android:onClick" Required="false" TypesCSV="method:(Android.View.MenuItem)" Inputs="Reference" IntroducedApiLevel="11"> 
+				<Description Locale="en" Content="The method to call when this menu item is clicked. The method must be declared in the activity as public and accept a MenuItem as its only parameter, which indicates the item clicked. This method takes precedence over the standard callback to onOptionsItemSelected()."/>
+			</Parameter>
+			<Parameter Name="android:showAsAction" Required="false" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="11"> 
+				<Description Locale="en" Content="When and how this item should appear as an action item in the app bar. A menu item can appear as an action item only when the activity includes an app bar"/>
+				<ParameterValue Name="ifRoom">
+					<Description Locale="en" Content="Only place this item in the app bar if there is room for it. If there is not room for all the items marked 'ifRoom', the items with the lowest orderInCategory values are displayed as actions, and the remaining items are displayed in the overflow menu."/>
+				</ParameterValue>
+				<ParameterValue Name="withText">
+					<Description Locale="en" Content="Also include the title text (defined by android:title) with the action item. You can include this value along with one of the others as a flag set, by separating them with a pipe |."/>
+				</ParameterValue>
+				<ParameterValue Name="never">
+					<Description Locale="en" Content="Never place this item in the app bar. Instead, list the item in the app bar's overflow menu."/>
+				</ParameterValue>
+				<ParameterValue Name="always">
+					<Description Locale="en"  Content="Always place this item in the app bar. Avoid using this unless it's critical that the item always appear in the action bar. Setting multiple items to always appear as action items can result in them overlapping with other UI in the app bar."/>
+				</ParameterValue>
+				<ParameterValue Name="collapseActionView" IntroducedApiLevel="14">
+					<Description Locale="en" Content="The action view associated with this action item (as declared by android:actionLayout or android:actionViewClass) is collapsible." />
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:actionLayout" Required="false" TypesCSV="layout" Inputs="Reference"  IntroducedApiLevel="11">
+				<Description Locale="en" Content="A layout to use as the action view."/>
+			</Parameter>
+			<Parameter Name="android:actionViewClass" Required="false" TypesCSV="class:Android.View.View" Inputs="Value"  IntroducedApiLevel="11">
+				<Description Locale="en" Content="A fully-qualified class name for the View to use as the action view. For example, 'android.widget.SearchView' to use SearchView as an action view."/>
+			</Parameter>
+			<Parameter Name="android:actionProviderClass" Required="false" TypesCSV="class:Android.View.View" Inputs="Value" IntroducedApiLevel="14">
+				<Description Locale="en" Content="A fully-qualified class name for the ActionProvider to use in place of the action item. For example, 'android.widget.ShareActionProvider' to use ShareActionProvider"/>
+			</Parameter>
+			<Parameter Name="android:alphabeticShortcut" Required="false" TypesCSV="char" Inputs="Value">
+				<Description Locale="en" Content="A character for the alphabetic shortcut key."/>
+			</Parameter>
+			<Parameter Name="android:numericShortcut" Required="false" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="A number for the numeric shortcut key."/>
+			</Parameter>
+			<Parameter Name="android:checkable" Required="false" TypesCSV="boolean" Inputs="ValueOrReference" Content="'true' if the item is checkable.">
+				<Description Locale="en" Content="'true' if the item is enabled by default."/>
+			</Parameter>
+			<Parameter Name="android:checked" Required="false" TypesCSV="boolean" Inputs="ValueOrReference" Content="'true' if the item is checked by default.">
+				<Description Locale="en" Content="'true' if the item is enabled by default."/>
+			</Parameter>
+			<Parameter Name="android:visible" Required="false" TypesCSV="boolean" Inputs="ValueOrReference" Content="'true' if the item is visible by default.">
+				<Description Locale="en" Content="'true' if the item is enabled by default."/>
+			</Parameter>
+			<Parameter Name="android:enabled" Required="false" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if the item is enabled by default."/>
+			</Parameter>
+			<Parameter Name="android:menuCategory" Required="false" TypesCSV="keyword" Inputs="Value">
+				<Description Locale="en" Content="Value corresponding to Menu CATEGORY_* constants, which define the item's priority."/>
+				<ParameterValue Name="container">
+					<Description Locale="en" Content="For items that are part of a container."/>
+				</ParameterValue>
+				<ParameterValue Name="system">
+					<Description Locale="en" Content="For items that are provided by the system."/>
+				</ParameterValue>
+				<ParameterValue Name="secondary">
+					<Description Locale="en" Content="For items that are user-supplied secondary (infrequently used) options."/>
+				</ParameterValue>
+				<ParameterValue Name="alternative">
+					<Description Locale="en" Content="For items that are alternative actions on the data that is currently displayed."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:orderInCategory" Required="false" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The order of 'importance' of the item, within a group."/>
+			</Parameter>
+		</Node>
+		<Node Name="group" Abstract="false" Required="false" ChildrenConstraints="OtherRootNodesInModule">
+			<Description Locale="en" Content="A menu group (to create a collection of items that share traits, such as whether they are visible, enabled, or checkable). Contains one or more 'item' elements. Must be a child of a 'menu' element." />
+			<Modifier Name="AddChildren">
+				<ModifierArgument Name="TypesCSV" Value="group,item"/>
+			</Modifier>
+			<Parameter Name="android:id" Required="false" TypesCSV="id" Inputs="Reference">
+				<Description Locale="en" Content=" A unique resource ID. To create a new resource ID for this item, use the form: '@+id/name'. The plus symbol indicates that this should be created as a new ID."/>
+			</Parameter>
+			<Parameter Name="android:checkableBehavior" Required="false" TypesCSV="keyword" Inputs="Value" >
+				<Description Locale="en" Content="The type of checkable behavior for the group."/>
+				<ParameterValue Name="none">
+					<Description Locale="en" Content="Not checkable."/>
+				</ParameterValue>
+				<ParameterValue Name="all">
+					<Description Locale="en" Content="All items can be checked (use checkboxes)."/>
+				</ParameterValue>
+				<ParameterValue Name="single">
+					<Description Locale="en" Content="Only one item can be checked (use radio buttons)."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:visible" Required="false" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if the group is visible"/>
+			</Parameter>
+			<Parameter Name="android:enabled" Required="false" TypesCSV="boolean" Inputs="ValueOrReference">
+				<Description Locale="en" Content="'true' if the group is enabled"/>
+			</Parameter>
+			<Parameter Name="android:menuCategory" Required="false" TypesCSV="keyword" Inputs="Value">
+				<Description Locale="en" Content="Value corresponding to Menu CATEGORY_* constants, which define the groups's priority."/>
+				<ParameterValue Name="container">
+					<Description Locale="en" Content="For groups that are part of a container."/>
+				</ParameterValue>
+				<ParameterValue Name="system">
+					<Description Locale="en" Content="For groups that are provided by the system."/>
+				</ParameterValue>
+				<ParameterValue Name="secondary">
+					<Description Locale="en" Content="For groups that are user-supplied secondary (infrequently used) options."/>
+				</ParameterValue>
+				<ParameterValue Name="alternative">
+					<Description Locale="en" Content="For groups that are alternative actions on the data that is currently displayed."/>
+				</ParameterValue>
+			</Parameter>
+			<Parameter Name="android:orderInCategory" Required="false" TypesCSV="integer" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The default order of the items within the category."/>
+			</Parameter> 
+		</Node>
+	</Node>
+</Module> 

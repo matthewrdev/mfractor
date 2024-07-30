@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="View" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides IntelliSense and code analysis support for the View class; the base class for all views usable within an Android layout definition."/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/guide/topics/ui/declaring-layout.html"/>
+	<Node Name="View" Abstract="false" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.View"/>
+		<Description Locale="en" Content="This class represents the basic building block for user interface components"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Parameter Name="android:accessibilityLiveRegion" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Indicates to accessibility services whether the user should be notified when this view changes."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Accessibility services should not announce changes to this view."/>
+			</ParameterValue>
+			<ParameterValue Name="polite">
+				<Description Locale="en" Content="Accessibility services should announce changes to this view."/>
+			</ParameterValue>
+			<ParameterValue Name="assertive">
+				<Description Locale="en" Content="Accessibility services should interrupt ongoing speech to immediately announce changes to this view."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:accessibilityTraversalAfter" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the id of a view after which this one is visited in accessibility traversal."/>
+		</Parameter>
+		<Parameter Name="android:accessibilityTraversalBefore" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the id of a view before which this one is visited in accessibility traversal."/>
+		</Parameter>
+		<Parameter Name="android:alpha" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="alpha property of the view, as a value between 0 (completely transparent) and 1 (completely opaque)."/>
+		</Parameter>
+		<Parameter Name="android:background" RequirementBehaviour="Optional" TypesCSV="color,drawable" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="A drawable to use as the background."/>
+		</Parameter>
+		<Parameter Name="android:backgroundTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the background."/>
+		</Parameter>
+		<Parameter Name="android:backgroundTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the background tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:clickable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether this view reacts to click events."/>
+		</Parameter>
+		<Parameter Name="android:contentDescription" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines text that briefly describes content of the view."/>
+		</Parameter>
+		<Parameter Name="android:contextClickable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether this view reacts to context click events."/>
+		</Parameter>
+		<Parameter Name="android:drawingCacheQuality" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the quality of translucent drawing caches."/>
+			<ParameterValue Name="auto">
+				<Description Locale="en" Content="Lets the framework decide what quality level should be used for the drawing cache."/>
+			</ParameterValue>
+			<ParameterValue Name="low">
+				<Description Locale="en" Content="Low quality. When set to low quality, the drawing cache uses a lower color depth, thus losing precision in rendering gradients, but uses less memory."/>
+			</ParameterValue>
+			<ParameterValue Name="high">
+				<Description Locale="en" Content="High quality. When set to high quality, the drawing cache uses a higher color depth but uses more memory."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:duplicateParentState" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="When this attribute is set to true, the view gets its drawable state (focused, pressed, etc."/>
+		</Parameter>
+		<Parameter Name="android:elevation" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="base z depth of the view Must be a dimension value, which is a floating point number appended with a unit such as '14."/>
+		</Parameter>
+		<Parameter Name="android:fadeScrollbars" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether to fade out scrollbars when they are not in use."/>
+		</Parameter>
+		<Parameter Name="android:fadingEdgeLength" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the length of the fading edges."/>
+		</Parameter>
+		<Parameter Name="android:filterTouchesWhenObscured" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies whether to filter touches when the view's window is obscured by another visible window."/>
+		</Parameter>
+		<Parameter Name="android:fitsSystemWindows" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Boolean internal attribute to adjust view layout based on system windows such as the status bar."/>
+		</Parameter>
+		<Parameter Name="android:focusable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Boolean that controls whether a view can take focus."/>
+		</Parameter>
+		<Parameter Name="android:focusableInTouchMode" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Boolean that controls whether a view can take focus while in touch mode."/>
+		</Parameter>
+		<Parameter Name="android:foreground" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the drawable to draw over the content."/>
+		</Parameter>
+		<Parameter Name="android:foregroundGravity" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the gravity to apply to the foreground drawable."/>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Push object to the top of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Push object to the bottom of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Push object to the left of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Push object to the right of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="center_vertical">
+				<Description Locale="en" Content="Place object in the vertical center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_vertical">
+				<Description Locale="en" Content="Grow the vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center_horizontal">
+				<Description Locale="en" Content="Place object in the horizontal center of its container, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill_horizontal">
+				<Description Locale="en" Content="Grow the horizontal size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Place the object in the center of its container in both the vertical and horizontal axis, not changing its size."/>
+			</ParameterValue>
+			<ParameterValue Name="fill">
+				<Description Locale="en" Content="Grow the horizontal and vertical size of the object if needed so it completely fills its container."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_vertical">
+				<Description Locale="en" Content="Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges."/>
+			</ParameterValue>
+			<ParameterValue Name="clip_horizontal">
+				<Description Locale="en" Content="Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:foregroundTint" RequirementBehaviour="Optional" TypesCSV="color" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Tint to apply to the foreground."/>
+		</Parameter>
+		<Parameter Name="android:foregroundTintMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Blending mode used to apply the foreground tint."/>
+			<ParameterValue Name="src_over">
+				<Description Locale="en" Content="The tint is drawn on top of the drawable. [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_in">
+				<Description Locale="en" Content="The tint is masked by the alpha channel of the drawable. The drawable’s color channels are thrown out. [Sa * Da, Sc * Da]"/>
+			</ParameterValue>
+			<ParameterValue Name="src_atop">
+				<Description Locale="en" Content="The tint is drawn above the drawable, but with the drawable’s alpha channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="multiply">
+				<Description Locale="en" Content="Multiplies the color and alpha channels of the drawable with those of the tint. [Sa * Da, Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="screen">
+				<Description Locale="en" Content="[Sa + Da - Sa * Da, Sc + Dc - Sc * Dc]"/>
+			</ParameterValue>
+			<ParameterValue Name="add">
+				<Description Locale="en" Content="Combines the tint and drawable color and alpha channels, clamping the result to valid color values. Saturate(S + D)"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:hapticFeedbackEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Boolean that controls whether a view should have haptic feedback enabled for events such as long presses."/>
+		</Parameter>
+		<Parameter Name="android:id" RequirementBehaviour="Optional" TypesCSV="id" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Supply an identifier name for this view, to later retrieve it with View."/>
+		</Parameter>
+		<Parameter Name="android:importantForAccessibility" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls how this View is important for accessibility which is if it fires accessibility events and if it is reported to accessibility services that query the screen."/>
+			<ParameterValue Name="auto">
+				<Description Locale="en" Content="The system determines whether the view is important for accessibility - default (recommended)."/>
+			</ParameterValue>
+			<ParameterValue Name="yes">
+				<Description Locale="en" Content="The view is important for accessibility."/>
+			</ParameterValue>
+			<ParameterValue Name="no">
+				<Description Locale="en" Content="The view is not important for accessibility."/>
+			</ParameterValue>
+			<ParameterValue Name="noHideDescendants">
+				<Description Locale="en" Content="The view is not important for accessibility, nor are any of its descendant views."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:isScrollContainer" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Set this if the view will serve as a scrolling container, meaning that it can be resized to shrink its overall window so that there will be space for an input method."/>
+		</Parameter>
+		<Parameter Name="android:keepScreenOn" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls whether the view's window should keep the screen on while visible."/>
+		</Parameter>
+		<Parameter Name="android:layerType" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Specifies the type of layer backing this view."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="Don't use a layer."/>
+			</ParameterValue>
+			<ParameterValue Name="software">
+				<Description Locale="en" Content="Use a software layer. Refer to setLayerType(int, android.graphics.Paint) for more information."/>
+			</ParameterValue>
+			<ParameterValue Name="hardware">
+				<Description Locale="en" Content="Use a hardware layer. Refer to setLayerType(int, android.graphics.Paint) for more information."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:layoutDirection" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the direction of layout drawing."/>
+			<ParameterValue Name="ltr">
+				<Description Locale="en" Content="Left-to-Right"/>
+			</ParameterValue>
+			<ParameterValue Name="rtl">
+				<Description Locale="en" Content="Right-to-Left"/>
+			</ParameterValue>
+			<ParameterValue Name="inherit">
+				<Description Locale="en" Content="Inherit from parent"/>
+			</ParameterValue>
+			<ParameterValue Name="locale">
+				<Description Locale="en" Content="Locale"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:longClickable" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether this view reacts to long click events."/>
+		</Parameter>
+		<Parameter Name="android:minHeight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the minimum height of the view."/>
+		</Parameter>
+		<Parameter Name="android:minWidth" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the minimum width of the view."/>
+		</Parameter>
+		<Parameter Name="android:nextFocusDown" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the next view to give focus to when the next focus is FOCUS_DOWN If the reference refers to a view that does not exist or is part of a hierarchy that is invisible, a RuntimeException will result when the reference is accessed."/>
+		</Parameter>
+		<Parameter Name="android:nextFocusForward" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the next view to give focus to when the next focus is FOCUS_FORWARD If the reference refers to a view that does not exist or is part of a hierarchy that is invisible, a RuntimeException will result when the reference is accessed."/>
+		</Parameter>
+		<Parameter Name="android:nextFocusLeft" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the next view to give focus to when the next focus is FOCUS_LEFT."/>
+		</Parameter>
+		<Parameter Name="android:nextFocusRight" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the next view to give focus to when the next focus is FOCUS_RIGHT If the reference refers to a view that does not exist or is part of a hierarchy that is invisible, a RuntimeException will result when the reference is accessed."/>
+		</Parameter>
+		<Parameter Name="android:nextFocusUp" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the next view to give focus to when the next focus is FOCUS_UP If the reference refers to a view that does not exist or is part of a hierarchy that is invisible, a RuntimeException will result when the reference is accessed."/>
+		</Parameter>
+		<Parameter Name="android:onClick" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Name of the method in this View's context to invoke when the view is clicked."/>
+		</Parameter>
+		<Parameter Name="android:padding" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of all four edges."/>
+		</Parameter>
+		<Parameter Name="android:paddingBottom" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the bottom edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:paddingEnd" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the end edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:paddingLeft" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the left edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:paddingRight" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the right edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:paddingStart" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the start edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:paddingTop" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the padding, in pixels, of the top edge; see padding."/>
+		</Parameter>
+		<Parameter Name="android:requiresFadingEdge" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines which edges should be faded on scrolling."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="No edge is faded."/>
+			</ParameterValue>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Fades horizontal edges only."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Fades vertical edges only."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:rotation" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="rotation of the view, in degrees."/>
+		</Parameter>
+		<Parameter Name="android:rotationX" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="rotation of the view around the x axis, in degrees."/>
+		</Parameter>
+		<Parameter Name="android:rotationY" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="rotation of the view around the y axis, in degrees."/>
+		</Parameter>
+		<Parameter Name="android:saveEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="If false, no state will be saved for this view when it is being frozen."/>
+		</Parameter>
+		<Parameter Name="android:scaleX" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="scale of the view in the x direction."/>
+		</Parameter>
+		<Parameter Name="android:scaleY" RequirementBehaviour="Optional" TypesCSV="float" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="scale of the view in the y direction."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarAlwaysDrawHorizontalTrack" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the horizontal scrollbar track should always be drawn."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarAlwaysDrawVerticalTrack" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the vertical scrollbar track should always be drawn."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarDefaultDelayBeforeFade" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the delay in milliseconds that a scrollbar waits before fade out."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarFadeDuration" RequirementBehaviour="Optional" TypesCSV="integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the delay in milliseconds that a scrollbar takes to fade out."/>
+		</Parameter>
+		<Parameter Name="android:scrollbars" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines which scrollbars should be displayed on scrolling or not."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="No scrollbar is displayed."/>
+			</ParameterValue>
+			<ParameterValue Name="horizontal">
+				<Description Locale="en" Content="Displays horizontal scrollbar only."/>
+			</ParameterValue>
+			<ParameterValue Name="vertical">
+				<Description Locale="en" Content="Displays vertical scrollbar only."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:scrollbarSize" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the width of vertical scrollbars and height of horizontal scrollbars."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarStyle" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls the scrollbar style and position."/>
+			<ParameterValue Name="insideOverlay">
+				<Description Locale="en" Content="Inside the padding and overlaid"/>
+			</ParameterValue>
+			<ParameterValue Name="insideInset">
+				<Description Locale="en" Content="Inside the padding and inset"/>
+			</ParameterValue>
+			<ParameterValue Name="outsideOverlay">
+				<Description Locale="en" Content="Edge of the view and overlaid"/>
+			</ParameterValue>
+			<ParameterValue Name="outsideInset">
+				<Description Locale="en" Content="Edge of the view and inset"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:scrollbarThumbHorizontal" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the horizontal scrollbar thumb drawable."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarThumbVertical" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the vertical scrollbar thumb drawable."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarTrackHorizontal" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the horizontal scrollbar track drawable."/>
+		</Parameter>
+		<Parameter Name="android:scrollbarTrackVertical" RequirementBehaviour="Optional" TypesCSV="string" Inputs="Any" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the vertical scrollbar track drawable."/>
+		</Parameter>
+		<Parameter Name="android:scrollIndicators" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines which scroll indicators should be displayed when the view can be scrolled."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="No scroll indicators are displayed."/>
+			</ParameterValue>
+			<ParameterValue Name="top">
+				<Description Locale="en" Content="Displays top scroll indicator when view can be scrolled up."/>
+			</ParameterValue>
+			<ParameterValue Name="bottom">
+				<Description Locale="en" Content="Displays bottom scroll indicator when vew can be scrolled down."/>
+			</ParameterValue>
+			<ParameterValue Name="left">
+				<Description Locale="en" Content="Displays left scroll indicator when vew can be scrolled left."/>
+			</ParameterValue>
+			<ParameterValue Name="right">
+				<Description Locale="en" Content="Displays right scroll indicator when vew can be scrolled right."/>
+			</ParameterValue>
+			<ParameterValue Name="start">
+				<Description Locale="en" Content="Displays right scroll indicator when vew can be scrolled in the start direction."/>
+			</ParameterValue>
+			<ParameterValue Name="end">
+				<Description Locale="en" Content="Displays right scroll indicator when vew can be scrolled in the end direction."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:scrollX" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The initial horizontal scroll offset, in pixels."/>
+		</Parameter>
+		<Parameter Name="android:scrollY" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="The initial vertical scroll offset, in pixels."/>
+		</Parameter>
+		<Parameter Name="android:soundEffectsEnabled" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Boolean that controls whether a view should have sound effects enabled for events such as clicking and touching."/>
+		</Parameter>
+		<Parameter Name="android:stateListAnimator" RequirementBehaviour="Optional" TypesCSV="animator" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets the state-based animator for the View."/>
+		</Parameter>
+		<Parameter Name="android:tag" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Supply a tag for this view containing a String, to be retrieved later with View."/>
+		</Parameter>
+		<Parameter Name="android:textAlignment" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the alignment of the text."/>
+			<ParameterValue Name="inherit">
+				<Description Locale="en" Content="Default"/>
+			</ParameterValue>
+			<ParameterValue Name="gravity">
+				<Description Locale="en" Content="Default for the root view. The gravity determines the alignment, ALIGN_NORMAL, ALIGN_CENTER, or ALIGN_OPPOSITE, which are relative to each paragraph’s text direction"/>
+			</ParameterValue>
+			<ParameterValue Name="textStart">
+				<Description Locale="en" Content="Align to the start of the paragraph, e.g. ALIGN_NORMAL."/>
+			</ParameterValue>
+			<ParameterValue Name="textEnd">
+				<Description Locale="en" Content="Align to the end of the paragraph, e.g. ALIGN_OPPOSITE."/>
+			</ParameterValue>
+			<ParameterValue Name="center">
+				<Description Locale="en" Content="Center the paragraph, e.g. ALIGN_CENTER."/>
+			</ParameterValue>
+			<ParameterValue Name="viewStart">
+				<Description Locale="en" Content="Align to the start of the view, which is ALIGN_LEFT if the view’s resolved layoutDirection is LTR, and ALIGN_RIGHT otherwise."/>
+			</ParameterValue>
+			<ParameterValue Name="viewEnd">
+				<Description Locale="en" Content="Align to the end of the view, which is ALIGN_RIGHT if the view’s resolved layoutDirection is LTR, and ALIGN_LEFT otherwise"/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:textDirection" RequirementBehaviour="Optional" TypesCSV="keyword,integer" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the direction of the text."/>
+			<ParameterValue Name="inherit">
+				<Description Locale="en" Content="Default"/>
+			</ParameterValue>
+			<ParameterValue Name="firstStrong">
+				<Description Locale="en" Content="Default for the root view. The first strong directional character determines the paragraph direction. If there is no strong directional character, the paragraph direction is the view’s resolved layout direction."/>
+			</ParameterValue>
+			<ParameterValue Name="anyRtl">
+				<Description Locale="en" Content="The paragraph direction is RTL if it contains any strong RTL character, otherwise it is LTR if it contains any strong LTR characters. If there are neither, the paragraph direction is the view’s resolved layout direction."/>
+			</ParameterValue>
+			<ParameterValue Name="ltr">
+				<Description Locale="en" Content="The paragraph direction is left to right."/>
+			</ParameterValue>
+			<ParameterValue Name="rtl">
+				<Description Locale="en" Content="The paragraph direction is right to left."/>
+			</ParameterValue>
+			<ParameterValue Name="locale">
+				<Description Locale="en" Content="The paragraph direction is coming from the system Locale."/>
+			</ParameterValue>
+			<ParameterValue Name="firstStrongLtr">
+				<Description Locale="en" Content="The first strong directional character determines the paragraph direction. If there is no strong directional character, the paragraph direction is LTR."/>
+			</ParameterValue>
+			<ParameterValue Name="firstStrongRtl">
+				<Description Locale="en" Content="The first strong directional character determines the paragraph direction. If there is no strong directional character, the paragraph direction is RTL."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:transformPivotX" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="x location of the pivot point around which the view will rotate and scale."/>
+		</Parameter>
+		<Parameter Name="android:transformPivotY" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="y location of the pivot point around which the view will rotate and scale."/>
+		</Parameter>
+		<Parameter Name="android:transitionName" RequirementBehaviour="Optional" TypesCSV="string" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Names a View such that it can be identified for Transitions."/>
+		</Parameter>
+		<Parameter Name="android:translationX" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="translation in x of the view."/>
+		</Parameter>
+		<Parameter Name="android:translationY" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="translation in y of the view."/>
+		</Parameter>
+		<Parameter Name="android:translationZ" RequirementBehaviour="Optional" TypesCSV="dimension" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="translation in z of the view."/>
+		</Parameter>
+		<Parameter Name="android:visibility" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Controls the initial visibility of the view."/>
+			<ParameterValue Name="visible">
+				<Description Locale="en" Content="Visible on screen; the default value."/>
+			</ParameterValue>
+			<ParameterValue Name="invisible">
+				<Description Locale="en" Content="Not displayed, but taken into account during layout (space is left for it)."/>
+			</ParameterValue>
+			<ParameterValue Name="gone">
+				<Description Locale="en" Content="Completely hidden, as if the view had not been added."/>
+			</ParameterValue>
+		</Parameter>
+	</Node>
+</Module>

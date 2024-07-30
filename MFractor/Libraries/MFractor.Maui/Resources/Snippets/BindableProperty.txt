@@ -1,0 +1,6 @@
+﻿public static readonly $bindable_property$ $name$Property = $bindable_property$.Create(nameof($name$), typeof($type$), typeof($control_type$), default($type$));
+public $type$ $name$
+{
+    get => ($type$)GetValue($name$Property);
+    set => SetValue($name$Property, value);
+}

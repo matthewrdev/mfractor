@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Spell Checker">
+	<Description Locale="en" Content="Provides support for defining xml configurations for custom spell-checkers."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/text/spell-checker-framework.html"/>
+	<Node Name="spell-checker" Abstract="false" Required="false">
+		<Description Locale="en" Content="Use 'spell-checker' as the root tag of the XML resource that describes an android.service.textservice.SpellCheckerService, which is referenced from its android.view.textservice.SpellCheckerSession SERVICE_META_DATA meta-data entry."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference"> 
+			<Description Locale="en" Content="The name of the spell checker."/>
+		</Parameter>
+		<Parameter Name="android:settingsActivity" TypesCSV="class:android.app.Activity" Inputs="Value"> 
+			<Description Locale="en" Content="Component name of an activity that allows the user to modify the settings for this service."/>
+		</Parameter>
+		<Node Name="sub-type" Abstract="false" Required="false">
+			<Parameter Name="android:label" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The name of the subtype."/>
+			</Parameter>
+			<Parameter Name="android:subtypeLocale" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The locale of the subtype. This string should be a locale (e.g. en_US, fr_FR...). This is also used by the framework to know the supported locales of the spell checker. "/>
+			</Parameter>
+			<Parameter Name="android:subtypeExtraValue" TypesCSV="string" Inputs="ValueOrReference"> 
+				<Description Locale="en" Content="The extra value of the subtype. This string can be any string and will be passed to the SpellChecker."/>
+			</Parameter>
+		</Node>
+	</Node>
+</Module>

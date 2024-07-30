@@ -1,0 +1,3 @@
+﻿TODO: Define MSBuild parsers, loaders and generators in this project.
+
+This will be important for a command line version of MFractor and for integration into Rider + VS Code.

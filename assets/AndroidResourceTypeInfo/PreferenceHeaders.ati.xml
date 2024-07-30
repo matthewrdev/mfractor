@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Preference Headers">
+	<Description Locale="en" Content="Provides supports for defining a list of preference headers that will appear in Androids system preferences screen."/>
+	<MetaData Name="SdkUrl" Value="http://developer.android.com/guide/topics/ui/settings.html#PreferenceHeaders"/>
+	<Node Name="preference-headers" Abstract="false" Required="false">
+		<Description Locale="en" Content="Defines a list of preference headers that link to a preference fragment."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="header" Abstract="false" Required="false">
+			<Description Locale="en" Content="A group of preferences in either a PreferenceFragment or PreferenceActivity."/>
+			<Parameter Name="android:icon" TypesCSV="drawable,mipmap" Inputs="Reference">
+				<Description Locale="en" Content="The optional icon for the preference"/>
+			</Parameter>
+			<Parameter Name="android:fragment" TypesCSV="class:android.app.Fragment" Inputs="Value">
+				<Description Locale="en" Content="The new PreferenceFragment to be shown when the user selects this item."/>
+			</Parameter>
+			<Parameter Name="android:title" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The title for the Preference in a PreferenceActivity screen."/>
+			</Parameter>
+			<Parameter Name="android:summary" TypesCSV="string" Inputs="ValueOrReference">
+				<Description Locale="en" Content="The summary for the Preference in a PreferenceActivity screen."/>
+			</Parameter>
+			<Node Name="extra" Abstract="false" Required="false">
+				<Description Locale="en" Content="The 'extras' element allows you to pass key-value pairs to the fragment in a Bundle. The fragment can retrieve the arguments by calling getArguments(). You might pass arguments to the fragment for a variety of reasons, but one good reason is to reuse the same subclass of PreferenceFragment for each group and use the argument to specify which preferences XML file the fragment should load."/>
+				<Parameter Name="android:name" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The name of the 'extra' argument."/>
+				</Parameter>
+				<Parameter Name="android:value" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The value of the 'extra' argument."/>
+				</Parameter>
+			</Node>
+			<Node Name="intent" Abstract="false" Required="false">
+				<Description Locale="en" Content="In some cases, you might want a preference item to open a different activity instead of a settings screen, such as a web browser to view a web page. To invoke an Intent when the user selects a preference item, add an 'intent' element as a child of the corresponding 'Preference' element."/>
+				<Parameter Name="android:action" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The action to assign, as per the setAction() method."/>
+				</Parameter>
+				<Parameter Name="android:data" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The data to assign, as per the setData() method."/>
+				</Parameter>
+				<Parameter Name="android:mimeType" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The MIME type to assign, as per the setType() method."/>
+				</Parameter>
+				<Parameter Name="android:targetClass" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The class part of the component name, as per the setComponent() method."/>
+				</Parameter>
+				<Parameter Name="android:targetPackage" TypesCSV="string" Inputs="Value">
+					<Description Locale="en" Content="The package part of the component name, as per the setComponent() method."/>
+				</Parameter>
+			</Node>
+		</Node>
+	</Node>
+</Module>

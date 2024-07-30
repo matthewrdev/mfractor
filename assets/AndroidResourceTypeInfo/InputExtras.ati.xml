@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="xml" Name="Input Extras">
+ 	<Description Locale="en" Content="Provides support for building input-extra defintitions; containers that define extra data to supply to an input method."/>
+ 	<MetaData Name="SdkUrl" Value="http://developer.android.com/reference/android/R.styleable.html#InputExtras"/>
+	<Node Name="input-extra" Abstract="false" Required="false" IntroducedApiLevel="1">
+ 		<Description Locale="en" Content="An input-extras is a container for extra data to supply to an input method.  Contains one more more 'extra' tags."/>
+		<Parameter Name="xmlns:android" TypesCSV="XML Namespace" RequirementBehaviour="WhenRoot" Inputs="ExactValue"  RequiredValue="http://schemas.android.com/apk/res/android" DefaultValue="http://schemas.android.com/apk/res/android"> 
+			<Description Locale="en" Content="Defines the XML namespace, which must be 'http://schemas.android.com/apk/res/android'."/>
+		</Parameter>
+		<Node Name="extras" Abstract="false" Required="false">
+ 			<Description Locale="en" Content="A piece of extra data to supply to an input method"/>
+			<Parameter Name="android:name" RequirementBehaviour="Always" TypesCSV="string" Inputs="Any">
+	 			<Description Locale="en" Content="The name of the extra data.."/>
+			</Parameter>
+			<Parameter Name="android:value" RequirementBehaviour="Always" TypesCSV="string" Inputs="Any">
+	 			<Description Locale="en" Content="The value of the extra data."/>
+			</Parameter>
+		</Node>
+	</Node>	
+</Module>

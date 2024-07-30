@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module TypesCSV="layout" Name="View Group" IntroducedApiLevel="1" AllowUnknownNodes="true">
+	<Description Locale="en" Content="Provides IntelliSense for the ViewGroup control; the base class for all view groups, that is, views that are containers that hold other views. For example, RelativeLayout, LinearLayout, grid etc."/>
+	<MetaData Name="SdkUrl" Value="https://developer.android.com/guide/topics/ui/declaring-layout.html"/>
+	<Node Name="ViewGroup" Abstract="true" Required="false" IntroducedApiLevel="1">
+		<MetaData Name="FullType" Value="android.view.ViewGroup"/>
+		<MetaData Name="LayoutParams" Value="ViewGroup.LayoutParams"/>
+		<Description Locale="en" Content="A ViewGroup is a special view that can contain other views (called children"/>
+		<Modifier Name="IncludeViewGroupParameters">
+		</Modifier>
+		<Modifier Name="InheritParameters">
+			<ModifierArgument Name="Cascade" Value="false"/>
+			<ModifierArgument Name="ModuleName" Value="View"/>
+			<ModifierArgument Name="Node" Value="View"/>
+		</Modifier>
+		<Modifier Name="SupportAllForModuleType">
+			<ModifierArgument Name="Type" Value="layout"/>
+		</Modifier>
+		<Parameter Name="android:addStatesFromChildren" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets whether this ViewGroup's drawable states also include its children's drawable states."/>
+		</Parameter>
+		<Parameter Name="android:alwaysDrawnWithCache" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the ViewGroup should always draw its children using their drawing cache or not."/>
+		</Parameter>
+		<Parameter Name="android:animateLayoutChanges" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether changes in layout (caused by adding and removing items) should cause a LayoutTransition to run."/>
+		</Parameter>
+		<Parameter Name="android:animationCache" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether layout animations should create a drawing cache for their children."/>
+		</Parameter>
+		<Parameter Name="android:clipChildren" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether a child is limited to draw inside of its bounds or not."/>
+		</Parameter>
+		<Parameter Name="android:clipToPadding" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines whether the ViewGroup will clip its children and resize (but not clip) any EdgeEffect to its padding, if padding is not zero."/>
+		</Parameter>
+		<Parameter Name="android:descendantFocusability" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the relationship between the ViewGroup and its descendants when looking for a View to take focus."/>
+			<ParameterValue Name="beforeDescendants">
+				<Description Locale="en" Content="The ViewGroup will get focus before any of its descendants."/>
+			</ParameterValue>
+			<ParameterValue Name="afterDescendants">
+				<Description Locale="en" Content="The ViewGroup will get focus only if none of its descendants want it."/>
+			</ParameterValue>
+			<ParameterValue Name="blocksDescendants">
+				<Description Locale="en" Content="The ViewGroup will block its descendants from receiving focus."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:layoutAnimation" RequirementBehaviour="Optional" TypesCSV="anim" Inputs="Reference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the layout animation to use the first time the ViewGroup is laid out."/>
+		</Parameter>
+		<Parameter Name="android:layoutMode" RequirementBehaviour="Optional" TypesCSV="keyword" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the layout mode of this ViewGroup."/>
+			<ParameterValue Name="clipBounds">
+				<Description Locale="en" Content="Use the children's clip bounds when laying out this container."/>
+			</ParameterValue>
+			<ParameterValue Name="opticalBounds">
+				<Description Locale="en" Content="Use the children's optical bounds when laying out this container."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:persistentDrawingCache" RequirementBehaviour="Optional" TypesCSV="flag" Inputs="Value" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Defines the persistence of the drawing cache."/>
+			<ParameterValue Name="none">
+				<Description Locale="en" Content="The drawing cache is not persisted after use."/>
+			</ParameterValue>
+			<ParameterValue Name="animation">
+				<Description Locale="en" Content="The drawing cache is persisted after a layout animation."/>
+			</ParameterValue>
+			<ParameterValue Name="scrolling">
+				<Description Locale="en" Content="The drawing cache is persisted after a scroll."/>
+			</ParameterValue>
+			<ParameterValue Name="all">
+				<Description Locale="en" Content="The drawing cache is always persisted."/>
+			</ParameterValue>
+		</Parameter>
+		<Parameter Name="android:splitMotionEvents" RequirementBehaviour="Optional" TypesCSV="boolean" Inputs="ValueOrReference" IntroducedApiLevel="1">
+			<Description Locale="en" Content="Sets whether this ViewGroup should split MotionEvents to separate child views during touch event dispatch."/>
+		</Parameter>
+	</Node>
+</Module>

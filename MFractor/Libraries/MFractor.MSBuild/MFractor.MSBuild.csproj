@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Code Generation\" />
+    <Folder Include="Parser\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+  </ItemGroup>
+</Project>
