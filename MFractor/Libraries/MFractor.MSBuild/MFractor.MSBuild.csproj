@@ -13,6 +13,6 @@
     <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.6.0" />
   </ItemGroup>
 </Project>

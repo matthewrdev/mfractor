@@ -58,7 +58,7 @@ namespace MFractor.Views.ImageOptimiser
                 sizeAfter += result.SizeAfterInBytes;
             }
 
-            var projectsCount = Results.DistinctBy(r => r.ProjectFile.CompilationProject).Count();
+            var projectsCount = LinqExtensions.DistinctBy(Results, (OptimisationResult r) => r.ProjectFile.CompilationProject).Count();
             var pluralisation = projectsCount == 1 ? " project" : " projects";
 
             var count = Results.Count;

@@ -37,7 +37,7 @@
     <Folder Include="Importing\" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Third Party\MFractor.Tinify\MFractor.Tinify.csproj" />

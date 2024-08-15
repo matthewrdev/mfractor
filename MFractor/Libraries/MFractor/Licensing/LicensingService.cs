@@ -213,6 +213,8 @@ namespace MFractor.Licensing
         {
             get
             {
+                return true;
+
                 if (licenseConsumer == null)
                 {
                     return false;

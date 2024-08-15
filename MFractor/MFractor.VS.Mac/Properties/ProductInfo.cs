@@ -22,7 +22,7 @@ namespace MFractor.VS.Mac
     public static class ProductInfo
     {
         public const string ProductName = "MFractor";
-        public const string ProductVersion = "5.1.0";
+        public const string ProductVersion = "5.2.0";
         public const string ProductVariant = "Visual Studio Mac";
         public const string ProductSKU = "MFRACTOR-VS-MAC";
         public const string UtmSource = "vs_mac";

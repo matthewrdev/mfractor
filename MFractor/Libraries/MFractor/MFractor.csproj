@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Composition" Version="17.4.16">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.5.0-2.final" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

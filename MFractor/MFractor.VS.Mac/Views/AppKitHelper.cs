@@ -81,10 +81,10 @@ namespace MFractor.VS.Mac.Views
 			return NSColor.FromDeviceRgba((float)col.Red, (float)col.Green, (float)col.Blue, (float)col.Alpha);
 		}
 
-		public static NSColor ToNSColor(this Cairo.Color col)
-		{
-			return NSColor.FromDeviceRgba((float)col.R, (float)col.G, (float)col.B, (float)col.A);
-		}
+		//public static NSColor ToNSColor(this Cairo.Color col)
+		//{
+		//	return NSColor.FromDeviceRgba((float)col.R, (float)col.G, (float)col.B, (float)col.A);
+		//}
 
 		public static NSColor ToNSColor(this System.Drawing.Color col)
 		{
@@ -93,12 +93,12 @@ namespace MFractor.VS.Mac.Views
 
 		static readonly CoreGraphics.CGColorSpace deviceRgbColorSpace = CoreGraphics.CGColorSpace.CreateDeviceRGB();
 
-		public static CoreGraphics.CGColor ToCGColor(this Cairo.Color col)
-		{
-			return new CoreGraphics.CGColor(deviceRgbColorSpace, new NFloat[] {
-				(NFloat)col.R, (NFloat)col.G, (NFloat)col.B, (NFloat)col.A
-			});
-		}
+		//public static CoreGraphics.CGColor ToCGColor(this Cairo.Color col)
+		//{
+		//	return new CoreGraphics.CGColor(deviceRgbColorSpace, new NFloat[] {
+		//		(NFloat)col.R, (NFloat)col.G, (NFloat)col.B, (NFloat)col.A
+		//	});
+		//}
 
 		public static CoreGraphics.CGColor ToCGColor(this Color col)
 		{
