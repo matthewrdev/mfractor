@@ -16,8 +16,6 @@ using MFractor.Fonts;
 using MFractor.Fonts.Tooltips;
 using MFractor.Fonts.Utilities;
 using MFractor.Images;
-using MFractor.Localisation;
-using MFractor.Localisation.Tooltips;
 using MFractor.Maui;
 using MFractor.Maui.Data.Repositories;
 using MFractor.Maui.Fonts;
@@ -91,8 +89,6 @@ namespace MFractor.Editor.XAML.Tooltips
         readonly Lazy<INavigationService> navigationService;
         public INavigationService NavigationService => navigationService.Value;
 
-        readonly Lazy<ILocalisationTooltipRenderer> localisationTooltipRenderer;        public ILocalisationTooltipRenderer LocalisationTooltipRenderer => localisationTooltipRenderer.Value;
-
         readonly Lazy<ICodeActionEngine> codeActionEngine;        public ICodeActionEngine CodeActionEngine => codeActionEngine.Value;
 
         ITextBuffer textBuffer;
@@ -114,7 +110,6 @@ namespace MFractor.Editor.XAML.Tooltips
                                            Lazy<IGridTooltipRenderer> gridTooltipRenderer,
                                            Lazy<IFontSummaryTooltipRenderer> fontSummaryTooltipRenderer,
                                            Lazy<INavigationService> navigationService,
-                                           Lazy<ILocalisationTooltipRenderer> localisationTooltipRenderer,
                                            Lazy<ICodeActionEngine> codeActionEngine)
         {
             this.featureContextService = featureContextService;
@@ -132,7 +127,6 @@ namespace MFractor.Editor.XAML.Tooltips
             this.gridTooltipRenderer = gridTooltipRenderer;
             this.fontSummaryTooltipRenderer = fontSummaryTooltipRenderer;
             this.navigationService = navigationService;
-            this.localisationTooltipRenderer = localisationTooltipRenderer;
             this.codeActionEngine = codeActionEngine;
         }
 
@@ -341,14 +335,6 @@ namespace MFractor.Editor.XAML.Tooltips
                     case XamlSymbolKind.Syntax:
                         break;
                     case XamlSymbolKind.Svg:
-                        break;
-                    case XamlSymbolKind.Localisation:
-                        {
-                            if (result.Symbol is ILocalisationDeclarationCollection localisations)
-                            {
-                                tooltip = LocalisationTooltipRenderer.CreateLocalisationTooltip(localisations);
-                            }
-                        }
                         break;
                 }
 

@@ -10,7 +10,6 @@ using MFractor.Maui.Mvvm;
 using MFractor.Maui.Semantics;
 using MFractor.Maui.Symbols;
 using MFractor.Maui.Xmlns;
-using MFractor.Localisation;
 using MFractor.Ide.Navigation;
 using MFractor.Utilities;
 using MFractor.Xml;
@@ -50,9 +49,6 @@ namespace MFractor.Maui
 
         readonly Lazy<IXmlSyntaxFinder> xmlSyntaxFinder;        public IXmlSyntaxFinder XmlSyntaxFinder => xmlSyntaxFinder.Value;
 
-        readonly Lazy<ILocalisationResolver> localisationResolver;
-        public ILocalisationResolver LocalisationResolver => localisationResolver.Value;
-
         readonly Lazy<IXamlSemanticModelFactory> xamlSemanticModelFactory;
         public IXamlSemanticModelFactory XamlSemanticModelFactory => xamlSemanticModelFactory.Value;
 
@@ -75,7 +71,6 @@ namespace MFractor.Maui
                                          Lazy<IXmlSyntaxFinder> xmlSyntaxFinder,
                                          Lazy<IXamlSymbolResolver> symbolResolver,
                                          Lazy<IXamlNamespaceParser> xamlNamespaceResolver,
-                                         Lazy<ILocalisationResolver> localisationResolver,
                                          Lazy<IXamlSemanticModelFactory> xamlSemanticModelFactory,
                                          Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
                                          Lazy<MauiXamlPlatform> mauiPlatform)
@@ -87,7 +82,6 @@ namespace MFractor.Maui
             this.xmlSyntaxFinder = xmlSyntaxFinder;
             this.symbolResolver = symbolResolver;
             this.xamlNamespaceResolver = xamlNamespaceResolver;
-            this.localisationResolver = localisationResolver;
             this.xamlSemanticModelFactory = xamlSemanticModelFactory;
             this.xmlnsDefinitionResolver = xmlnsDefinitionResolver;
             this.mauiPlatform = mauiPlatform;

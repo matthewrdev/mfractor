@@ -8,7 +8,6 @@ using MFractor.Maui.Syntax.Expressions;
 using MFractor.Maui.Utilities;
 using MFractor.Maui.Xmlns;
 using MFractor.Images;
-using MFractor.Localisation;
 using MFractor.Utilities;
 using MFractor.Workspace;
 using MFractor.Xml;
@@ -40,17 +39,13 @@ namespace MFractor.Maui.Symbols
         readonly Lazy<IProjectService> projectService;
         public IProjectService ProjectService => projectService.Value;
 
-        readonly Lazy<ILocalisationResolver> localisationResolver;
-        public ILocalisationResolver LocalisationResolver => localisationResolver.Value;
-
         [ImportingConstructor]
         public XamlSymbolResolver(Lazy<IImageAssetService> imageAssetService,
                                   Lazy<IMarkupExpressionEvaluater> expressionEvaluater,
                                   Lazy<IXmlSyntaxFinder> xmlSyntaxFinder,
                                   Lazy<IEmbeddedFontsResolver> embeddedFontsResolver,
                                   Lazy<IXamlTypeResolver> xamlTypeResolver,
-                                  Lazy<IProjectService> projectService,
-                                  Lazy<ILocalisationResolver> localisationResolver)
+                                  Lazy<IProjectService> projectService)
         {
             this.imageAssetService = imageAssetService;
             this.expressionEvaluator = expressionEvaluater;
@@ -58,7 +53,6 @@ namespace MFractor.Maui.Symbols
             this.embeddedFontsResolver = embeddedFontsResolver;
             this.xamlTypeResolver = xamlTypeResolver;
             this.projectService = projectService;
-            this.localisationResolver = localisationResolver;
         }
 
         public XamlSymbolInfo Resolve(IParsedXamlDocument document,
@@ -399,17 +393,6 @@ namespace MFractor.Maui.Symbols
                     var expressionResult = ExpressionEvaluator.Evaluate(document, semanticModel, platform, project, compilation, namespaces, attribute);
                     if (expressionResult != null)
                     {
-                        if (expressionResult.Expression is StaticBindingExpression
-                            && expressionResult.Symbol is IPropertySymbol propertySymbol)
-                        {
-                            var localisationResult = EvaluateLocalisationExpression(project, propertySymbol, expressionResult);
-
-                            if (localisationResult != null)
-                            {
-                                return localisationResult;
-                            }
-                        }
-
                         return expressionResult;
                     }
                 }
@@ -530,24 +513,6 @@ namespace MFractor.Maui.Symbols
             };
 
             return result;
-        }
-
-        XamlSymbolInfo EvaluateLocalisationExpression(Project project, IPropertySymbol propertySymbol, XamlSymbolInfo expressionResult)
-        {
-            var localisations = LocalisationResolver.ResolveLocalisations(project, propertySymbol);
-
-            if (localisations is null || !localisations.Any())
-            {
-                return default;
-            }
-
-            return new XamlSymbolInfo()
-            {
-                SymbolKind = XamlSymbolKind.Localisation,
-                Expression = expressionResult.Expression,
-                Span = expressionResult.Span,
-                Symbol = localisations,
-            };
         }
 
         bool IsShapeGeometry(IPropertySymbol property, XmlAttribute attribute, IXamlPlatform platform)
@@ -837,4 +802,3 @@ namespace MFractor.Maui.Symbols
         }
     }
 }
-

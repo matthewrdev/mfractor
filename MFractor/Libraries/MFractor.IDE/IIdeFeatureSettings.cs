@@ -16,8 +16,6 @@
 
         bool ExperimentalFeatures { get; set; }
 
-        bool EnableLocalisationAnalysis { get; set; }
-
         bool EnableExtendedLogging { get; set; }
     }
 }

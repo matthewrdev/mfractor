@@ -91,13 +91,6 @@ namespace MFractor.Ide
             set => UserOptions.Set(AllowThicknessAdornmentsKey, value);
         }
 
-        public const string EnableLocalisationAnalysisKey = "com.mfractor.settings.xaml.localisation_analysis";
-        public bool EnableLocalisationAnalysis
-        {
-            get => UserOptions.Get(EnableLocalisationAnalysisKey, false);
-            set => UserOptions.Set(EnableLocalisationAnalysisKey, value);
-        }
-
         public const string EnableExtendedLoggingKey = "com.mfractor.settings.support.extended_logging";
         public bool EnableExtendedLogging {
             get => UserOptions.Get(EnableExtendedLoggingKey, false);

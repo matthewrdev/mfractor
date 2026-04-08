@@ -75,7 +75,6 @@
     <Folder Include="Code Generation\Resource Dictionaries\" />
     <Folder Include="Images\" />
     <Folder Include="Commands\" />
-    <Folder Include="Localisation\" />
     <Folder Include="Xmlns\" />
     <Folder Include="Code Generation\Attached Properties\" />
     <Folder Include="Analysis\Colors\" />
@@ -150,7 +149,6 @@
     <Folder Include="Code Actions\Fix\StackLayout\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MFractor.Localisation\MFractor.Localisation.csproj" />
     <ProjectReference Include="..\MFractor.Xml\MFractor.Xml.csproj" />
     <ProjectReference Include="..\MFractor\MFractor.csproj" />
     <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />

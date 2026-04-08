@@ -141,8 +141,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Adornments\IntratextAdornmentProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tooltips\TextContentTooltipModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalTextViewCreationListener.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CSharp\Tooltips\LocalisationTooltipQuickInfoSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CSharp\Tooltips\LocalisationTooltipQuickInfoSourceProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CSharp\Tooltips\DateTimeFormatPreviewTooltipsQuickInfoSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CSharp\Tooltips\DateTimeFormatPreviewTooltipsQuickInfoSourceProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XAML\Adornments\Thickness\ThicknessAdornmentTagger.cs" />

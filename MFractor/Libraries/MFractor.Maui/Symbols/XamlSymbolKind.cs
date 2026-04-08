@@ -10,7 +10,6 @@
         Image,
         Color,
         Font,
-        Localisation,
         AutomationId,
         CascadingStyleSheet,
         Svg,

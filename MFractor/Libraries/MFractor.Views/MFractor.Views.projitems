@@ -25,7 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ITextEditorFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Font Importer\FontImporterDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Font Importer\FontImportResultEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Localisation\FileLocalisationWizardDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Project Selection\MultiProjectSelectionDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Project Selection\ProjectSelectionEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Text Input\TextInputDialog.cs" />
@@ -45,7 +44,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Value Converter Wizard\ValueConverterWizard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Branding\BrandingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Branding\BrandedFooter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Localisation\LocaliseDocumentWorkUnitHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Activation\ActivationDialogWorkUnitHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XAML Style Editor\XamlStyleEditorWorkUnitHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IRootWindowService.cs" />
@@ -183,7 +181,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)MVVM Wizard\" />
     <Folder Include="$(MSBuildThisFileDirectory)Colors\" />
     <Folder Include="$(MSBuildThisFileDirectory)Font Importer\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Localisation\" />
     <Folder Include="$(MSBuildThisFileDirectory)Project Selection\" />
     <Folder Include="$(MSBuildThisFileDirectory)Text Input\" />
     <Folder Include="$(MSBuildThisFileDirectory)XAML Style Editor\" />

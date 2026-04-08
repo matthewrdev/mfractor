@@ -10,7 +10,6 @@ using MFractor.Fonts.WorkUnits;
 using MFractor.Ide.WorkUnits;
 using MFractor.Images;
 using MFractor.Images.WorkUnits;
-using MFractor.Localisation;
 using MFractor.Maui.StaticResources;
 using MFractor.Maui.Symbols;
 using MFractor.Maui.Syntax.Expressions;
@@ -109,8 +108,6 @@ namespace MFractor.Maui.Navigation
                     return new ViewImageAssetWorkUnit(symbolInfo.GetSymbol<IImageAsset>()).AsList();
                 case XamlSymbolKind.Color:
                     break;
-                case XamlSymbolKind.Localisation:
-                    return GoToLocalisation(symbolInfo, context);
                 case XamlSymbolKind.AutomationId:
                     break;
             }
@@ -124,24 +121,6 @@ namespace MFractor.Maui.Navigation
             {
                 Font = symbolInfo.Symbol as IFont
             }.AsList();
-        }
-
-        IReadOnlyList<IWorkUnit> GoToLocalisation(XamlSymbolInfo symbolInfo, IXamlFeatureContext context)
-        {
-            var localisations = symbolInfo.Symbol as ILocalisationDeclarationCollection;
-            if (localisations is null)
-            {
-                return Array.Empty<IWorkUnit>();
-            }
-
-            var navigations = new List<NavigateToFileSpanWorkUnit>();
-
-            foreach (var localisation in localisations)
-            {
-                navigations.Add(new NavigateToFileSpanWorkUnit(localisation.KeySpan, localisation.ProjectFile.FilePath));
-            }
-
-            return new NavigateToFileSpansWorkUnit(navigations).AsList();
         }
 
         IReadOnlyList<IWorkUnit> GoToDynamicResource(XamlSymbolInfo symbolInfo, IXamlFeatureContext context)
