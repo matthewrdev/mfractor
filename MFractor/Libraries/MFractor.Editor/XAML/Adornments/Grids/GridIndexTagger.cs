@@ -5,6 +5,7 @@ using MFractor.Editor.Adornments;
 using MFractor.Editor.Utilities;
 using MFractor.Maui.Grids;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Xml;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.Text;
@@ -16,7 +17,7 @@ namespace MFractor.Editor.XAML.Adornments.Grids
     {
         readonly string filePath;
         readonly IXmlSyntaxTreeService xmlSyntaxTreeService;
-        readonly IXamlPlatformRepository xamlPlatforms;
+        readonly MauiXamlPlatform mauiPlatform;
         readonly IGridAxisResolver gridAxisResolver;
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
@@ -42,12 +43,12 @@ namespace MFractor.Editor.XAML.Adornments.Grids
 
         public GridIndexTagger(string filePath,
                                IXmlSyntaxTreeService xmlSyntaxTreeService,
-                               IXamlPlatformRepository xamlPlatforms,
+                               MauiXamlPlatform mauiPlatform,
                                IGridAxisResolver gridAxisResolver) 
         {
             this.filePath = filePath;
             this.xmlSyntaxTreeService = xmlSyntaxTreeService;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
             this.gridAxisResolver = gridAxisResolver;
         }
 
@@ -121,7 +122,7 @@ namespace MFractor.Editor.XAML.Adornments.Grids
             var snapshot = spans[0].Snapshot;
 
             var ast = xmlSyntaxTreeService.GetSyntaxTree(filePath);
-            var platform = xamlPlatforms.ResolvePlatform(ast);
+            var platform = mauiPlatform.Resolve(ast);
             if (platform is null)
             {
                 yield break;

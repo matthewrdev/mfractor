@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using MFractor.Xml;
 using Microsoft.CodeAnalysis;
 
 namespace MFractor.Maui.XamlPlatforms
 {
-    [InheritedExport]
     public interface IXamlPlatform
     {
-        XamlPlatform Platform { get; }
-
         string SchemaUrl { get; }
 
         /// <summary>
@@ -242,9 +238,6 @@ namespace MFractor.Maui.XamlPlatforms
 
         ITypeDefinition ImageSource { get; }
 
-        bool SupportsCustomRenderers { get; }
-
-        ITypeDefinition ExportRendererAttribute { get; }
     }
 
 }

@@ -20,6 +20,7 @@ using MFractor.Code;
 using MFractor.Workspace;
 using MFractor.Workspace.Utilities;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Maui
 {
@@ -58,8 +59,8 @@ namespace MFractor.Maui
         readonly Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver;
         public IXmlnsDefinitionResolver XmlnsDefinitionResolver => xmlnsDefinitionResolver.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         public CodeActionExecutionType[] SupportedExecutionTypes { get; } = {
             CodeActionExecutionType.ContextMenuCommand,
@@ -77,7 +78,7 @@ namespace MFractor.Maui
                                          Lazy<ILocalisationResolver> localisationResolver,
                                          Lazy<IXamlSemanticModelFactory> xamlSemanticModelFactory,
                                          Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
-                                         Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                         Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.mvvmResolver = mvvmResolver;
             this.xmlSyntaxTreeService = xmlSyntaxTreeService;
@@ -89,7 +90,7 @@ namespace MFractor.Maui
             this.localisationResolver = localisationResolver;
             this.xamlSemanticModelFactory = xamlSemanticModelFactory;
             this.xmlnsDefinitionResolver = xmlnsDefinitionResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         readonly object documentCacheLock = new object();
@@ -205,7 +206,11 @@ namespace MFractor.Maui
                 return null;
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+            var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
+            if (platform == null)
+            {
+                return null;
+            }
 
             var configId = ConfigurationId.Create(project.GetIdentifier());
 

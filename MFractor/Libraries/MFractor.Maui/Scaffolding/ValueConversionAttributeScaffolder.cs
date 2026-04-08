@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using MFractor.Code.Scaffolding;
 using MFractor.Maui.CodeGeneration.ValueConversion;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 using MFractor.Workspace.Utilities;
@@ -20,17 +21,17 @@ namespace MFractor.Maui.Scaffolding
 
         public override string Documentation => "Generates new ValueConversionAttribute declaration";
 
-        public override string Criteria => "Activates when the project is a XAML platform and the file name is 'ValueConversionAttribute'.";
+        public override string Criteria => "Activates when the project is a .NET MAUI project and the file name is 'ValueConversionAttribute'.";
 
         [Import]
         public IValueConversionAttributeImplementationGenerator ValueConversionAttributeImplementationGenerator { get; set; }
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
         public override bool IsAvailable(IScaffoldingContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)

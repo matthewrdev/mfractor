@@ -14,6 +14,7 @@ using MFractor.Maui.Syntax;
 using MFractor.Maui.Syntax.Expressions;
 using MFractor.Maui.Utilities;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Maui.Xmlns;
 using MFractor.Text;
 using MFractor.Utilities;
@@ -51,8 +52,8 @@ namespace MFractor.Maui.Data.Synchronisation
         readonly Lazy<IParsedXamlDocumentFactory> parsedXamlDocumentFactory;
         public IParsedXamlDocumentFactory ParsedXamlDocumentFactory => parsedXamlDocumentFactory.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
         public XamlDocumentSynchroniser(Lazy<IXmlSyntaxWriter> xmlSyntaxWriter,
@@ -61,7 +62,7 @@ namespace MFractor.Maui.Data.Synchronisation
                                         Lazy<IParsedXamlDocumentFactory> parsedXamlDocumentFactory,
                                         Lazy<IXamlSemanticModelFactory> xamlSemanticModelFactory,
                                         Lazy<IXmlFormattingPolicyService> xmlFormattingPolicyService,
-                                        Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                        Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.xmlSyntaxWriter = xmlSyntaxWriter;
             this.formattingPolicyService = formattingPolicyService;
@@ -69,12 +70,12 @@ namespace MFractor.Maui.Data.Synchronisation
             this.parsedXamlDocumentFactory = parsedXamlDocumentFactory;
             this.xamlSemanticModelFactory = xamlSemanticModelFactory;
             this.xmlFormattingPolicyService = xmlFormattingPolicyService;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public bool IsAvailable(Solution solution, Project project)
         {
-            return XamlPlatforms.CanResolvePlatform(project);
+            return MauiPlatform.Supports(project);
         }
 
         public Task<bool> CanSynchronise(Solution solution,
@@ -102,7 +103,11 @@ namespace MFractor.Maui.Data.Synchronisation
 
             var syntaxTree = document.XamlSyntaxTree;
 
-            var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+            var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
+            if (platform == null)
+            {
+                return false;
+            }
 
             var semanticModel = XamlSemanticModelFactory.Create(document, project);
 

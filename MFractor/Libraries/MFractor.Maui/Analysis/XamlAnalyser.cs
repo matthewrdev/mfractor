@@ -10,6 +10,7 @@ using MFractor.Configuration;
 using MFractor.Maui.Mvvm;
 using MFractor.Maui.Semantics;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Maui.Xmlns;
 using MFractor.Text;
 using MFractor.Utilities;
@@ -37,7 +38,7 @@ namespace MFractor.Maui.Analysis
                             Lazy<IXamlNamespaceParser> xamlNamespaceResolver,
                             Lazy<IXamlSemanticModelFactory> xamlSemanticModelFactory,
                             Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
-                            Lazy<IXamlPlatformRepository> xamlPlatforms)
+                            Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.workspaceService = workspaceService;
             this.xmlDocumentAnalyser = xmlDocumentAnalyser;
@@ -48,7 +49,7 @@ namespace MFractor.Maui.Analysis
             this.xamlNamespaceResolver = xamlNamespaceResolver;
             this.xamlSemanticModelFactory = xamlSemanticModelFactory;
             this.xmlnsDefinitionResolver = xmlnsDefinitionResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public string AnalyticsEvent => "Xaml Analysis";
@@ -82,17 +83,35 @@ namespace MFractor.Maui.Analysis
         readonly Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver;
         public IXmlnsDefinitionResolver XmlnsDefinitionResolver => xmlnsDefinitionResolver.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
+
+        [Import(AllowDefault = true)]
+        public IXmlSyntaxTreeService XmlSyntaxTreeService { get; set; }
 
         public event EventHandler<XamlAnalysisResultEventArgs> OnAnalysisCompleted;
+
+        public void Analyse(string filePath,
+                            ProjectId projectId,
+                            CancellationToken token)
+        {
+            QueueAnalysis(null, filePath, projectId, token);
+        }
 
         public void Analyse(ITextProvider textProvider,
                             string filePath,
                             ProjectId projectId,
                             CancellationToken token)
         {
-            if (textProvider is null || string.IsNullOrEmpty(filePath))
+            QueueAnalysis(textProvider, filePath, projectId, token);
+        }
+
+        void QueueAnalysis(ITextProvider textProvider,
+                           string filePath,
+                           ProjectId projectId,
+                           CancellationToken token)
+        {
+            if (string.IsNullOrEmpty(filePath))
             {
                 return;
             }
@@ -108,14 +127,7 @@ namespace MFractor.Maui.Analysis
                     try
                     {
                         token.ThrowIfCancellationRequested();
-                        var text = await textProvider.GetTextAsync();
-
-                        XmlSyntaxTree syntaxTree = null;
-                        try
-                        {
-                            syntaxTree = XmlSyntaxParser.ParseText(text);
-                        }
-                        catch { } // Suppressed.
+                        var syntaxTree = await ResolveSyntaxTreeAsync(filePath, textProvider, token);
 
                         token.ThrowIfCancellationRequested();
                         if (syntaxTree == null)
@@ -126,7 +138,6 @@ namespace MFractor.Maui.Analysis
                         var workspace = WorkspaceService.CurrentWorkspace;
 
                         var project = workspace.CurrentSolution.GetProject(projectId);
-                        var projectFile = ProjectService.GetProjectFileWithFilePath(project, filePath);
 
                         if (project == null)
                         {
@@ -134,16 +145,17 @@ namespace MFractor.Maui.Analysis
                             return;
                         }
 
+                        var projectFile = ProjectService.GetProjectFileWithFilePath(project, filePath);
+
                         token.ThrowIfCancellationRequested();
                         var compilation = await project.GetCompilationAsync(token);
-                        project.TryGetCompilation(out var c2);
                         if (compilation is null)
                         {
                             log?.Info("Failed to get the compilation for " + projectId);
                             return;
                         }
 
-                        var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+                        var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
                         if (platform is null)
                         {
                             log?.Info("Failed to resolve the xaml platform for " + projectId);
@@ -154,12 +166,12 @@ namespace MFractor.Maui.Analysis
 
                         var namespaces = XamlNamespaceResolver.ParseNamespaces(syntaxTree);
 
-                        var xmlnsDefinitions = XmlnsDefinitionResolver.Resolve(project, platform);
+                        var xmlnsDefinitions = XmlnsDefinitionResolver.Resolve(project, compilation, platform);
 
                         token.ThrowIfCancellationRequested();
 
                         var codeBehindSymbol = MvvmResolver.ResolveCodeBehindSymbol(project, filePath);
-                        var codeBehindSyntax = codeBehindSymbol.GetNonAutogeneratedSyntax() as ClassDeclarationSyntax;
+                        var codeBehindSyntax = codeBehindSymbol?.GetNonAutogeneratedSyntax() as ClassDeclarationSyntax;
                         var bindingContext = MvvmResolver.ResolveViewModelSymbol(project, filePath, syntaxTree, compilation, platform, namespaces, xmlnsDefinitions);
 
 
@@ -178,7 +190,7 @@ namespace MFractor.Maui.Analysis
                         var results = XmlDocumentAnalyser.Analyse(featureContext.XamlDocument, featureContext, token);
 
                         token.ThrowIfCancellationRequested();
-                        if (results.Any())
+                        if (results != null && results.Any())
                         {
                             OnAnalysisCompleted?.Invoke(this, new XamlAnalysisResultEventArgs(filePath, projectId, results.ToList()));
                         }
@@ -203,6 +215,50 @@ namespace MFractor.Maui.Analysis
                     }
                 }
             });
+        }
+
+        async Task<XmlSyntaxTree> ResolveSyntaxTreeAsync(string filePath,
+                                                         ITextProvider textProvider,
+                                                         CancellationToken token)
+        {
+            var cachedSyntaxTree = XmlSyntaxTreeService?.GetSyntaxTree(filePath);
+            if (cachedSyntaxTree != null)
+            {
+                return cachedSyntaxTree;
+            }
+
+            if (textProvider == null)
+            {
+                return null;
+            }
+
+            token.ThrowIfCancellationRequested();
+            var text = await textProvider.GetTextAsync();
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return null;
+            }
+
+            if (XmlSyntaxTreeService != null)
+            {
+                XmlSyntaxTreeService.UpdateSyntaxTree(filePath, text);
+
+                cachedSyntaxTree = XmlSyntaxTreeService.GetSyntaxTree(filePath);
+                if (cachedSyntaxTree != null)
+                {
+                    return cachedSyntaxTree;
+                }
+            }
+
+            try
+            {
+                return XmlSyntaxParser.ParseText(text);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void Dispose()

@@ -34,12 +34,7 @@ namespace MFractor.Maui.CodeActions.Fix.RefreshView
 
         protected override IReadOnlyList<IWorkUnit> Execute(ICodeIssue issue, XmlNode syntax, IParsedXamlDocument document, IXamlFeatureContext context, ICodeActionSuggestion suggestion, InteractionLocation location)
         {
-            if (context.Platform.Platform != XamlPlatform.XamarinForms)
-            {
-                return null;
-            }
-
-            return new OpenUrlWorkUnit("https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/refreshview", false).AsList();
+            return new OpenUrlWorkUnit("https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/refreshview?view=net-maui-9.0", false).AsList();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MFractor.IOC
     /// When the <see cref="Resolver"/> is first used, it will locate the <see cref="DeclareExportResolverAttribute"/> in the app domain and creates the <see cref="IExportResolver"/> instance that it declares.
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
-    class DeclareExportResolverAttribute : Attribute
+    public class DeclareExportResolverAttribute : Attribute
     {
         /// <summary>
         /// The type of 

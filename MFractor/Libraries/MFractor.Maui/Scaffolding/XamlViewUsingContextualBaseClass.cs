@@ -10,6 +10,7 @@ using MFractor.Utilities;
 using MFractor.Work;
 using Microsoft.CodeAnalysis;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Maui.Scaffolding
 {
@@ -18,8 +19,8 @@ namespace MFractor.Maui.Scaffolding
         readonly Lazy<IContextualBaseClassResolver> contextualBaseClassResolver;
         public IContextualBaseClassResolver ContextualBaseClassResolver => contextualBaseClassResolver.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         public override string AnalyticsEvent => Name;
 
@@ -38,15 +39,15 @@ namespace MFractor.Maui.Scaffolding
         public INamespaceDeclarationGenerator NamespaceDeclarationGenerator { get; set; }
 
         [ImportingConstructor]
-        public XamlViewUsingContextualBaseClass(Lazy<IContextualBaseClassResolver> contextualBaseClassResolver, Lazy<IXamlPlatformRepository> xamlPlatforms)
+        public XamlViewUsingContextualBaseClass(Lazy<IContextualBaseClassResolver> contextualBaseClassResolver, Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.contextualBaseClassResolver = contextualBaseClassResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public override bool IsAvailable(IScaffoldingContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)
@@ -56,7 +57,7 @@ namespace MFractor.Maui.Scaffolding
                 return false;
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
             var baseType = ContextualBaseClassResolver.GetSuggestedBaseClass(context.Project, input.VirtualFolderPath, (type) =>
             {
                 return IsVisualElement(type, platform);
@@ -72,7 +73,7 @@ namespace MFractor.Maui.Scaffolding
 
         public override IReadOnlyList<IScaffoldingSuggestion> SuggestScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)
         {
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
             var baseType = ContextualBaseClassResolver.GetSuggestedBaseClass(context.Project, input.VirtualFolderPath, (type) =>
             {
                 return IsVisualElement(type, platform);
@@ -85,7 +86,7 @@ namespace MFractor.Maui.Scaffolding
 
         public override IReadOnlyList<IWorkUnit> ProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state, IScaffoldingSuggestion suggestion)
         {
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
             var baseType = ContextualBaseClassResolver.GetSuggestedBaseClass(context.Project, input.VirtualFolderPath, (type) =>
             {
                 return IsVisualElement(type, platform);

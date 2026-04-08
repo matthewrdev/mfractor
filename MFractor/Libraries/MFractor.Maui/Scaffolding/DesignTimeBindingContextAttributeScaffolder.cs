@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using MFractor.Code.Scaffolding;
 using MFractor.Maui.CodeGeneration;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 
@@ -19,17 +20,17 @@ namespace MFractor.Maui.Scaffolding
 
         public override string Documentation => "Generates new DesignTimeBindingContextAttribute declaration";
 
-        public override string Criteria => "Activates when the project is a XAML-based project and the file name is 'DesignTimeBindingContextAttribute'.";
+        public override string Criteria => "Activates when the project is a .NET MAUI project and the file name is 'DesignTimeBindingContextAttribute'.";
 
         [Import]
         public IDesignTimeBindingContextAttributeGenerator DesignTimeBindingContextAttributeGenerator { get; set; }
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
         public override bool IsAvailable(IScaffoldingContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)

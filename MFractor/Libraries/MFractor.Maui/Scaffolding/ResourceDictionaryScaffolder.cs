@@ -6,6 +6,7 @@ using MFractor.Code.Scaffolding;
 using MFractor.CSharp.CodeGeneration;
 using MFractor.Maui.CodeGeneration.Views;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 
@@ -21,7 +22,7 @@ namespace MFractor.Maui.Scaffolding
 
         public override string Documentation => "Creates a new ResourceDictionary within the Resources folder.";
 
-        public override string Criteria => "Activates when the project is a XAML platform, the folder path ends with Resources and the file extension is '.xaml'.";
+        public override string Criteria => "Activates when the project is a .NET MAUI project, the folder path ends with Resources and the file extension is '.xaml'.";
 
         [Import]
         public IXamlViewWithCodeBehindGenerator XamlViewWithCodeBehindGenerator { get; set; }
@@ -30,11 +31,11 @@ namespace MFractor.Maui.Scaffolding
         public INamespaceDeclarationGenerator NamespaceDeclarationGenerator { get; set; }
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
         public override bool IsAvailable(IScaffoldingContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)
@@ -54,7 +55,7 @@ namespace MFractor.Maui.Scaffolding
 
         public override IReadOnlyList<IWorkUnit> ProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state , IScaffoldingSuggestion suggestion)
         {
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
             var @namespace = NamespaceDeclarationGenerator.GetNamespaceFor(context.Project, input.FolderPath);
 
             return XamlViewWithCodeBehindGenerator.Generate(input.NameNoExtension, @namespace, "local", context.Project, platform, input.FolderPath, platform.ResourceDictionary.MetaType);

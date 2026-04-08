@@ -6,6 +6,7 @@ using MFractor.Code.Scaffolding;
 using MFractor.CSharp.CodeGeneration;
 using MFractor.Maui.CodeGeneration.Views;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 
@@ -29,18 +30,18 @@ namespace MFractor.Maui.Scaffolding
         [Import]
         public INamespaceDeclarationGenerator NamespaceDeclarationGenerator { get; set; }
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
-        public XamlControlScaffolder(Lazy<IXamlPlatformRepository> xamlPlatforms)
+        public XamlControlScaffolder(Lazy<MauiXamlPlatform> mauiPlatform)
         {
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public override bool IsAvailable(IScaffoldingContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanProvideScaffolds(IScaffoldingContext context, IScaffoldingInput input, IScaffolderState state)
@@ -61,7 +62,7 @@ namespace MFractor.Maui.Scaffolding
                 return Array.Empty<IWorkUnit>();
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(project, compilation);
+            var platform = MauiPlatform.Resolve(project, compilation);
             var @namespace = NamespaceDeclarationGenerator.GetNamespaceFor(context.Project, input.FolderPath);
 
             return XamlViewWithCodeBehindGenerator.Generate(input.NameNoExtension, @namespace, "local", context.Project, platform, input.FolderPath, platform.Grid.MetaType);

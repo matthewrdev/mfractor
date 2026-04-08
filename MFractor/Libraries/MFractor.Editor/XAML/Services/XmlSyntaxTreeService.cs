@@ -105,12 +105,17 @@ namespace MFractor.Editor.XAML.Services
 
         public void BindTextView(string filePath, ITextView textView)
         {
+            if (textViewBindings.TryGetValue(filePath, out var existingBinding))
+            {
+                existingBinding.Dispose();
+            }
+
             var binding = new TextViewBinding(filePath, textView, this);
 
             textViewBindings[filePath] = binding;
 
             var text = textView.TextBuffer.CurrentSnapshot.GetText();
-            ParseSyntaxTree(filePath, text);
+            UpdateSyntaxTree(filePath, text);
         }
 
         void OnDocumentContentChanged(string filePath, ITextBuffer textBuffer, IEnumerable<ITextReplacement> changes)
@@ -122,33 +127,43 @@ namespace MFractor.Editor.XAML.Services
 
             var text = textBuffer.CurrentSnapshot.GetText();
 
-            ParseSyntaxTreeIncremental(filePath, text, changes);
+            UpdateSyntaxTree(filePath, text, changes);
         }
 
-        void ParseSyntaxTree(string filePath, string text)
+        public void UpdateSyntaxTree(string filePath, string text)
         {
-            var ast = XmlSyntaxParser.ParseText(text);
-            lock (syntaxTreeTable)
-            {
-                syntaxTreeTable[filePath] = ast;
-            }
-
-            SyntaxTreeUpdated?.Invoke(this, new XmlSyntaxTreeEventArgs(ast, filePath));
+            UpdateSyntaxTree(filePath, text, null);
         }
 
-        void ParseSyntaxTreeIncremental(string filePath, string text, IEnumerable<ITextReplacement> changes)
+        public void UpdateSyntaxTree(string filePath, string text, IEnumerable<ITextReplacement> changes)
         {
-            var oldAst = syntaxTreeTable[filePath];
             XmlSyntaxTree ast = null;
             try
             {
-                ast = XmlSyntaxParser.ParseTextIncremental(text, oldAst, changes);
+                if (changes != null && changes.Any())
+                {
+                    var oldAst = GetSyntaxTree(filePath);
+                    if (oldAst != null)
+                    {
+                        ast = XmlSyntaxParser.ParseTextIncremental(text, oldAst, changes);
+                    }
+                }
+
+                if (ast == null)
+                {
+                    ast = XmlSyntaxParser.ParseText(text);
+                }
             }
             catch (Exception ex)
             {
                 log?.Exception(ex);
             }
 
+            if (ast == null)
+            {
+                return;
+            }
+
             lock (syntaxTreeTable)
             {
                 syntaxTreeTable[filePath] = ast;
@@ -157,9 +172,9 @@ namespace MFractor.Editor.XAML.Services
             SyntaxTreeUpdated?.Invoke(this, new XmlSyntaxTreeEventArgs(ast, filePath));
         }
 
-        void OnDomentClosed(string filePath)
+        public void RemoveSyntaxTree(string filePath)
         {
-            if (!IsXml(filePath))
+            if (string.IsNullOrEmpty(filePath))
             {
                 return;
             }
@@ -173,6 +188,16 @@ namespace MFractor.Editor.XAML.Services
             }
 
             SyntaxTreeRemoved?.Invoke(this, new XmlSyntaxTreeEventArgs(null, filePath));
+        }
+
+        void OnDomentClosed(string filePath)
+        {
+            if (!IsXml(filePath))
+            {
+                return;
+            }
+
+            RemoveSyntaxTree(filePath);
 
             if (textViewBindings.ContainsKey(filePath))
             {

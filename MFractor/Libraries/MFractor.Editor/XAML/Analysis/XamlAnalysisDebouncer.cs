@@ -1,39 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Timers;
 using MFractor.Maui.Analysis;
-using MFractor.Text;
 
 namespace MFractor.Editor.XAML.Analysis
 {
     public class XamlAnalysisDebouncer
     {
-        /// <summary>
-        /// A heuristic that defers the execution of the resize request to allow for batching.
-        /// </summary>
         const int debounceMilliseconds = 250;
 
         class ScheduleAnalysisRequest : IDisposable
         {
-            public ScheduleAnalysisRequest(IXamlAnalyser xamlAnalyser, ITextProvider textProvider, string filePath, Microsoft.CodeAnalysis.ProjectId id, System.Threading.CancellationToken token)
-                : this(new WeakReference<IXamlAnalyser>(xamlAnalyser), textProvider, filePath, id, token)
+            public ScheduleAnalysisRequest(IXamlAnalyser xamlAnalyser,
+                                           string filePath,
+                                           Microsoft.CodeAnalysis.ProjectId id,
+                                           System.Threading.CancellationToken token)
+                : this(new WeakReference<IXamlAnalyser>(xamlAnalyser), filePath, id, token)
             {
             }
 
             public ScheduleAnalysisRequest(WeakReference<IXamlAnalyser> xamlAnalyserReference,
-                                           ITextProvider textProvider,
                                            string filePath,
                                            Microsoft.CodeAnalysis.ProjectId id,
                                            System.Threading.CancellationToken token)
             {
-                this.TextProvider = textProvider;
-                this.FilePath = filePath;
-                this.Id = id;
-                this.Token = token;
+                FilePath = filePath;
+                Id = id;
+                Token = token;
 
                 XamlAnalyserReference = xamlAnalyserReference;
-                Key = filePath.GetHashCode();
+                Key = filePath;
 
                 dispatchTimer = new Timer(debounceMilliseconds);
                 dispatchTimer.Start();
@@ -46,16 +42,22 @@ namespace MFractor.Editor.XAML.Analysis
 
             public WeakReference<IXamlAnalyser> XamlAnalyserReference { get; }
 
-            public int Key { get; }
+            public string Key { get; }
 
             readonly Timer dispatchTimer;
 
-            public ITextProvider TextProvider { get; }
-            public string FilePath {get;}
-            public Microsoft.CodeAnalysis.ProjectId Id {get;}
-            public System.Threading.CancellationToken Token {get;}
+            public string FilePath { get; }
+            public Microsoft.CodeAnalysis.ProjectId Id { get; private set; }
+            public System.Threading.CancellationToken Token { get; private set; }
 
             public event EventHandler OnScheduledAnalysisRequested;
+
+            public void Update(Microsoft.CodeAnalysis.ProjectId id,
+                               System.Threading.CancellationToken token)
+            {
+                Id = id;
+                Token = token;
+            }
 
             public void Reset()
             {
@@ -80,7 +82,7 @@ namespace MFractor.Editor.XAML.Analysis
         }
 
         readonly object pendingAnalysisRequestsLock = new object();
-        readonly List<ScheduleAnalysisRequest> pendingAnalysisRequests = new List<ScheduleAnalysisRequest>();
+        readonly Dictionary<string, ScheduleAnalysisRequest> pendingAnalysisRequests = new Dictionary<string, ScheduleAnalysisRequest>(StringComparer.Ordinal);
 
         void OnScheduledAnalysisRequested(object sender, EventArgs e)
         {
@@ -95,59 +97,58 @@ namespace MFractor.Editor.XAML.Analysis
             if (request.XamlAnalyserReference.TryGetTarget(out var xamlAnalyser)
                 && xamlAnalyser != null)
             {
-                xamlAnalyser.Analyse(request.TextProvider, request.FilePath, request.Id, request.Token);
+                xamlAnalyser.Analyse(request.FilePath, request.Id, request.Token);
                 RemoveAnalysisRequest(request.Key);
             }
         }
 
-        void RemoveAnalysisRequest(int key)
+        void RemoveAnalysisRequest(string key)
         {
             lock (pendingAnalysisRequestsLock)
             {
-                var items = pendingAnalysisRequests.Where(request => request.Key == key).ToList();
-                foreach (var item in items)
+                if (pendingAnalysisRequests.TryGetValue(key, out var request))
                 {
-                    item.Dispose();
-                    pendingAnalysisRequests.Remove(item);
+                    request.OnScheduledAnalysisRequested -= OnScheduledAnalysisRequested;
+                    request.Dispose();
+                    pendingAnalysisRequests.Remove(key);
                 }
             }
         }
 
         internal void RequestAnalysis(IXamlAnalyser xamlAnalyser,
-                                      ITextProvider textProvider,
                                       string filePath,
                                       Microsoft.CodeAnalysis.ProjectId id,
                                       System.Threading.CancellationToken token)
         {
-            ScheduledAnalysis(xamlAnalyser, textProvider, filePath, id, token);
+            ScheduledAnalysis(xamlAnalyser, filePath, id, token);
         }
 
-        void ScheduledAnalysis(IXamlAnalyser xamlAnalyser, ITextProvider textProvider, string filePath, Microsoft.CodeAnalysis.ProjectId id, System.Threading.CancellationToken token)
+        void ScheduledAnalysis(IXamlAnalyser xamlAnalyser,
+                               string filePath,
+                               Microsoft.CodeAnalysis.ProjectId id,
+                               System.Threading.CancellationToken token)
         {
             if (xamlAnalyser is null
-                || textProvider is null
                 || string.IsNullOrEmpty(filePath)
                 || id is null)
             {
                 return;
             }
 
-            var key = filePath.GetHashCode();
-
             lock (pendingAnalysisRequestsLock)
             {
-                var existingRequest = pendingAnalysisRequests.FirstOrDefault(r => r.Key == key);
-                if (existingRequest != null)
+                if (pendingAnalysisRequests.TryGetValue(filePath, out var existingRequest))
                 {
+                    existingRequest.Update(id, token);
                     existingRequest.Reset();
                     return;
                 }
             }
 
-            var request = new ScheduleAnalysisRequest(xamlAnalyser, textProvider, filePath, id, token);
+            var request = new ScheduleAnalysisRequest(xamlAnalyser, filePath, id, token);
             lock (pendingAnalysisRequestsLock)
             {
-                pendingAnalysisRequests.Add(request);
+                pendingAnalysisRequests[filePath] = request;
             }
 
             request.OnScheduledAnalysisRequested += OnScheduledAnalysisRequested;

@@ -50,7 +50,7 @@ namespace MFractor.Maui.CodeGeneration.ValueConversion
         [CodeSnippetArgument("input_type", "The fully qualified type that the value converter should accept as it's input type. If unavailable, defaults to `System.Object`.")]
         [CodeSnippetArgument("output_type", "The fully qualified type that the value converter should accept as it's output type. If unavailable, defaults to `System.Object`.")]
         [CodeSnippetArgument("parameter_type", "The fully qualified type that the value converter should accept as it's parameter type. If unavailable, defaults to `System.Object`.")]
-        [CodeSnippetArgument("value_converter_type", "The fully qualified type of the XAML platforms IValueConverter interface.")]
+        [CodeSnippetArgument("value_converter_type", "The fully qualified type of the .NET MAUI IValueConverter interface.")]
         [CodeSnippetResource("Resources/Snippets/ValueConverter.txt")]
         [ExportProperty("What is the code snippet to use when generating the value converter class file?")]
         public ICodeSnippet Snippet { get; set; }

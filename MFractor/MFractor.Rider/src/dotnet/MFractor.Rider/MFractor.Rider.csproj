@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <IsPackable>True</IsPackable>
+    <DefineConstants>$(DefineConstants);RESHARPER</DefineConstants>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <AssemblyName>MFractor.Rider</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="$(SdkVersion)" PrivateAssets="all" />
+    <PackageReference Include="Wave" Version="$(WaveVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Libraries\MFractor.Maui\MFractor.Maui.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\dependencies.json" PackagePath="" Pack="true" Visible="false" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\*.dll" PackagePath="dotFiles" Pack="true" Visible="false" />
+    <Content Include="bin\$(MSBuildProjectName)\$(Configuration)\*.pdb" PackagePath="dotFiles" Pack="true" Visible="false" />
+  </ItemGroup>
+
+</Project>

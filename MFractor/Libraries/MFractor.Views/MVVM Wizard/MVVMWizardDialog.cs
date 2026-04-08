@@ -21,6 +21,7 @@ using MFractor.Workspace;
 using MFractor.Workspace.WorkUnits;
 using MFractor.Workspace.Utilities;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Views.MVVMWizard
 {
@@ -60,7 +61,7 @@ namespace MFractor.Views.MVVMWizard
         IViewViewModelGenerator ViewViewModelGenerator { get; set; }
 
         [Import]
-        IXamlPlatformRepository XamlPlatforms { get; set; }
+        MauiXamlPlatform MauiPlatform { get; set; }
 
         [Import]
         IDispatcher Dispatcher { get; set; }
@@ -156,7 +157,7 @@ namespace MFractor.Views.MVVMWizard
 
         bool IsSupported(Microsoft.CodeAnalysis.Project project)
         {
-            return XamlPlatforms.CanResolvePlatform(project);
+            return MauiPlatform.Supports(project);
         }
 
         void SetTargetProject(ProjectIdentifier projectIdentifier, IXamlPlatform platform)

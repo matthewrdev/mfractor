@@ -1,10 +1,13 @@
-﻿using System;
+﻿using System.ComponentModel.Composition;
 using MFractor.Utilities;
 using MFractor.Xml;
 using Microsoft.CodeAnalysis;
 
 namespace MFractor.Maui.XamlPlatforms.Maui
 {
+    [PartCreationPolicy(CreationPolicy.Shared)]
+    [Export(typeof(MauiXamlPlatform))]
+    [Export(typeof(IXamlPlatform))]
     public class MauiXamlPlatform : IXamlPlatform
     {
         public bool IsSupported(Project project, Compilation compilation, IXmlSyntaxTree xmlSyntaxTree)
@@ -21,8 +24,6 @@ namespace MFractor.Maui.XamlPlatforms.Maui
         {
             return xmlSyntaxTree.Root.GetAttributeByName("xmlns")?.Value?.Value == SchemaUrl;
         }
-
-        public XamlPlatform Platform => XamlPlatform.Maui;
 
         public string SchemaUrl => "http://schemas.microsoft.com/dotnet/2021/maui";
 
@@ -249,8 +250,5 @@ namespace MFractor.Maui.XamlPlatforms.Maui
 
         public ITypeDefinition ImageSource { get; } = new TypeDefinition("Microsoft.Maui.Controls.ImageSource");
 
-        public bool SupportsCustomRenderers => true;
-
-        public ITypeDefinition ExportRendererAttribute { get; } = new TypeDefinition("Microsoft.Maui.Controls.ExportRendererAttribute");
     }
 }

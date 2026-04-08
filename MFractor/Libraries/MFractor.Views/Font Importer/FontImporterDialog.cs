@@ -23,6 +23,7 @@ using MFractor.Work;
 using MFractor.Workspace;
 using MFractor.Workspace.Utilities;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Views.FontImporter
 {
@@ -70,7 +71,7 @@ namespace MFractor.Views.FontImporter
         IAnalyticsService AnalyticsService { get; set; }
 
         [Import]
-        IXamlPlatformRepository XamlPlatforms { get; set; }
+        MauiXamlPlatform MauiPlatform { get; set; }
 
         [Import]
         protected IWorkEngine WorkEngine { get; set; }
@@ -140,7 +141,7 @@ namespace MFractor.Views.FontImporter
                     continue;
                 }
 
-                var platform = XamlPlatforms.ResolvePlatform(project);
+                var platform = MauiPlatform.Resolve(project);
                 if (platform == null)
                 {
                     continue;

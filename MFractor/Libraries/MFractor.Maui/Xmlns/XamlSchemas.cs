@@ -5,7 +5,7 @@ using System.Linq;
 namespace MFractor.Maui.Xmlns
 {
     /// <summary>
-    /// A helper class that encapsulates the default XAML schemas for XAML platforms.
+    /// A helper class that encapsulates the default XAML schemas used by .NET MAUI.
     /// </summary>
 	public static class XamlSchemas
 	{

@@ -1,0 +1,20 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <!-- See https://www.nuget.org/packages/JetBrains.ReSharper.SDK -->
+    <!-- Keep in sync with ProductVersion in gradle.properties -->
+    <SdkVersion>2025.3.0.1</SdkVersion>
+
+    <Title>MFractor Rider</Title>
+    <Description>Rider host for the MAUI-only MFractor analysis and tooling backend.</Description>
+
+    <Authors>Matthew Robbins</Authors>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of MFractor</Copyright>
+    <PackageTags>rider plugin;maui;xaml;jetbrains</PackageTags>
+
+    <PackageProjectUrl>https://github.com/mfractor/mfractor</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/mfractor/mfractor/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://docs.mfractor.com/assets/mfractor-logo.png</PackageIconUrl>
+  </PropertyGroup>
+
+</Project>

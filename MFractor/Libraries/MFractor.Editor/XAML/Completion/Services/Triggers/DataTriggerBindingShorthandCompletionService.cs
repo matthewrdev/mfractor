@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading;
 using MFractor.Editor.Utilities;
 using MFractor.Maui;
-using MFractor.Maui.Attributes;
 using MFractor.Maui.Syntax;
 using MFractor.Maui.Utilities;
 using MFractor.Maui.XamlPlatforms;
@@ -18,8 +17,6 @@ using Microsoft.VisualStudio.Text.Editor;
 
 namespace MFractor.Editor.XAML.Completion.Services
 {
-    [TargetXamlPlatform(XamlPlatform.XamarinForms)]
-    [TargetXamlPlatform(XamlPlatform.Maui)]
     [PartCreationPolicy(CreationPolicy.Shared)]
     class DataTriggerBindingShorthandCompletionService : IXamlCompletionService
     {

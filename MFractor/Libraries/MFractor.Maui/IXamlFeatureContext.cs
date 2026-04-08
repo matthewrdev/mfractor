@@ -39,9 +39,7 @@ namespace MFractor.Maui
         IParsedXamlDocument XamlDocument { get; }
 
         /// <summary>
-        /// The XAML platorm that this context targets.
-        /// <para/>
-        /// See <see cref="MFractor.Maui.XamlPlatform"/> for a list of supported or planned platforms.
+        /// The MAUI XAML platform metadata used to analyse this context.
         /// </summary>
         IXamlPlatform Platform {get;}
 

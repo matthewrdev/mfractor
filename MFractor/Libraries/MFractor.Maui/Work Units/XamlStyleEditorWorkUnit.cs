@@ -79,7 +79,7 @@ namespace MFractor.Maui.WorkUnits
         public Project Project { get; set; }
 
         /// <summary>
-        /// The XAML platform that the stye editor is targetting.
+        /// The MAUI XAML platform metadata that the style editor is targeting.
         /// </summary>
         public IXamlPlatform Platform { get; set; }
 

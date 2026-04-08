@@ -330,18 +330,6 @@ namespace MFractor.Maui.Mvvm
             return codeBehind;
         }
 
-        public bool IsXamarinFormsXamlViewContext(Project project, string filePath)
-        {
-            var file = ProjectService.GetProjectFileWithFilePath(project, filePath);
-
-            if (file == null)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         public INamedTypeSymbol TryResolveClassUsingSuffixes(Project project, string className, IEnumerable<string> suffixes)
         {
             if (!project.TryGetCompilation(out var compilation))

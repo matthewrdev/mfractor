@@ -206,7 +206,7 @@ namespace MFractor.Maui.Utilities
         		return false;
         	}
 
-            // ValueConversionAttribute is XAML platform agnostic and does not require platform handling. 
+            // ValueConversionAttribute is still platform agnostic and does not require MAUI-specific handling. 
             var conversionAttribute = attributes.FirstOrDefault(a => a.AttributeClass.Name == "ValueConversionAttribute");
 
         	if (conversionAttribute == null)
@@ -236,4 +236,3 @@ namespace MFractor.Maui.Utilities
         }
     }
 }
-

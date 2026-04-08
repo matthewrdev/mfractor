@@ -54,19 +54,8 @@ namespace MFractor.Code.Analysis
 
             var suppressedAnalysers = AnalyserSuppressionService.GetSuppressedAnalysers(document);
 
-            var nodeAnalysers = CodeAnalyserRepository.GetCodeAnalysersForSyntaxKind(XmlSyntaxKind.Node)
-                                                      ?.Where(a => CodeAnalysisOptions.IsEnabled(a.Identifier))
-                                                      ?.Where(a => a.IsInterestedInDocument(document, context))
-                                                      ?.Where(a => !suppressedAnalysers.ContainsKey((a.Identifier)))
-                                                      ?.GroupBy(a => a.Filter, a => a)
-                                                      ?.ToDictionary(g => g.Key, g => (IReadOnlyList<IXmlSyntaxCodeAnalyser>)g.ToList());
-
-            var attributeAnalysers = CodeAnalyserRepository.GetCodeAnalysersForSyntaxKind(XmlSyntaxKind.Attribute)
-                                                      ?.Where(a => CodeAnalysisOptions.IsEnabled(a.Identifier))
-                                                      ?.Where(a => a.IsInterestedInDocument(document, context))
-                                                      ?.Where(a => !suppressedAnalysers.ContainsKey((a.Identifier)))
-                                                      ?.GroupBy(a => a.Filter, a => a)
-                                                      ?.ToDictionary(g => g.Key, g => (IReadOnlyList<IXmlSyntaxCodeAnalyser>)g.ToList());
+            var nodeAnalysers = CreateFilteredAnalyserLookup(CodeAnalyserRepository.GetCodeAnalysersForSyntaxKind(XmlSyntaxKind.Node), XmlSyntaxKind.Node, document, context, suppressedAnalysers);
+            var attributeAnalysers = CreateFilteredAnalyserLookup(CodeAnalyserRepository.GetCodeAnalysersForSyntaxKind(XmlSyntaxKind.Attribute), XmlSyntaxKind.Attribute, document, context, suppressedAnalysers);
 
             Preprocess(document, context);
 
@@ -128,21 +117,60 @@ namespace MFractor.Code.Analysis
                                                CancellationToken cancellation)
         {
 
-            var nodeAnalysers = analysers.Where(a => a.TargetSyntax == XmlSyntaxKind.Node)
-                                         ?.Where(a => CodeAnalysisOptions.IsEnabled(a.Identifier))
-                                         ?.Where(a => a.IsInterestedInDocument(document, context))
-                                         ?.GroupBy(a => a.Filter, a => a)
-                                         ?.ToDictionary(a => a.Key, a => (IReadOnlyList<IXmlSyntaxCodeAnalyser>)a.ToList());
-
-            var attributeAnalysers = analysers.Where(a => a.TargetSyntax == XmlSyntaxKind.Attribute)
-                                               ?.Where(a => CodeAnalysisOptions.IsEnabled(a.Identifier))
-                                               ?.Where(a => a.IsInterestedInDocument(document, context))
-                                               ?.GroupBy(a => a.Filter, a => a)
-                                               ?.ToDictionary(a => a.Key, a => (IReadOnlyList<IXmlSyntaxCodeAnalyser>)a.ToList());
+            var nodeAnalysers = CreateFilteredAnalyserLookup(analysers, XmlSyntaxKind.Node, document, context);
+            var attributeAnalysers = CreateFilteredAnalyserLookup(analysers, XmlSyntaxKind.Attribute, document, context);
 
             Preprocess(document, context);
 
             return Analyse(document, context, document.GetSyntaxTree().Root, nodeAnalysers, attributeAnalysers, cancellation);
+        }
+
+        IReadOnlyDictionary<CodeAnalyserExecutionFilter, IReadOnlyList<IXmlSyntaxCodeAnalyser>> CreateFilteredAnalyserLookup(IEnumerable<IXmlSyntaxCodeAnalyser> analysers,
+                                                                                                                               XmlSyntaxKind targetSyntax,
+                                                                                                                               IParsedXmlDocument document,
+                                                                                                                               IFeatureContext context,
+                                                                                                                               IReadOnlyDictionary<string, AnalyserSuppression> suppressedAnalysers = null)
+        {
+            if (analysers == null)
+            {
+                return null;
+            }
+
+            var groupedAnalysers = new Dictionary<CodeAnalyserExecutionFilter, List<IXmlSyntaxCodeAnalyser>>();
+
+            foreach (var analyser in analysers)
+            {
+                if (analyser == null
+                    || analyser.TargetSyntax != targetSyntax
+                    || !CodeAnalysisOptions.IsEnabled(analyser.Identifier)
+                    || !analyser.IsInterestedInDocument(document, context)
+                    || (suppressedAnalysers != null && suppressedAnalysers.ContainsKey(analyser.Identifier)))
+                {
+                    continue;
+                }
+
+                var filter = analyser.Filter;
+                if (!groupedAnalysers.TryGetValue(filter, out var filterGroup))
+                {
+                    filterGroup = new List<IXmlSyntaxCodeAnalyser>();
+                    groupedAnalysers[filter] = filterGroup;
+                }
+
+                filterGroup.Add(analyser);
+            }
+
+            if (!groupedAnalysers.Any())
+            {
+                return null;
+            }
+
+            var results = new Dictionary<CodeAnalyserExecutionFilter, IReadOnlyList<IXmlSyntaxCodeAnalyser>>();
+            foreach (var group in groupedAnalysers)
+            {
+                results[group.Key] = group.Value;
+            }
+
+            return results;
         }
 
         public IReadOnlyList<ICodeIssue> Analyse(IParsedXmlDocument document,
@@ -317,4 +345,3 @@ namespace MFractor.Code.Analysis
         }
     }
 }
-

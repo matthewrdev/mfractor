@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using MFractor.Maui.XamlPlatforms;
 using MFractor.Utilities;
 using MFractor.Utilities.SymbolVisitors;
@@ -13,18 +14,18 @@ namespace MFractor.Maui.Xmlns
     [Export(typeof(IXmlnsDefinitionResolver))]
     class XmlnsDefinitionResolver : IXmlnsDefinitionResolver
     {
+        sealed class CompilationXmlnsDefinitionCache
+        {
+            public IXmlnsDefinitionCollection Definitions { get; set; }
+        }
+
         public class AssemblyNamespaceCollection
         {
             readonly Dictionary<string, NamespaceSymbolVisitor> namespaceCollection = new Dictionary<string, NamespaceSymbolVisitor>();
 
             internal INamespaceSymbol GetNamespaceByName(IAssemblySymbol assembly, string @namespace)
             {
-                if (assembly is null)
-                {
-                    return null;
-                }
-
-                if (string.IsNullOrEmpty(@namespace))
+                if (assembly is null || string.IsNullOrEmpty(@namespace))
                 {
                     return null;
                 }
@@ -33,11 +34,14 @@ namespace MFractor.Maui.Xmlns
                 {
                     walker = new NamespaceSymbolVisitor();
                     walker.Visit(assembly);
+                    namespaceCollection[assembly.Name] = walker;
                 }
 
                 return walker.GetNamespaceByName(@namespace);
             }
         }
+
+        readonly ConditionalWeakTable<Compilation, CompilationXmlnsDefinitionCache> compilationCache = new ConditionalWeakTable<Compilation, CompilationXmlnsDefinitionCache>();
 
         readonly HashSet<string> excludedXmlnsAssemblyNames = new HashSet<string>()
         {
@@ -59,20 +63,20 @@ namespace MFractor.Maui.Xmlns
             }
 
             var attributes = assembly.GetAttributes();
-
             if (attributes == null || !attributes.Any())
             {
                 return null;
             }
 
-            var exportedXmlnsDefinitions = attributes.Where(a => SymbolHelper.DerivesFrom(a.AttributeClass, platform.XmlnsDefinitionAttribute.MetaType)).ToList();
+            var exportedXmlnsDefinitions = attributes
+                .Where(a => SymbolHelper.DerivesFrom(a.AttributeClass, platform.XmlnsDefinitionAttribute.MetaType))
+                .ToList();
 
             if (!exportedXmlnsDefinitions.Any())
             {
                 return null;
             }
 
-            var targetAssembly = assembly;
             var result = new List<(string, INamespaceSymbol)>();
             foreach (var xmlns in exportedXmlnsDefinitions)
             {
@@ -92,19 +96,25 @@ namespace MFractor.Maui.Xmlns
                     continue;
                 }
 
+                var targetAssembly = assembly;
                 if (namedArguments != null && namedArguments.Any(na => na.Key == "AssemblyName"))
                 {
                     try
                     {
                         var value = namedArguments.FirstOrDefault(na => na.Key == "AssemblyName").Value;
-                        var tempName = value.Type.ContainingAssembly.Name;
+                        var targetAssemblyName = value.Value as string;
 
-                        assembly = compilation.ResolveAssembly(tempName);
+                        if (!string.IsNullOrEmpty(targetAssemblyName))
+                        {
+                            targetAssembly = compilation.ResolveAssembly(targetAssemblyName) ?? targetAssembly;
+                        }
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                 }
 
-                var ns = assemblyNamespaceCollection.GetNamespaceByName(assembly, @namespace);
+                var ns = assemblyNamespaceCollection.GetNamespaceByName(targetAssembly, @namespace);
 
                 if (ns != null)
                 {
@@ -127,40 +137,65 @@ namespace MFractor.Maui.Xmlns
                 return null;
             }
 
+            return Resolve(project, compilation, platform);
+        }
+
+        public IXmlnsDefinitionCollection Resolve(Project project, Compilation compilation, IXamlPlatform platform)
+        {
+            if (project is null || compilation is null || platform is null)
+            {
+                return null;
+            }
+
+            var cacheBucket = compilationCache.GetValue(compilation, _ => new CompilationXmlnsDefinitionCache());
+            lock (cacheBucket)
+            {
+                if (cacheBucket.Definitions != null)
+                {
+                    return cacheBucket.Definitions;
+                }
+            }
+
             var availableAssemblies = SymbolHelper.GetAllAvailableAssemblySymbols(project);
-
-            var definitions = new Dictionary<string, HashSet<INamespaceSymbol>>();
-
-            var collection = new AssemblyNamespaceCollection();
-
             var candidateAssemblies = availableAssemblies.Where(IsXmlnsDefinitionCandidate).ToList();
 
-            foreach (var assembly in availableAssemblies)
+            var definitions = new Dictionary<string, HashSet<INamespaceSymbol>>();
+            var collection = new AssemblyNamespaceCollection();
+
+            foreach (var assembly in candidateAssemblies)
             {
                 var assemblyDefinitions = Resolve(assembly, compilation, platform, collection);
 
-                if (assemblyDefinitions != null && assemblyDefinitions.Any())
+                if (assemblyDefinitions == null || !assemblyDefinitions.Any())
                 {
-                    foreach (var definition in assemblyDefinitions)
-                    {
-                        if (!definitions.ContainsKey(definition.Item1))
-                        {
-                            definitions[definition.Item1] = new HashSet<INamespaceSymbol>();
-                        }
+                    continue;
+                }
 
-                        definitions[definition.Item1].Add(definition.Item2);
+                foreach (var definition in assemblyDefinitions)
+                {
+                    if (!definitions.TryGetValue(definition.Item1, out var namespaces))
+                    {
+                        namespaces = new HashSet<INamespaceSymbol>();
+                        definitions[definition.Item1] = namespaces;
                     }
+
+                    namespaces.Add(definition.Item2);
                 }
             }
 
             var xmlnsDefinitions = new List<IXmlnsDefinition>();
-
-            foreach (var d in definitions)
+            foreach (var definition in definitions)
             {
-                xmlnsDefinitions.Add(new XmlnsDefinition(d.Key, d.Value.ToList()));
+                xmlnsDefinitions.Add(new XmlnsDefinition(definition.Key, definition.Value.ToList()));
             }
 
-            return new XmlnsDefinitionCollection(xmlnsDefinitions);
+            var resolvedDefinitions = new XmlnsDefinitionCollection(xmlnsDefinitions);
+            lock (cacheBucket)
+            {
+                cacheBucket.Definitions = resolvedDefinitions;
+            }
+
+            return resolvedDefinitions;
         }
 
         public bool IsXmlnsDefinitionCandidate(IAssemblySymbol assembly)
@@ -172,7 +207,6 @@ namespace MFractor.Maui.Xmlns
 
             var assemblyName = assembly.Name;
 
-            // Exclude known assemblies that definitely do not have a xmlns attribute.
             if (assemblyName.StartsWith("System")
                 || assemblyName.StartsWith("Microsoft.Extensions")
                 || assemblyName.StartsWith("mscorlib")

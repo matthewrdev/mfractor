@@ -12,6 +12,7 @@ using MFractor.CSharp.CodeGeneration;
 using MFractor.Maui.CodeGeneration.BindableProperties;
 using MFractor.Maui.Configuration;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 using MFractor.Work.WorkUnits;
@@ -45,11 +46,11 @@ namespace MFractor.Maui.CodeActions.Generate
         public ITypeInfermentService TypeInfermentService { get; set; }
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
         protected override bool IsAvailableInDocument(IParsedCSharpDocument document, IFeatureContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanExecute(SyntaxNode syntax, IParsedCSharpDocument document, IFeatureContext context, InteractionLocation location)
@@ -77,7 +78,7 @@ namespace MFractor.Maui.CodeActions.Generate
                 return false;
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
             var classType = model.GetDeclaredSymbol(classDeclarationSyntax) as INamedTypeSymbol;
 
             return SymbolHelper.DerivesFrom(classType, platform.BindableObject.MetaType);
@@ -98,7 +99,7 @@ namespace MFractor.Maui.CodeActions.Generate
             context.Project.TryGetCompilation(out var compilation);
 
             var model = compilation.GetSemanticModel(syntax.SyntaxTree);
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
 
             var classType = model.GetDeclaredSymbol(classDeclarationSyntax) as INamedTypeSymbol;
 

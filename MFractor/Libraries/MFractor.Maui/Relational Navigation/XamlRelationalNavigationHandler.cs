@@ -6,6 +6,7 @@ using MFractor.Configuration;
 using MFractor.Ide.Navigation;
 using MFractor.Maui.Mvvm;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Maui.Xmlns;
 using MFractor.Utilities;
 using MFractor.Work;
@@ -30,8 +31,8 @@ namespace MFractor.Maui.RelationalNavigation
         readonly Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver;
         public IXmlnsDefinitionResolver XmlnsDefinitionResolver => xmlnsDefinitionResolver.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         public string DefinitionDisplayName => "XAML View";
 
@@ -47,21 +48,21 @@ namespace MFractor.Maui.RelationalNavigation
 
         [ImportingConstructor]
         public XamlRelationalNavigationHandler(Lazy<IMvvmResolver> mvvmResolver,
-                                            Lazy<IXmlSyntaxTreeService> xmlSyntaxTreeService,
-                                            Lazy<IXamlNamespaceParser> xamlNamespaceResolver,
-                                            Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
-                                            Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                               Lazy<IXmlSyntaxTreeService> xmlSyntaxTreeService,
+                                               Lazy<IXamlNamespaceParser> xamlNamespaceResolver,
+                                               Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
+                                               Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.mvvmResolver = mvvmResolver;
             this.xmlSyntaxTreeService = xmlSyntaxTreeService;
             this.xamlNamespaceResolver = xamlNamespaceResolver;
             this.xmlnsDefinitionResolver = xmlnsDefinitionResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public bool IsInterestedInProject(Project project)
         {
-            return XamlPlatforms.CanResolvePlatform(project);
+            return MauiPlatform.Supports(project);
         }
 
         public bool IsAvailable(Project project, string filePath)
@@ -87,7 +88,11 @@ namespace MFractor.Maui.RelationalNavigation
             if (syntaxTree != null
                 && project.TryGetCompilation(out var compilation))
             {
-                var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+                var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
+                if (platform == null)
+                {
+                    return null;
+                }
                 var xamlNamespaces = XamlNamespaceResolver.ParseNamespaces(syntaxTree);
                 var xmlnsDefinitions = XmlnsDefinitionResolver.Resolve(project, platform);
                 if (xamlNamespaces != null)

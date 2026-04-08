@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MFractor.Maui.Data.Repositories;
 using MFractor.Maui.Utilities;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Text;
 using MFractor.Utilities;
 using MFractor.Utilities.SyntaxWalkers;
@@ -26,18 +27,18 @@ namespace MFractor.Maui.Data.Synchronisation
         static readonly string[] supportedExtensions = { ".cs" };
         public string[] SupportedFileExtensions => supportedExtensions;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
-        public CSharpDocumentSynchroniser(Lazy<IXamlPlatformRepository> xamlPlatforms)
+        public CSharpDocumentSynchroniser(Lazy<MauiXamlPlatform> mauiPlatform)
         {
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public bool IsAvailable(Solution solution, Project project)
         {
-            return XamlPlatforms.CanResolvePlatform(project);
+            return MauiPlatform.Supports(project);
         }
 
         public Task<bool> CanSynchronise(Solution solution,
@@ -78,11 +79,11 @@ namespace MFractor.Maui.Data.Synchronisation
                 return Task.FromResult(false);
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(project);
+            var platform = MauiPlatform.Resolve(project);
 
             if (platform == null)
             {
-                // Unsupported or unknown XAML platform.
+                // Unsupported or non-MAUI project.
                 return Task.FromResult(false);
             }
 

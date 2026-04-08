@@ -6,6 +6,7 @@ using MFractor.Commands;
 using MFractor.Ide.Commands;
 using MFractor.Maui.WorkUnits;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 using MFractor.Work.WorkUnits;
@@ -25,17 +26,17 @@ namespace MFractor.Maui.Commands.Wizards
         readonly Lazy<IWorkEngine> workEngine;
         public IWorkEngine WorkEngine => workEngine.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
         public MVVMWizardCommand(Lazy<IWorkspaceService> workspaceService,
                                  Lazy<IWorkEngine> workEngine,
-                                 Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                 Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.workspaceService = workspaceService;
             this.workEngine = workEngine;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public void Execute(ICommandContext commandContext)
@@ -67,7 +68,7 @@ namespace MFractor.Maui.Commands.Wizards
 
         void LaunchMvvmWizard(Project targetProject)
         {
-            var platform = XamlPlatforms.ResolvePlatform(targetProject);
+            var platform = MauiPlatform.Resolve(targetProject);
             WorkEngine.ApplyAsync(new MVVMWizardWorkUnit()
             {
                 Platform = platform,
@@ -82,7 +83,7 @@ namespace MFractor.Maui.Commands.Wizards
             {
                 if (solutionPadCommandContext.SelectedItem  is IProjectFolder folder)
                 {
-                    if (XamlPlatforms.CanResolvePlatform(folder.Project))
+                    if (MauiPlatform.Supports(folder.Project))
                     {
                         return folder.Project;
                     }
@@ -107,7 +108,7 @@ namespace MFractor.Maui.Commands.Wizards
                 return Enumerable.Empty<Project>();
             }
 
-            return WorkspaceService.CurrentWorkspace.CurrentSolution.Projects.Where(p => XamlPlatforms.CanResolvePlatform(p)).ToList();
+            return WorkspaceService.CurrentWorkspace.CurrentSolution.Projects.Where(p => MauiPlatform.Supports(p)).ToList();
         }
 
         public ICommandState GetExecutionState(ICommandContext commandContext)

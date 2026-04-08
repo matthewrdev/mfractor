@@ -1,9 +1,5 @@
-﻿using $namespace$.Effects;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.$platform$;
+﻿using Microsoft.Maui.Controls.Platform;
 
-[assembly: ResolutionGroupName("$group_name$")]
-[assembly: ExportEffect(typeof($name$), "$name$")]
 namespace $namespace$.Effects
 {
     public class $name$ : PlatformEffect

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using MFractor.Text;
 
 namespace MFractor.Xml
 {
@@ -13,6 +15,21 @@ namespace MFractor.Xml
         /// <param name="filePath"></param>
         /// <returns></returns>
         XmlSyntaxTree GetSyntaxTree(string filePath);
+
+        /// <summary>
+        /// Parses and stores the latest <see cref="XmlSyntaxTree"/> for the given <paramref name="filePath"/>.
+        /// </summary>
+        void UpdateSyntaxTree(string filePath, string text);
+
+        /// <summary>
+        /// Incrementally updates the cached <see cref="XmlSyntaxTree"/> for the given <paramref name="filePath"/>.
+        /// </summary>
+        void UpdateSyntaxTree(string filePath, string text, IEnumerable<ITextReplacement> changes);
+
+        /// <summary>
+        /// Removes the cached <see cref="XmlSyntaxTree"/> for the given <paramref name="filePath"/>.
+        /// </summary>
+        void RemoveSyntaxTree(string filePath);
 
         /// <summary>
         /// An event that is triggered when an <see cref="XmlSyntaxTree"/> is updated for a file path.

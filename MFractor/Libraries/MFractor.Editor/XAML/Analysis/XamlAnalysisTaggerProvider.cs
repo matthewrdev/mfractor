@@ -68,11 +68,12 @@ namespace MFractor.Editor.XAML.Analysis
                     try
                     {
                         tagger = Resolver.Resolve<XamlAnalysisTagger>();
+
+                        BindTextViewLifecycleEvents(textDocument.FilePath, textView);
+
                         tagger.Initialise(textView, textDocument.FilePath);
 
                         cache.Add(textView, tagger);
-
-                        BindTextViewLifecycleEvents(textDocument.FilePath, textView);
                     }
                     catch (Exception ex)
                     {

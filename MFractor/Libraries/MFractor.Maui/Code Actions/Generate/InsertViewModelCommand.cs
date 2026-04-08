@@ -9,6 +9,7 @@ using MFractor.Ide.Navigation;
 using MFractor.Maui.CodeGeneration.Commands;
 using MFractor.Maui.Mvvm;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Utilities;
 using MFractor.Work;
 using MFractor.Work.WorkUnits;
@@ -36,7 +37,7 @@ namespace MFractor.Maui.CodeActions.Generate
         public ICommandImplementationGenerator CommandImplementationGenerator { get; set; }
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
 
         [ImportingConstructor]
@@ -47,7 +48,7 @@ namespace MFractor.Maui.CodeActions.Generate
 
         protected override bool IsAvailableInDocument(IParsedCSharpDocument document, IFeatureContext context)
         {
-            return XamlPlatforms.CanResolvePlatform(context.Project);
+            return MauiPlatform.Supports(context.Project);
         }
 
         public override bool CanExecute(SyntaxNode syntax, IParsedCSharpDocument document, IFeatureContext context, InteractionLocation location)
@@ -95,7 +96,7 @@ namespace MFractor.Maui.CodeActions.Generate
         {
             var snippet = CommandImplementationGenerator.Snippet;
 
-            var platform = XamlPlatforms.ResolvePlatform(context.Project);
+            var platform = MauiPlatform.Resolve(context.Project);
 
             snippet.SetArgumentValue(ReservedCodeSnippetArgumentName.Type, platform.Command.MetaType);
 

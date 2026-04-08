@@ -8,7 +8,6 @@ using MFractor.Code.Analysis;
 using MFractor.Data;
 using MFractor.Editor.Utilities;
 using MFractor.Maui.Analysis;
-using MFractor.Text;
 using MFractor.Workspace;
 using MFractor.Workspace.Data;
 using Microsoft.CodeAnalysis;
@@ -175,10 +174,7 @@ namespace MFractor.Editor.XAML.Analysis
                     return;
                 }
 
-                token.ThrowIfCancellationRequested();
-                var content = snapshot.GetText();
-
-                xamlAnalysisDebouncer.RequestAnalysis(xamlAnalyser, new StringTextProvider(content), filePath, project.Id, token);
+                xamlAnalysisDebouncer.RequestAnalysis(xamlAnalyser, filePath, project.Id, token);
 
             }
             catch (OperationCanceledException)

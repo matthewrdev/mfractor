@@ -14,6 +14,7 @@ using MFractor.Workspace;
 using MFractor.Workspace.Utilities;
 using Microsoft.CodeAnalysis;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Maui.Commands.Wizards
 {
@@ -25,26 +26,26 @@ namespace MFractor.Maui.Commands.Wizards
         readonly Lazy<IWorkEngine> workEngine;
         readonly Lazy<IProjectService> projectService;
         readonly Lazy<IAppXamlConfiguration> appXamlConfiguration;
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
 
         public IWorkspaceService WorkspaceService => workspaceService.Value;
         public IWorkEngine WorkEngine => workEngine.Value;
         public IAppXamlConfiguration AppXamlConfiguration => appXamlConfiguration.Value;
         public IProjectService ProjectService => projectService.Value;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
         public ValueConverterWizardCommand(Lazy<IWorkspaceService> workspaceService,
                                            Lazy<IWorkEngine> workEngine,
                                            Lazy<IProjectService> projectService,
                                            Lazy<IAppXamlConfiguration> appXamlConfiguration,
-                                           Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                           Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.workspaceService = workspaceService;
             this.workEngine = workEngine;
             this.projectService = projectService;
             this.appXamlConfiguration = appXamlConfiguration;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         IEnumerable<Project> GetAvailableProjects()
@@ -55,7 +56,7 @@ namespace MFractor.Maui.Commands.Wizards
                 return Enumerable.Empty<Project>();
             }
 
-            return WorkspaceService.CurrentWorkspace.CurrentSolution.Projects.Where(p => XamlPlatforms.CanResolvePlatform(p))
+            return WorkspaceService.CurrentWorkspace.CurrentSolution.Projects.Where(p => MauiPlatform.Supports(p))
                                                                               .ToList();
         }
 
@@ -89,7 +90,7 @@ namespace MFractor.Maui.Commands.Wizards
         void LaunchValueConverterWizard(ICommandContext commandContext, Project targetProject)
         {
             var targetFiles = GetTargetFiles(commandContext, targetProject).ToList();
-            var platform = XamlPlatforms.ResolvePlatform(targetProject);
+            var platform = MauiPlatform.Resolve(targetProject);
 
             WorkEngine.ApplyAsync(new ValueConverterWizardWorkUnit()
             {
@@ -105,7 +106,7 @@ namespace MFractor.Maui.Commands.Wizards
             if (commandContext is ISolutionPadCommandContext solutionPadCommandContext)
             {
                 if (solutionPadCommandContext.SelectedItem is IProjectFolder folder
-                    && XamlPlatforms.CanResolvePlatform(folder.Project))
+                    && MauiPlatform.Supports(folder.Project))
                 {
                     return folder.Project;
                 }
@@ -123,7 +124,7 @@ namespace MFractor.Maui.Commands.Wizards
 
         IEnumerable<IProjectFile> GetTargetFiles(ICommandContext commandContext, Project project)
         {
-            var platform = XamlPlatforms.ResolvePlatform(project);
+            var platform = MauiPlatform.Resolve(project);
 
             if (platform is null)
             {

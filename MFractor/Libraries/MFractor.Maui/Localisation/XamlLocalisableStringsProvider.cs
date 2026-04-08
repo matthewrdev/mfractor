@@ -11,6 +11,7 @@ using MFractor.Utilities;
 using MFractor.Xml;
 using Microsoft.CodeAnalysis;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 
 namespace MFractor.Maui.Localisation
 {
@@ -21,7 +22,7 @@ namespace MFractor.Maui.Localisation
         public string[] SupportedFileExtensions { get; } = new string[] { ".xaml" };
 
         [Import]
-        public IXamlPlatformRepository XamlPlatforms { get; set; }
+        public MauiXamlPlatform MauiPlatform { get; set; }
 
         public IEnumerable<ILocalisableString> RetrieveLocalisableStrings(IParsedDocument document, object semanticModel)
         {
@@ -31,7 +32,7 @@ namespace MFractor.Maui.Localisation
                 return Enumerable.Empty<ILocalisableString>();
             }
 
-            var platform = XamlPlatforms.ResolvePlatform(document.ProjectFile.CompilationProject);
+            var platform = MauiPlatform.Resolve(document.ProjectFile.CompilationProject);
             if (platform is null)
             {
                 return Enumerable.Empty<ILocalisableString>();

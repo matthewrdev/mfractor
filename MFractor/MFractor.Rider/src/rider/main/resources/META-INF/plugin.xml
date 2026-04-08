@@ -1,0 +1,16 @@
+<idea-plugin require-restart="true">
+  <id>com.mfractor.rider</id>
+  <name>MFractor</name>
+  <version>_PLACEHOLDER_</version>
+  <vendor url="https://docs.mfractor.com">MFractor</vendor>
+  <idea-version since-build="_PLACEHOLDER_" until-build="_PLACEHOLDER_" />
+  <depends>com.intellij.modules.rider</depends>
+
+  <description>
+<![CDATA[
+<p>Rider host for MFractor's MAUI-focused XAML analysis, inspections, and tooling.</p>
+<p>This head is intentionally Rider-specific and aligned to the MAUI-only core.</p>
+]]>
+  </description>
+
+</idea-plugin>

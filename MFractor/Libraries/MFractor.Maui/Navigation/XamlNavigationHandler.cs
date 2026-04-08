@@ -15,6 +15,7 @@ using MFractor.Maui.StaticResources;
 using MFractor.Maui.Symbols;
 using MFractor.Maui.Syntax.Expressions;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Navigation;
 using MFractor.Utilities;
 using MFractor.Work;
@@ -50,8 +51,8 @@ namespace MFractor.Maui.Navigation
         readonly Lazy<IProductInformation> productInformation;
         public IProductInformation ProductInformation => productInformation.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         [ImportingConstructor]
         public XamlNavigationHandler(Lazy<IXamlSymbolResolver> symbolResolver,
@@ -61,7 +62,7 @@ namespace MFractor.Maui.Navigation
                                      Lazy<IProductInformation> productInformation,
                                      Lazy<IResourcesDatabaseEngine> resourcesDatabaseEngine,
                                      Lazy<IDynamicResourceResolver> dynamicResourceResolver,
-                                     Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                     Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.symbolResolver = symbolResolver;
             this.workEngine = workEngine;
@@ -70,7 +71,7 @@ namespace MFractor.Maui.Navigation
             this.productInformation = productInformation;
             this.resourcesDatabaseEngine = resourcesDatabaseEngine;
             this.dynamicResourceResolver = dynamicResourceResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         public override Task<IReadOnlyList<IWorkUnit>> Navigate(INavigationContext navigationContext, INavigationSuggestion navigationSuggestion)
@@ -293,7 +294,7 @@ namespace MFractor.Maui.Navigation
                 return false;
             }
 
-            return XamlPlatforms.CanResolvePlatform(navigationContext.CompilationProject);
+            return MauiPlatform.Supports(navigationContext.CompilationProject);
         }
     }
 }

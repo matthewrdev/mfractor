@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MFractor.Code.Analysis;
 using MFractor.Maui.Mvvm;
 using MFractor.Maui.XamlPlatforms;
+using MFractor.Maui.XamlPlatforms.Maui;
 using MFractor.Maui.Xmlns;
 using MFractor.Text;
 using MFractor.Utilities;
@@ -29,7 +30,7 @@ namespace MFractor.Maui
                                          Lazy<IXamlFeatureContextService> xamlFeatureContextService,
                                          Lazy<IXamlNamespaceParser> xamlNamespaceResolver,
                                          Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver,
-                                         Lazy<IXamlPlatformRepository> xamlPlatforms)
+                                         Lazy<MauiXamlPlatform> mauiPlatform)
         {
             this.workspaceService = workspaceService;
             this.xmlDocumentAnalyser = xmlDocumentAnalyser;
@@ -39,7 +40,7 @@ namespace MFractor.Maui
             this.xamlFeatureContextService = xamlFeatureContextService;
             this.xamlNamespaceResolver = xamlNamespaceResolver;
             this.xmlnsDefinitionResolver = xmlnsDefinitionResolver;
-            this.xamlPlatforms = xamlPlatforms;
+            this.mauiPlatform = mauiPlatform;
         }
 
         readonly Lazy<IWorkspaceService> workspaceService;
@@ -66,8 +67,8 @@ namespace MFractor.Maui
         readonly Lazy<IXmlnsDefinitionResolver> xmlnsDefinitionResolver;
         public IXmlnsDefinitionResolver XmlnsDefinitionResolver => xmlnsDefinitionResolver.Value;
 
-        readonly Lazy<IXamlPlatformRepository> xamlPlatforms;
-        public IXamlPlatformRepository XamlPlatforms => xamlPlatforms.Value;
+        readonly Lazy<MauiXamlPlatform> mauiPlatform;
+        public MauiXamlPlatform MauiPlatform => mauiPlatform.Value;
 
         public IParsedXamlDocument Create(Project project, string filePath, ITextProvider textProvider)
         {
@@ -117,7 +118,11 @@ namespace MFractor.Maui
                     return null;
                 }
 
-                var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+                var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
+                if (platform == null)
+                {
+                    return null;
+                }
                 var namespaces = XamlNamespaceResolver.ParseNamespaces(syntaxTree);
                 var xmlnsDefinitions = XmlnsDefinitionResolver.Resolve(project, platform);
 
@@ -167,7 +172,11 @@ namespace MFractor.Maui
                 }
 
                 var compilation = await project.GetCompilationAsync();
-                var platform = XamlPlatforms.ResolvePlatform(project, compilation, syntaxTree);
+                var platform = MauiPlatform.Resolve(project, compilation, syntaxTree);
+                if (platform == null)
+                {
+                    return null;
+                }
                 var namespaces = XamlNamespaceResolver.ParseNamespaces(syntaxTree);
                 var xmlnsDefinitions = XmlnsDefinitionResolver.Resolve(project, platform);
 
