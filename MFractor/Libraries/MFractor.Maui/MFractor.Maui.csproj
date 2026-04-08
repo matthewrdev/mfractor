@@ -141,17 +141,12 @@
     <Folder Include="Analysis\Grid\" />
     <Folder Include="Xaml Platforms\" />
     <Folder Include="Xaml Platforms\Maui\" />
-    <Folder Include="Xaml Platforms\UWP\" />
-    <Folder Include="Xaml Platforms\WPF\" />
-    <Folder Include="Attributes\" />
     <Folder Include="Data\Indexes\" />
     <Folder Include="Analysis\StackLayout\" />
     <Folder Include="Code Actions\Fix\StackLayout\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MFractor.Xml\MFractor.Xml.csproj" />
-    <ProjectReference Include="..\MFractor\MFractor.csproj" />
-    <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />
+    <ProjectReference Include="..\MFractor.Core\MFractor.Core.csproj" />
     <ProjectReference Include="..\MFractor.Images\MFractor.Images.csproj" />
 
     <ProjectReference Include="..\MFractor.Fonts\MFractor.Fonts.csproj" />

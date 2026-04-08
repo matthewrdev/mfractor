@@ -1,10 +1,8 @@
 ﻿using System;
 using System.ComponentModel.Composition;
-using System.Diagnostics;
 using MFractor.Configuration;
 using MFractor.Ide;
 using MFractor.Images;
-using MFractor.Images.Optimisation;
 using MFractor.Images.Settings;
 using MFractor.IOC;
 using MFractor.Utilities;
@@ -22,9 +20,6 @@ namespace MFractor.Views.Settings
 
         [Import]
         protected IImageFeatureSettings ImageFeatureSettings { get; set; }
-
-        [Import]
-        protected IImageOptimisationService ImageOptimisationService { get; set; }
 
         readonly Logging.ILogger log = Logging.Logger.Create();
 
@@ -51,8 +46,6 @@ namespace MFractor.Views.Settings
         ComboBox minimumAndroidDensitySelection;
 
         ComboBox defaultIOSResourceType;
-
-        TextEntry tinyPngApiKey;
 
         public SettingsWidget()
         {
@@ -228,31 +221,6 @@ namespace MFractor.Views.Settings
             iosDefaultImageTypeContainer.PackStart(defaultIOSResourceType, true);
 
             PackStart(iosDefaultImageTypeContainer);
-
-            var tinyPngApiKeyContainer = new HBox();
-            var tinyPngApiKeylabel = new Label("TinyPNG API Key:");
-
-            tinyPngApiKey = new TextEntry()
-            {
-                Text = ImageFeatureSettings.TinyPNGApiKey,
-                PlaceholderText = "Enter your API key for TinyPNG here.",
-                TooltipText = "MFractor's Image Manager includes support for shrinking your mobile image assets using TinyPNG.\n\nImage shrinking reduces the size of image assets by applying image quantisation. This may significantly reduce the final size of the image with very little to no visual loss.",
-            };
-
-            tinyPngApiKeyContainer.PackStart(tinyPngApiKeylabel);
-            tinyPngApiKeyContainer.PackStart(tinyPngApiKey, true, true);
-
-            if (string.IsNullOrEmpty(tinyPngApiKey.Text))
-            {
-                var actionButton = new Button("Get API Key");
-                actionButton.Clicked += (sender, e) =>
-                {
-                    Process.Start("https://tinypng.com/developers");
-                };
-                tinyPngApiKeyContainer.PackEnd(actionButton);
-            }
-
-            PackStart(tinyPngApiKeyContainer);
         }
 
         public void ApplyChanges()
@@ -277,11 +245,7 @@ namespace MFractor.Views.Settings
 
                     FeatureSettings.AllowThicknessAdornments = allowThicknessAdornmentsCheckbox.Active;
 
-                    ImageFeatureSettings.TinyPNGApiKey = tinyPngApiKey.Text;
-
                     ImageFeatureSettings.DefaultIOSResourceType = (ImageResourceType)defaultIOSResourceType.SelectedItem;
-
-                    ImageOptimisationService.SetApiKey(tinyPngApiKey.Text);
                 }
             }
             catch (Exception ex)

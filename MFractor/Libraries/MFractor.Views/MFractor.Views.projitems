@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicenseDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Image Deletion Tool\DeleteImagesDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Image Importer\ImageImporterDialog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Image Optimiser\ImageOptimisationResultDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\MVVMWizardDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM Wizard\MVVMWizardResultEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\ColorChannelSelector.cs" />
@@ -91,7 +90,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ImageSizeUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)File Preview\FilePreviewPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\CodeAnalysisWidget.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Image Optimiser\OptimiseImageAssetWorkUnitHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Delete Output Folders\DeleteOutputFolderWorkUnitHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Delete Output Folders\DeleteOutputFoldersConfigurationDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\DeleteOutputFoldersOptionsWidget.cs" />
@@ -177,7 +175,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Branding\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Image Deletion Tool\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Image Optimiser\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM Wizard\" />
     <Folder Include="$(MSBuildThisFileDirectory)Colors\" />
     <Folder Include="$(MSBuildThisFileDirectory)Font Importer\" />

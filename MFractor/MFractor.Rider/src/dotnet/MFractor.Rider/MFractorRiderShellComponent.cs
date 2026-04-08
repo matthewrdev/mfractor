@@ -1,14 +1,12 @@
 using JetBrains.Application;
-using MFractor.IOC;
 
 namespace MFractor.Rider
 {
     [ShellComponent]
     public class MFractorRiderShellComponent
     {
-        public MFractorRiderShellComponent()
-        {
-            var exportResolver = Resolver.ExportResolver;
-        }
+        // Keep the Rider shell bootstrap empty until Rider-native features explicitly
+        // request MFractor services. UI for Rider belongs in the IntelliJ frontend
+        // and should talk to this backend via protocol instead of Xwt or VS stacks.
     }
 }

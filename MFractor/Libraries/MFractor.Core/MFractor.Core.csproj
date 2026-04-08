@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor.Ide\MFractor.Ide.csproj" />
+    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />
+    <ProjectReference Include="..\MFractor.Xml\MFractor.Xml.csproj" />
+  </ItemGroup>
+
+</Project>

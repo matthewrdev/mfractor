@@ -13,7 +13,6 @@ namespace MFractor
 
         public const string CSharp = "CSharp";
 
-        public const string Linker = "Linker";
 
         public const string Xaml = "Xaml";
 

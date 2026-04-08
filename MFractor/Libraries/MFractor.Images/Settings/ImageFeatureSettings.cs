@@ -25,14 +25,6 @@ namespace MFractor.Images.Settings
             set => UserOptions.Set(MinimumAndroidDensityKey, value);
         }
 
-        public const string TinyPNGApiKeyKey = "com.mfractor.settings.image_tools.tiny_png_api_key";
-
-        public string TinyPNGApiKey
-        {
-            get => UserOptions.Get(TinyPNGApiKeyKey, string.Empty);
-            set => UserOptions.Set(TinyPNGApiKeyKey, value);
-        }
-
         public const string DefaultIOSResourceTypeKey = "com.mfractor.settings.image_tools.default_ios_asset_kind";
 
         public ImageResourceType DefaultIOSResourceType

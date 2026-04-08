@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Optimisation\" />
     <Folder Include="Work Units\" />
     <Folder Include="Utilities\" />
     <Folder Include="Settings\" />
@@ -40,13 +39,8 @@
       <PackageReference Include="Microsoft.CodeAnalysis" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Third Party\MFractor.Tinify\MFractor.Tinify.csproj" />
-    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Core\MFractor.Core.csproj" />
     <ProjectReference Include="..\MFractor.MSBuild\MFractor.MSBuild.csproj" />
-    <ProjectReference Include="..\..\Third Party\Mobile.BuildTools\src\Mobile.BuildTools.Reference\Mobile.BuildTools.Reference.csproj" />
-    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
-    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
-    <ProjectReference Include="..\MFractor.Ide\MFractor.Ide.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Android\icon.txt" />

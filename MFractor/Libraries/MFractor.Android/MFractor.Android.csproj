@@ -14,9 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MFractor\MFractor.csproj" />
-    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
-    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
+    <ProjectReference Include="..\MFractor.Core\MFractor.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,13 +18,10 @@
 
   <Import Project="Plugin.props" />
 
-  <PropertyGroup>
-    <WaveVersion>$(SdkVersion.Substring(2,2))$(SdkVersion.Substring(5,1)).0.0</WaveVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="System.Xaml" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" PrivateAssets="All" GeneratePathProperty="true" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,5 +33,12 @@
       <Generator>JetResourceGenerator</Generator>
     </EmbeddedResource>
   </ItemDefinitionGroup>
+
+  <Target Name="CopyCompositionRuntimeAssembly" AfterTargets="Build" Condition="Exists('$(PkgSystem_ComponentModel_Composition)\lib\netstandard2.0\System.ComponentModel.Composition.dll')">
+    <Copy
+      SourceFiles="$(PkgSystem_ComponentModel_Composition)\lib\netstandard2.0\System.ComponentModel.Composition.dll"
+      DestinationFolder="$(OutputPath)"
+      SkipUnchangedFiles="true" />
+  </Target>
 
 </Project>

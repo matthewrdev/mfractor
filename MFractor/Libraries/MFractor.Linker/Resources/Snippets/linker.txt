@@ -1,3 +1,0 @@
-﻿<linker>
-    <!-- See: https://docs.microsoft.com/en-us/xamarin/cross-platform/deploy-test/linker -->
-</linker>

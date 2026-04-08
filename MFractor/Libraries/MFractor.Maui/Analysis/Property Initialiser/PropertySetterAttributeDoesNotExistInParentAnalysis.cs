@@ -105,16 +105,18 @@ namespace MFractor.Maui.Analysis
 			PropertySetterAttributeDoesNotExistInParentBundle bundle = null;
 
 			var message = $"{parentSymbol} does not have a member named '{syntax.Name.LocalName}'.";
-			if (nearestSymbol != null)
-			{
-				var designXmlns = context.Namespaces.ResolveNamespaceForSchema(XamlSchemas.DesignSchemaUrl);
+            if (nearestSymbol == null)
+            {
+                return CreateIssue(message, syntax, syntax.NameSpan, bundle).AsList();
+            }
 
-				var suggestion = isDesign && designXmlns != null ? designXmlns.Prefix + ":" + nearestSymbol.Name : nearestSymbol.Name;
+            var designXmlns = context.Namespaces.ResolveNamespaceForSchema(XamlSchemas.DesignSchemaUrl);
 
-				bundle = new PropertySetterAttributeDoesNotExistInParentBundle(suggestion);
+            var suggestion = isDesign && designXmlns != null ? designXmlns.Prefix + ":" + nearestSymbol.Name : nearestSymbol.Name;
 
-				message += $"\n\nDid you mean '{suggestion}'?";
-			}
+            bundle = new PropertySetterAttributeDoesNotExistInParentBundle(suggestion);
+
+            message += $"\n\nDid you mean '{suggestion}'?";
 
             return CreateIssue(message, syntax, syntax.NameSpan, bundle).AsList();
 		}

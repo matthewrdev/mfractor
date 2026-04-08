@@ -11,9 +11,8 @@
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MFractor\MFractor.csproj" />
+    <ProjectReference Include="..\MFractor.Core\MFractor.Core.csproj" />
     <ProjectReference Include="..\MFractor.Fonts\MFractor.Fonts.csproj" />
-    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
   </ItemGroup>
   <ItemGroup>
       <PackageReference Include="Microsoft.CodeAnalysis" Version="4.6.0" />

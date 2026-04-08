@@ -14,10 +14,7 @@
     <LangVersion>Latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-
-    <ProjectReference Include="..\MFractor.CSharp\MFractor.CSharp.csproj" />
-    <ProjectReference Include="..\MFractor.Code\MFractor.Code.csproj" />
-    <ProjectReference Include="..\MFractor.Workspace\MFractor.Workspace.csproj" />
+    <ProjectReference Include="..\MFractor.Core\MFractor.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />

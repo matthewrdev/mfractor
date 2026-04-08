@@ -1,8 +1,7 @@
-import com.jetbrains.plugin.structure.base.utils.isFile
 import groovy.ant.FileNameFinder
 import org.apache.tools.ant.taskdefs.condition.Os
-import org.jetbrains.intellij.platform.gradle.Constants
 import java.io.ByteArrayOutputStream
+import java.io.File
 
 plugins {
     id("java")
@@ -42,6 +41,29 @@ tasks.wrapper {
 }
 
 version = extra["PluginVersion"] as String
+
+fun findRiderDistributionArchive(gradleUserHomeDir: File, productVersion: String): File? {
+    val cacheRoot = File(gradleUserHomeDir, "caches/modules-2/files-2.1/com.jetbrains.intellij.rider/riderRD/$productVersion")
+    if (!cacheRoot.exists()) {
+        return null
+    }
+
+    return cacheRoot.walkTopDown()
+        .firstOrNull { it.isFile && it.extension.equals("zip", ignoreCase = true) }
+}
+
+fun loadRiderProvidedAssemblyNames(gradleUserHomeDir: File, productVersion: String): Set<String> {
+    val archive = findRiderDistributionArchive(gradleUserHomeDir, productVersion) ?: return emptySet()
+
+    return zipTree(archive)
+        .matching {
+            include("lib/ReSharperHost/**/*.dll")
+            include("lib/ReSharperHost/**/*.exe")
+        }
+        .files
+        .map { it.name }
+        .toSet()
+}
 
 tasks.processResources {
     from("dependencies.json") { into("META-INF") }
@@ -170,19 +192,47 @@ tasks.prepareSandbox {
     dependsOn(compileDotNet)
 
     val outputFolder = file("${rootDir}/src/dotnet/${DotnetPluginId}/bin/${DotnetBackendProject}/${BuildConfiguration}")
-    val dllFiles = fileTree(outputFolder) {
-        include("*.dll")
-        include("*.pdb")
+    val dotnetFiles = provider {
+        val riderProvidedAssemblyNames = loadRiderProvidedAssemblyNames(gradle.gradleUserHomeDir, ProductVersion)
+
+        if (!outputFolder.exists()) {
+            emptyList<File>()
+        } else {
+            outputFolder
+                .listFiles()
+                ?.filter { candidate ->
+                    if (!candidate.isFile) {
+                        return@filter false
+                    }
+
+                    when (candidate.extension.lowercase()) {
+                        "dll" -> candidate.name.startsWith("MFractor.", ignoreCase = true) || candidate.name !in riderProvidedAssemblyNames
+                        "pdb" -> {
+                            val assemblyName = "${candidate.nameWithoutExtension}.dll"
+                            val assemblyFile = File(outputFolder, assemblyName)
+                            assemblyFile.exists() && (assemblyName.startsWith("MFractor.", ignoreCase = true) || assemblyName !in riderProvidedAssemblyNames)
+                        }
+                        "config" -> {
+                            val assemblyName = candidate.name.removeSuffix(".config")
+                            val assemblyFile = File(outputFolder, assemblyName)
+                            assemblyFile.exists() && (assemblyName.startsWith("MFractor.", ignoreCase = true) || assemblyName !in riderProvidedAssemblyNames)
+                        }
+                        else -> false
+                    }
+                }
+                ?.sortedBy { it.name }
+                ?: emptyList()
+        }
     }
 
-    from(dllFiles) { into("${rootProject.name}/dotnet") }
+    from(dotnetFiles) { into("${rootProject.name}/dotnet") }
 
     doLast {
         if (!outputFolder.exists()) {
             throw RuntimeException("Output folder ${outputFolder} does not exist")
         }
 
-        val files = dllFiles.files
+        val files = dotnetFiles.get()
         if (files.isEmpty()) {
             throw RuntimeException("No .NET backend assemblies were found in ${outputFolder}")
         }
@@ -200,22 +250,5 @@ tasks.publishPlugin {
             args("nuget","push","output/${DotnetPluginId}.${version}.nupkg","--api-key","${PublishToken}","--source","https://plugins.jetbrains.com")
             workingDir(rootDir)
         }
-    }
-}
-
-val riderModel: Configuration by configurations.creating {
-    isCanBeConsumed = true
-    isCanBeResolved = false
-}
-
-artifacts {
-    add(riderModel.name, provider {
-        intellijPlatform.platformPath.resolve("lib/rd/rider-model.jar").also {
-            check(it.isFile) {
-                "rider-model.jar is not found at $riderModel"
-            }
-        }
-    }) {
-        builtBy(Constants.Tasks.INITIALIZE_INTELLIJ_PLATFORM_PLUGIN)
     }
 }

@@ -64,7 +64,6 @@ namespace MFractor.Views.ImageManager
         VBox leftContainer;
 
         Button deleteImageAssetButton;
-        Button optimiseAllImageAssetsButton;
         Button refreshButton;
 
         CollectionView imagesCollectionView;
@@ -544,16 +543,6 @@ namespace MFractor.Views.ImageManager
 
             leftContainer.PackStart(deleteImageAssetButton);
 
-            optimiseAllImageAssetsButton = new Button()
-            {
-                Label = "Optimise All Images",
-                TooltipText = "Uses TinyPNG to optimise all image assets that are present in the current solution.",
-            };
-
-            optimiseAllImageAssetsButton.Clicked += OptimiseAllImageAssetsButton_Clicked;
-
-            leftContainer.PackStart(optimiseAllImageAssetsButton);
-
             refreshButton = new Button()
             {
                 Label = "Refresh",
@@ -565,21 +554,6 @@ namespace MFractor.Views.ImageManager
             leftContainer.PackStart(refreshButton);
 
             contentContainer.PackStart(leftContainer, true, true);
-        }
-
-        async void OptimiseAllImageAssetsButton_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                await WorkEngine.ApplyAsync(new OptimiseImageAssetWorkUnit(this.ImageAssets.Values.ToList())
-                {
-                    OnImageOptimisationFinishedDelegate = () => this.GatherImageAssetsAsync().ConfigureAwait(false)
-                });
-            }
-            catch (Exception ex)
-            {
-                log?.Exception(ex);
-            }
         }
 
         void RefreshClicked(object sender, EventArgs e)
